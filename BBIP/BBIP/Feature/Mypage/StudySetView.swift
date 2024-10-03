@@ -2,13 +2,15 @@ import Foundation
 import SwiftUI
 
 struct StudySetView: View {
-    @StateObject var mypageviewModel = DIContainer.shared.makeMypageDetailViewModel()
+    @ObservedObject var mypageviewModel: MypageViewModel
     @State var selectedIndex: Int
     
-    init(initialIndex: Int) {
+    init(initialIndex: Int, viewModel: MypageViewModel) {
+        self.mypageviewModel = viewModel
         _selectedIndex = State(initialValue: initialIndex)
     }
-    
+
+
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
@@ -29,13 +31,13 @@ struct StudySetView: View {
                                     .foregroundColor(selectedIndex == 0 ? .primary3 : .gray4),
                                 alignment: .bottom
                             )
-                        
+
                         Text("진행 중인 스터디")
                             .font(.bbip(selectedIndex == 0 ? .body1_b16 : .body2_m14))
                             .foregroundStyle(.gray8)
                     }
                 }
-                
+
                 Button {
                     withAnimation { selectedIndex = 1 }
                 } label: {
@@ -49,7 +51,7 @@ struct StudySetView: View {
                                     .foregroundColor(selectedIndex == 1 ? .primary3 : .gray4),
                                 alignment: .bottom
                             )
-                        
+
                         Text("종료된 스터디")
                             .font(.bbip(selectedIndex == 1 ? .body1_b16 : .body2_m14))
                             .foregroundStyle(.gray8)
@@ -57,13 +59,13 @@ struct StudySetView: View {
                 }
             }
             .animation(.easeInOut, value: selectedIndex)
-            
+
             if selectedIndex == 0 {
-                OngoingStudyView(study: $mypageviewModel.ongoingStudyData)
+                OngoingStudyView(study: mypageviewModel.ongoingStudyData)
             } else {
-                FinishedStudyView(study: $mypageviewModel.finishedStudyData)
+                FinishedStudyView(study: mypageviewModel.finishedStudyData)
             }
-            
+
             Spacer()
         }
         .navigationTitle("나의 스터디")
@@ -75,8 +77,8 @@ struct StudySetView: View {
 }
 
 struct OngoingStudyView: View {
-    @Binding var study: [StudyInfoVO]?
-    
+    var study: [StudyInfoVO]?
+
     var body: some View {
         if let study = study, !study.isEmpty {
             ScrollView {
@@ -111,8 +113,8 @@ struct OngoingStudyView: View {
 }
 
 struct FinishedStudyView: View {
-    @Binding var study: [StudyInfoVO]?
-    
+    var study: [StudyInfoVO]?
+
     var body: some View {
         if let study = study, !study.isEmpty {
             ScrollView {
@@ -124,7 +126,7 @@ struct FinishedStudyView: View {
                             .foregroundStyle(.gray7)
                             .padding(.top, 12)
                             .padding(.leading, 16)
-                        
+
                         StudyCardView(study: study, isFinished: true)
                             .padding(.top, 12)
                             .transition(.move(edge: .trailing).combined(with: .opacity))
@@ -153,59 +155,56 @@ struct FinishedStudyView: View {
     }
 }
 
-
 struct StudyCardView: View {
     var study: StudyInfoVO
     var isFinished: Bool
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.mainWhite)
                 .frame(height: 97)
                 .bbipShadow1()
-            
+
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 0) {
                     LoadableImageView(imageUrl: study.imageUrl, size: 32)
-                    
+
                     Text(study.studyName)
                         .font(.bbip(.body1_sb16))
                         .foregroundStyle(.mainBlack)
                         .padding(.leading, 12)
-                    
+
                     Spacer()
-                    
+
                     CapsuleView(title: study.category.rawValue, type: .fill)
                         .frame(height: 24, alignment: .center)
                 }
                 .padding(.top, 12)
                 .padding(.leading, 12)
                 .padding(.trailing, 15.35)
-                
+
                 Rectangle()
                     .fill(.gray3)
                     .frame(height: 1)
                     .padding(.top, 13)
                     .padding(.leading, 12)
                     .padding(.trailing, 10.5)
-                
+
                 HStack(spacing: 0) {
                     Image("calendar_nonactive")
                         .resizable()
                         .frame(width: 14.82, height: 16)
                         .padding(.trailing, 9.82)
-                    
+
                     if isFinished {
-                        // 종료된 스터디의 텍스트
                         Text("\(study.totalWeeks)주차, \(study.studyTimes.first?.startTime ?? "") ~ \(study.studyTimes.first?.endTime ?? "")")
                             .padding(.trailing, 28)
                     } else {
-                        // 진행 중인 스터디의 텍스트
                         Text("\(study.currentWeek)주차, \(study.studyStartDate) ~ \(study.studyEndDate)")
                             .padding(.trailing, 28)
                     }
-                    
+
                     Spacer()
                 }
                 .padding(.leading, 12)

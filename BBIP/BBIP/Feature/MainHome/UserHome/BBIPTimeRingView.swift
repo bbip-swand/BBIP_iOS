@@ -61,6 +61,9 @@ struct BBIPTimeRingView: View {
                 .font(.bbip(.title4_sb24))
                 .foregroundStyle(.mainWhite)
                 .padding(.bottom, 12)
+                .frame(maxWidth: 180)
+                .lineLimit(1)
+                .truncationMode(.tail)
             
             Group {
                 Text(vo?.studyTime ?? "")

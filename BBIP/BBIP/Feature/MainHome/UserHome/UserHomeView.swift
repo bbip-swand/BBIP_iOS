@@ -32,10 +32,10 @@ struct UserHomeView: View {
             
             if attendviewModel.isAttendanceStart {
                 ActivatedBBIPTimeRingView(
-                    studyTitle: studyTitle,
-                    remainingTime: remainingTime,
-                    studyId: studyId,
-                    session: session
+                    studyTitle: attendstatusData?.studyName ?? "스터디",
+                    remainingTime: $attendviewModel.remainingTime,
+                    studyId: $attendviewModel.studyId,
+                    session: $attendviewModel.session
                 ) {
                     withAnimation { attendviewModel.isAttendanceStart = false }
                 }
@@ -70,10 +70,10 @@ struct UserHomeView: View {
         .refreshable {
             viewModel.refreshHomeData()
             attendviewModel.getStatusAttend()
-            calviewModel.getUpcoming()
+            calendarviewModel.getUpcoming()
         }
         .onAppear {
-            calviewModel.getUpcoming()
+            calendarviewModel.getUpcoming()
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in

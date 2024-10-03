@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @EnvironmentObject var appState : AppStateManager
     @StateObject var calendarviewModel = DIContainer.shared.makeCalendarVieModel()
     @State var addScheduleView = false
     @State var selectedDate = Date()
@@ -80,7 +81,6 @@ struct CalendarView: View {
             CreateSchedule()
         }
         .onAppear {
-            // 초기 화면 진입 시 현재 연도와 월 정보로 업데이트
             updateCurrentMonthTitle()
             calendarviewModel.getYearMonth(year: currentYear, month: currentMonth)
         }

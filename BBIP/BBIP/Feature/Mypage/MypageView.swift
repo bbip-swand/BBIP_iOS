@@ -164,6 +164,7 @@ struct MypageView: View {
                 
                 Button {
                     showStudied = true
+                    
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
@@ -204,10 +205,10 @@ struct MypageView: View {
             .padding(.top, 12)
         }
         .navigationDestination(isPresented: $showStudying) {
-            StudySetView(initialIndex: 0) // 진행 중인 스터디로 초기화
+            StudySetView(initialIndex: 0, viewModel: mypageviewModel) // 진행 중인 스터디로 초기화
         }
         .navigationDestination(isPresented: $showStudied) {
-            StudySetView(initialIndex: 1) // 종료된 스터디로 초기화
+            StudySetView(initialIndex: 1, viewModel: mypageviewModel) // 종료된 스터디로 초기화
         }
     }
     
