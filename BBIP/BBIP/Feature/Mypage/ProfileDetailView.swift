@@ -13,7 +13,14 @@ struct ProfileDetailView: View {
     var parsedInterests: [String]
     var birthYear: String
     
-    init(userName: String, profileImageUrl: String, parsedArea: String, birthYear:String, parsedOccupation: String, parsedInterests: [String]) {
+    init(
+        userName: String,
+        profileImageUrl: String,
+        parsedArea: String,
+        birthYear:String,
+        parsedOccupation: String,
+        parsedInterests: [String]
+    ) {
         self.userName = userName
         self.profileImageUrl = profileImageUrl
         self.parsedArea = parsedArea

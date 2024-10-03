@@ -16,11 +16,9 @@ struct StudySetView: View {
                 .frame(height: 8)
             
             HStack(spacing: 1) {
-                Button(action: {
-                    withAnimation {
-                        selectedIndex = 0
-                    }
-                }) {
+                Button {
+                    withAnimation { selectedIndex = 0 }
+                } label: {
                     ZStack {
                         Rectangle()
                             .fill(.mainWhite)
@@ -38,11 +36,9 @@ struct StudySetView: View {
                     }
                 }
                 
-                Button(action: {
-                    withAnimation {
-                        selectedIndex = 1
-                    }
-                }) {
+                Button {
+                    withAnimation { selectedIndex = 1 }
+                } label: {
                     ZStack {
                         Rectangle()
                             .fill(.mainWhite)

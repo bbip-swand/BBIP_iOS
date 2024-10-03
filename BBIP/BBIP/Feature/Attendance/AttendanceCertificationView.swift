@@ -8,7 +8,6 @@ struct AttendanceCertificationView: View {
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
-
     
     init(
         attendviewModel: AttendanceCertificationViewModel,
@@ -33,7 +32,7 @@ struct AttendanceCertificationView: View {
                 .sink { _ in
                     guard remainingTime > 0 else {
                         timer?.cancel()
-                        timer = nil // 타이머가 종료되었으므로 nil로 설정
+                        timer = nil
                         return
                     }
                     remainingTime -= 1
@@ -41,7 +40,6 @@ struct AttendanceCertificationView: View {
                 }
         }
     }
-    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -61,7 +59,6 @@ struct AttendanceCertificationView: View {
                 .font(.bbip(.caption1_m16))
                 .padding(.bottom, 82)
             
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .frame(height: 70)
@@ -77,7 +74,6 @@ struct AttendanceCertificationView: View {
                     Text(formattedTime)
                         .font(.bbip(.title1_sb42))
                         .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
-                    
                 }
             }
             
@@ -133,13 +129,13 @@ struct AttendanceCertificationView: View {
         .onTapGesture {
             focusedIndex = nil
         }
-        .navigationDestination(isPresented: $attendviewModel.showAttendanceDone){
+        .navigationDestination(isPresented: $attendviewModel.showAttendanceDone) {
             AttendanceDoneView()
         }
-        .onDisappear(){
+        .onDisappear() {
             timer?.cancel()
         }
-        .onAppear(){
+        .onAppear() {
             setNavigationBarAppearance(forDarkView: true)
             startTimer()
             

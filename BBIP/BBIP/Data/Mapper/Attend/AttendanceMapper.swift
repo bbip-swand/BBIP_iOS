@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 struct CreateCodeMapper {
-    func toDTO(vo:AttendVO) -> CreateCodeDTO{
+    func toDTO(vo:AttendVO) -> CreateCodeDTO {
         return CreateCodeDTO(studyId: vo.studyId, session: vo.session)
     }
 }
 
 struct EnterCodeMapper{
-    func toDTO(vo:AttendVO) -> EnterCodeDTO{
+    func toDTO(vo:AttendVO) -> EnterCodeDTO {
         return EnterCodeDTO(studyId: vo.studyId, code: vo.code)
     }
 }
 
-struct GetStatusMapper{
-    func toVo(dto:GetStatusResponseDTO) -> GetStatusVO{
+struct GetStatusMapper {
+    func toVo(dto:GetStatusResponseDTO) -> GetStatusVO {
         print("StartTime: \(dto.startTime)")
         
         // 1. 먼저 ISO 8601 형식의 문자열을 Date로 변환 (UTC 기준)
@@ -34,10 +34,8 @@ struct GetStatusMapper{
         
         // 2. UTC에서 9시간을 빼서 한국 시간대 기준으로 변환된 Date 생성
         let nineHours: TimeInterval = 0// 9시간을 초 단위로 변환
-        let startTimeKST = startTimeUTC.addingTimeInterval(nineHours)
-        
+        let _ = startTimeUTC.addingTimeInterval(nineHours)
         let code = dto.code ?? 0
-        
         
         print("StartTime in KST: \(startTimeUTC)")
 
@@ -54,9 +52,9 @@ struct GetStatusMapper{
     }
 }
 
-struct GetAttendRecordMapper{
+struct GetAttendRecordMapper {
     
-    func toVO(dto:GetAttendRecordDTO) -> getAttendRecordVO{
+    func toVO(dto:GetAttendRecordDTO) -> getAttendRecordVO {
         let vo = getAttendRecordVO(
             session: dto.session,
             userName: dto.userName,
@@ -64,7 +62,6 @@ struct GetAttendRecordMapper{
             status: dto.status)
         print("Mapping DTO: \(dto) to VO")
         print("Mapping VO: \(vo)")
-        print("")
         
         return vo
     }

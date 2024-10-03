@@ -10,14 +10,12 @@ import SwiftUI
 struct MypageView: View {
     @StateObject var mypageviewModel = DIContainer.shared.makeMypageDetailViewModel()
     @State var userInfodata: UserInfoVO?
-    @State private var showDetail:Bool = false
-    @State private var showStudying : Bool = false
-    @State private var showStudied : Bool = false
+    @State private var showDetail: Bool = false
+    @State private var showStudying: Bool = false
+    @State private var showStudied: Bool = false
     @State private var settinglist = SettingList.MypageSettingList()
     @State var ongoingStudyCount: Int = 0
     @State var finishedStudyCount: Int = 0
-    
-    
     
     init() {
         setNavigationBarAppearance()
@@ -50,16 +48,16 @@ struct MypageView: View {
     }
     //MARK: MypageProfileView
     var MypageProfileView: some View {
-        HStack (spacing: 0){
+        HStack (spacing: 0) {
             LoadableImageView(imageUrl: mypageviewModel.profileData?.profileImageUrl, size: 80)
                 .padding(.leading, 26)
             
-            VStack(spacing:0){
-                HStack(spacing:0){
+            VStack(spacing:0) {
+                HStack(spacing:0) {
                     Text(mypageviewModel.profileData?.userName ?? "이름없음" )
                         .font(.bbip(.title3_m20))
                         .foregroundStyle(.mainBlack)
-                        .padding(.trailing,17)
+                        .padding(.trailing, 17)
                     
                     Text(mypageviewModel.parsedOccupation)
                         .font(.bbip(.caption3_r12))
@@ -70,7 +68,7 @@ struct MypageView: View {
                 .padding(.leading, 20)
                 .padding(.bottom, 10)
                 
-                HStack(spacing:5){
+                HStack(spacing:5) {
                     ForEach(mypageviewModel.parsedInterests.prefix(3), id: \.self) { interest in
                         let textWidth = textWidth(for: interest, font: UIFont.systemFont(ofSize: 12))
                         
@@ -92,9 +90,9 @@ struct MypageView: View {
             }
             Spacer()
             
-            Button{
+            Button {
                 showDetail = true
-            }label: {
+            } label: {
                 Image("info_open")
                     .padding(.trailing,28)
             }
@@ -112,9 +110,9 @@ struct MypageView: View {
     }
     
     //MARK: MypageStudyView
-    var MypageStudyView:  some View {
+    var MypageStudyView: some View {
         VStack(spacing: 0) {
-            HStack(spacing:0){
+            HStack(spacing:0) {
                 Text("나의 스터디")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
@@ -123,24 +121,23 @@ struct MypageView: View {
             }
             .padding(.leading,28)
             
-            HStack(spacing:11){
-                
-                Button{
+            HStack(spacing:11) {
+                Button {
                     showStudying = true
-                }label: {
+                } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(.mainWhite)
                             .frame(maxWidth: .infinity, maxHeight: 64)
                             .padding(.leading, 16)
                         
-                        HStack(spacing:0){
-                            VStack(alignment:.leading,spacing:0){
+                        HStack(spacing: 0) {
+                            VStack(alignment:.leading, spacing: 0) {
                                 Text("진행 중인 스터디")
                                     .font(.bbip(.body2_m14))
                                     .foregroundStyle(.gray7)
                                 
-                                HStack(spacing:0){
+                                HStack(spacing:0) {
                                     Text("\(ongoingStudyCount)")
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.primary3)
@@ -150,7 +147,6 @@ struct MypageView: View {
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.gray8)
                                         .padding(.top, 4)
-                                    
                                 }
                             }
                             
@@ -166,22 +162,22 @@ struct MypageView: View {
                     }
                 }
                 
-                Button{
+                Button {
                     showStudied = true
-                }label:{
+                } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(.mainWhite)
                             .frame(maxWidth: .infinity, maxHeight: 64)
-                            .padding(.trailing,16)
+                            .padding(.trailing, 16)
                         
-                        HStack(spacing:0){
-                            VStack(alignment:.leading,spacing:0){
+                        HStack(spacing: 0) {
+                            VStack(alignment: .leading,spacing: 0) {
                                 Text("종료된 스터디")
                                     .font(.bbip(.body2_m14))
                                     .foregroundStyle(.gray7)
                                 
-                                HStack(spacing:0){
+                                HStack(spacing:0) {
                                     Text("\(finishedStudyCount)")
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.primary3)
@@ -191,7 +187,6 @@ struct MypageView: View {
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.gray8)
                                         .padding(.top, 4)
-                                    
                                 }
                             }
                             
@@ -202,13 +197,11 @@ struct MypageView: View {
                                 .frame(width:35, height: 24.05)
                         }
                         .padding(.leading, 19)
-                        .padding(.trailing,31)
+                        .padding(.trailing, 31)
                     }
                 }
-                
-                
             }
-            .padding(.top,12)
+            .padding(.top, 12)
         }
         .navigationDestination(isPresented: $showStudying) {
             StudySetView(initialIndex: 0) // 진행 중인 스터디로 초기화
@@ -218,17 +211,15 @@ struct MypageView: View {
         }
     }
     
-    
-    
     //MARK: MypageSettingListView
-    var MypageSettingListView: some View{
+    var MypageSettingListView: some View {
         ZStack {
             Rectangle()
                 .foregroundColor(.mainWhite)
-                .padding(.top,29)
+                .padding(.top, 29)
                 .ignoresSafeArea()
             
-            VStack(spacing:0){
+            VStack(spacing:0) {
                 
                 Spacer().frame(height:28)
                 
@@ -247,11 +238,9 @@ struct MypageView: View {
                     .font(.bbip(.caption3_r12))
                     .foregroundStyle(.gray5)
                     .padding(.bottom,64)
-                
             }
             .padding(.top,29)
         }
-        
     }
     
     private func textWidth(for text: String, font: UIFont) -> CGFloat {
@@ -271,5 +260,4 @@ struct MypageView: View {
             print("유저 userInfo데이터: \(mypageviewModel.profileData)")
         }
     }
-    
 }

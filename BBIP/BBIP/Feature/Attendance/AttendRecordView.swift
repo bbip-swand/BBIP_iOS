@@ -5,13 +5,12 @@ import Combine
 struct AttendRecordView: View {
     @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     @State private var formattedTime: String = "00:00"
-    @Binding var remainingTime: Int
-    var code: Int?
     @State private var timer: AnyCancellable?
-
     @State private var isRefresh: Bool = false
-    private var completion: (() -> Void)?
+    @Binding var remainingTime: Int
     
+    private var completion: (() -> Void)?
+    var code: Int?
      
     init(
         remainingTime: Binding<Int>,
@@ -81,13 +80,9 @@ struct AttendRecordView: View {
                             .foregroundStyle(.gray8)
                         
                         HStack(spacing: 9) {
-                            Text("인증코드:")
+                            Text("인증코드: ")
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
-                            
-//                            Text(String(code))
-//                                .font(.bbip(.caption1_m16))
-//                                .foregroundStyle(.mainWhite)
                         }
                         .padding(.horizontal, 20)
                     }
@@ -126,7 +121,6 @@ struct AttendRecordView: View {
                     .padding(.leading, 26)
                     .padding(.bottom, 12)
                 
-                
                 // 경기 미참여한 사람들의 studyEntryCard 필요
                 ForEach(0..<attendviewModel.records.filter { $0.status == .absent }.count, id: \.self) {index in
                     let record = attendviewModel.records.filter { $0.status == .absent }[index]
@@ -134,7 +128,6 @@ struct AttendRecordView: View {
                         .padding(.horizontal, 20)
                         .padding(.bottom, 8)
                 }
-                
             }
         }
         .backButtonStyle(isReversal: true)

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct ProfileInfoList : Identifiable, Hashable{
+struct ProfileInfoList: Identifiable, Hashable {
     var id = UUID()
     var infoType: String
     var infoName: String
@@ -17,28 +17,27 @@ struct ProfileInfoList : Identifiable, Hashable{
     }
 }
 
-
-struct ProfileInfoListRow : View{
+struct ProfileInfoListRow: View {
     let profileinfolist : ProfileInfoList
     
     var infotypelen: Int {
-            return profileinfolist.infoType.count
-        }
+        return profileinfolist.infoType.count
+    }
     
     var paddingSize: CGFloat {
-            if infotypelen == 4 {
-                return 35
-            } else {
-                return 63
-            }
+        if infotypelen == 4 {
+            return 35
+        } else {
+            return 63
         }
+    }
     
-    var body: some View{
-        HStack(spacing:0){
+    var body: some View {
+        HStack(spacing:0) {
             Text(profileinfolist.infoType)
                 .font(.bbip(.body1_m16))
                 .foregroundStyle(.gray7)
-                .padding(.leading,16)
+                .padding(.leading, 16)
             
             Text(profileinfolist.infoName)
                 .font(.bbip(.body2_m14))
@@ -47,16 +46,14 @@ struct ProfileInfoListRow : View{
             
             Spacer()
             
-            Button{
+            Button {
                 
-            }label: {
+            } label: {
                 Text(profileinfolist.iconName)
                     .font(.bbip(.caption3_r12))
                     .foregroundStyle(.gray5)
-                    .padding(.trailing,16)
+                    .padding(.trailing, 16)
             }
-            
         }
     }
-    
 }

@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol AttendRepository{
+protocol AttendRepository {
     func getAttendCode() -> AnyPublisher<GetStatusVO, Error> //getStatus - 반환있음
-    func createCode(vo:AttendVO) -> AnyPublisher<CreateCodeResponseDTO, Error> //createcode - 반환 있음
-    func enterCode(vo:AttendVO) -> AnyPublisher<Void,Error> // entercode - 반환 없음
-    func getAttendRecord(studyId:String) -> AnyPublisher<[getAttendRecordVO],Error>
+    func createCode(vo: AttendVO) -> AnyPublisher<CreateCodeResponseDTO, Error> //createcode - 반환 있음
+    func enterCode(vo: AttendVO) -> AnyPublisher<Void, Error> // entercode - 반환 없음
+    func getAttendRecord(studyId: String) -> AnyPublisher<[getAttendRecordVO], Error>
 }
 
-final class AttendRepositoryImpl: AttendRepository{
+final class AttendRepositoryImpl: AttendRepository {
     private let dataSource: AttendDataSource
     private let createCodeMapper: CreateCodeMapper
     private let enterCodeMapper: EnterCodeMapper
@@ -36,7 +36,7 @@ final class AttendRepositoryImpl: AttendRepository{
         self.getRecordMapper = getRecordMapper
     }
     
-    //MARK: -GET
+    // MARK: - GET
     func getAttendCode() -> AnyPublisher<GetStatusVO, any Error> {
         dataSource.getStatus()
             .map{dto in
@@ -45,7 +45,7 @@ final class AttendRepositoryImpl: AttendRepository{
             .eraseToAnyPublisher()
     }
     
-    //MARK: -POST
+    // MARK: - POST
     func createCode(vo: AttendVO) -> AnyPublisher<CreateCodeResponseDTO, any Error> {
         let dto = createCodeMapper.toDTO(vo: vo)
         print("dto: \(dto)")
@@ -53,7 +53,7 @@ final class AttendRepositoryImpl: AttendRepository{
             .eraseToAnyPublisher()
     }
     
-    //MARK: -POST
+    // MARK: - POST
     func enterCode(vo: AttendVO) -> AnyPublisher<Void, any Error> {
         let dto = enterCodeMapper.toDTO(vo: vo)
         print("dto: \(dto)")
@@ -61,7 +61,7 @@ final class AttendRepositoryImpl: AttendRepository{
             .eraseToAnyPublisher()
     }
     
-    //MARK: -GET
+    // MARK: - GET
     func getAttendRecord(studyId: String) -> AnyPublisher<[getAttendRecordVO], any Error> {
         dataSource.getAttendRecord(studyId: studyId)
             .map { dtos in

@@ -38,7 +38,6 @@ struct CommingScheduleCardView: View {
                     .truncationMode(.tail)
                     .frame(maxWidth: 117)
             }
-
         }
     }
 }

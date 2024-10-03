@@ -20,10 +20,10 @@ enum CalendarAPI {
 extension CalendarAPI: BaseAPI {
     var path: String{
         switch self{
-        case .getScheduleYM(let year, let month):
+        case .getScheduleYM:
             return "/calendar/list"
             
-        case .getScheduleDate(let date):
+        case .getScheduleDate:
             return "/calendar/list"
             
         case .getUpcoming:
@@ -62,7 +62,7 @@ extension CalendarAPI: BaseAPI {
                 encoding: URLEncoding.queryString
             )
             
-        case .getScheduleDate(let date):
+        case .getScheduleDate:
             return .requestPlain
             
         case .createSchedule(let dto):

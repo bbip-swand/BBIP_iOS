@@ -11,7 +11,6 @@ import Combine
 final class AttendanceCertificationViewModel: ObservableObject {
     //MARK: - get attend record
     @Published var records: [getAttendRecordVO] = []
-     var cancellables = Set<AnyCancellable>()
 
     //MARK: - apply code
     @Published var remainingTime:Int = 600
@@ -23,16 +22,17 @@ final class AttendanceCertificationViewModel: ObservableObject {
     @Published var showAttendanceDone = false
     @Published var stringCode: String = ""
     @Published var combinedCode:Int = 0
-    //TODO: -studyID식별
+    
+    //TODO: - StudyID 식별
     @Published var studyId:String = ""
     @Published var session: Int = 0
     @Published var attendVO : AttendVO?
-    
     
     //UseCase
     private let getAttendRecordUseCase: GetAttendRecordUseCaseProtocol
     private let getStatusUseCase: GetStatusUseCaseProtocol
     private let enterCodeUseCase: EnterCodeUseCaseProtocol
+    var cancellables = Set<AnyCancellable>()
     
     init(
         getAttendRecordUseCase: GetAttendRecordUseCaseProtocol,
@@ -155,5 +155,4 @@ final class AttendanceCertificationViewModel: ObservableObject {
             showInvalidCodeWarning = false
         }
     }
-    
 }

@@ -30,7 +30,7 @@ struct StudyHomeView: View {
     
     init(studyId: String,attendviewModel: AttendanceCertificationViewModel) {
         self.studyId = studyId
-        self._attendviewModel = ObservedObject(wrappedValue: attendviewModel
+        self._attendviewModel = ObservedObject(wrappedValue: attendviewModel)
     }
     
     var body: some View {

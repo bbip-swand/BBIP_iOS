@@ -10,10 +10,10 @@ import Combine
 import PhotosUI
 import SwiftUI
 
-final class MypageViewModel : ObservableObject{
+final class MypageViewModel : ObservableObject {
     @Published var isLoading: Bool = false
-    var cancellables = Set<AnyCancellable>()
     @Published var profileData : UserInfoVO?
+    
     // Parsed Data
     @Published var parsedArea: String = ""
     @Published var parsedInterests: [String] = []
@@ -26,6 +26,7 @@ final class MypageViewModel : ObservableObject{
     private let getProfileUseCase: GetProfileUseCaseProtocol
     private let getFinishedStudyUseCase : GetFinishedStudyInfoUseCaseProtocol
     private let getOngoingStudyUseCase : GetOngoingStudyInfoUseCaseProtocol
+    var cancellables = Set<AnyCancellable>()
     
     init(
         getProfileUseCase : GetProfileUseCaseProtocol,
@@ -60,57 +61,57 @@ final class MypageViewModel : ObservableObject{
     }
     
     private func parseProfileData(_ profile: UserInfoVO) {
-            // Parse selected area
-            self.parsedArea = profile.selectedArea.compactMap { $0 }.joined(separator: " ")
-            
-            // Parse selected interests
-            self.parsedInterests = profile.selectedInterestIndex.compactMap { index in
-                StudyCategory.from(int: index)?.rawValue
-            }
-            
-            // Parse occupation
-            self.parsedOccupation = profile.selectedJobIndex.compactMap { index in
-                OccupationCategory.from(int: index)?.rawValue
-            }.first ?? "알 수 없음"
+        // Parse selected area
+        self.parsedArea = profile.selectedArea.compactMap { $0 }.joined(separator: " ")
+        
+        // Parse selected interests
+        self.parsedInterests = profile.selectedInterestIndex.compactMap { index in
+            StudyCategory.from(int: index)?.rawValue
         }
+        
+        // Parse occupation
+        self.parsedOccupation = profile.selectedJobIndex.compactMap { index in
+            OccupationCategory.from(int: index)?.rawValue
+        }.first ?? "알 수 없음"
+    }
     
     func getOngoingStudyInfo() {
-          getOngoingStudyUseCase.execute()
-              .receive(on: DispatchQueue.main)
-              .sink { completion in
-                  switch completion {
-                  case .finished:
-                      break
-                  case .failure(let error):
-                      print("failed to load ongoing study: \(error.localizedDescription)")
-                  }
-              } receiveValue: { [weak self] response in
-                  guard let self = self else { return }
-                  self.ongoingStudyData = response
-                  self.ongoingStudyCount = response.count
-                  print("OngoingStudyCOunt: \(ongoingStudyCount)")
-                  print("ongoingStudyData: \(ongoingStudyData)")
-              }
-              .store(in: &cancellables)
-      }
-
-      func getFinishedStudyInfo() {
-          getFinishedStudyUseCase.execute()
-              .receive(on: DispatchQueue.main)
-              .sink { completion in
-                  switch completion {
-                  case .finished:
-                      break
-                  case .failure(let error):
-                      print("failed to load finished study: \(error.localizedDescription)")
-                  }
-              } receiveValue: { [weak self] response in
-                  guard let self = self else { return }
-                  self.finishedStudyData = response
-                  self.finishedStudyCount = response.count
-                  print("FinishedStudyCount: \(finishedStudyCount)")
-                  print("FinishedStudyData: \(finishedStudyData)")
-              }
-              .store(in: &cancellables)
-      }
+        getOngoingStudyUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("failed to load ongoing study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.ongoingStudyData = response
+                self.ongoingStudyCount = response.count
+                print("OngoingStudyCOunt: \(ongoingStudyCount)")
+                print("ongoingStudyData: \(ongoingStudyData)")
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getFinishedStudyInfo() {
+        getFinishedStudyUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("failed to load finished study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.finishedStudyData = response
+                self.finishedStudyCount = response.count
+                print("FinishedStudyCount: \(finishedStudyCount)")
+                print("FinishedStudyData: \(finishedStudyData)")
+            }
+            .store(in: &cancellables)
+    }
 }

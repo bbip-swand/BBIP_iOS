@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct CreateCodeDoneView: View{
+struct CreateCodeDoneView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @Binding var attendCode : String
+    @Binding var attendCode: String
     @Binding var remainingTime : Int
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
@@ -45,18 +45,17 @@ struct CreateCodeDoneView: View{
         timer = nil
     }
     
-    
-    var body: some View{
-        VStack(spacing:0){
+    var body: some View {
+        VStack(spacing: 0) {
             Text("출석 인증을 시작합니다.")
                 .font(.bbip(.title4_sb24))
                 .foregroundStyle(.mainWhite)
-                .padding(.top,101)
+                .padding(.top, 101)
             
             Text("코드 번호를 팀원에게 알려주세요")
                 .font(.bbip(.caption1_m16))
                 .foregroundStyle(.gray6)
-                .padding(.top,12)
+                .padding(.top, 12)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -83,14 +82,14 @@ struct CreateCodeDoneView: View{
             }
             .padding(.top,34)
             
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(height:30)
+                    .frame(height: 30)
                     .frame(maxWidth: .infinity)
-                    .padding(.horizontal,117)
+                    .padding(.horizontal, 117)
                     .foregroundStyle(.gray8)
                 
-                HStack(spacing:9){
+                HStack(spacing: 9) {
                     Text("인증코드: ")
                         .font(.bbip(.caption1_m16))
                         .foregroundStyle(.gray4)
@@ -100,11 +99,11 @@ struct CreateCodeDoneView: View{
                         .foregroundStyle(.gray4)
                 }
             }
-            .padding(.top,21)
+            .padding(.top, 21)
             
             Spacer()
             
-            MainButton(text:"홈으로 가기", enable: true){
+            MainButton(text: "홈으로 가기", enable: true) {
                 appState.popToRoot()
             }
             .padding(.bottom,22)

@@ -125,13 +125,12 @@ struct ActivatedBBIPTimeRingView: View {
     @State private var shakeStick: Bool = false
     @State private var showDisabled: Bool = false
     @State private var showAttendRecordView: Bool = false
+    @State var code: Int?
     private let initialTime: Int = 600 // for test
     private var studyTitle: String
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
-    @State var code: Int?
-    
     
     init(
         studyTitle: String,
@@ -238,20 +237,18 @@ struct ActivatedBBIPTimeRingView: View {
             }
             
             Button {
-//                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 print("isAttend: \(String(describing: attendviewModel.getStatusData?.status))")
-               
-                    print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
+                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 
-                if let isManager = attendviewModel.getStatusData?.isManager{
+                if let isManager = attendviewModel.getStatusData?.isManager {
                     if isManager == true {
                         showAttendRecordView = true
-                        
-                    }else{ //팀원일때
-                        if let isAttend = attendviewModel.getStatusData?.status{
-                            if isAttend == true{
+                    } else {
+                        // 팀원일때
+                        if let isAttend = attendviewModel.getStatusData?.status {
+                            if isAttend == true {
                                 showDisabled = true
-                            }else{
+                            } else {
                                 appState.push(.entercode)
                                 showDisabled = true
                             }
@@ -259,14 +256,13 @@ struct ActivatedBBIPTimeRingView: View {
                     }
                 }
             } label: {
-                
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(showDisabled ?  .gray3 : .primary3)
+                    .foregroundStyle(showDisabled ? .gray3 : .primary3)
                     .frame(width: 130, height: 43)
                     .overlay {
                         Text("출석인증")
                             .font(.bbip(.body2_b14))
-                            .foregroundStyle(showDisabled ?  .gray5 : .mainWhite)
+                            .foregroundStyle(showDisabled ? .gray5 : .mainWhite)
                     }
             }
             .disabled(showDisabled)
@@ -294,11 +290,8 @@ struct ActivatedBBIPTimeRingView: View {
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendRecordView) {
-            
             AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
-            
         }
-        
     }
 }
 
