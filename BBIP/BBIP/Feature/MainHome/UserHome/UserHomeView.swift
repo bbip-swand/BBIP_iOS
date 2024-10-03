@@ -102,6 +102,8 @@ struct UserHomeView: View {
                 Text("게시판")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
+                    .opacity(0) // hide swand
+                
                 Spacer()
                 Button {
                     //

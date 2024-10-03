@@ -30,7 +30,7 @@ struct CurrentWeekStudyInfoCardView: View {
                         Text(vo.title)
                             .font(.bbip(.body1_sb16))
                             .foregroundStyle(.mainBlack)
-                            .frame(maxWidth: 200, maxHeight: 20)
+                            .frame(maxWidth: 200, maxHeight: 20, alignment: .leading)
                         
                         HStack(spacing: 9) {
                             Text("\(vo.currentStudyRound)R")
@@ -46,7 +46,7 @@ struct CurrentWeekStudyInfoCardView: View {
                                     Text(description)
                                         .font(.bbip(.body2_m14))
                                         .foregroundStyle(.gray8)
-                                        .frame(maxWidth: 200, maxHeight: 17)
+                                        .frame(maxWidth: 200, maxHeight: 17, alignment: .leading)
                                 }
                             }
                         }
