@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 //studyresponsedto -> studyvo
 struct GetMyStudyMapper{
     func toVO(dto: MyStudyResponseDTO) -> selectStudyVO{
@@ -19,12 +18,9 @@ struct GetMyStudyMapper{
     }
     
     func toVOList(dtos: [MyStudyResponseDTO]) -> [selectStudyVO]{
-        print("toVOList: \(dtos.map {toVO(dto:$0)})")
         return dtos.map{toVO(dto:$0)}
     }
 }
-
-
 
 //ResponseDto -> CalendarHomeVO(캘린더뷰, 유저홈뷰에서 쓸 내용)
 struct GetScheduleMapper{
@@ -57,7 +53,6 @@ struct GetScheduleMapper{
     }
     
     func toVOList(dtos: [ScheduleResponseDTO]) -> [CalendarHomeVO] {
-        print("toVOList: \(dtos.map { toVO(dto: $0) })")
         return dtos.map { toVO(dto: $0) }
     }
 }
