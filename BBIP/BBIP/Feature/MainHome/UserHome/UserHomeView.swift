@@ -32,25 +32,35 @@ struct UserHomeView: View {
            
             
             if timeRingStart {
+                let studyTitle = attendstatusData?.studyName ?? "스터디"
+                let remainingTime = $attendviewModel.remainingTime
+                let studyId = $attendviewModel.studyId
+                let session = $attendviewModel.session
+                
                 ActivatedBBIPTimeRingView(
-                    studyTitle: attendstatusData?.studyName ?? "스터디",
-                    remainingTime: $attendviewModel.remainingTime,
-                    studyId: $attendviewModel.studyId,
-                    session: $attendviewModel.session
+                    studyTitle: studyTitle,
+                    remainingTime: remainingTime,
+                    studyId: studyId,
+                    session: session
                 ) {
                     withAnimation { timeRingStart = false }
                 }
             } else {
-                BBIPTimeRingView(
-                    progress: 0.4,
-                    vo: .init(
-                        leftDay: 0,
-                        title: "TOEIC / IELTS",
-                        time: "18:00 - 20:00",
-                        location: "예대 4층"
-                    )
-                )
-                .redacted(reason: isRefresh ? .placeholder : [])
+                   let studyName = viewModel.pendingStudyData?.studyName ?? ""
+                   let studyTime = viewModel.pendingStudyData?.studyTime ?? ""
+                   let leftDays = viewModel.pendingStudyData?.leftDays ?? 0
+                   let place = viewModel.pendingStudyData?.place ?? "장소 미정"
+
+                   BBIPTimeRingView(
+                       progress: 0.4,
+                       vo: PendingVO(
+                           studyName: studyName,
+                           studyTime: studyTime,
+                           leftDays: leftDays,
+                           place: place
+                       )
+                   )
+                   .redacted(reason: isRefresh ? .placeholder : [])
             }
             
             mainBulletn

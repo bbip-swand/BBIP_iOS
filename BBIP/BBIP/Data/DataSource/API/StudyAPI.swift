@@ -17,6 +17,7 @@ enum StudyAPI {
     case joinStudy(studyId: String)         // param
     case editStudyLocation(studyId: String, session: Int, location: String)
     case getFinishedStudy
+    case getPendingStudy
 }
 
 extension StudyAPI: BaseAPI {
@@ -38,12 +39,14 @@ extension StudyAPI: BaseAPI {
             return "/study/place/\(studyId)"
         case .getFinishedStudy:
             return "/study/finished"
+        case .getPendingStudy:
+            return "/study/pending"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy, .getFullStudyInfo, .getInviteInfo , .getFinishedStudy:
+        case .getThisWeekStudy, .getOngoingStudy, .getFullStudyInfo, .getInviteInfo , .getFinishedStudy, .getPendingStudy:
             return .get
         case .createStudy, .joinStudy:
             return .post
@@ -54,7 +57,7 @@ extension StudyAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy , .getFinishedStudy:
+        case .getThisWeekStudy, .getOngoingStudy , .getFinishedStudy, .getPendingStudy:
             return .requestPlain
             
         case .getFullStudyInfo:

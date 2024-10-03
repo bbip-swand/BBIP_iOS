@@ -13,6 +13,14 @@ import CombineMoya
 final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin()])
     
+    // MARK: - GET pendingstudy
+    func getPendingStudy() -> AnyPublisher<PendingRespDTO, Error>{
+        provider.requestPublisher(.getPendingStudy)
+            .map(\.data)
+            .decode(type: PendingRespDTO.self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .eraseToAnyPublisher()
+    }
+    
     // MARK: - GET
     /// 금주 스터디 조회 (UserHome)
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {

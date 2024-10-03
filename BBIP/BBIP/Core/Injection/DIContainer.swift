@@ -93,13 +93,15 @@ class DIContainer {
     private let createStudyInfoMapper = CreateStudyInfoMapper()
     private let currentWeekStudyInfoMapper = CurrentWeekStudyInfoMapper()
     private let fullStudyInfoMapper = FullStudyInfoMapper()
+    private let getPendingStudyMapper = GetPendingStudyMapper()
     
     private lazy var studyRepository: StudyRepository = StudyRepositoryImpl(
         dataSource: studyDataSource,
         studyInfoMapper: studyInfoMapper,
         createStudyInfoMapper: createStudyInfoMapper,
-        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper, 
-        fullStudyInfoMapper: fullStudyInfoMapper
+        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper,
+        fullStudyInfoMapper: fullStudyInfoMapper,
+        getPendingStudyMapper: getPendingStudyMapper
     )
     
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
@@ -119,6 +121,7 @@ class DIContainer {
     )
     private lazy var getFinishedStudyInfoUseCase : GetFinishedStudyInfoUseCaseProtocol = GetFinishedStudyInfoUseCase(repository: studyRepository)
     
+    private lazy var getPendingStudyUseCase : GetPendingStudyUseCaseProtocol = GetPendingStudyUseCase(repository: studyRepository)
     
     // MARK: - Posting
     private let postingDataSource = PostingDataSource()
@@ -173,7 +176,8 @@ class DIContainer {
         return MainHomeViewModel(
             getCurrentWeekPostUseCase: getCurrentWeekPostUseCase,
             getCurrentWeekStudyInfoUseCase: getCurrentWeekStudyInfoUseCase,
-            getOngoingStudyInfoUseCase: getOngoingStudyInfoUseCase
+            getOngoingStudyInfoUseCase: getOngoingStudyInfoUseCase,
+            getPendingStudyUseCase: getPendingStudyUseCase
         )
     }
     

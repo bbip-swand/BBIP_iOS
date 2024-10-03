@@ -27,7 +27,9 @@
 		08A72F8C2CADF0C700633257 /* GetProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */; };
 		08A72F932CAEA29C00633257 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F922CAEA28800633257 /* SafeAreaInsets.swift */; };
 		08A72F952CAEA2F400633257 /* JoinStudyCompleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */; };
-		08A72F9E2CAEA81200633257 /* PendingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F9D2CAEA81200633257 /* PendingDTO.swift */; };
+		08A72FA42CAF0E7300633257 /* GetPendingStudyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72FA32CAF0E7300633257 /* GetPendingStudyMapper.swift */; };
+		08A72FA62CAF0EE700633257 /* GetPendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72FA52CAF0EE700633257 /* GetPendingUseCase.swift */; };
+		08A72FA82CAF0F1500633257 /* PendingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72FA72CAF0F1500633257 /* PendingDTO.swift */; };
 		08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */; };
 		08B098E12CA5DFCF00653F72 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */; };
 		08B098E22CA5DFCF00653F72 /* StudySetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DD2CA5DFCF00653F72 /* StudySetView.swift */; };
@@ -262,7 +264,9 @@
 		08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileUseCase.swift; sourceTree = "<group>"; };
 		08A72F922CAEA28800633257 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
 		08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinStudyCompleteAlert.swift; sourceTree = "<group>"; };
-		08A72F9D2CAEA81200633257 /* PendingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingDTO.swift; sourceTree = "<group>"; };
+		08A72FA32CAF0E7300633257 /* GetPendingStudyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingStudyMapper.swift; sourceTree = "<group>"; };
+		08A72FA52CAF0EE700633257 /* GetPendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingUseCase.swift; sourceTree = "<group>"; };
+		08A72FA72CAF0F1500633257 /* PendingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingDTO.swift; sourceTree = "<group>"; };
 		08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
 		08B098DD2CA5DFCF00653F72 /* StudySetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetView.swift; sourceTree = "<group>"; };
@@ -550,14 +554,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		08A72F9C2CAEA80200633257 /* Pending */ = {
-			isa = PBXGroup;
-			children = (
-				08A72F9D2CAEA81200633257 /* PendingDTO.swift */,
-			);
-			path = Pending;
-			sourceTree = "<group>";
-		};
 		08B5096A2CAD902C008480B9 /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +761,7 @@
 				08B509372CAD882D008480B9 /* GetOngoingStudyUseCase.swift */,
 				08B509382CAD882D008480B9 /* JoinStudyUseCase.swift */,
 				C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */,
+				08A72FA52CAF0EE700633257 /* GetPendingUseCase.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -778,6 +775,7 @@
 				08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */,
 				08B509452CAD88AA008480B9 /* StudyTime.swift */,
 				C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */,
+				08A72FA72CAF0F1500633257 /* PendingDTO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -949,7 +947,6 @@
 			children = (
 				0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */,
 				C63B34972CAF085F00461AE9 /* Archive */,
-				08A72F9C2CAEA80200633257 /* Pending */,
 				08E51E632CA5525E00547086 /* Calendar */,
 				0834FEC82CA28BEF00A20721 /* Attendance */,
 				C62780EE2C8AF2E800065F98 /* Login */,
@@ -1237,6 +1234,7 @@
 				08B509242CAD87FB008480B9 /* CurrentWeekStudyInfoMapper.swift */,
 				08B509232CAD87FB008480B9 /* StudyInfoMapper.swift */,
 				C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */,
+				08A72FA32CAF0E7300633257 /* GetPendingStudyMapper.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -1470,6 +1468,7 @@
 				08B098EA2CA5DFD800653F72 /* GetStatusUseCase.swift in Sources */,
 				08B098EC2CA5DFE100653F72 /* AttendanceVO.swift in Sources */,
 				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
+				08A72FA82CAF0F1500633257 /* PendingDTO.swift in Sources */,
 				084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */,
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
@@ -1521,7 +1520,6 @@
 				086330802CA68AC400F1775B /* ErrorResponseDTO.swift in Sources */,
 				08B098F82CA5E09500653F72 /* HeaderComponent.swift in Sources */,
 				C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */,
-				08A72F9E2CAEA81200633257 /* PendingDTO.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
@@ -1582,6 +1580,7 @@
 				C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */,
 				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
 				C6F2DA432CAD048D002023B6 /* Text+Extension.swift in Sources */,
+				08A72FA42CAF0E7300633257 /* GetPendingStudyMapper.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				08B5095B2CAD8E96008480B9 /* CommentDTO.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
@@ -1616,6 +1615,7 @@
 				C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				08B509272CAD87FB008480B9 /* StudyInfoMapper.swift in Sources */,
+				08A72FA62CAF0EE700633257 /* GetPendingUseCase.swift in Sources */,
 				08B5093F2CAD882D008480B9 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,

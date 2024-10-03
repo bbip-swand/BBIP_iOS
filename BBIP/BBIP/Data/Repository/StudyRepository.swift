@@ -15,6 +15,7 @@ protocol StudyRepository {
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
     func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
+    func getPendingStudy() -> AnyPublisher<PendingVO, Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -25,19 +26,30 @@ final class StudyRepositoryImpl: StudyRepository {
     private let createStudyInfoMapper: CreateStudyInfoMapper
     private let currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper
     private let fullStudyInfoMapper: FullStudyInfoMapper
+    private let getPendingStudyMapper : GetPendingStudyMapper
 
     init(
         dataSource: StudyDataSource,
         studyInfoMapper: StudyInfoMapper,
         createStudyInfoMapper: CreateStudyInfoMapper,
         currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper,
-        fullStudyInfoMapper: FullStudyInfoMapper
+        fullStudyInfoMapper: FullStudyInfoMapper,
+        getPendingStudyMapper: GetPendingStudyMapper
     ) {
         self.dataSource = dataSource
         self.studyInfoMapper = studyInfoMapper
         self.createStudyInfoMapper = createStudyInfoMapper
         self.currentWeekStudyInfoMapper = currentWeekStudyInfoMapper
         self.fullStudyInfoMapper = fullStudyInfoMapper
+        self.getPendingStudyMapper = getPendingStudyMapper
+    }
+    
+    func getPendingStudy() -> AnyPublisher<PendingVO, any Error> {
+        dataSource.getPendingStudy()
+            .map{dto in
+                return self.getPendingStudyMapper.toVO(dto: dto)
+            }
+            .eraseToAnyPublisher()
     }
     
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {

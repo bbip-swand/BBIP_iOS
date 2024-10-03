@@ -15,23 +15,27 @@ class MainHomeViewModel: ObservableObject {
     @Published var homeBulletnData: RecentPostVO?
     @Published var currentWeekStudyData: [CurrentWeekStudyInfoVO]?
     @Published var ongoingStudyData: [StudyInfoVO]?
+    @Published var pendingStudyData: PendingVO?
     
     // UseCases
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol            // 게시글
     private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol  // 이번 주 스터디
     private let getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol          // 진행중인 스터디
     private var cancellables = Set<AnyCancellable>()
+    private var getPendingStudyUseCase: GetPendingStudyUseCaseProtocol
     
     
     init(
         getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol,
         getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol,
         getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol,
+        getPendingStudyUseCase: GetPendingStudyUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ) {
         self.getCurrentWeekPostUseCase = getCurrentWeekPostUseCase
         self.getCurrentWeekStudyInfoUseCase = getCurrentWeekStudyInfoUseCase
         self.getOngoingStudyInfoUseCase = getOngoingStudyInfoUseCase
+        self.getPendingStudyUseCase = getPendingStudyUseCase
         self.cancellables = cancellables
     }
     
@@ -80,6 +84,20 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.ongoingStudyData = response
+            }
+            .store(in: &cancellables)
+        
+        getPendingStudyUseCase.excute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed load pending study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.pendingStudyData = response
             }
             .store(in: &cancellables)
     }

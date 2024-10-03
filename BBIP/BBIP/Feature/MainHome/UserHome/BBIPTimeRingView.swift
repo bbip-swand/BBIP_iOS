@@ -14,21 +14,21 @@ struct BBIPTimeRingView: View {
     @State var startAttend: Bool = false
     @State private var progress: Double
     @EnvironmentObject var appState: AppStateManager
-    private var vo: ImpendingStudyVO
+    private var vo: PendingVO?
     
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     
     init(
         progress: Double,
-        vo: ImpendingStudyVO
+        vo: PendingVO
     ) {
         self.progress = progress
         self.vo = vo
     }
     
     private var ddayLabel: String {
-        vo.leftDay == .zero ? "TODAY" : "D-\(vo.leftDay)"
+        vo?.leftDays == .zero ? "TODAY" : "D-\(vo?.leftDays ?? 0)"
     }
     
     private var contentBody: some View {
@@ -36,16 +36,16 @@ struct BBIPTimeRingView: View {
             CapsuleView(title: ddayLabel, type: .timeRing)
                 .padding(.bottom, 20)
             
-            Text(vo.title)
+            Text(vo?.studyName ?? "")
                 .font(.bbip(.title4_sb24))
                 .foregroundStyle(.mainWhite)
                 .padding(.bottom, 12)
             
             Group {
-                Text(vo.time)
+                Text(vo?.studyTime ?? "")
                     .padding(.bottom, 2)
                 
-                Text(vo.location ?? "장소 미정")
+                Text(vo?.place ?? "장소 미정")
             }
             .font(.bbip(.body2_m14))
             .foregroundStyle(.gray5)
@@ -125,12 +125,13 @@ struct ActivatedBBIPTimeRingView: View {
     @State private var shakeStick: Bool = false
     @State private var showDisabled: Bool = false
     @State private var showAttendRecordView: Bool = false
-    @State var code: Int?
     private let initialTime: Int = 600 // for test
     private var studyTitle: String
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
+    @State var code: Int?
+    
     
     init(
         studyTitle: String,
@@ -237,18 +238,20 @@ struct ActivatedBBIPTimeRingView: View {
             }
             
             Button {
+//                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 print("isAttend: \(String(describing: attendviewModel.getStatusData?.status))")
-                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
+               
+                    print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 
-                if let isManager = attendviewModel.getStatusData?.isManager {
+                if let isManager = attendviewModel.getStatusData?.isManager{
                     if isManager == true {
                         showAttendRecordView = true
-                    } else {
-                        // 팀원일때
-                        if let isAttend = attendviewModel.getStatusData?.status {
-                            if isAttend == true {
+                        
+                    }else{ //팀원일때
+                        if let isAttend = attendviewModel.getStatusData?.status{
+                            if isAttend == true{
                                 showDisabled = true
-                            } else {
+                            }else{
                                 appState.push(.entercode)
                                 showDisabled = true
                             }
@@ -256,13 +259,14 @@ struct ActivatedBBIPTimeRingView: View {
                     }
                 }
             } label: {
+                
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(showDisabled ? .gray3 : .primary3)
+                    .foregroundStyle(showDisabled ?  .gray3 : .primary3)
                     .frame(width: 130, height: 43)
                     .overlay {
                         Text("출석인증")
                             .font(.bbip(.body2_b14))
-                            .foregroundStyle(showDisabled ? .gray5 : .mainWhite)
+                            .foregroundStyle(showDisabled ?  .gray5 : .mainWhite)
                     }
             }
             .disabled(showDisabled)
@@ -290,8 +294,11 @@ struct ActivatedBBIPTimeRingView: View {
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendRecordView) {
+            
             AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
+            
         }
+        
     }
 }
 
