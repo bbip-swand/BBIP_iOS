@@ -8,7 +8,7 @@
 import Foundation
 
 //RequestDTO (post,put같은 DTO 사용)
-struct CreateScheduleDTO : Encodable{
+struct CreateScheduleDTO : Encodable {
     let studyId: String
     let title: String
     let startDate: String
@@ -18,7 +18,7 @@ struct CreateScheduleDTO : Encodable{
 }
 
 //ResponseDTO (월,일,upcoming조회)
-struct ScheduleResponseDTO : Decodable{
+struct ScheduleResponseDTO : Decodable {
     let scheduleId: String
     let studyName: String
     let title: String
@@ -29,7 +29,7 @@ struct ScheduleResponseDTO : Decodable{
 }
 
 //select study
-struct MyStudyResponseDTO : Decodable{
+struct MyStudyResponseDTO : Decodable {
     let studyId: String
     let studyName: String
 }

@@ -45,7 +45,7 @@ extension AttendanceAPI: BaseAPI{
         case .enterCode(let dto):
             return .requestJSONEncodable(dto)
             
-        case .getAttendRecord(let studyId):
+        case .getAttendRecord:
             return .requestPlain
         }
     }

@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol EnterCodeUseCaseProtocol{
+protocol EnterCodeUseCaseProtocol {
     func execute(attendVO: AttendVO) -> AnyPublisher<Void,Error>
 }
 
-final class EnterCodeUseCase: EnterCodeUseCaseProtocol{
+final class EnterCodeUseCase: EnterCodeUseCaseProtocol {
     private let repository: AttendRepository
     
-    init(repository: AttendRepository){
+    init(repository: AttendRepository) {
         self.repository = repository
     }
     

@@ -1,8 +1,8 @@
 //
-//  ArchivedFileInfoMapper.swift
+//  aaa.swift
 //  BBIP
 //
-//  Created by 이건우 on 9/30/24.
+//  Created by 이건우 on 10/4/24.
 //
 
 import Foundation
@@ -22,3 +22,5 @@ struct ArchivedFileInfoMapper {
         }
     }
 }
+
+

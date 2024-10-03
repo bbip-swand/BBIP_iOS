@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol CreateCodeUseCaseProtocol{
+protocol CreateCodeUseCaseProtocol {
     func execute(attendVO: AttendVO) -> AnyPublisher<CreateCodeResponseDTO, Error>
 }
 

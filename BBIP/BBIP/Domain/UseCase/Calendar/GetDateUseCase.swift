@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol GetDateUseCaseProtocol{
-    func execute(date:String) -> AnyPublisher<[CalendarHomeVO], Error>
+protocol GetDateUseCaseProtocol {
+    func execute(date: String) -> AnyPublisher<[CalendarHomeVO], Error>
 }
 
-final class GetDateUseCase: GetDateUseCaseProtocol{
+final class GetDateUseCase: GetDateUseCaseProtocol {
     private let repository: CalendarRepository
     
-    init (repository: CalendarRepository){
+    init(repository: CalendarRepository){
         self.repository = repository
     }
     

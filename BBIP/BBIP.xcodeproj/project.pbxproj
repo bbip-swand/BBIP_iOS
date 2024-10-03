@@ -24,7 +24,6 @@
 		0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308E2CA8590E00F1775B /* AttendRecordView.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */; };
-		08A72F8A2CADAB7200633257 /* ArchiveFileInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F892CADAB7200633257 /* ArchiveFileInfoVO.swift */; };
 		08A72F8C2CADF0C700633257 /* GetProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */; };
 		08A72F932CAEA29C00633257 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F922CAEA28800633257 /* SafeAreaInsets.swift */; };
 		08A72F952CAEA2F400633257 /* JoinStudyCompleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */; };
@@ -61,7 +60,6 @@
 		08B509492CAD88AA008480B9 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */; };
 		08B5094A2CAD88AA008480B9 /* CreateStudyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509442CAD88AA008480B9 /* CreateStudyDTO.swift */; };
 		08B5094B2CAD88AA008480B9 /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509452CAD88AA008480B9 /* StudyTime.swift */; };
-		08B509502CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */; };
 		08B5095B2CAD8E96008480B9 /* CommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509582CAD8E96008480B9 /* CommentDTO.swift */; };
 		08B5095C2CAD8E96008480B9 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509592CAD8E96008480B9 /* PostDTO.swift */; };
 		08B5095D2CAD8E96008480B9 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5095A2CAD8E96008480B9 /* CreatePostingDTO.swift */; };
@@ -81,11 +79,11 @@
 		08E51E672CA5926300547086 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E662CA5926300547086 /* CalendarDataSource.swift */; };
 		08E51E6C2CA5AAA200547086 /* CalendarMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E6B2CA5AAA200547086 /* CalendarMapper.swift */; };
 		08E51E6E2CA5B91800547086 /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E6D2CA5B91800547086 /* CalendarRepository.swift */; };
-		08E51E712CA5CB2F00547086 /* getYMuseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E702CA5CB2F00547086 /* getYMuseCase.swift */; };
-		08E51E732CA5CD3A00547086 /* getDateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E722CA5CD3A00547086 /* getDateUseCase.swift */; };
-		08E51E752CA5CF0300547086 /* getUpcomingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E742CA5CF0300547086 /* getUpcomingUseCase.swift */; };
-		08E51E772CA5CF9F00547086 /* createScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E762CA5CF9F00547086 /* createScheduleUseCase.swift */; };
-		08E51E792CA5D0BE00547086 /* updateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E782CA5D0BE00547086 /* updateScheduleUseCase.swift */; };
+		08E51E712CA5CB2F00547086 /* GetYMuseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E702CA5CB2F00547086 /* GetYMuseCase.swift */; };
+		08E51E732CA5CD3A00547086 /* GetDateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E722CA5CD3A00547086 /* GetDateUseCase.swift */; };
+		08E51E752CA5CF0300547086 /* GetUpcomingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E742CA5CF0300547086 /* GetUpcomingUseCase.swift */; };
+		08E51E772CA5CF9F00547086 /* CreateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E762CA5CF9F00547086 /* CreateScheduleUseCase.swift */; };
+		08E51E792CA5D0BE00547086 /* UpdateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E782CA5D0BE00547086 /* UpdateScheduleUseCase.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47282C6686760016986D /* WantedSans-SemiBold.otf */; };
 		C61A47302C6687690016986D /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A472F2C6687690016986D /* Font+Extension.swift */; };
@@ -121,6 +119,11 @@
 		C63B348C2CAEFB4B00461AE9 /* Complete_CreateStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = C63B348B2CAEFB4B00461AE9 /* Complete_CreateStudy.json */; };
 		C63B348E2CAEFDAC00461AE9 /* BulletnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BB2C902F3200E537D7 /* BulletnboardCell.swift */; };
 		C63B34902CAF025100461AE9 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B348F2CAF025100461AE9 /* ArchiveRepository.swift */; };
+		C63B34942CAF068B00461AE9 /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
+		C63B34952CAF068D00461AE9 /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
+		C63B34962CAF07B200461AE9 /* ArchivedFileInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */; };
+		C63B34992CAF087700461AE9 /* ArchivedFileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B34982CAF087700461AE9 /* ArchivedFileDTO.swift */; };
+		C63B349E2CAF093200461AE9 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B349D2CAF093200461AE9 /* ArchivedFileInfoMapper.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -209,7 +212,6 @@
 		C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */; };
 		C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */; };
 		C6F98F3C2CAA82DA00F0D8E8 /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F3B2CAA82DA00F0D8E8 /* DocumentPicker.swift */; };
-		C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */; };
 		C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */; };
 		C6F98F522CAAB90800F0D8E8 /* QuickLookPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F512CAAB90800F0D8E8 /* QuickLookPreview.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
@@ -257,7 +259,6 @@
 		0863308E2CA8590E00F1775B /* AttendRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendRecordView.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
-		08A72F892CADAB7200633257 /* ArchiveFileInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveFileInfoVO.swift; sourceTree = "<group>"; };
 		08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileUseCase.swift; sourceTree = "<group>"; };
 		08A72F922CAEA28800633257 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
 		08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinStudyCompleteAlert.swift; sourceTree = "<group>"; };
@@ -277,7 +278,6 @@
 		08B098F32CA5E00B00653F72 /* AttendDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendDataSource.swift; sourceTree = "<group>"; };
 		08B098F52CA5E01400653F72 /* AttendanceDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceDTO.swift; sourceTree = "<group>"; };
 		08B098F72CA5E09500653F72 /* HeaderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderComponent.swift; sourceTree = "<group>"; };
-		08B509222CAD87FB008480B9 /* FullStudyInfoMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullStudyInfoMapper.swift; sourceTree = "<group>"; };
 		08B509232CAD87FB008480B9 /* StudyInfoMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyInfoMapper.swift; sourceTree = "<group>"; };
 		08B509242CAD87FB008480B9 /* CurrentWeekStudyInfoMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoMapper.swift; sourceTree = "<group>"; };
 		08B509252CAD87FB008480B9 /* CreateStudyInfoMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudyInfoMapper.swift; sourceTree = "<group>"; };
@@ -287,22 +287,18 @@
 		08B5092D2CAD881E008480B9 /* CurrentWeekStudyInfoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoVO.swift; sourceTree = "<group>"; };
 		08B5092E2CAD881E008480B9 /* CreateStudyInfoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudyInfoVO.swift; sourceTree = "<group>"; };
 		08B5092F2CAD881E008480B9 /* StudySessionVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySessionVO.swift; sourceTree = "<group>"; };
-		08B509362CAD882D008480B9 /* GetFullStudyInfoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFullStudyInfoUseCase.swift; sourceTree = "<group>"; };
 		08B509372CAD882D008480B9 /* GetOngoingStudyUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOngoingStudyUseCase.swift; sourceTree = "<group>"; };
 		08B509382CAD882D008480B9 /* JoinStudyUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinStudyUseCase.swift; sourceTree = "<group>"; };
 		08B509392CAD882D008480B9 /* CreateStudyUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudyUseCase.swift; sourceTree = "<group>"; };
 		08B5093A2CAD882D008480B9 /* GetCurrentWeekStudyInfoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekStudyInfoUseCase.swift; sourceTree = "<group>"; };
 		08B509402CAD88AA008480B9 /* CurrentWeekStudyInfoDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoDTO.swift; sourceTree = "<group>"; };
-		08B509412CAD88AA008480B9 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		08B509422CAD88AA008480B9 /* StudyInfoDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyInfoDTO.swift; sourceTree = "<group>"; };
 		08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		08B509442CAD88AA008480B9 /* CreateStudyDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudyDTO.swift; sourceTree = "<group>"; };
 		08B509452CAD88AA008480B9 /* StudyTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
-		08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
 		08B509582CAD8E96008480B9 /* CommentDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
 		08B509592CAD8E96008480B9 /* PostDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		08B5095A2CAD8E96008480B9 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
-		08B5095F2CAD8F61008480B9 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
 		08B509642CAD8FD9008480B9 /* CommentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVO.swift; sourceTree = "<group>"; };
 		08B509662CAD8FFD008480B9 /* PostDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVO.swift; sourceTree = "<group>"; };
 		08B5096B2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArchivedFileInfoUseCase.swift; sourceTree = "<group>"; };
@@ -312,7 +308,6 @@
 		08B509732CAD90CB008480B9 /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
 		08B509772CAD9155008480B9 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
 		08B509792CAD918B008480B9 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
-		08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostMapper.swift; sourceTree = "<group>"; };
 		08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeatilMapper.swift; sourceTree = "<group>"; };
 		08B5097F2CAD9720008480B9 /* UserPofileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPofileDTO.swift; sourceTree = "<group>"; };
 		08E51E612CA54B4900547086 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
@@ -320,11 +315,11 @@
 		08E51E662CA5926300547086 /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
 		08E51E6B2CA5AAA200547086 /* CalendarMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMapper.swift; sourceTree = "<group>"; };
 		08E51E6D2CA5B91800547086 /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
-		08E51E702CA5CB2F00547086 /* getYMuseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getYMuseCase.swift; sourceTree = "<group>"; };
-		08E51E722CA5CD3A00547086 /* getDateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDateUseCase.swift; sourceTree = "<group>"; };
-		08E51E742CA5CF0300547086 /* getUpcomingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getUpcomingUseCase.swift; sourceTree = "<group>"; };
-		08E51E762CA5CF9F00547086 /* createScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createScheduleUseCase.swift; sourceTree = "<group>"; };
-		08E51E782CA5D0BE00547086 /* updateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateScheduleUseCase.swift; sourceTree = "<group>"; };
+		08E51E702CA5CB2F00547086 /* GetYMuseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYMuseCase.swift; sourceTree = "<group>"; };
+		08E51E722CA5CD3A00547086 /* GetDateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDateUseCase.swift; sourceTree = "<group>"; };
+		08E51E742CA5CF0300547086 /* GetUpcomingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcomingUseCase.swift; sourceTree = "<group>"; };
+		08E51E762CA5CF9F00547086 /* CreateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleUseCase.swift; sourceTree = "<group>"; };
+		08E51E782CA5D0BE00547086 /* UpdateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateScheduleUseCase.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -361,6 +356,8 @@
 		C63B34892CAEFB1400461AE9 /* Complete_SignIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_SignIn.json; sourceTree = "<group>"; };
 		C63B348B2CAEFB4B00461AE9 /* Complete_CreateStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_CreateStudy.json; sourceTree = "<group>"; };
 		C63B348F2CAF025100461AE9 /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
+		C63B34982CAF087700461AE9 /* ArchivedFileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileDTO.swift; sourceTree = "<group>"; };
+		C63B349D2CAF093200461AE9 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -415,7 +412,6 @@
 		C6CF22772CA412B900988748 /* JoinStudyCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyCustomAlert.swift; sourceTree = "<group>"; };
 		C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyViewModel.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
-		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoVO.swift; sourceTree = "<group>"; };
 		C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoMapper.swift; sourceTree = "<group>"; };
@@ -428,10 +424,8 @@
 		C6F2DA192CAAD56E002023B6 /* CommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
 		C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVO.swift; sourceTree = "<group>"; };
 		C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVO.swift; sourceTree = "<group>"; };
-		C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostDetailUseCase.swift; sourceTree = "<group>"; };
 		C6F2DA232CAAF70D002023B6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		C6F2DA362CABD477002023B6 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
-		C6F2DA382CABEE98002023B6 /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
 		C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStudyLocationView.swift; sourceTree = "<group>"; };
 		C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStudyLocationView.swift; sourceTree = "<group>"; };
 		C6F2DA422CAD048D002023B6 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
@@ -445,24 +439,17 @@
 		C6F700782C9EEF30000CCC80 /* PostingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingRepository.swift; sourceTree = "<group>"; };
 		C6F7007B2C9EEF89000CCC80 /* PostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVO.swift; sourceTree = "<group>"; };
 		C6F7007D2C9EF58E000CCC80 /* RecentPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostMapper.swift; sourceTree = "<group>"; };
-		C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
 		C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeView.swift; sourceTree = "<group>"; };
 		C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberCell.swift; sourceTree = "<group>"; };
 		C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberVO.swift; sourceTree = "<group>"; };
 		C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailView.swift; sourceTree = "<group>"; };
-		C6F98F322CA997F600F0D8E8 /* GetStudyPostingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudyPostingUseCase.swift; sourceTree = "<group>"; };
 		C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileCardView.swift; sourceTree = "<group>"; };
 		C6F98F3B2CAA82DA00F0D8E8 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoVO.swift; sourceTree = "<group>"; };
-		C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
-		C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
-		C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
-		C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
 		C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
-		C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArchivedFileInfoUseCase.swift; sourceTree = "<group>"; };
 		C6F98F512CAAB90800F0D8E8 /* QuickLookPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookPreview.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
@@ -571,30 +558,6 @@
 			path = Pending;
 			sourceTree = "<group>";
 		};
-		08B5094E2CAD8DBA008480B9 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		08B5095E2CAD8F39008480B9 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				08B5095F2CAD8F61008480B9 /* ArchivedFileInfoMapper.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		08B509612CAD8FA0008480B9 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				08A72F892CADAB7200633257 /* ArchiveFileInfoVO.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
 		08B5096A2CAD902C008480B9 /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,11 +585,11 @@
 		08E51E6F2CA5CAD900547086 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				08E51E702CA5CB2F00547086 /* getYMuseCase.swift */,
-				08E51E722CA5CD3A00547086 /* getDateUseCase.swift */,
-				08E51E742CA5CF0300547086 /* getUpcomingUseCase.swift */,
-				08E51E762CA5CF9F00547086 /* createScheduleUseCase.swift */,
-				08E51E782CA5D0BE00547086 /* updateScheduleUseCase.swift */,
+				08E51E702CA5CB2F00547086 /* GetYMuseCase.swift */,
+				08E51E722CA5CD3A00547086 /* GetDateUseCase.swift */,
+				08E51E742CA5CF0300547086 /* GetUpcomingUseCase.swift */,
+				08E51E762CA5CF9F00547086 /* CreateScheduleUseCase.swift */,
+				08E51E782CA5D0BE00547086 /* UpdateScheduleUseCase.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -695,6 +658,22 @@
 				C6CF22752CA40FCF00988748 /* DeepLinkAlertData.swift */,
 			);
 			path = DeepLink;
+			sourceTree = "<group>";
+		};
+		C63B34972CAF085F00461AE9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C63B34982CAF087700461AE9 /* ArchivedFileDTO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C63B349C2CAF091F00461AE9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C63B349D2CAF093200461AE9 /* ArchivedFileInfoMapper.swift */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
@@ -783,7 +762,6 @@
 			children = (
 				08B509392CAD882D008480B9 /* CreateStudyUseCase.swift */,
 				08B5093A2CAD882D008480B9 /* GetCurrentWeekStudyInfoUseCase.swift */,
-				08B509362CAD882D008480B9 /* GetFullStudyInfoUseCase.swift */,
 				08B509372CAD882D008480B9 /* GetOngoingStudyUseCase.swift */,
 				08B509382CAD882D008480B9 /* JoinStudyUseCase.swift */,
 				C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */,
@@ -796,12 +774,10 @@
 			children = (
 				08B509442CAD88AA008480B9 /* CreateStudyDTO.swift */,
 				08B509402CAD88AA008480B9 /* CurrentWeekStudyInfoDTO.swift */,
-				08B509412CAD88AA008480B9 /* FullStudyInfoDTO.swift */,
 				08B509422CAD88AA008480B9 /* StudyInfoDTO.swift */,
 				08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */,
 				08B509452CAD88AA008480B9 /* StudyTime.swift */,
 				C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */,
-				C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -868,8 +844,8 @@
 				C695BDE82C649F67009DEC3C /* Login */,
 				C6F2DA442CAD0CB4002023B6 /* StartGuide */,
 				C695BDE72C649F63009DEC3C /* MainHome */,
-				C6F98F362CAA7F2300F0D8E8 /* Archive */,
 				C6FA55F62C95359900E537D7 /* Attendance */,
+				C6F98F362CAA7F2300F0D8E8 /* Archive */,
 				C6FA55982C8EBFE200E537D7 /* Notice */,
 				C6FA559A2C8EC00B00E537D7 /* Mypage */,
 				C6F2DA142CAACEF6002023B6 /* Posting */,
@@ -972,15 +948,14 @@
 			isa = PBXGroup;
 			children = (
 				0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */,
+				C63B34972CAF085F00461AE9 /* Archive */,
 				08A72F9C2CAEA80200633257 /* Pending */,
-				08B5094E2CAD8DBA008480B9 /* Archive */,
 				08E51E632CA5525E00547086 /* Calendar */,
 				0834FEC82CA28BEF00A20721 /* Attendance */,
 				C62780EE2C8AF2E800065F98 /* Login */,
 				C62781012C8C76A000065F98 /* User */,
 				C694459B2C9D5B19003945CC /* Study */,
 				C6F700712C9ED0A9000CCC80 /* Posting */,
-				C6F98F402CAA929900F0D8E8 /* Archive */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -988,14 +963,13 @@
 		C695BDFB2C64CB83009DEC3C /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				08B5095E2CAD8F39008480B9 /* Archive */,
+				C63B349C2CAF091F00461AE9 /* Archive */,
 				08E51E6A2CA5AA9200547086 /* Calendar */,
 				0834FEDF2CA3310600A20721 /* Attend */,
 				C6F7007F2C9EF889000CCC80 /* Auth */,
 				C6F700802C9EF896000CCC80 /* User */,
 				C6F700812C9EF8A3000CCC80 /* Study */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
-				C6F98F492CAA948100F0D8E8 /* Archive */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -1011,7 +985,6 @@
 				08B098F32CA5E00B00653F72 /* AttendDataSource.swift */,
 				08E51E662CA5926300547086 /* CalendarDataSource.swift */,
 				08B509792CAD918B008480B9 /* ArchiveDataSource.swift */,
-				C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -1029,7 +1002,6 @@
 				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
 				08E51E612CA54B4900547086 /* CalendarAPI.swift */,
 				08B509772CAD9155008480B9 /* ArchiveAPI.swift */,
-				C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1067,7 +1039,6 @@
 				C627810C2C8C841700065F98 /* User */,
 				C69445962C9D590C003945CC /* Study */,
 				C6F700842CA158B6000CCC80 /* Posting */,
-				C6F98F4E2CAA98FD00F0D8E8 /* Archive */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1076,7 +1047,6 @@
 			isa = PBXGroup;
 			children = (
 				C63B348D2CAEFB7C00461AE9 /* DeepLink */,
-				08B509612CAD8FA0008480B9 /* Archive */,
 				0834FED32CA310CA00A20721 /* Attendance */,
 				C6F7006D2C9EC1C0000CCC80 /* Auth */,
 				C6F7006E2C9EC1EC000CCC80 /* User */,
@@ -1265,7 +1235,6 @@
 			children = (
 				08B509252CAD87FB008480B9 /* CreateStudyInfoMapper.swift */,
 				08B509242CAD87FB008480B9 /* CurrentWeekStudyInfoMapper.swift */,
-				08B509222CAD87FB008480B9 /* FullStudyInfoMapper.swift */,
 				08B509232CAD87FB008480B9 /* StudyInfoMapper.swift */,
 				C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */,
 			);
@@ -1275,7 +1244,6 @@
 		C6F700822C9EF8B3000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */,
 				08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */,
 				C6F7007D2C9EF58E000CCC80 /* RecentPostMapper.swift */,
 			);
@@ -1289,10 +1257,6 @@
 				08B5096F2CAD9094008480B9 /* GetPostDetailUseCase.swift */,
 				08B509712CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift */,
 				08B509732CAD90CB008480B9 /* CreateCommentUseCase.swift */,
-				C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */,
-				C6F98F322CA997F600F0D8E8 /* GetStudyPostingUseCase.swift */,
-				C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */,
-				C6F2DA382CABEE98002023B6 /* CreateCommentUseCase.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1326,30 +1290,6 @@
 			isa = PBXGroup;
 			children = (
 				C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		C6F98F402CAA929900F0D8E8 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		C6F98F492CAA948100F0D8E8 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		C6F98F4E2CAA98FD00F0D8E8 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */,
 			);
 			path = Archive;
 			sourceTree = "<group>";
@@ -1507,10 +1447,12 @@
 				0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */,
 				C63B348C2CAEFB4B00461AE9 /* Complete_CreateStudy.json in Resources */,
 				C63B34882CAEFB0A00461AE9 /* Splash.json in Resources */,
+				C63B34952CAF068D00461AE9 /* WantedSans-Bold.otf in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
 				C63B348A2CAEFB1400461AE9 /* Complete_SignIn.json in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
+				C63B34942CAF068B00461AE9 /* WantedSans-Regular.otf in Resources */,
 				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
 				C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */,
 			);
@@ -1533,7 +1475,6 @@
 				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				08E51E6E2CA5B91800547086 /* CalendarRepository.swift in Sources */,
-				08A72F8A2CADAB7200633257 /* ArchiveFileInfoVO.swift in Sources */,
 				08B509742CAD90CB008480B9 /* CreateCommentUseCase.swift in Sources */,
 				08B098E42CA5DFCF00653F72 /* MypageSettingListView.swift in Sources */,
 				08A72F952CAEA2F400633257 /* JoinStudyCompleteAlert.swift in Sources */,
@@ -1590,12 +1531,13 @@
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
+				C63B34962CAF07B200461AE9 /* ArchivedFileInfoVO.swift in Sources */,
 				08B5094B2CAD88AA008480B9 /* StudyTime.swift in Sources */,
 				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
-				08E51E792CA5D0BE00547086 /* updateScheduleUseCase.swift in Sources */,
+				08E51E792CA5D0BE00547086 /* UpdateScheduleUseCase.swift in Sources */,
 				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,
 				08E51E672CA5926300547086 /* CalendarDataSource.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
@@ -1626,6 +1568,7 @@
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
+				C63B349E2CAF093200461AE9 /* ArchivedFileInfoMapper.swift in Sources */,
 				08B509492CAD88AA008480B9 /* StudyMemberDTO.swift in Sources */,
 				08B098E82CA5DFD800653F72 /* CreateCodeUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
@@ -1663,7 +1606,7 @@
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
 				08B5095D2CAD8E96008480B9 /* CreatePostingDTO.swift in Sources */,
 				08E51E652CA5526E00547086 /* CalendarDTO.swift in Sources */,
-				08E51E712CA5CB2F00547086 /* getYMuseCase.swift in Sources */,
+				08E51E712CA5CB2F00547086 /* GetYMuseCase.swift in Sources */,
 				C6F2DA182CAACF50002023B6 /* PostingDetailViewModel.swift in Sources */,
 				C6F2DA162CAACF1E002023B6 /* PostingDetailView.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
@@ -1690,7 +1633,7 @@
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
-				08E51E772CA5CF9F00547086 /* createScheduleUseCase.swift in Sources */,
+				08E51E772CA5CF9F00547086 /* CreateScheduleUseCase.swift in Sources */,
 				086330822CA7C67200F1775B /* GetAttendRecordUseCase.swift in Sources */,
 				C6F2DA3D2CAC2EB7002023B6 /* CheckStudyLocationView.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
@@ -1705,22 +1648,22 @@
 				08E51E6C2CA5AAA200547086 /* CalendarMapper.swift in Sources */,
 				08B509332CAD881E008480B9 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */,
+				C63B34992CAF087700461AE9 /* ArchivedFileDTO.swift in Sources */,
 				08B5097A2CAD918B008480B9 /* ArchiveDataSource.swift in Sources */,
 				08A72F8C2CADF0C700633257 /* GetProfileUseCase.swift in Sources */,
 				C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
-				08B509502CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift in Sources */,
 				C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */,
-				08E51E752CA5CF0300547086 /* getUpcomingUseCase.swift in Sources */,
+				08E51E752CA5CF0300547086 /* GetUpcomingUseCase.swift in Sources */,
 				08B5096E2CAD9077008480B9 /* GetStudyPostingUseCase.swift in Sources */,
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				08B098F42CA5E00B00653F72 /* AttendDataSource.swift in Sources */,
 				086330872CA7D00B00F1775B /* CreateCodeView.swift in Sources */,
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
-				08E51E732CA5CD3A00547086 /* getDateUseCase.swift in Sources */,
+				08E51E732CA5CD3A00547086 /* GetDateUseCase.swift in Sources */,
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
@@ -1730,7 +1673,6 @@
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				08B509292CAD87FB008480B9 /* CreateStudyInfoMapper.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
-				C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* SetNavigationBar.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C6F2DA242CAAF70D002023B6 /* CommentCell.swift in Sources */,

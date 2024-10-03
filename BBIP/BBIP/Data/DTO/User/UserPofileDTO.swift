@@ -7,6 +7,5 @@
 
 import Foundation
 
-//UserinfoVO로 통일
-struct userPofileRespDTO : Decodable{
-}
+// UserinfoVO로 통일
+struct UserPofileResDTO : Decodable { }

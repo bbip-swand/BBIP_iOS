@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol GetStatusUseCaseProtocol{
+protocol GetStatusUseCaseProtocol {
     func execute() -> AnyPublisher<GetStatusVO, Error>
 }
 
-final class GetStatusUseCase: GetStatusUseCaseProtocol{
+final class GetStatusUseCase: GetStatusUseCaseProtocol {
     private let repository: AttendRepository
     
-    init(repository: AttendRepository){
+    init(repository: AttendRepository) {
         self.repository = repository
     }
     

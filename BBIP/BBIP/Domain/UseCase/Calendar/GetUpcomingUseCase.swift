@@ -8,20 +8,19 @@
 import Foundation
 import Combine
 
-protocol GetUpcomingUseCaseProtocol{
+protocol GetUpcomingUseCaseProtocol {
     func execute() -> AnyPublisher<[CalendarHomeVO],Error>
 }
 
-final class GetUpcomingUseCase: GetUpcomingUseCaseProtocol{
+final class GetUpcomingUseCase: GetUpcomingUseCaseProtocol {
     private let repository: CalendarRepository
     
-    init(repository: CalendarRepository){
+    init(repository: CalendarRepository) {
         self.repository = repository
     }
     
     func execute() -> AnyPublisher<[CalendarHomeVO], any Error> {
         return repository.getUpcoming()
             .eraseToAnyPublisher()
-        
     }
 }

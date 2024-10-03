@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol UpdateScheduleUseCaseProtocol{
-    func execute(scheduleId:String, calendarVO:CreateScheduleVO) -> AnyPublisher<Void,Error>
+protocol UpdateScheduleUseCaseProtocol {
+    func execute(scheduleId: String, calendarVO: CreateScheduleVO) -> AnyPublisher<Void,Error>
 }
 
-final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol{
+final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol {
     private let repository: CalendarRepository
     
-    init(repository: CalendarRepository){
+    init(repository: CalendarRepository) {
         self.repository = repository
     }
     

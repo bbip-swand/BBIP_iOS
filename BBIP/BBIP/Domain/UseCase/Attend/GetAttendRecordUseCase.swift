@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol GetAttendRecordUseCaseProtocol{
+protocol GetAttendRecordUseCaseProtocol {
     func execute(studyId: String) -> AnyPublisher<[getAttendRecordVO], Error>
 }
 
-final class GetAttendRecordUseCase: GetAttendRecordUseCaseProtocol{
+final class GetAttendRecordUseCase: GetAttendRecordUseCaseProtocol {
     private let repository : AttendRepository
     
-    init (repository: AttendRepository){
+    init (repository: AttendRepository) {
         self.repository = repository
     }
     

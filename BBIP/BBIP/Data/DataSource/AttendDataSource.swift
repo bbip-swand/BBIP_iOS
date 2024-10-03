@@ -10,14 +10,14 @@ import Combine
 import Moya
 import CombineMoya
 
-final class AttendDataSource{
+final class AttendDataSource {
     private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin()])
     
-    //MARK: - POST
+    // MARK: - POST
     func createAttendCode(dto: CreateCodeDTO) -> AnyPublisher<CreateCodeResponseDTO, Error> {
         provider.requestPublisher(.createCode(dto: dto))
-            .tryMap{ response in
-                guard (200...299).contains(response.statusCode) else{
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
                     if (400...499).contains(response.statusCode) {
                         // 400번대 에러일 때 ErrorResponseDTO로 파싱
                         if let errorDTO = try? JSONDecoder().decode(ErrorResponseDTO.self, from: response.data) {
@@ -47,16 +47,17 @@ final class AttendDataSource{
                 return response.data
             }
             .decode(type: CreateCodeResponseDTO.self, decoder: JSONDecoder())
-            .mapError {error in
-                return error}
+            .mapError { error in
+                return error
+            }
             .eraseToAnyPublisher()
     }
     
-    //MARK: -POST
-    func enterCode(dto: EnterCodeDTO) -> AnyPublisher<Void,Error>{
+    // MARK: - POST
+    func enterCode(dto: EnterCodeDTO) -> AnyPublisher<Void, Error> {
         provider.requestPublisher(.enterCode(dto: dto))
-            .tryMap{response in
-                guard(200...299).contains(response.statusCode) else{
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
                     if (400...499).contains(response.statusCode) {
                         // 400번대 에러일 때 ErrorResponseDTO로 파싱
                         if let errorDTO = try? JSONDecoder().decode(ErrorResponseDTO.self, from: response.data) {
@@ -90,8 +91,8 @@ final class AttendDataSource{
             .eraseToAnyPublisher()
     }
     
-    //MARK: -GET
-    func getStatus() -> AnyPublisher<GetStatusResponseDTO,Error>{
+    //MARK: - GET
+    func getStatus() -> AnyPublisher<GetStatusResponseDTO, Error>{
         provider.requestPublisher(.getStatus)
             .tryMap{response in
                 guard (200...299).contains(response.statusCode) else {

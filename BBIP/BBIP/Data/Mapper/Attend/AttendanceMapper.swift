@@ -53,7 +53,6 @@ struct GetStatusMapper {
 }
 
 struct GetAttendRecordMapper {
-    
     func toVO(dto:GetAttendRecordDTO) -> getAttendRecordVO {
         let vo = getAttendRecordVO(
             session: dto.session,
