@@ -17,7 +17,7 @@ struct UserHomeNavBar: View {
 
                 Spacer()
                 HStack(spacing: 24) {
-                    noticeButton
+                    // noticeButton hide swand
                     profileButton
                 }
             }

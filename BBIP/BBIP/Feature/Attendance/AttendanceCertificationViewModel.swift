@@ -10,10 +10,10 @@ import Combine
 
 final class AttendanceCertificationViewModel: ObservableObject {
     //MARK: - get attend record
-    @Published var records: [getAttendRecordVO] = []
+    @Published var records: [getAttendRecordVO]?
 
     //MARK: - apply code
-    @Published var remainingTime:Int = 600
+    @Published var remainingTime: Int = 600
     @Published var getStatusData: GetStatusVO?
     
     // MARK: - Code
@@ -27,6 +27,8 @@ final class AttendanceCertificationViewModel: ObservableObject {
     @Published var studyId:String = ""
     @Published var session: Int = 0
     @Published var attendVO : AttendVO?
+    
+    @Published var isAttendanceStart: Bool = false
     
     //UseCase
     private let getAttendRecordUseCase: GetAttendRecordUseCaseProtocol
@@ -82,12 +84,14 @@ final class AttendanceCertificationViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.getStatusData = response
+                
                 // remainingTime 계산
                 let currentTime = Date()
                 let expirationTime = response.startTime.addingTimeInterval(TimeInterval(response.ttl))
                 self.remainingTime = max(0, Int(expirationTime.timeIntervalSince(currentTime)) - 9*60*60)
                 self.studyId = getStatusData?.studyId ?? ""
                 self.session = getStatusData?.session ?? 0
+                self.isAttendanceStart = true
                 print("currentTime: \(currentTime)")
                 print("expirationTime: \(expirationTime)")
                 print("Response ttl : \(response.ttl)")

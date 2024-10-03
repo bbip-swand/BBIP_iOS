@@ -12,7 +12,6 @@ struct UserHomeView: View {
     @StateObject var calviewModel = DIContainer.shared.makeCalendarVieModel()
     @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     
-    @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
     @State private var attendstatusData: GetStatusVO?
     @Binding var selectedTab: MainHomeTab
@@ -31,14 +30,14 @@ struct UserHomeView: View {
             .padding(.bottom, 35)
            
             
-            if timeRingStart {
+            if attendviewModel.isAttendanceStart {
                 ActivatedBBIPTimeRingView(
                     studyTitle: attendstatusData?.studyName ?? "스터디",
                     remainingTime: $attendviewModel.remainingTime,
                     studyId: $attendviewModel.studyId,
                     session: $attendviewModel.session
                 ) {
-                    withAnimation { timeRingStart = false }
+                    withAnimation { attendviewModel.isAttendanceStart = false }
                 }
             } else {
                 BBIPTimeRingView(
@@ -74,18 +73,8 @@ struct UserHomeView: View {
             viewModel.refreshHomeData()
             attendviewModel.getStatusAttend()
             calviewModel.getUpcoming()
-            
-            // Use DispatchQueue to ensure the values are updated before setting `timeRingStart`
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                attendstatusData = attendviewModel.getStatusData
-
-                if let attendstatusData = attendstatusData {
-                    print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
-                    timeRingStart = true
-                }
-            }
         }
-        .onAppear(){
+        .onAppear {
             calviewModel.getUpcoming()
         }
         .scrollIndicators(.never)
@@ -102,7 +91,6 @@ struct UserHomeView: View {
                 Text("게시판")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
-                    .opacity(0) // hide swand
                 
                 Spacer()
                 Button {
@@ -115,6 +103,7 @@ struct UserHomeView: View {
                     }
                     .foregroundStyle(.gray7)
                 }
+                .opacity(0) // hide swand
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 12)

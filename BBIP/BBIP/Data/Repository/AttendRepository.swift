@@ -39,7 +39,7 @@ final class AttendRepositoryImpl: AttendRepository {
     // MARK: - GET
     func getAttendCode() -> AnyPublisher<GetStatusVO, any Error> {
         dataSource.getStatus()
-            .map{dto in
+            .map { dto in
                 return self.getStatusMapper.toVo(dto:dto)
             }
             .eraseToAnyPublisher()

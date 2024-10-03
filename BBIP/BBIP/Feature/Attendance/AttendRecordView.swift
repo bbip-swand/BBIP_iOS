@@ -3,20 +3,25 @@ import SwiftUI
 import Combine
 
 struct AttendRecordView: View {
-    @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
+    @ObservedObject var attendviewModel: AttendanceCertificationViewModel
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
     @State private var isRefresh: Bool = false
     @Binding var remainingTime: Int
     
+    private let studyId: String
     private var completion: (() -> Void)?
     var code: Int?
      
     init(
+        viewModel: AttendanceCertificationViewModel,
+        studyId: String,
         remainingTime: Binding<Int>,
         code: Int?,
         completion: (() -> Void)? = nil
     ) {
+        self.attendviewModel = viewModel
+        self.studyId = studyId
         self._remainingTime = remainingTime
         self.code = code
         self.completion = completion
@@ -71,21 +76,21 @@ struct AttendRecordView: View {
                                 .foregroundStyle(.mainWhite)
                         }
                     }
-                    Spacer().frame(width: 19)
+//                    Spacer().frame(width: 19)
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .frame(height: 30)
-                            .frame(width: 149)
-                            .foregroundStyle(.gray8)
-                        
-                        HStack(spacing: 9) {
-                            Text("인증코드: ")
-                                .font(.bbip(.caption1_m16))
-                                .foregroundStyle(.mainWhite)
-                        }
-                        .padding(.horizontal, 20)
-                    }
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 12)
+//                            .frame(height: 30)
+//                            .frame(width: 149)
+//                            .foregroundStyle(.gray8)
+//                        
+//                        HStack(spacing: 9) {
+//                            Text("인증코드: ")
+//                                .font(.bbip(.caption1_m16))
+//                                .foregroundStyle(.mainWhite)
+//                        }
+//                        .padding(.horizontal, 20)
+//                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 23)
@@ -98,12 +103,13 @@ struct AttendRecordView: View {
                     .padding(.leading, 26)
                     .padding(.bottom, 12)
                 
-                // 경기참가한 사람들의 studyEntryCard 필요
-                ForEach(0..<attendviewModel.records.filter { $0.status == .attended }.count, id: \.self) { index in
-                    let record = attendviewModel.records.filter { $0.status == .attended }[index]
-                    studyEntryCard(vo: record)
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 8)
+                if let records = attendviewModel.records {
+                    // 경기참가한 사람들의 studyEntryCard 필요
+                    ForEach(0..<records.filter { $0.status == .attended }.count, id: \.self) { index in
+                        studyEntryCard(vo: records.filter { $0.status == .attended }[index])
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 8)
+                    }
                 }
                 
                 Text("경기 미참여")
@@ -121,12 +127,13 @@ struct AttendRecordView: View {
                     .padding(.leading, 26)
                     .padding(.bottom, 12)
                 
-                // 경기 미참여한 사람들의 studyEntryCard 필요
-                ForEach(0..<attendviewModel.records.filter { $0.status == .absent }.count, id: \.self) {index in
-                    let record = attendviewModel.records.filter { $0.status == .absent }[index]
-                    studyEntryCard(vo: record)
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 8)
+                if let records = attendviewModel.records {
+                    // 경기 미참여한 사람들의 studyEntryCard 필요
+                    ForEach(0..<records.filter { $0.status == .absent }.count, id: \.self) {index in
+                        studyEntryCard(vo: records.filter { $0.status == .absent }[index])
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 8)
+                    }
                 }
             }
         }
@@ -135,14 +142,14 @@ struct AttendRecordView: View {
         .navigationBarTitleDisplayMode(.inline)
         .background(.gray9)
         .onAppear {
-//            attendviewModel.getAttendRecord(studyId: studyId)
+            attendviewModel.getAttendRecord(studyId: studyId)
             startTimer()
         }
         .onDisappear {
             timer?.cancel()
         }
         .refreshable {
-//            attendviewModel.getAttendRecord(studyId: studyId)
+            attendviewModel.getAttendRecord(studyId: studyId)
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation { isRefresh = false }

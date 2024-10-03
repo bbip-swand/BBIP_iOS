@@ -32,10 +32,11 @@ class CreateCodeViewModel: ObservableObject {
                     error.handleDecodingError()
                     print("Error occurred: \(error.localizedDescription)")
                 }
-            } receiveValue: { [weak self] code in
-                self!.getCode = String(code)
+            } receiveValue: { code in
+                
+                self.getCode = String(code)
                 print("Received code: \(code)")
-                print("Received getCode: \(self!.getCode)")
+                print("Received getCode: \(self.getCode)")
             }
             .store(in: &cancellables)
     }
