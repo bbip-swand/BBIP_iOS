@@ -263,17 +263,19 @@ struct ActivatedBBIPTimeRingView: View {
                
                     print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 
-                if let isManager = attendviewModel.getStatusData?.isManager{
-                    if isManager == true {
-                        showAttendRecordView = true
-                        
-                    }else{ //팀원일때
-                        if let isAttend = attendviewModel.getStatusData?.status{
-                            if isAttend == true{
+                if let isManager = attendviewModel.getStatusData?.isManager {
+                    if isManager {
+                        if attendviewModel.isAttendanceStart {
+                            showAttendRecordView = true
+                        } else {
+                            appState.push(.createCode(studyId: attendviewModel.studyId, session: attendviewModel.session))
+                        }
+                    } else {
+                        if let isAttend = attendviewModel.getStatusData?.status {
+                            if isAttend {
                                 showDisabled = true
                             }else{
                                 appState.push(.entercode)
-                                showDisabled = true
                             }
                         }
                     }
@@ -284,7 +286,7 @@ struct ActivatedBBIPTimeRingView: View {
                     .foregroundStyle(showDisabled ?  .gray3 : .primary3)
                     .frame(width: 130, height: 43)
                     .overlay {
-                        Text("출석인증")
+                        Text(showDisabled ? "출석완료" : "출석인증")
                             .font(.bbip(.body2_b14))
                             .foregroundStyle(showDisabled ?  .gray5 : .mainWhite)
                     }
@@ -303,9 +305,7 @@ struct ActivatedBBIPTimeRingView: View {
             code = attendviewModel.getStatusData?.code
             
             if let isAttend = attendviewModel.getStatusData?.status{
-                if isAttend == true{
-                    showDisabled = true
-                }
+                showDisabled = isAttend
             }
         }
         .onDisappear {
@@ -314,9 +314,12 @@ struct ActivatedBBIPTimeRingView: View {
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendRecordView) {
-            
-            AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
-            
+            AttendRecordView(
+                viewModel: attendviewModel,
+                studyId: attendviewModel.studyId,
+                remainingTime: $attendviewModel.remainingTime,
+                code: code
+            )
         }
         
     }

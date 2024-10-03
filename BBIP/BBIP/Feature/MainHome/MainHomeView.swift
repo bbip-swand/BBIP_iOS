@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
     @StateObject var attendviewModel = DIContainer.shared.makeAttendViewModel()
@@ -18,17 +16,8 @@ struct MainHomeView: View {
     @State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
-    
-    
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
-    
-    private func studyNameForHeader() -> String {
-        if case .studyHome(_, let studyName) = selectedTab {
-            return studyName
-        }
-        return .init()
-    }
     
     var body: some View {
         ZStack {

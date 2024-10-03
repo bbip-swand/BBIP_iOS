@@ -14,6 +14,9 @@ struct JoinStudyCompleteAlert: View {
             
             VStack(spacing: 26) {
                 Image("joinStudy_complete")
+                    .resizable()
+                    .frame(width: 140, height: 140)
+                
                 Text("참여에 성공했어요!")
                     .font(.bbip(.title1_sb28))
                     .foregroundStyle(.mainWhite)

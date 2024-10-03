@@ -12,7 +12,6 @@ struct UserHomeView: View {
     @ObservedObject var calendarviewModel : CalendarViewModel
     @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     
-    @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
     @State private var attendstatusData: GetStatusVO?
     @Binding var selectedTab: MainHomeTab
@@ -31,19 +30,14 @@ struct UserHomeView: View {
             .padding(.bottom, 35)
            
             
-            if timeRingStart {
-                let studyTitle = attendstatusData?.studyName ?? "스터디"
-                let remainingTime = $attendviewModel.remainingTime
-                let studyId = $attendviewModel.studyId
-                let session = $attendviewModel.session
-                
+            if attendviewModel.isAttendanceStart {
                 ActivatedBBIPTimeRingView(
                     studyTitle: studyTitle,
                     remainingTime: remainingTime,
                     studyId: studyId,
                     session: session
                 ) {
-                    withAnimation { timeRingStart = false }
+                    withAnimation { attendviewModel.isAttendanceStart = false }
                 }
             } else {
                    
@@ -76,20 +70,10 @@ struct UserHomeView: View {
         .refreshable {
             viewModel.refreshHomeData()
             attendviewModel.getStatusAttend()
-            
-            // Use DispatchQueue to ensure the values are updated before setting `timeRingStart`
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                attendstatusData = attendviewModel.getStatusData
-
-                if let attendstatusData = attendstatusData {
-                    print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
-                    timeRingStart = true
-                }
-            }
+            calviewModel.getUpcoming()
         }
-        .onAppear(){
-            calendarviewModel.getUpcoming()
-            
+        .onAppear {
+            calviewModel.getUpcoming()
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
@@ -105,6 +89,7 @@ struct UserHomeView: View {
                 Text("게시판")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
+                
                 Spacer()
                 Button {
                     //
@@ -116,6 +101,7 @@ struct UserHomeView: View {
                     }
                     .foregroundStyle(.gray7)
                 }
+                .opacity(0) // hide swand
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 12)

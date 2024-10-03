@@ -2,15 +2,13 @@ import Foundation
 import SwiftUI
 
 struct SettingList: Identifiable, Hashable {
-    
     var setName: String
     var iconName:String = "info_open"
     let id = UUID()
     
     static func MypageSettingList() -> [SettingList] {
-        return [SettingList(setName: "공지사항"),
-                SettingList(setName: "약관 및 정책"),
-                SettingList(setName: "버전 정보", iconName:"1.0.0"),
+        return [
+                SettingList(setName: "버전 정보", iconName: "1.0.0"),
         ]
     }
 }

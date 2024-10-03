@@ -24,8 +24,6 @@ struct StudyHomeView: View {
     @State var code: Int?
     @State var statusdata: GetStatusVO?
     
-    
-    
     private let studyId: String
     
     init(studyId: String,attendviewModel: AttendanceCertificationViewModel) {
@@ -88,16 +86,11 @@ struct StudyHomeView: View {
         .refreshable {
             viewModel.reloadFullStudyInfo(studyId: studyId)
             attendviewModel.getStatusAttend()
-            code = attendviewModel.getStatusData?.code
-            statusdata = attendviewModel.getStatusData
         }
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
             attendviewModel.getStatusAttend()
-            code = attendviewModel.getStatusData?.code
-            statusdata = attendviewModel.getStatusData
-            
         }
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)
@@ -114,7 +107,12 @@ struct StudyHomeView: View {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
         }
         .navigationDestination(isPresented: $showAttendRecordView){
-            AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
+            AttendRecordView(
+                viewModel: attendviewModel,
+                studyId: studyId,
+                remainingTime: $attendviewModel.remainingTime,
+                code: code
+            )
         }
     }
     
@@ -267,23 +265,16 @@ struct StudyHomeView: View {
                     // 출석 인증 버튼 클릭 시
                     if let vo = viewModel.fullStudyInfo {
                         if vo.isManager {
-                            // 팀장인 경우
-                            if let isAttend = attendviewModel.getStatusData?.status {
-                                if isAttend == true{
-                                    showAttendRecordView = true
-                                }else{
-                                    appState.push(.createCode(studyId: studyId, session: vo.session))
-                                    showAttendRecordView = true
-                                    
-                                }
+                            if attendviewModel.getStatusData?.status == nil {
+                                appState.push(.createCode(studyId: studyId, session: vo.session))
+                            }
+                            if attendviewModel.isAttendanceStart {
+                                showAttendRecordView = true
                             }
                         } else {
-                            // 팀장이 아닌 경우
-                            if let isAttend = attendviewModel.getStatusData?.status{
-                                if isAttend == false {
+                            if let isAttend = attendviewModel.getStatusData?.status {
+                                if !isAttend {
                                     appState.push(.entercode)
-                                }else{
-                                    showDisableRecordView = true
                                 }
                             }
                         }
@@ -491,12 +482,29 @@ private struct StudyHomeInnerView<Content: View>: View {
 
 extension StudyHomeView {
     func calculateStartDate(from dateString: String) -> Date {
-        // Assume the date format is "MM월 dd일 (E)" -> "10월 2일 (수)"
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "M월 d일 (E)"
-        
-        return dateFormatter.date(from: dateString) ?? Date()
+        // ")" 문자의 인덱스를 찾아 ")"까지 포함한 부분을 사용
+        // pendingDateStr으로 부터 Date 추출을 위함임
+        if let endIndex = dateString.firstIndex(of: ")") {
+            let truncatedString = String(dateString[...endIndex])
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "ko_KR")
+            dateFormatter.dateFormat = "M월 d일 (E)"
+            
+            if var parsedDate = dateFormatter.date(from: truncatedString) {
+                // 현재 연도 설정
+                let currentYear = Calendar.current.component(.year, from: Date())
+                var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)
+                dateComponents.year = currentYear // 현재 연도로 설정
+                
+                if let adjustedDate = Calendar.current.date(from: dateComponents) {
+                    return adjustedDate
+                }
+            } else {
+                print("Invalid date format")
+            }
+        }
+        return Date()
     }
     
     func formatDate(from date: Date) -> String {

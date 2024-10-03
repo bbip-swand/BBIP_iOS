@@ -125,7 +125,8 @@ final class AttendDataSource {
             }
             .decode(type: GetStatusResponseDTO.self, decoder:JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError{ error in
-                return error}
+                return error
+            }
             .eraseToAnyPublisher()
     }
     
