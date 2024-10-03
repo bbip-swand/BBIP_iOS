@@ -1,20 +1,17 @@
-//
-//  PendingDTO.swift
-//  BBIP
-//
-//  Created by 조예린 on 10/3/24.
-//
+
+
 
 import Foundation
 
-struct PendingRespDTO : Decodable {
+struct PendingRespDTO: Decodable {
     let studyId: String
     let studyName: String
     let studyWeek: Int
-    let startDate: Date
-    let studyTime: String
+    let startDate: String // String으로 수정하고 나중에 Date로 변환
+    let studyTime: StudyTime
     let leftDays: Int
     let place: String
+    let totalWeeks: Int
 }
 
 struct PendingVO {
@@ -22,4 +19,6 @@ struct PendingVO {
     let studyTime: String
     let leftDays: Int
     let place: String
+    let studyWeek: Int
+    let totalweeks: Int
 }

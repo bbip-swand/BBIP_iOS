@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
-    @StateObject var calviewModel = DIContainer.shared.makeCalendarVieModel()
+    @ObservedObject var calendarviewModel : CalendarViewModel
     @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     
     @State private var timeRingStart: Bool = false
@@ -46,21 +46,14 @@ struct UserHomeView: View {
                     withAnimation { timeRingStart = false }
                 }
             } else {
-                   let studyName = viewModel.pendingStudyData?.studyName ?? ""
-                   let studyTime = viewModel.pendingStudyData?.studyTime ?? ""
-                   let leftDays = viewModel.pendingStudyData?.leftDays ?? 0
-                   let place = viewModel.pendingStudyData?.place ?? "장소 미정"
-
-                   BBIPTimeRingView(
-                       progress: 0.4,
-                       vo: PendingVO(
-                           studyName: studyName,
-                           studyTime: studyTime,
-                           leftDays: leftDays,
-                           place: place
-                       )
-                   )
-                   .redacted(reason: isRefresh ? .placeholder : [])
+                   
+                
+                if let pendingStudyData = viewModel.pendingStudyData {
+                    BBIPTimeRingView(viewModel: viewModel)
+                    .redacted(reason: isRefresh ? .placeholder : [])
+                }else{
+                //pendingdata 없을때 hide swand
+                }
             }
             
             mainBulletn
@@ -83,7 +76,6 @@ struct UserHomeView: View {
         .refreshable {
             viewModel.refreshHomeData()
             attendviewModel.getStatusAttend()
-            calviewModel.getUpcoming()
             
             // Use DispatchQueue to ensure the values are updated before setting `timeRingStart`
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -96,7 +88,8 @@ struct UserHomeView: View {
             }
         }
         .onAppear(){
-            calviewModel.getUpcoming()
+            calendarviewModel.getUpcoming()
+            
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
@@ -196,17 +189,47 @@ struct UserHomeView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 12)
             
-            ScrollView(.horizontal) {
-                HStack(spacing: 8) {
-                    ForEach(0..<calviewModel.commingScheduleData.count, id: \.self) { index in
-                        CommingScheduleCardView(vo: calviewModel.commingScheduleData[index])
+            if calendarviewModel.getUpcomingData.count == 0 {
+                HStack(spacing:0) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundStyle(.gray2)
+                            .frame(width: 133, height: 146)
+                        
+                        VStack(spacing: 0) {
+                            Image("profile_default")
+                                .resizable()
+                                .frame(width: 53, height: 53)
+                                .padding(.bottom, 15)
+                            
+                            Text("추가된")
+                                .font(.bbip(.body1_sb16))
+                                .foregroundStyle(.gray6)
+                                .padding(.bottom, 1)
+                            
+                            Text("일정이 없어요")
+                                .font(.bbip(.body1_sb16))
+                                .foregroundStyle(.gray6)
+                        }
                     }
+                    .frame(height: 150)
+                    
+                    Spacer()
                 }
-                .padding(.horizontal, 17)
-                .frame(height: 150)
+                .padding(.leading,17)
+            }else{
+                ScrollView(.horizontal) {
+                    HStack(spacing: 8) {
+                        ForEach(0..<calendarviewModel.getUpcomingData.count, id: \.self) { index in
+                            CommingScheduleCardView(vo: calendarviewModel.commingScheduleData[index])
+                        }
+                    }
+                    .padding(.horizontal, 17)
+                    .frame(height: 150)
+                }
+                .bbipShadow1()
+                .scrollIndicators(.never)
             }
-            .bbipShadow1()
-            .scrollIndicators(.never)
         }
     }
 }

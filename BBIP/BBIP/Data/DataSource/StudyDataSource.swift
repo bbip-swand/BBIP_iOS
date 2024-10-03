@@ -16,8 +16,17 @@ final class StudyDataSource {
     // MARK: - GET pendingstudy
     func getPendingStudy() -> AnyPublisher<PendingRespDTO, Error>{
         provider.requestPublisher(.getPendingStudy)
-            .map(\.data)
+//            .map(\.data)
+            .tryMap { response in
+                print(String(data: response.data, encoding: .utf8))
+                return response.data
+            }
             .decode(type: PendingRespDTO.self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
+        
             .eraseToAnyPublisher()
     }
     

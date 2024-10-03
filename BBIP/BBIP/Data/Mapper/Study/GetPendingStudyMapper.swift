@@ -8,16 +8,17 @@
 import Foundation
 
 struct GetPendingStudyMapper {
-    func toVO(dto: PendingRespDTO) -> PendingVO{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+    func toVO(dto: PendingRespDTO) -> PendingVO {
+        print("\(dto)")
+        let dateformatter = DateFormatter.customFormatter(format: "yyyy.mm.dd")
         
-
         return PendingVO(
             studyName: dto.studyName,
-            studyTime: dto.studyTime,
+            studyTime: dto.studyTime.startTime + " ~ " + dto.studyTime.endTime,
             leftDays: dto.leftDays,
-            place: dto.place
+            place: dto.place.isEmpty ? "장소 미정" : dto.place,
+            studyWeek: dto.studyWeek,
+            totalweeks: dto.totalWeeks
         )
     }
 }

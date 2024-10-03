@@ -37,7 +37,7 @@ struct MainHomeView: View {
                     switch selectedTab {
                     case .userHome:
                         UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
-                        UserHomeView(viewModel: viewModel, selectedTab: $selectedTab)
+                        UserHomeView(viewModel: viewModel,calendarviewModel: calendarviewModel, selectedTab: $selectedTab)
                     case .studyHome(let studyId, _):
                         StudyHomeView(studyId: studyId, attendviewModel: attendviewModel)
                     case .calendar:
