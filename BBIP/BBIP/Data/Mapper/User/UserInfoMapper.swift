@@ -19,3 +19,16 @@ struct UserInfoMapper {
         )
     }
 }
+
+struct GetProfileMapper{
+    func toVO(dto: ProfileDTO) -> UserInfoVO{
+        return UserInfoVO(
+            selectedArea: dto.location ,
+            selectedInterestIndex: dto.interest,
+            userName: dto.name,
+            profileImageUrl: dto.profileImageUrl ?? "profile_default",
+            birthYear: String(dto.birthYear),
+            selectedJobIndex: [dto.occupation]
+        )
+    }
+}

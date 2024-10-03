@@ -14,7 +14,7 @@ struct RecentPostMapper {
             
             return PostVO(
                 postId: dtoItem.postingId,
-                createdAt: dtoItem.createdAt, 
+                createdAt: dtoItem.createdAt,
                 writer: dtoItem.writer,
                 studyName: dtoItem.studyName,
                 title: dtoItem.title,

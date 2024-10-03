@@ -2,7 +2,8 @@ import SwiftUI
 
 struct CustomTextFieldComponent: View {
     @Binding var text: String
-    @Binding var isRight: Bool
+    @Binding var showInvalidCodeWarning: Bool
+
     @FocusState.Binding var focusedField: Int?
     
     var index: Int
@@ -20,7 +21,13 @@ struct CustomTextFieldComponent: View {
             .multilineTextAlignment(.center)
             .keyboardType(keyboardType)
             .frame(maxWidth: .infinity)
-            .background(viewModel.isComplete() && !isRight ? Color(uiColor: UIColor(hexCode: "FF9090", alpha: 0.5)) : backgroundColor)
+            .background(
+                !viewModel.showInvalidCodeWarning
+                ? backgroundColor // 잘못된 코드가 아니면 무조건 배경색은 backgroundColor
+                : showInvalidCodeWarning && !text.isEmpty
+                ? Color(uiColor: UIColor(hexCode: "FF9090", alpha: 0.5))
+                : backgroundColor
+            )
             .foregroundColor(.mainWhite)
             .cornerRadius(12)
             .focused($focusedField, equals: index)
@@ -31,4 +38,3 @@ struct CustomTextFieldComponent: View {
             }
     }
 }
-

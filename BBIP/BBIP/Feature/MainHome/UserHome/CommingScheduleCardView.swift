@@ -31,14 +31,15 @@ struct CommingScheduleCardView: View {
                     .foregroundStyle(.mainBlack)
                     .padding(.bottom, 4)
                 
-                Text(vo.description)
+                Text(vo.scheduleTitle)
                     .font(.bbip(.body2_m14))
                     .foregroundStyle(.gray7)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                    .frame(maxWidth: 117)
             }
+
         }
     }
 }
 
-#Preview {
-    CommingScheduleCardView(vo: .init(iconType: 1, leftDay: 20, description: "가나다"))
-}

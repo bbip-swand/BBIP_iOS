@@ -2,16 +2,21 @@ import SwiftUI
 import Combine
 
 struct AttendanceCertificationView: View {
-    @ObservedObject private var viewModel: AttendanceCertificationViewModel = .init()
+    @ObservedObject var attendviewModel: AttendanceCertificationViewModel
     @FocusState private var focusedIndex: Int?
     
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
-    @State private var showAttendanceDone: Bool = false
+
     
-    
-    var studyName: String = "StudyName"
+    init(
+        attendviewModel: AttendanceCertificationViewModel,
+        remainingTime: Binding<Int>
+    ) {
+        self._remainingTime = remainingTime
+        self.attendviewModel = attendviewModel
+    }
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
@@ -37,22 +42,14 @@ struct AttendanceCertificationView: View {
         }
     }
     
-    private func stopTimer() {
-        timer?.cancel()
-        timer = nil
-    }
-    
-    //    init(remainingTime: Int) {
-    //        self.remainingTime = $remainingTime
-    //    }
     
     var body: some View {
         VStack(spacing: 0) {
             Image("glove")
                 .resizable()
                 .frame(width: 32, height: 32)
-                .padding(.top, remainingTime == 0 ? 22 : 50)
-                .padding(.bottom, remainingTime == 0 ? 12 : 20)
+                .padding(.top, 22)
+                .padding(.bottom, 12)
             
             Text("출석 인증 코드 입력")
                 .foregroundStyle(.mainWhite)
@@ -62,21 +59,8 @@ struct AttendanceCertificationView: View {
             Text("생성된 4자리 코드를 입력하세요")
                 .foregroundStyle(.gray6)
                 .font(.bbip(.caption1_m16))
-                .padding(.bottom, remainingTime == 0 ? 41 : 48)
+                .padding(.bottom, 82)
             
-            if remainingTime == 0 {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(.gray8)
-                    
-                    Text(studyName)
-                        .font(.bbip(.title3_sb20))
-                        .foregroundColor(.mainWhite)
-                }
-                .frame(maxWidth: .infinity, maxHeight: 34)
-                .padding(.horizontal, 38)
-                .padding(.bottom, 8)
-            }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -93,37 +77,31 @@ struct AttendanceCertificationView: View {
                     Text(formattedTime)
                         .font(.bbip(.title1_sb42))
                         .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
-                        .onAppear {
-                            startTimer()
-                        }
-                        .onDisappear {
-                            stopTimer()
-                        }
+                    
                 }
             }
             
             if remainingTime != 0 {
                 HStack(spacing: 12) {
-                    Spacer(minLength: 38)
                     ForEach(0..<4, id: \.self) { index in
                         CustomTextFieldComponent(
-                            text: $viewModel.codeDigits[index],
-                            isRight: $viewModel.isRight,
+                            text: $attendviewModel.codeDigits[index],
+                            showInvalidCodeWarning: $attendviewModel.showInvalidCodeWarning,
                             focusedField: $focusedIndex,
                             index: index,
                             font: .bbip(.title1_sb42),
-                            viewModel: viewModel
+                            viewModel: attendviewModel
                         )
                         .customFieldStyle(
                             isFocused: focusedIndex == index,
-                            isRight: viewModel.isRight,
-                            isComplete: viewModel.isComplete(),
-                            isFilled: !viewModel.codeDigits[index].isEmpty
+                            isWrong: attendviewModel.showInvalidCodeWarning,
+                            isFilled: !attendviewModel.codeDigits[index].isEmpty
                         )
                     }
-                    Spacer(minLength: 39)
+                    
                 }
                 .padding(.top, 20)
+                .padding(.horizontal,38)
                 
                 createWarningLabel()
             }
@@ -138,15 +116,16 @@ struct AttendanceCertificationView: View {
             }
             
             MainButton(text: "파이트!", enable: remainingTime != 0 ? true : false) {
-                //TODO: 출석코드 검사로직 + 시간 체크로직 수정필요
-                if viewModel.isRight {
-                    showAttendanceDone = true
-                } else {
-                    // Handle incorrect code case
-                }
+                let attendVO = AttendVO(
+                    studyId: attendviewModel.studyId,
+                    session: attendviewModel.session,
+                    code: attendviewModel.combinedCode
+                )
+                attendviewModel.enterCode(vo: attendVO)
             }
             .padding(.bottom, 22)
         }
+        .ignoresSafeArea(.keyboard)
         .backButtonStyle(isReversal: true)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
@@ -154,14 +133,22 @@ struct AttendanceCertificationView: View {
         .onTapGesture {
             focusedIndex = nil
         }
-        .navigationDestination(isPresented: $showAttendanceDone){
+        .navigationDestination(isPresented: $attendviewModel.showAttendanceDone){
             AttendanceDoneView()
+        }
+        .onDisappear(){
+            timer?.cancel()
+        }
+        .onAppear(){
+            setNavigationBarAppearance(forDarkView: true)
+            startTimer()
+            
         }
     }
     
     private func createWarningLabel() -> some View {
         HStack(spacing: 6) {
-            if viewModel.isComplete() && !viewModel.isRight {
+            if attendviewModel.showInvalidCodeWarning {
                 WarningLabel(errorText: "코드가 올바르지 않습니다.")
             }
         }
@@ -173,16 +160,15 @@ struct AttendanceCertificationView: View {
 }
 
 fileprivate extension View {
-    func customFieldStyle(isFocused: Bool, isRight: Bool, isComplete: Bool, isFilled: Bool) -> some View {
+    func customFieldStyle(isFocused: Bool, isWrong: Bool, isFilled: Bool) -> some View {
         self
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(
-                        (isComplete && !isRight) || isFocused || isFilled ? .primary3 : Color.clear,
+                        isWrong || isFocused || isFilled ? .primary3 : Color.clear,
                         lineWidth: 2
                     )
             )
     }
 }
-

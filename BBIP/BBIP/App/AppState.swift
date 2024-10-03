@@ -23,7 +23,9 @@ enum MainHomeViewDestination: Hashable {
     case startSIS       // sis startPoint
     case SIS            // study into setup
     case completeSIS    // sis endPoing
-    
+    case createCode(studyId: String, session: Int)
+    case entercode
+    case calendar
     // MARK: - StudyHome
     case setLocation(prevLocation:String, studyId: String, session: Int)
 }
@@ -52,6 +54,7 @@ final class AppStateManager: ObservableObject {
     }
     
     func popToRoot() {
+        print("popToRoot called")
         setLightMode()
         path = .init()
     }

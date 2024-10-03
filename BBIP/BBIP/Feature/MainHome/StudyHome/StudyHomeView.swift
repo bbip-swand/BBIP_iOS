@@ -11,16 +11,26 @@ import Combine
 struct StudyHomeView: View {
     @EnvironmentObject private var appState: AppStateManager
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
+    @StateObject private var createcodeviewModel: CreateCodeViewModel = DIContainer.shared.createAttendCodeViewModel()
+    @ObservedObject var attendviewModel: AttendanceCertificationViewModel
     
+    @State private var showCreateCodeView: Bool = false
     @State private var showDetailView: Bool = false
     @State private var showArchiveView: Bool = false
     @State private var showCheckLocationView: Bool = false
+    @State private var showAttendRecordView: Bool = false
+    @State private var showDisableRecordView: Bool = false
+    
+    @State var code: Int?
+    @State var statusdata: GetStatusVO?
+    
+    
     
     private let studyId: String
     
-    init(studyId: String) {
+    init(studyId: String,attendviewModel: AttendanceCertificationViewModel) {
         self.studyId = studyId
-        print(studyId)
+        self._attendviewModel = ObservedObject(wrappedValue: attendviewModel
     }
     
     var body: some View {
@@ -77,10 +87,17 @@ struct StudyHomeView: View {
         }
         .refreshable {
             viewModel.reloadFullStudyInfo(studyId: studyId)
+            attendviewModel.getStatusAttend()
+            code = attendviewModel.getStatusData?.code
+            statusdata = attendviewModel.getStatusData
         }
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
+            attendviewModel.getStatusAttend()
+            code = attendviewModel.getStatusData?.code
+            statusdata = attendviewModel.getStatusData
+            
         }
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)
@@ -95,6 +112,9 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showCheckLocationView) {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
+        }
+        .navigationDestination(isPresented: $showAttendRecordView){
+            AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
         }
     }
     
@@ -122,13 +142,13 @@ struct StudyHomeView: View {
                     .foregroundColor(.mainWhite)
                     .padding(.trailing, 20)
             }
-
+            
         }
         .frame(height: 42)
         .background(Color.gray9)
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyName)
     }
-
+    
     private var headerView: some View {
         ZStack() {
             Color.gray9
@@ -244,12 +264,36 @@ struct StudyHomeView: View {
         HStack {
             VStack(spacing: 12) {
                 Button {
-                    // go attendance
+                    // 출석 인증 버튼 클릭 시
+                    if let vo = viewModel.fullStudyInfo {
+                        if vo.isManager {
+                            // 팀장인 경우
+                            if let isAttend = attendviewModel.getStatusData?.status {
+                                if isAttend == true{
+                                    showAttendRecordView = true
+                                }else{
+                                    appState.push(.createCode(studyId: studyId, session: vo.session))
+                                    showAttendRecordView = true
+                                    
+                                }
+                            }
+                        } else {
+                            // 팀장이 아닌 경우
+                            if let isAttend = attendviewModel.getStatusData?.status{
+                                if isAttend == false {
+                                    appState.push(.entercode)
+                                }else{
+                                    showDisableRecordView = true
+                                }
+                            }
+                        }
+                    }
                 } label: {
                     Image("studyHome_attendance")
                         .resizable()
                         .frame(width: 50, height: 50)
                 }
+                .disabled(showDisableRecordView)
                 
                 Text("출석 인증")
             }
@@ -463,7 +507,4 @@ extension StudyHomeView {
     }
 }
 
-#Preview {
-    StudyHomeView(studyId: "a")
-}
 

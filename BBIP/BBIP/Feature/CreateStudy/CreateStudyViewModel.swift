@@ -173,7 +173,7 @@ class CreateStudyViewModel: ObservableObject {
             periodIsSelected = true
         }
     }
-    
+
     func initalWeeklyContentData() {
         let currentCount = weeklyContentData.count
         var newData = Array(repeating: "", count: weekCount)

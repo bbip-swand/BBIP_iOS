@@ -17,7 +17,7 @@ struct NoticeView: View {
         Text("This is Mypage View")
             .navigationTitle("알림")
             .navigationBarTitleDisplayMode(.inline)
-            .backButtonStyle()
+            .backButtonStyle(isReversal: true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

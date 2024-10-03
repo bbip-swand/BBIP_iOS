@@ -9,9 +9,12 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
+    @StateObject var calviewModel = DIContainer.shared.makeCalendarVieModel()
+    @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
+    @State private var attendstatusData: GetStatusVO?
     @Binding var selectedTab: MainHomeTab
     
     var body: some View {
@@ -30,10 +33,13 @@ struct UserHomeView: View {
             
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
-                    studyTitle: "TOEIC / IELTS",
-                    remainingTime: 20) {
-                        withAnimation { timeRingStart = false }
-                    }
+                    studyTitle: attendstatusData?.studyName ?? "스터디",
+                    remainingTime: $attendviewModel.remainingTime,
+                    studyId: $attendviewModel.studyId,
+                    session: $attendviewModel.session
+                ) {
+                    withAnimation { timeRingStart = false }
+                }
             } else {
                 BBIPTimeRingView(
                     progress: 0.4,
@@ -45,9 +51,6 @@ struct UserHomeView: View {
                     )
                 )
                 .redacted(reason: isRefresh ? .placeholder : [])
-                .onTapGesture {
-                    withAnimation { timeRingStart = true }
-                }
             }
             
             mainBulletn
@@ -68,13 +71,22 @@ struct UserHomeView: View {
         }
         .frame(maxHeight: .infinity)
         .refreshable {
-            // refresh
             viewModel.refreshHomeData()
+            attendviewModel.getStatusAttend()
+            calviewModel.getUpcoming()
             
-            isRefresh = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation { isRefresh = false }
+            // Use DispatchQueue to ensure the values are updated before setting `timeRingStart`
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                attendstatusData = attendviewModel.getStatusData
+
+                if let attendstatusData = attendstatusData {
+                    print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
+                    timeRingStart = true
+                }
             }
+        }
+        .onAppear(){
+            calviewModel.getUpcoming()
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
@@ -176,8 +188,8 @@ struct UserHomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    ForEach(0..<viewModel.commingScheduleData.count, id: \.self) { index in
-                        CommingScheduleCardView(vo: viewModel.commingScheduleData[index])
+                    ForEach(0..<calviewModel.commingScheduleData.count, id: \.self) { index in
+                        CommingScheduleCardView(vo: calviewModel.commingScheduleData[index])
                     }
                 }
                 .padding(.horizontal, 17)

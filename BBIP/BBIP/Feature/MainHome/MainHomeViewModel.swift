@@ -10,9 +10,7 @@ import Combine
 
 class MainHomeViewModel: ObservableObject {
     
-    // mock data for test
-    @Published var commingScheduleData = CommingScheduleVO.generateMock()
-    
+
     // real data
     @Published var homeBulletnData: RecentPostVO?
     @Published var currentWeekStudyData: [CurrentWeekStudyInfoVO]?
@@ -23,6 +21,7 @@ class MainHomeViewModel: ObservableObject {
     private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol  // 이번 주 스터디
     private let getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol          // 진행중인 스터디
     private var cancellables = Set<AnyCancellable>()
+    
     
     init(
         getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol,
@@ -70,7 +69,7 @@ class MainHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getOngoingStudyInfoUseCase.excute()
+        getOngoingStudyInfoUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

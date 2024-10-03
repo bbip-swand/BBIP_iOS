@@ -39,7 +39,38 @@ extension View {
             .navigationBarBackButtonHidden(true)
             .modifier(BackButtonModifier(isReversal: isReversal))
     }
+    
+    func textBackButtonStyle(buttonText: String = "뒤로") -> some View {
+            self
+                .navigationBarBackButtonHidden(true)
+                .modifier(TextBackButtonModifier(buttonText: buttonText))
+        }
 }
+
+struct TextBackButtonModifier: ViewModifier {
+    @Environment(\.presentationMode) var presentationMode
+    private let buttonText: String
+
+    init(buttonText: String) {
+        self.buttonText = buttonText
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text(buttonText)
+                            .foregroundStyle(.gray5)
+                            .font(.bbip(.button2_m16))
+                    }
+                }
+            }
+    }
+}
+
 
 struct BackButtonHandlingModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode

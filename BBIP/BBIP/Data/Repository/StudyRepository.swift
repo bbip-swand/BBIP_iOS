@@ -14,9 +14,12 @@ protocol StudyRepository {
     func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error>
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
+    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
+    
+    
     private let dataSource: StudyDataSource
     private let studyInfoMapper: StudyInfoMapper
     private let createStudyInfoMapper: CreateStudyInfoMapper
@@ -58,6 +61,15 @@ final class StudyRepositoryImpl: StudyRepository {
     func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error> {
         dataSource.getFullStudyInfo(studyId: studyId)
             .map { self.fullStudyInfoMapper.toVO(dto: $0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], any Error> {
+        dataSource.getFinishedStudyInfo()
+            .map { [weak self] dtoArray in
+                guard let self = self else { return [] }
+                return dtoArray.map { self.studyInfoMapper.toVO(dto: $0) }
+            }
             .eraseToAnyPublisher()
     }
 

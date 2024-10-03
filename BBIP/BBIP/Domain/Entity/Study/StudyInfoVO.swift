@@ -27,3 +27,4 @@ struct StudyInfoVO {
         let endTime: String
     }
 }
+
