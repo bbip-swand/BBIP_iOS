@@ -11,6 +11,7 @@ import Combine
 
 //TODO: -완료눌렀을때 홈화면으로 돌아가도록
 struct CreateSchedule: View{
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appState: AppStateManager
     @StateObject var calendarviewModel = DIContainer.shared.makeCalendarVieModel()
     @State private var isDropdownVisible: Bool = false
@@ -68,7 +69,7 @@ struct CreateSchedule: View{
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
                     createSchedule()
-                    appState.popToRoot()
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("완료")
                         .font(.bbip(.button2_m16))
