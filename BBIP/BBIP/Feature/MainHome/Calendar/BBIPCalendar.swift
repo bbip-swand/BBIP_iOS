@@ -43,15 +43,18 @@ struct BBIPCalendar: UIViewRepresentable {
         // 오늘 날짜 컬러 (선택, 미선택)
         calendar.appearance.todayColor = .primary3
         calendar.appearance.selectionColor = .primary3
+        calendar.appearance.titleTodayColor = .white
         
         // 이벤트 Dot
         calendar.appearance.eventSelectionColor = .primary3
         calendar.appearance.eventOffset = .init(x: 0, y: 2)
-        calendar.placeholderType = .none
+        calendar.placeholderType = .none // 이전, 다음 달 숨김처리
         
         // 일요일만 빨간색 (상단 요일)
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
         
+        // 좌우 inset
+        calendar.calendarWeekdayView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             calendar.calendarWeekdayView.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 20),
             calendar.calendarWeekdayView.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -20),
@@ -59,13 +62,10 @@ struct BBIPCalendar: UIViewRepresentable {
         ])
         calendar.collectionViewLayout.sectionInsets = .init(top: 0, left: 20, bottom: 0, right: 20)
         
-        
         return calendar
     }
     
-    func updateUIView(_ uiView: FSCalendar, context: Context) {
-        //        uiView.reloadData()
-    }
+    func updateUIView(_ uiView: FSCalendar, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -79,21 +79,25 @@ struct BBIPCalendar: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            
+            calendar.appearance.todayColor = .primary1
+            calendar.appearance.titleTodayColor = .black
+            calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
             if parent.selectedDate != date {
                 calendar.deselect(parent.selectedDate) // 이전 선택 해제
             }
             parent.selectedDate = date
-            //            calendar.reloadData() // 이거 해야 잔상 안남음
         }
         
         // 일요일 날짜의 글씨를 빨간색으로 설정
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-            let weekday = Calendar.current.component(.weekday, from: date)
-            if weekday == 1 {
-                return .red // 일요일은 빨간색
+            let calendar = Calendar.current
+            let weekday = calendar.component(.weekday, from: date)
+            let today = Date()
+            
+            if weekday == 1 { // 일요일인 경우, 원과 색이 같아 가리는 현상 없애기
+                return .primary3
             } else {
-                return .black // 나머지 날짜는 검은색
+                return nil
             }
         }
         
