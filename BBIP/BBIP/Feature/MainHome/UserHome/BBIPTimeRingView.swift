@@ -11,43 +11,43 @@ import Combine
 
 struct BBIPTimeRingView: View {
     @State var startAttend: Bool = false
-       @State private var progress: Double = 0.0
+    @State private var progress: Double = 0.1
     @State private var progressTotal: Int = 0
     @State private var progressCurrent: Int = 0
-       @EnvironmentObject var appState: AppStateManager
-       @ObservedObject var viewModel: MainHomeViewModel
-       private var vo: PendingVO?
-
-       private var lineWidth: CGFloat = 8
-       private var endCircleSize: CGFloat = 18
-       
-       init(viewModel: MainHomeViewModel) {
-           self._viewModel = ObservedObject(wrappedValue: viewModel)
-           
-           // Initialize `progress` and `vo` using `viewModel` data
-           if let pendingStudyData = viewModel.pendingStudyData {
-               // Calculate progress as Double
-               progressTotal = pendingStudyData.totalweeks
-               progressCurrent = pendingStudyData.studyWeek
-               
-              
-               // Create PendingVO using data from `viewModel`
-               let studyName = pendingStudyData.studyName
-               let studyTime = pendingStudyData.studyTime
-               let leftDays = pendingStudyData.leftDays
-               let place = pendingStudyData.place
+    @EnvironmentObject var appState: AppStateManager
+    @ObservedObject var viewModel: MainHomeViewModel
+    private var vo: PendingVO?
+    
+    private var lineWidth: CGFloat = 8
+    private var endCircleSize: CGFloat = 18
+    
+    init(viewModel: MainHomeViewModel) {
+        self._viewModel = ObservedObject(wrappedValue: viewModel)
+        
+        // Initialize `progress` and `vo` using `viewModel` data
+        if let pendingStudyData = viewModel.pendingStudyData {
+            // Calculate progress as Double
+            progressTotal = pendingStudyData.totalweeks
+            progressCurrent = pendingStudyData.studyWeek
             
-               self.vo = PendingVO(
-                   studyName: studyName,
-                   studyTime: studyTime,
-                   leftDays: leftDays,
-                   place: place,
-                   studyWeek: pendingStudyData.studyWeek,
-                   totalweeks: pendingStudyData.totalweeks
-               )
-           }
-          
-       }
+            
+            // Create PendingVO using data from `viewModel`
+            let studyName = pendingStudyData.studyName
+            let studyTime = pendingStudyData.studyTime
+            let leftDays = pendingStudyData.leftDays
+            let place = pendingStudyData.place
+            
+            self.vo = PendingVO(
+                studyName: studyName,
+                studyTime: studyTime,
+                leftDays: leftDays,
+                place: place,
+                studyWeek: pendingStudyData.studyWeek,
+                totalweeks: pendingStudyData.totalweeks
+            )
+        }
+        
+    }
     private var ddayLabel: String {
         vo?.leftDays == .zero ? "TODAY" : "D-\(vo?.leftDays ?? 0)"
     }
@@ -263,8 +263,8 @@ struct ActivatedBBIPTimeRingView: View {
             
             Button {
                 print("isAttend: \(String(describing: attendviewModel.getStatusData?.status))")
-               
-                    print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
+                
+                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
                 
                 if let isManager = attendviewModel.getStatusData?.isManager {
                     if isManager {
