@@ -28,27 +28,31 @@ struct UserHomeView: View {
             }
             .padding(.top, 22)
             .padding(.bottom, 35)
-           
             
-            if attendviewModel.isAttendanceStart {
-                ActivatedBBIPTimeRingView(
-                    studyTitle: attendstatusData?.studyName ?? "스터디",
-                    remainingTime: $attendviewModel.remainingTime,
-                    studyId: $attendviewModel.studyId,
-                    session: $attendviewModel.session
-                ) {
-                    withAnimation { attendviewModel.isAttendanceStart = false }
-                }
+            
+            if viewModel.homeBulletnData == nil {
+                BBIPTimeRingView(viewModel: viewModel)
+                    .redacted(reason: .placeholder)
             } else {
-                   
-                
-                if let pendingStudyData = viewModel.pendingStudyData {
-                    BBIPTimeRingView(viewModel: viewModel)
-                    .redacted(reason: isRefresh ? .placeholder : [])
-                }else{
-                //pendingdata 없을때 hide swand
+                if attendviewModel.isAttendanceStart {
+                    ActivatedBBIPTimeRingView(
+                        studyTitle: attendstatusData?.studyName ?? "스터디",
+                        remainingTime: $attendviewModel.remainingTime,
+                        studyId: $attendviewModel.studyId,
+                        session: $attendviewModel.session
+                    ) {
+                        withAnimation { attendviewModel.isAttendanceStart = false }
+                    }
+                } else {
+                    if let pendingStudyData = viewModel.pendingStudyData {
+                        BBIPTimeRingView(viewModel: viewModel)
+                            .redacted(reason: isRefresh ? .placeholder : [])
+                    } else {
+                        //pendingdata 없을때 hide swand
+                    }
                 }
             }
+            
             
             mainBulletn
                 .padding(.top, 36)

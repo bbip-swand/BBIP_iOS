@@ -22,7 +22,7 @@ struct BBIPGuideButton: View {
             .frame(width: UIScreen.main.bounds.width - 34)
             .bbipShadow1()
             .onTapGesture {
-                openURL("https://bbip.site/bbip_how_to_use.pdf")
+                openURL("https://possible-raft-360.notion.site/BBIP-114aea0c293b81d7820ae57115c6af3f")
             }
     }
 }

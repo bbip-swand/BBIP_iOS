@@ -29,6 +29,7 @@ struct SISWeeklyContentView: View {
             CustomTextEditor(
                 text: Binding(
                     get: {
+                        guard viewModel.weeklyContentData[selectedWeekIndex] != nil else { return "" }
                         if let selectedIndexData = viewModel.weeklyContentData[selectedWeekIndex] {
                             return selectedIndexData
                         } else {

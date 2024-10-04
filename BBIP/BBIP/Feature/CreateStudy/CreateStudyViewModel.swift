@@ -26,8 +26,8 @@ class CreateStudyViewModel: ObservableObject {
     // MARK: - Period Setting View
     @Published var weekCount: Int = 12 {
         didSet {
-            calculateDeadline()
             initalWeeklyContentData()
+            calculateDeadline()
         }
     }
     @Published var periodIsSelected: Bool = false
@@ -58,7 +58,7 @@ class CreateStudyViewModel: ObservableObject {
     @Published var studyDescription: String = .init()
     
     // MARK: - Weekly Content Input View
-    @Published var weeklyContentData: [String?] = []
+    @Published var weeklyContentData: [String?] = Array(repeating: "", count: 12) // initial value
     @Published var goEditPeriod: Bool = false
     
     // MARK: - Handle Complete
