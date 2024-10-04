@@ -124,20 +124,35 @@ private struct SelectedDateEventView: View {
                 .foregroundStyle(.black)
                 .padding(.top, 22)
                 
-                ScrollView(.vertical) {
-                    ForEach(events.filter { event in
-                        Calendar.current.isDate(selectedDate, inSameDayAs: event.startDate) ||
-                        Calendar.current.isDate(selectedDate, inSameDayAs: event.endDate) ||
-                        (selectedDate > event.startDate && selectedDate < event.endDate)
-                    }, id: \.scheduldId) { event in
-                        scheduleCardView(
-                            scheduleTitle: event.scheduleTitle,
-                            studyName: event.studyName,
-                            timeRange: formattedTimeRange(start: event.startDate, end: event.endDate)
-                        )
+                
+                let filteredEvents = events.filter { event in
+                    Calendar.current.isDate(selectedDate, inSameDayAs: event.startDate) ||
+                    Calendar.current.isDate(selectedDate, inSameDayAs: event.endDate) ||
+                    (selectedDate > event.startDate && selectedDate < event.endDate)
+                }
+                
+                Group {
+                    if filteredEvents.isEmpty {
+                        VStack {
+                            Spacer()
+                            Image("calendar_placeholder")
+                            Spacer()
+                        }
+                        .padding(.bottom, 90)
+                    } else {
+                        ScrollView(.vertical) {
+                            ForEach(filteredEvents, id: \.scheduldId) { event in
+                                scheduleCardView(
+                                    scheduleTitle: event.scheduleTitle,
+                                    studyName: event.studyName,
+                                    timeRange: formattedTimeRange(start: event.startDate, end: event.endDate)
+                                )
+                            }
+                        }
+                        .padding(.bottom, 90)
                     }
                 }
-                .padding(.bottom, 90)
+                .animation(.easeInOut, value: filteredEvents.isEmpty)
             }
             .padding(.horizontal, 20)
         }
@@ -151,6 +166,7 @@ private struct SelectedDateEventView: View {
         return "\(formatter.string(from: adjustedStart)) ~ \(formatter.string(from: adjustedEnd))"
     }
 }
+
 
 struct scheduleCardView: View {
     var scheduleTitle: String = ""

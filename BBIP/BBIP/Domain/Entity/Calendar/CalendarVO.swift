@@ -13,7 +13,7 @@ struct CalendarVO {
 }
 
 //userhome 및 캘린더뷰에서 사용될 캘린더VO (뷰에 뿌릴 거)
-struct CalendarHomeVO{
+struct CalendarHomeVO: Equatable {
     let scheduldId: String
     let studyName: String
     let scheduleTitle: String
