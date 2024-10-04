@@ -295,7 +295,7 @@ struct StudyHomeView: View {
                 Button {
                     if let vo = viewModel.fullStudyInfo {
                         if vo.isManager {
-                            appState.push(.setLocation(prevLocation: vo.location ?? "", studyId: studyId, session: vo.session))
+                            appState.push(.setLocation(prevLocation: vo.location ?? "", studyId: studyId, session: vo.currentWeek))
                         } else {
                             showCheckLocationView = true
                         }

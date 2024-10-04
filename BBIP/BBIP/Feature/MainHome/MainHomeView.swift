@@ -64,8 +64,8 @@ struct MainHomeView: View {
                 MypageView()
             case .startSIS:
                 StartCreateStudyView()
-            case .setLocation(let prevLocation, let studyId, let session):
-                SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
+            case .setLocation(let prevLocation, let studyId, let currentWeek):
+                SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, currentWeek: currentWeek)
             case .createCode (let studyId, let session):
                 CreateCodeOnboardingView(studyId: studyId, session: session)
             case .calendar:

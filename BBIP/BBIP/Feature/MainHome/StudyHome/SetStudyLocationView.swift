@@ -16,16 +16,16 @@ struct SetStudyLocationView: View {
     // simple task
     private let dataSource = StudyDataSource()
     private let studyId: String
-    private let session: Int
+    private let currentWeek: Int
     
     init(
         prevLocation: String,
         studyId: String,
-        session: Int
+        currentWeek: Int
     ) {
         self.locationText = prevLocation
         self.studyId = studyId
-        self.session = session
+        self.currentWeek = currentWeek
     }
     
     var body: some View {
@@ -63,7 +63,7 @@ struct SetStudyLocationView: View {
             Spacer()
             
             MainButton(text: "다음", enable: !locationText.trimmingCharacters(in: .whitespaces).isEmpty) {
-                dataSource.editStudyLocation(studyId: studyId, session: session, location: locationText) { result in
+                dataSource.editStudyLocation(studyId: studyId, session: currentWeek, location: locationText) { result in
                     switch result {
                     case .success:
                         showLocationCheckView = true
