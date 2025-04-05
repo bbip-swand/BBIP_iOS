@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import Moya
 import Firebase
 import FirebaseMessaging
@@ -80,5 +81,19 @@ extension AppDelegate: MessagingDelegate {
                 print("Error posting FCM token: \(error.localizedDescription)")
             }
         }
+    }
+}
+
+// MARK: Swipe to pop
+extension UINavigationController: @retroactive UINavigationControllerDelegate, @retroactive UIGestureRecognizerDelegate {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(
+        _ gestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        return viewControllers.count > 1
     }
 }
