@@ -145,6 +145,24 @@ final class UserHomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func updateAttendanceStatus() {
+        getAttendanceStatusUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.errorMessage)
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.attendanceStatus = response
+                self.isAttendanceStarted = true
+                self.attendanceRemaningTime = response.remainingTime
+            }
+            .store(in: &cancellables)
+    }
+    
     func refreshHomeData() {
         clearData()
         
