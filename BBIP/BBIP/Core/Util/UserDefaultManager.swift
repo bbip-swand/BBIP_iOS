@@ -7,6 +7,24 @@
 
 import Foundation
 
+enum AppEnvironment: String {
+    case dev, prod
+
+    static var current: AppEnvironment {
+        guard let raw = Bundle.main.infoDictionary?["CONFIGURATION_NAME"] as? String else {
+            return .prod
+        }
+        return AppEnvironment(rawValue: raw.lowercased()) ?? .prod
+    }
+
+    var suffix: String {
+        switch self {
+        case .dev: return "_DEV"
+        case .prod: return ""
+        }
+    }
+}
+
 final class UserDefaultsManager {
     static let shared = UserDefaultsManager()
     private let defaults = UserDefaults.standard
@@ -19,6 +37,15 @@ final class UserDefaultsManager {
         
         case isLoggedIn
         case isNewUser
+        
+        var rawValue: String {
+            switch self {
+            case .accessToken:  "accessToken" + AppEnvironment.current.suffix
+            case .fcmToken:     "fcmToken" + AppEnvironment.current.suffix
+            case .isLoggedIn:   "isLoggedIn" + AppEnvironment.current.suffix
+            case .isNewUser:    "isNewUser" + AppEnvironment.current.suffix
+            }
+        }
     }
 
     // MARK: - Setters

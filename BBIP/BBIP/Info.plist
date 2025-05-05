@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>API_BASE_URL</key>
-	<string>https://api.bbip.site</string>
+	<string>$(API_BASE_URL)</string>
+	<key>CONFIGURATION_NAME</key>
+	<string>$(CONFIGURATION_NAME)</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ko</string>

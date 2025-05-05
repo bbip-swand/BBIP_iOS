@@ -31,6 +31,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         
+        #if DEBUG
+        print("🌐 Using DEV Configuration...")
+        #else
+        print("🌐 Using PROD Configuration...")
+        #endif
+        
+        print(AppEnvironment.current.rawValue)
+        
         return true
     }
 }
