@@ -37,7 +37,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("🌐 Using PROD Configuration...")
         #endif
         
-        print(AppEnvironment.current.rawValue)
+        print("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!")
         
         return true
     }
