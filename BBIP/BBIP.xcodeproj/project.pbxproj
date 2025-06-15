@@ -115,6 +115,8 @@
 		C67AD83D2DFE9CB4000A1E39 /* InitialRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD83C2DFE9CB4000A1E39 /* InitialRouteBuilder.swift */; };
 		C67AD83F2DFEA496000A1E39 /* AppLaunchFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD83E2DFEA496000A1E39 /* AppLaunchFlowManager.swift */; };
 		C67AD8432DFEB552000A1E39 /* WrappingController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8422DFEB552000A1E39 /* WrappingController+Extension.swift */; };
+		C67AD8472DFEB75B000A1E39 /* OnboardingRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */; };
+		C67AD8492DFED10F000A1E39 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8482DFED10F000A1E39 /* SplashView.swift */; };
 		C6934BAE2C7F4C2F006AA652 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */; };
 		C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB02C808321006AA652 /* StartCreateStudyView.swift */; };
 		C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */; };
@@ -376,6 +378,8 @@
 		C67AD83C2DFE9CB4000A1E39 /* InitialRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRouteBuilder.swift; sourceTree = "<group>"; };
 		C67AD83E2DFEA496000A1E39 /* AppLaunchFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchFlowManager.swift; sourceTree = "<group>"; };
 		C67AD8422DFEB552000A1E39 /* WrappingController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrappingController+Extension.swift"; sourceTree = "<group>"; };
+		C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouteBuilder.swift; sourceTree = "<group>"; };
+		C67AD8482DFED10F000A1E39 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		C6934BB02C808321006AA652 /* StartCreateStudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyView.swift; sourceTree = "<group>"; };
 		C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyViewModel.swift; sourceTree = "<group>"; };
 		C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupView.swift; sourceTree = "<group>"; };
@@ -848,6 +852,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				C67AD8482DFED10F000A1E39 /* SplashView.swift */,
 				C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */,
 				C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */,
 				C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */,
@@ -914,6 +919,7 @@
 		C695BDE92C649F8B009DEC3C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */,
 				C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */,
 				C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */,
 			);
@@ -1668,6 +1674,7 @@
 				C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */,
 				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
 				C6F2DA432CAD048D002023B6 /* Text+Extension.swift in Sources */,
+				C67AD8472DFEB75B000A1E39 /* OnboardingRouteBuilder.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* InitialRouterView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
@@ -1694,6 +1701,7 @@
 				C6F2DA182CAACF50002023B6 /* PostingDetailViewModel.swift in Sources */,
 				C6F2DA162CAACF1E002023B6 /* PostingDetailView.swift in Sources */,
 				C64C28272CE23ACC00131B70 /* SettingListView.swift in Sources */,
+				C67AD8492DFED10F000A1E39 /* SplashView.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C6516ED32CEB6FEC00FCFAF2 /* CreateCodeViewModel.swift in Sources */,

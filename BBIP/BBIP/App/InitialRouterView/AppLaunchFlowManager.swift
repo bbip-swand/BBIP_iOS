@@ -27,14 +27,14 @@ final class AppLaunchFlowManager: ObservableObject {
             UserDefaultsManager.shared.setIsExistingUser(isUserProfileSet)
             
             if isLoggedIn == false {
-                self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: true)
+                self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
             } else if isUserProfileSet == false {
-                self.navigator.replace(paths: [BBIPMatchPath.infoSetup.capitalizedPath], items: [:], isAnimated: true)
+                self.navigator.replace(paths: [BBIPMatchPath.infoSetup.capitalizedPath], items: [:], isAnimated: false)
             } else {
-                self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
             }
             
-            logging(isUserProfileSet: isUserProfileSet)
+            logging(isUserProfileSet: isUserProfileSet)            
         }
     }
 }

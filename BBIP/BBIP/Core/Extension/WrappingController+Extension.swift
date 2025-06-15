@@ -8,8 +8,9 @@
 import LinkNavigator
 
 extension WrappingController {
-    func emptyTitle() -> Self {
+    func defaultContext() -> Self {
         self.title = ""
+        self.view.backgroundColor = .mainWhite
         return self
     }
 }
