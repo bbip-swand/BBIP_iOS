@@ -39,7 +39,7 @@ struct CurrentWeekStudyInfoCardView: View {
                             
                             if let description = vo.currentStudyDescription {
                                 if description.isEmpty {
-                                    Text("미입력")
+                                    Text("미정")
                                         .font(.bbip(.body2_m14))
                                         .foregroundStyle(.gray5)
                                 } else {

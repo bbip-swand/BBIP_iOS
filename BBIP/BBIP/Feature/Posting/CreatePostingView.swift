@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct CreatePostingView: View {
     @EnvironmentObject var appState: AppStateManager
@@ -20,16 +21,19 @@ struct CreatePostingView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            selectWeekButton
-                .padding(.vertical, 22)
-            
-            titleTextField
-                .padding(.bottom, 8)
-            
-            postContentTextField
-            
-            Spacer()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                selectWeekButton
+                    .padding(.vertical, 22)
+                
+                titleTextField
+                    .padding(.bottom, 8)
+                
+                postContentTextField
+                
+                Spacer()
+            }
+            .keyboardHideable()
         }
         .ignoresSafeArea(.keyboard)
         .padding(.horizontal, 16)
@@ -108,6 +112,13 @@ extension CreatePostingView {
             .padding(.horizontal, 14)
             .font(.bbip(.body2_m14))
             .foregroundColor(.mainBlack)
+            .onChange(of: viewModel.title) { oldValue, newValue in
+                if newValue.count > 20 {
+                    DispatchQueue.main.async {
+                        viewModel.title = String(newValue.prefix(20))
+                    }
+                }
+            }
         }
     }
     
@@ -119,15 +130,32 @@ extension CreatePostingView {
                 .frame(height: 250)
                 .frame(maxWidth: .infinity)
             
-            TextField(
-                "",
-                text: $viewModel.content,
-                prompt: Text("본문(300자 이내)").foregroundColor(.gray5)
-            )
-            .padding(.vertical, 12)
-            .padding(.horizontal, 14)
-            .font(.bbip(.body2_m14))
-            .foregroundColor(.mainBlack)
+            ZStack(alignment: .topLeading) {
+                if viewModel.content.isEmpty {
+                    Text("본문(300자 이내)")
+                        .foregroundColor(.gray5)
+                        .font(.bbip(.body2_m14))
+                        .padding(.vertical, 14)
+                        .padding(.horizontal, 14)
+                }
+                
+                TextEditor(text: $viewModel.content)
+                    .frame(height: 250)
+                    .font(.bbip(.body2_m14))
+                    .foregroundColor(.mainBlack)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
+                    .onChange(of: viewModel.content) { oldValue, newValue in
+                        if newValue.count > 300 {
+                            DispatchQueue.main.async {
+                                viewModel.content = String(newValue.prefix(300))
+                            }
+                        }
+                    }
+                    .introspect(.textEditor, on: .iOS(.v17, .v18)) {
+                        $0.textContainerInset = .init(top: 14, left: 12, bottom: 14, right: 12)
+                    }
+            }
         }
     }
     

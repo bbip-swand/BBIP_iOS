@@ -21,7 +21,7 @@ struct CurrentWeekStudyInfoMapper {
             currentStudyDescription: dto.studyContent,
             date: dateFormatter.string(from: dto.studyDate),
             time: dto.studyTime.startTime + " ~ " + dto.studyTime.endTime,
-            location: dto.place ?? "미정"
+            location: dto.place.isEmpty ? "미정" : dto.place
         )
     }
 }

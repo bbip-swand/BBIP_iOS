@@ -200,7 +200,7 @@ struct StudyHomeView: View {
                     
                     if let currentContent = viewModel.fullStudyInfo?.currentWeekContent {
                         if currentContent.isEmpty {
-                            Text("미정")
+                            Text("미입력")
                                 .font(.bbip(.body2_m14))
                                 .foregroundStyle(.gray5)
                         } else {

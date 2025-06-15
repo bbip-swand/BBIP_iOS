@@ -76,6 +76,7 @@ final class AppStateManager: ObservableObject {
     }
     
     func switchRoot(_ state: AppState) {
+        if state == .home { setLightMode() }
         withAnimation { self.state = state }
         print("Switch Root to \(state.rawValue)")
     }

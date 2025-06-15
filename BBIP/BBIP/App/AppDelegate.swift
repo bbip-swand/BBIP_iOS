@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import Moya
 import Firebase
 import FirebaseMessaging
@@ -29,6 +30,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
+        
+        #if DEBUG
+        print("🌐 Using DEV Configuration...")
+        #else
+        print("🌐 Using PROD Configuration...")
+        #endif
+        
+        print("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!")
         
         return true
     }
@@ -80,5 +89,19 @@ extension AppDelegate: MessagingDelegate {
                 print("Error posting FCM token: \(error.localizedDescription)")
             }
         }
+    }
+}
+
+// MARK: Swipe to pop
+extension UINavigationController: @retroactive UINavigationControllerDelegate, @retroactive UIGestureRecognizerDelegate {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(
+        _ gestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        return viewControllers.count > 1
     }
 }

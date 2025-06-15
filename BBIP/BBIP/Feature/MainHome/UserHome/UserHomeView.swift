@@ -9,8 +9,10 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: UserHomeViewModel
-    @State private var isRefresh: Bool = false
     @Binding var selectedTab: MainHomeTab
+    
+    @State private var isRefresh: Bool = false
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         ScrollView {
@@ -56,6 +58,11 @@ struct UserHomeView: View {
         .onAppear {
             print("userHome OnAppear")
             viewModel.loadHomeData()
+        }
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
+                viewModel.loadHomeData()
+            }
         }
     }
     
