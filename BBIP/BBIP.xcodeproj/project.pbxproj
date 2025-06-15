@@ -117,6 +117,10 @@
 		C67AD8432DFEB552000A1E39 /* WrappingController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8422DFEB552000A1E39 /* WrappingController+Extension.swift */; };
 		C67AD8472DFEB75B000A1E39 /* OnboardingRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */; };
 		C67AD8492DFED10F000A1E39 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8482DFED10F000A1E39 /* SplashView.swift */; };
+		C67AD84C2DFED61F000A1E39 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84B2DFED61F000A1E39 /* Factory */; };
+		C67AD84E2DFED61F000A1E39 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84D2DFED61F000A1E39 /* FactoryKit */; };
+		C67AD8502DFED61F000A1E39 /* FactoryTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84F2DFED61F000A1E39 /* FactoryTesting */; };
+		C67AD8572DFED6E4000A1E39 /* DIContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8562DFED6E4000A1E39 /* DIContainerFactory.swift */; };
 		C6934BAE2C7F4C2F006AA652 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */; };
 		C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB02C808321006AA652 /* StartCreateStudyView.swift */; };
 		C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */; };
@@ -380,6 +384,7 @@
 		C67AD8422DFEB552000A1E39 /* WrappingController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrappingController+Extension.swift"; sourceTree = "<group>"; };
 		C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouteBuilder.swift; sourceTree = "<group>"; };
 		C67AD8482DFED10F000A1E39 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		C67AD8562DFED6E4000A1E39 /* DIContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerFactory.swift; sourceTree = "<group>"; };
 		C6934BB02C808321006AA652 /* StartCreateStudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyView.swift; sourceTree = "<group>"; };
 		C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyViewModel.swift; sourceTree = "<group>"; };
 		C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupView.swift; sourceTree = "<group>"; };
@@ -538,11 +543,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */,
+				C67AD8502DFED61F000A1E39 /* FactoryTesting in Frameworks */,
 				C62780E52C8887C800065F98 /* FirebaseMessaging in Frameworks */,
+				C67AD84E2DFED61F000A1E39 /* FactoryKit in Frameworks */,
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
 				C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */,
 				C6934BAE2C7F4C2F006AA652 /* SwiftUIIntrospect in Frameworks */,
 				C6FA56002C95462900E537D7 /* FSCalendar in Frameworks */,
+				C67AD84C2DFED61F000A1E39 /* Factory in Frameworks */,
 				C67AD8322DFE94FF000A1E39 /* LinkNavigator in Frameworks */,
 				C62780E32C8887C800065F98 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -720,6 +728,14 @@
 			path = InitialRouterView;
 			sourceTree = "<group>";
 		};
+		C67AD8512DFED6BB000A1E39 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+				C67AD8562DFED6E4000A1E39 /* DIContainerFactory.swift */,
+			);
+			path = Injection;
+			sourceTree = "<group>";
+		};
 		C6934BAF2C8082F8006AA652 /* CreateStudy */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,12 +832,12 @@
 			path = Study;
 			sourceTree = "<group>";
 		};
-		C69445A52C9E969B003945CC /* Injection */ = {
+		C69445A52C9E969B003945CC /* LegacyInjection */ = {
 			isa = PBXGroup;
 			children = (
 				C69445A62C9E96B0003945CC /* DIContainer.swift */,
 			);
-			path = Injection;
+			path = LegacyInjection;
 			sourceTree = "<group>";
 		};
 		C695BDE02C649EDE009DEC3C /* App */ = {
@@ -840,7 +856,8 @@
 		C695BDE12C649F06009DEC3C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C69445A52C9E969B003945CC /* Injection */,
+				C67AD8512DFED6BB000A1E39 /* Injection */,
+				C69445A52C9E969B003945CC /* LegacyInjection */,
 				C695BDEA2C649FDD009DEC3C /* Service */,
 				C695BDF72C64CB57009DEC3C /* Util */,
 				C695BDEB2C649FE3009DEC3C /* Extension */,
@@ -1472,6 +1489,9 @@
 				C62780E42C8887C800065F98 /* FirebaseMessaging */,
 				C6FA55FF2C95462900E537D7 /* FSCalendar */,
 				C67AD8312DFE94FF000A1E39 /* LinkNavigator */,
+				C67AD84B2DFED61F000A1E39 /* Factory */,
+				C67AD84D2DFED61F000A1E39 /* FactoryKit */,
+				C67AD84F2DFED61F000A1E39 /* FactoryTesting */,
 			);
 			productName = BBIP;
 			productReference = C6B00C112C590A0E009AC4E2 /* BBIP.app */;
@@ -1508,6 +1528,7 @@
 				C62780E12C8887C800065F98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C6FA55FE2C95462900E537D7 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				C67AD8302DFE94FF000A1E39 /* XCRemoteSwiftPackageReference "LinkNavigator" */,
+				C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = C6B00C122C590A0E009AC4E2 /* Products */;
 			projectDirPath = "";
@@ -1720,6 +1741,7 @@
 				C6516EFD2CEE0BDD00FCFAF2 /* CreatePostingViewModel.swift in Sources */,
 				C64C28212CE21C7600131B70 /* MyPageVIewModel.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
+				C67AD8572DFED6E4000A1E39 /* DIContainerFactory.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
@@ -2049,6 +2071,14 @@
 				minimumVersion = 1.3.1;
 			};
 		};
+		C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
 		C6934BAC2C7F4C2F006AA652 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
@@ -2098,6 +2128,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C67AD8302DFE94FF000A1E39 /* XCRemoteSwiftPackageReference "LinkNavigator" */;
 			productName = LinkNavigator;
+		};
+		C67AD84B2DFED61F000A1E39 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		C67AD84D2DFED61F000A1E39 /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+		C67AD84F2DFED61F000A1E39 /* FactoryTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryTesting;
 		};
 		C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
