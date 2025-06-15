@@ -6,38 +6,41 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 @main
 struct BBIPApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @State private var showSplash = true
-    @State private var isNewUser = false
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+        
+    var navigator: LinkNavigator {
+        appDelegate.navigator
+    }
     
     var body: some Scene {
         WindowGroup {
-            if showSplash {
-                SplashView(showSplash: $showSplash)
-            } else {
-                RootView()
-                    .onAppear {
-                        print(UserDefaultsManager.shared.getAccessToken())
-                    }
-            }
+            navigator
+                .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
+                .onOpenURL { url in handleDeepLink(url) }
         }
     }
 }
 
-struct SplashView: View {
-    @Binding var showSplash: Bool
-    private let userStateManager = UserStateManager()
-    
-    var body: some View {
-        BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce) {
-            userStateManager.updateIsExistingUser {
-                withAnimation { showSplash = false }
+extension BBIPApp {
+    private func handleDeepLink(_ url: URL) {
+        guard UserDefaultsManager.shared.checkLoginStatus() else { return }
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        if urlComponents?.host == "inviteStudy" {
+            if let queryItems = urlComponents?.queryItems {
+                let deepLinkAlertData = DeepLinkAlertData(
+                    studyId: queryItems.first(where: { $0.name == "studyId" })?.value ?? "",
+                    imageUrl: queryItems.first(where: { $0.name == "imageUrl" })?.value,
+                    studyName: queryItems.first(where: { $0.name == "studyName" })?.value ?? "",
+                    studyDescription: queryItems.first(where: { $0.name == "studyDescription" })?.value
+                )
+                print(deepLinkAlertData)
+//                appStateManager.setDeepLinkAlertData(deepLinkAlertData)
+//                appStateManager.showDeepLinkAlert = true
             }
         }
-        .frame(maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
     }
 }

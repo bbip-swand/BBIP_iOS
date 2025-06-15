@@ -1,5 +1,5 @@
 //
-//  AppState.swift
+//  LegacyStartFlow.swift.swift
 //  BBIP
 //
 //  Created by 이건우 on 8/28/24.
@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 enum AppState: Hashable {
+    case splash
     case onboarding
     case infoSetup
     case startGuide
@@ -16,6 +17,8 @@ enum AppState: Hashable {
     
     var rawValue: String {
         switch self {
+        case .splash:
+            return "spash"
         case .onboarding:
             return "onboarding"
         case .infoSetup:
@@ -93,6 +96,61 @@ final class AppStateManager: ObservableObject {
             self.state = isExistingUser ? .home : .startGuide
         } else {
             self.state = .onboarding
+        }
+    }
+}
+
+struct RootView: View {
+    @StateObject private var appStateManager = AppStateManager()
+    
+    var body: some View {
+        Group {
+            switch appStateManager.state {
+            case .splash:
+                NavigationStack {
+//                    SplashView()
+                }
+                
+            case .onboarding:
+                NavigationStack {
+                    OnboardingView()
+                }
+                
+            case .infoSetup:
+                NavigationStack {
+                    UserInfoSetupView()
+                }
+                
+            case .startGuide:
+                NavigationStack {
+                    StartGuideView()
+                }
+                
+            case .home:
+                NavigationStack(path: $appStateManager.path) {
+                    MainHomeView()
+                }
+            }
+        }
+        .preferredColorScheme(appStateManager.colorScheme)
+        .environmentObject(appStateManager)
+        .overlay(
+            Group {
+                if let data = appStateManager.deepLinkAlertData {
+                    JoinStudyCustomAlert(
+                        appState: appStateManager,
+                        inviteData: data
+                    )
+                    .opacity(appStateManager.showDeepLinkAlert ? 1 : 0)
+                }
+            }
+        )
+        .alert(isPresented: $appStateManager.showJoinFailAlert) {
+            Alert(
+                title: Text("가입 실패"),
+                message: Text("이미 가입된 스터디입니다"),
+                dismissButton: .default(Text("확인"))
+            )
         }
     }
 }
