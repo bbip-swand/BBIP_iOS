@@ -68,13 +68,11 @@ extension Container {
 
     // MARK: - ViewModels
     var loginViewModel: Factory<LoginViewModel> {
-        Factory(self) { LoginViewModel() }
+        self { LoginViewModel() }
     }
 
     var userInfoSetupViewModel: Factory<UserInfoSetupViewModel> {
-        Factory(self) {
-            UserInfoSetupViewModel(createUserInfoUseCase: self.createUserInfoUseCase())
-        }
+        self { UserInfoSetupViewModel() }
     }
 }
 

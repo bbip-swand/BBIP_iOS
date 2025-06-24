@@ -180,9 +180,9 @@ class DIContainer {
     //    }
     
     // UserInfoSetup
-    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
-        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
-    }
+//    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
+//        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
+//    }
     
     // UserHome
     func makeUserHomeViewModel() -> UserHomeViewModel {
