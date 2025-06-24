@@ -29,7 +29,7 @@ final class AppLaunchFlowManager: ObservableObject {
             if isLoggedIn == false {
                 self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
             } else if isUserProfileSet == false {
-                self.navigator.replace(paths: [BBIPMatchPath.infoSetup.capitalizedPath], items: [:], isAnimated: false)
+                self.navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
             } else {
                 self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
             }
