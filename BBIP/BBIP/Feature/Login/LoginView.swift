@@ -7,10 +7,11 @@
 
 import SwiftUI
 import AuthenticationServices
+import Factory
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @StateObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    @StateObject var viewModel: LoginViewModel = Container.shared.loginViewModel()
     private let userStateManager = UserStateManager()
     
     @State private var firstAnimation: Bool = false

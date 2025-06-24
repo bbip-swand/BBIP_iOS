@@ -6,38 +6,52 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 @main
 struct BBIPApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var showSplash = true
-    @State private var isNewUser = false
+
+    var navigator: LinkNavigator {
+        appDelegate.navigator
+    }
     
     var body: some Scene {
         WindowGroup {
-            if showSplash {
-                SplashView(showSplash: $showSplash)
-            } else {
-                RootView()
-                    .onAppear {
-                        print(UserDefaultsManager.shared.getAccessToken())
-                    }
+            ZStack {
+                navigator
+                    .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
+                    .onOpenURL { url in handleDeepLink(url) }
+                    .edgesIgnoringSafeArea(.all)
+                
+                
+                if showSplash {
+                    SplashView() { showSplash = false }
+                        .zIndex(1)
+                }
             }
+            .animation(.easeInOut(duration: 0.2), value: showSplash)
         }
     }
 }
 
-struct SplashView: View {
-    @Binding var showSplash: Bool
-    private let userStateManager = UserStateManager()
-    
-    var body: some View {
-        BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce) {
-            userStateManager.updateIsExistingUser {
-                withAnimation { showSplash = false }
+extension BBIPApp {
+    private func handleDeepLink(_ url: URL) {
+        guard UserDefaultsManager.shared.checkLoginStatus() else { return }
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        if urlComponents?.host == "inviteStudy" {
+            if let queryItems = urlComponents?.queryItems {
+                let deepLinkAlertData = DeepLinkAlertData(
+                    studyId: queryItems.first(where: { $0.name == "studyId" })?.value ?? "",
+                    imageUrl: queryItems.first(where: { $0.name == "imageUrl" })?.value,
+                    studyName: queryItems.first(where: { $0.name == "studyName" })?.value ?? "",
+                    studyDescription: queryItems.first(where: { $0.name == "studyDescription" })?.value
+                )
+                print(deepLinkAlertData)
+//                appStateManager.setDeepLinkAlertData(deepLinkAlertData)
+//                appStateManager.showDeepLinkAlert = true
             }
         }
-        .frame(maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
     }
 }

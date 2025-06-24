@@ -8,10 +8,12 @@
 import SwiftUI
 import UIKit
 import Moya
+import LinkNavigator
+
 import Firebase
 import FirebaseMessaging
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
@@ -19,7 +21,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         // MARK: - FCM
         FirebaseApp.configure()
-        
         UNUserNotificationCenter.current().delegate = self
 
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -29,7 +30,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         )
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
         
         #if DEBUG
         print("🌐 Using DEV Configuration...")
@@ -40,6 +40,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!")
         
         return true
+    }
+    
+    var navigator: LinkNavigator {
+        LinkNavigator(dependency: AppDependency(), builders: AppRouterGroup().routers)
     }
 }
 
@@ -66,10 +70,13 @@ extension AppDelegate: MessagingDelegate {
         _ messaging: Messaging,
         didReceiveRegistrationToken fcmToken: String?
     ) {
-        if let token = fcmToken {
-            UserDefaultsManager.shared.saveFCMToken(token: token)
-            postFCMTokenToServer(token: token)
-        }
+        guard let token = fcmToken else { return }
+        handleFCMToken(token)
+    }
+    
+    private func handleFCMToken(_ token: String) {
+        UserDefaultsManager.shared.saveFCMToken(token: token)
+        postFCMTokenToServer(token: token)
     }
     
     private func postFCMTokenToServer(token: String) {
@@ -93,15 +100,13 @@ extension AppDelegate: MessagingDelegate {
 }
 
 // MARK: Swipe to pop
-extension UINavigationController: @retroactive UINavigationControllerDelegate, @retroactive UIGestureRecognizerDelegate {
+extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
     open override func viewDidLoad() {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
-    
-    public func gestureRecognizerShouldBegin(
-        _ gestureRecognizer: UIGestureRecognizer
-    ) -> Bool {
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
 }
