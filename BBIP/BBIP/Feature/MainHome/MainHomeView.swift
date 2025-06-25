@@ -30,7 +30,7 @@ struct MainHomeView: View {
             VStack(spacing: 0) {
                 switch selectedTab {
                 case .userHome:
-                    UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
+                    UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
                     UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
                 case .studyHome(let studyId, _):
                     StudyHomeView(studyId: studyId)

@@ -1,7 +1,9 @@
 import Foundation
 import SwiftUI
+import LinkNavigator
 
 struct UserHomeNavBar: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @Binding var showDot: Bool
     var tabState: MainHomeTab
@@ -33,7 +35,8 @@ struct UserHomeNavBar: View {
 
     private var noticeButton: some View {
         Button {
-            appState.push(.notice)
+            navigator.next(paths: ["notice"], items: [:], isAnimated: true)
+            //appState.push(.notice)
         } label: {
             Image("notice_icon")
                 .renderingMode(.template)
