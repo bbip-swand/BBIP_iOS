@@ -14,6 +14,8 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		98A7EB952DF72E6D001D32D2 /* BBIP-DEV.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */; };
+		98A7EB962DF72E6D001D32D2 /* BBIP-PROD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -284,6 +286,8 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-DEV.xcconfig"; sourceTree = "<group>"; };
+		98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-PROD.xcconfig"; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -1173,6 +1177,8 @@
 			children = (
 				C695CB6B2C7F284A00BB3952 /* BBIP.entitlements */,
 				C61A472D2C6686CA0016986D /* Info.plist */,
+				98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */,
+				98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */,
 				C6516EE52CECE7E300FCFAF2 /* GoogleService-Info.plist */,
 				C6EB89F12DC90BC600323541 /* BBIP-DEV.xcconfig */,
 				C6EB89F32DC90BD800323541 /* BBIP-PROD.xcconfig */,
@@ -1552,6 +1558,8 @@
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
 				C6516F652CF6129000FCFAF2 /* Complete_Attendance.json in Resources */,
 				C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */,
+				98A7EB952DF72E6D001D32D2 /* BBIP-DEV.xcconfig in Resources */,
+				98A7EB962DF72E6D001D32D2 /* BBIP-PROD.xcconfig in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C6516F632CF60EDD00FCFAF2 /* Complete_CreateStudy.json in Resources */,
 				C6516F612CF60EBC00FCFAF2 /* Complete_SignIn.json in Resources */,
@@ -1997,6 +2005,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 53;
