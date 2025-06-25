@@ -15,6 +15,14 @@ enum BBIPMatchPath: String {
     case infoSetup
     case startGuide
     case home
+    
+    case notice
+    case myPage
+    case startCreateStudy
+    case setStudyLocation
+    case createCodeOnboarding
+    case attendanceCertification
+    case postingList
 
     var capitalizedPath: String {
         rawValue.prefix(1).uppercased() + rawValue.dropFirst()
