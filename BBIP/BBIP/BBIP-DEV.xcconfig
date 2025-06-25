@@ -1,0 +1,8 @@
+//
+//  BBIP-DEV.xcconfig
+//  BBIP
+//
+
+SLASH = /
+API_BASE_URL = https:$(SLASH)$(SLASH)dev.bbip.site
+CONFIGURATION_NAME = DEV

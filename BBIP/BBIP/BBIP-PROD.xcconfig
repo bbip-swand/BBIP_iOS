@@ -1,0 +1,8 @@
+//
+//  BBIP-PROD.xcconfig
+//  BBIP
+//
+
+SLASH = /
+API_BASE_URL = https:$(SLASH)$(SLASH)api.bbip.site
+CONFIGURATION_NAME = PROD

@@ -43,7 +43,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     var navigator: LinkNavigator {
-        LinkNavigator(dependency: AppDependency(), builders: AppRouterGroup().routers)
+        LinkNavigator(
+            dependency: AppDependency(appState: AppStateManager()),
+            builders: AppRouterGroup().routers
+        )
     }
 }
 
