@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct MainHomeView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var userHomeViewModel = DIContainer.shared.makeUserHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
@@ -78,9 +80,4 @@ struct MainHomeView: View {
         }
         .navigationBarBackButtonHidden()
     }
-}
-
-
-#Preview {
-    MainHomeView()
 }
