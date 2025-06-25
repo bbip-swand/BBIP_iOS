@@ -12,7 +12,9 @@ struct AppRouterGroup {
     [
         InitialRouteBuilder(),
         OnboardingBuilder(),
-        MainHomeBuilder()
+        MainHomeBuilder(),
+        NoticeBuilder(),
+        MyPageBuilder()
     ]
   }
 }
