@@ -11,7 +11,8 @@ struct AppRouterGroup {
   var routers: [RouteBuilder] {
     [
         InitialRouteBuilder(),
-        OnboardingRouteBuilder()
+        OnboardingBuilder(),
+        MainHomeBuilder()
     ]
   }
 }
