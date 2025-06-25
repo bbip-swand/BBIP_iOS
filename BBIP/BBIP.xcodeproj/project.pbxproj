@@ -14,6 +14,7 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		9886AB362E0C64770035D3D0 /* NoticeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeBuilder.swift */; };
 		989678062DFEBF7F007BC57D /* MainHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */; };
 		989678082DFEC979007BC57D /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678072DFEC979007BC57D /* OnboardingBuilder.swift */; };
 		98A7EB952DF72E6D001D32D2 /* BBIP-DEV.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */; };
@@ -288,6 +289,7 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		9886AB352E0C64770035D3D0 /* NoticeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBuilder.swift; sourceTree = "<group>"; };
 		989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeBuilder.swift; sourceTree = "<group>"; };
 		989678072DFEC979007BC57D /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-DEV.xcconfig"; sourceTree = "<group>"; };
@@ -1398,6 +1400,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */,
+				9886AB352E0C64770035D3D0 /* NoticeBuilder.swift */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -1609,6 +1612,7 @@
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */,
+				9886AB362E0C64770035D3D0 /* NoticeBuilder.swift in Sources */,
 				08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */,
 				C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
