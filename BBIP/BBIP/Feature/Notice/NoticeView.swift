@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct NoticeView: View {
+    let navigator: LinkNavigatorType
+    
     var body: some View {
         Text("This is Mypage View")
             .navigationTitle("알림")
