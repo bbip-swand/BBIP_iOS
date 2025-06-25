@@ -14,6 +14,8 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		989678062DFEBF7F007BC57D /* MainHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */; };
+		989678082DFEC979007BC57D /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678072DFEC979007BC57D /* OnboardingBuilder.swift */; };
 		98A7EB952DF72E6D001D32D2 /* BBIP-DEV.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */; };
 		98A7EB962DF72E6D001D32D2 /* BBIP-PROD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
@@ -279,6 +281,8 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeBuilder.swift; sourceTree = "<group>"; };
+		989678072DFEC979007BC57D /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-DEV.xcconfig"; sourceTree = "<group>"; };
 		98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-PROD.xcconfig"; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
@@ -897,6 +901,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */,
+				989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */,
 				C6FA55BF2C90355800E537D7 /* Frame */,
 				C6FA56072C9591E600E537D7 /* UserHome */,
 				C6F700952CA2DA66000CCC80 /* StudyHome */,
@@ -919,6 +924,7 @@
 			isa = PBXGroup;
 			children = (
 				C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */,
+				989678072DFEC979007BC57D /* OnboardingBuilder.swift */,
 				C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
@@ -1551,6 +1557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
+				989678082DFEC979007BC57D /* OnboardingBuilder.swift in Sources */,
 				C6516ECA2CEB4E3C00FCFAF2 /* SubmitAttendanceCodeUseCaseProtocol.swift in Sources */,
 				084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */,
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
@@ -1663,6 +1670,7 @@
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
+				989678062DFEBF7F007BC57D /* MainHomeBuilder.swift in Sources */,
 				C6516EB42CEB34CE00FCFAF2 /* AttendanceDataSource.swift in Sources */,
 				C6FA55F12C919A7400E537D7 /* UpcommingScheduleCardView.swift in Sources */,
 				C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */,
