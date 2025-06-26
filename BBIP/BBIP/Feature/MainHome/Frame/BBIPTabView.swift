@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 import LinkNavigator
 
-
-
 enum MainHomeTab: Equatable {
     case userHome
     case studyHome(studyId: String, studyName: String)

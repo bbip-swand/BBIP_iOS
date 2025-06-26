@@ -1,5 +1,5 @@
 //
-//  MyPageBuilder.swift
+//  MyPageRouteBuilder.swift
 //  BBIP
 //
 //  Created by 최주원 on 6/26/25.
@@ -7,7 +7,7 @@
 
 import LinkNavigator
 
-struct MyPageBuilder: RouteBuilder {
+struct MyPageRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.myPage.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
@@ -16,7 +16,7 @@ struct MyPageBuilder: RouteBuilder {
             return WrappingController(matchPath: matchPath) {
                 MypageView()
             }
-            .emptyTitle()
+            .defaultContext()
         }
     }
 }

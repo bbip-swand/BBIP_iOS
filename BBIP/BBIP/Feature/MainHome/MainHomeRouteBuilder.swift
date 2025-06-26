@@ -1,5 +1,5 @@
 //
-//  MainHomeBuilder.swift
+//  MainHomeRouteBuilder.swift
 //  BBIP
 //
 //  Created by 최주원 on 6/15/25.
@@ -7,7 +7,7 @@
 
 import LinkNavigator
 
-struct MainHomeBuilder: RouteBuilder {
+struct MainHomeRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.home.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
@@ -19,7 +19,7 @@ struct MainHomeBuilder: RouteBuilder {
                     .toolbar(.hidden, for: .navigationBar)
                     .environmentObject(dependency.appState)
             }
-            .emptyTitle()
+            .defaultContext()
         }
     }
 }
