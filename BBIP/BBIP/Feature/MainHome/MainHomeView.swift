@@ -41,6 +41,7 @@ struct MainHomeView: View {
             .frame(maxHeight: .infinity, alignment: .top)
             
             BBIPTabView(
+                navigator: navigator,
                 selectedTab: $selectedTab,
                 ongoingStudyData: $userHomeViewModel.ongoingStudyData
             )
