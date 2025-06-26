@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct MainHomeView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var userHomeViewModel = DIContainer.shared.makeUserHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
@@ -27,18 +29,19 @@ struct MainHomeView: View {
         ZStack {
             VStack(spacing: 0) {
                 switch selectedTab {
-                case .userHome:
-                    UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
-                    UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
-                case .studyHome(let studyId, _):
-                    StudyHomeView(studyId: studyId)
-                case .calendar:
-                    CalendarView(ongoingStudyData: userHomeViewModel.ongoingStudyData)
+                    case .userHome:
+                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
+                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
+                    case .studyHome(let studyId, _):
+                        StudyHomeView(navigator: navigator, studyId: studyId)
+                    case .calendar:
+                        CalendarView(ongoingStudyData: userHomeViewModel.ongoingStudyData)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
             BBIPTabView(
+                navigator: navigator,
                 selectedTab: $selectedTab,
                 ongoingStudyData: $userHomeViewModel.ongoingStudyData
             )
@@ -58,12 +61,12 @@ struct MainHomeView: View {
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
-            case .notice:
-                NoticeView()
+            //case .notice:
+                //NoticeView()
             case .mypage:
                 MypageView()
-            case .startSIS:
-                StartCreateStudyView()
+//            case .startSIS:
+//                StartCreateStudyView()
             case .setLocation(let prevLocation, let studyId, let session):
                 SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
             case .createCode (let studyId, let session):
@@ -78,9 +81,4 @@ struct MainHomeView: View {
         }
         .navigationBarBackButtonHidden()
     }
-}
-
-
-#Preview {
-    MainHomeView()
 }

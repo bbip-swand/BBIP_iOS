@@ -59,9 +59,9 @@ struct StartGuideView: View {
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
-        .navigationDestination(isPresented: $showCreateStudyView) {
-            StartCreateStudyView()
-        }
+//        .navigationDestination(isPresented: $showCreateStudyView) {
+//            StartCreateStudyView()
+//        }
     }
 }
 

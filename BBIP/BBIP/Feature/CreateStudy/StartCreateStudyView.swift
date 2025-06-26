@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct StartCreateStudyView: View {
-    @State private var showStudyInfoSetupView: Bool = false
+    let navigator: LinkNavigatorType
+    //@State private var showStudyInfoSetupView: Bool = false
     
     @State private var offset: CGSize = .zero
     @State private var angle: Double = 0
@@ -73,15 +75,11 @@ struct StartCreateStudyView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-        .navigationDestination(isPresented: $showStudyInfoSetupView) {
-            StudyInfoSetupView()
-        }
+//        .navigationDestination(isPresented: $showStudyInfoSetupView) {
+//            StudyInfoSetupView()
+//        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
     }
-}
-
-#Preview {
-    StartCreateStudyView()
 }
