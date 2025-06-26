@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import LinkNavigator
+
 
 
 enum MainHomeTab: Equatable {
@@ -16,6 +18,7 @@ enum MainHomeTab: Equatable {
 }
 
 struct BBIPTabView : View {
+    let navigator: LinkNavigatorType
     @Binding private var selectedTab: MainHomeTab
     @Binding private var ongoingStudyData: [StudyInfoVO]?
     @State private var showSheet = false
@@ -86,7 +89,7 @@ struct BBIPTabView : View {
             .background(.clear)
         }
         .sheet(isPresented: $showSheet) {
-            StudySwitchView(selectedTab: $selectedTab, ongoingStudyData: $ongoingStudyData)
+            StudySwitchView(navigator: navigator, selectedTab: $selectedTab, ongoingStudyData: $ongoingStudyData)
                 .presentationDragIndicator(.visible)
                 .presentationDetents([.height(sheetHeight)])
         }

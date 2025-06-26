@@ -25,11 +25,11 @@ enum BBIPMatchPath: String {
     
     case notice
     case myPage
-    case startCreateStudy
-    case setStudyLocation
-    case createCodeOnboarding
-    case attendanceCertification
-    case postingList
+    case startSIS
+    case setLocation
+    case createCode
+    case entercode
+    case showPostingList
 
 extension BBIPMatchPath {
     var capitalizedPath: String {

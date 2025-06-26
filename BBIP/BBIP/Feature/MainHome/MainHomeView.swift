@@ -29,13 +29,13 @@ struct MainHomeView: View {
         ZStack {
             VStack(spacing: 0) {
                 switch selectedTab {
-                case .userHome:
-                    UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
-                    UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
-                case .studyHome(let studyId, _):
-                    StudyHomeView(studyId: studyId)
-                case .calendar:
-                    CalendarView(ongoingStudyData: userHomeViewModel.ongoingStudyData)
+                    case .userHome:
+                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
+                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
+                    case .studyHome(let studyId, _):
+                        StudyHomeView(navigator: navigator, studyId: studyId)
+                    case .calendar:
+                        CalendarView(ongoingStudyData: userHomeViewModel.ongoingStudyData)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
@@ -60,8 +60,8 @@ struct MainHomeView: View {
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
-            case .notice:
-                NoticeView()
+            //case .notice:
+                //NoticeView()
             case .mypage:
                 MypageView()
             case .startSIS:

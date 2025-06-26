@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct StartCreateStudyView: View {
-    @State private var showStudyInfoSetupView: Bool = false
+    let navigator: LinkNavigatorType
+    //@State private var showStudyInfoSetupView: Bool = false
     
     @State private var offset: CGSize = .zero
     @State private var angle: Double = 0
