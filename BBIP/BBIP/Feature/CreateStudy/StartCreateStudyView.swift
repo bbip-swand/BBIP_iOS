@@ -75,15 +75,11 @@ struct StartCreateStudyView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-        .navigationDestination(isPresented: $showStudyInfoSetupView) {
-            StudyInfoSetupView()
-        }
+//        .navigationDestination(isPresented: $showStudyInfoSetupView) {
+//            StudyInfoSetupView()
+//        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
     }
-}
-
-#Preview {
-    StartCreateStudyView()
 }
