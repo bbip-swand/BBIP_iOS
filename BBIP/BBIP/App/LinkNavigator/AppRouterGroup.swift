@@ -14,7 +14,8 @@ struct AppRouterGroup {
         OnboardingBuilder(),
         MainHomeBuilder(),
         NoticeBuilder(),
-        MyPageBuilder()
+        MyPageBuilder(),
+        OnboardingRouteBuilder()
     ]
   }
 }
