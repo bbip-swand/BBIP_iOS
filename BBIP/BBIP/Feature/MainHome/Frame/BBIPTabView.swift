@@ -24,9 +24,11 @@ struct BBIPTabView : View {
     @State private var showSheet = false
     
     init(
+        navigator: LinkNavigatorType,
         selectedTab: Binding<MainHomeTab>,
         ongoingStudyData: Binding<[StudyInfoVO]?>
     ) {
+        self.navigator = navigator
         self._selectedTab = selectedTab
         self._ongoingStudyData = ongoingStudyData
     }
