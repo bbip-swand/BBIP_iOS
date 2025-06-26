@@ -739,6 +739,7 @@
 			isa = PBXGroup;
 			children = (
 				C6934BB02C808321006AA652 /* StartCreateStudyView.swift */,
+				98830A9C2E0CFAFC00414CF7 /* StartCreateStudyBuilder.swift */,
 				C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */,
 				C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */,
 				C6934BC02C822031006AA652 /* SISInnerView */,
@@ -1764,6 +1765,7 @@
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,
+				98830A9D2E0CFAFC00414CF7 /* StartCreateStudyBuilder.swift in Sources */,
 				C6F98F3F2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift in Sources */,
 				C6F2DA3D2CAC2EB7002023B6 /* CheckStudyLocationView.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
