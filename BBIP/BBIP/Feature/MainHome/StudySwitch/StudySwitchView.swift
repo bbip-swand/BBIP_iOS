@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct StudySwitchView: View {
+    let navigator: LinkNavigatorType
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appState: AppStateManager
     @Binding var selectedTab: MainHomeTab

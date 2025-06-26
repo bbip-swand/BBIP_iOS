@@ -16,6 +16,7 @@ struct MainHomeBuilder: RouteBuilder {
             
             return WrappingController(matchPath: matchPath) {
                 MainHomeView(navigator: navigator)
+                    .toolbar(.hidden, for: .navigationBar)
                     .environmentObject(dependency.appState)
             }
             .emptyTitle()

@@ -7,8 +7,10 @@
 
 import SwiftUI
 import Combine
+import LinkNavigator
 
 struct StudyHomeView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject private var appState: AppStateManager
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
     
@@ -22,7 +24,8 @@ struct StudyHomeView: View {
     
     private let studyId: String
     
-    init(studyId: String) {
+    init(navigator: LinkNavigatorType, studyId: String) {
+        self.navigator = navigator
         self.studyId = studyId
     }
     
@@ -521,8 +524,3 @@ extension StudyHomeView {
         return dateFormatter.string(from: date)
     }
 }
-
-#Preview {
-    StudyHomeView(studyId: "a")
-}
-

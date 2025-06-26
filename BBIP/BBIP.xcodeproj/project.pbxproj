@@ -14,6 +14,9 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		98830A9D2E0CFAFC00414CF7 /* StartCreateStudyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9C2E0CFAFC00414CF7 /* StartCreateStudyBuilder.swift */; };
+		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
+		98830AA12E0D5AAB00414CF7 /* CreateCodeOnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830AA02E0D5AAB00414CF7 /* CreateCodeOnboardingBuilder.swift */; };
 		9886AB362E0C64770035D3D0 /* NoticeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeBuilder.swift */; };
 		9886AB382E0C675D0035D3D0 /* MyPageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB372E0C675D0035D3D0 /* MyPageBuilder.swift */; };
 		989678062DFEBF7F007BC57D /* MainHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */; };
@@ -283,6 +286,9 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		98830A9C2E0CFAFC00414CF7 /* StartCreateStudyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyBuilder.swift; sourceTree = "<group>"; };
+		98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDataStore.swift; sourceTree = "<group>"; };
+		98830AA02E0D5AAB00414CF7 /* CreateCodeOnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeOnboardingBuilder.swift; sourceTree = "<group>"; };
 		9886AB352E0C64770035D3D0 /* NoticeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBuilder.swift; sourceTree = "<group>"; };
 		9886AB372E0C675D0035D3D0 /* MyPageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageBuilder.swift; sourceTree = "<group>"; };
 		989678052DFEBF7F007BC57D /* MainHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeBuilder.swift; sourceTree = "<group>"; };
@@ -714,6 +720,7 @@
 				C67AD8392DFE9C79000A1E39 /* BBIPMatchPath.swift */,
 				C67AD8332DFE96CE000A1E39 /* AppDependency.swift */,
 				C67AD8362DFE9716000A1E39 /* AppRouterGroup.swift */,
+				98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */,
 			);
 			path = LinkNavigator;
 			sourceTree = "<group>";
@@ -1745,6 +1752,7 @@
 				C6516ECF2CEB6E5400FCFAF2 /* CreateCodeView.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
+				98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */,
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
 				C6516EE42CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift in Sources */,
