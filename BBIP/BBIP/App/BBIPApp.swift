@@ -11,16 +11,27 @@ import LinkNavigator
 @main
 struct BBIPApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-        
+    @State private var showSplash = true
+
     var navigator: LinkNavigator {
         appDelegate.navigator
     }
     
     var body: some Scene {
         WindowGroup {
-            navigator
-                .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
-                .onOpenURL { url in handleDeepLink(url) }
+            ZStack {
+                navigator
+                    .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
+                    .onOpenURL { url in handleDeepLink(url) }
+                    .edgesIgnoringSafeArea(.all)
+                
+                
+                if showSplash {
+                    SplashView() { showSplash = false }
+                        .zIndex(1)
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: showSplash)
         }
     }
 }

@@ -8,27 +8,21 @@
 import Foundation
 import Combine
 import AuthenticationServices
+import Factory
 
 final class LoginViewModel: ObservableObject {
     @Published var loginSuccess: Bool = false
     @Published var UISDataIsEmpty: Bool = false
     @Published var isLoading: Bool = false
     
-    private let requestLoginUseCase: RequestLoginUseCaseProtocol
-    private let signUpUseCase: SignUpUseCaseProtocol
+    @Injected(\.requestLoginUseCase) private var requestLoginUseCase
+    @Injected(\.signUpUseCase) private var signUpUseCase
+    
     private let userStateManager = UserStateManager()
     private var cancellables = Set<AnyCancellable>()
     
     private var identityToken: String?
     private var authorizationCode: String?
-    
-    init(
-        requestLoginUseCase: RequestLoginUseCaseProtocol,
-        signUpUseCase: SignUpUseCaseProtocol
-    ) {
-        self.requestLoginUseCase = requestLoginUseCase
-        self.signUpUseCase = signUpUseCase
-    }
     
     /// BBIP 로직과 별개로 identity Token을 받기 위한 애플 로그인 절차
     func handleAppleLogin(result: Result<ASAuthorization, any Error>) {

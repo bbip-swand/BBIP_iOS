@@ -175,17 +175,14 @@ class DIContainer {
     
     // MARK: - ViewModels
     // Login
-    func makeLoginViewModel() -> LoginViewModel {
-        return LoginViewModel(
-            requestLoginUseCase: requestLoginUseCase,
-            signUpUseCase: signUpUseCase
-        )
-    }
+    //    func makeLoginViewModel() -> LoginViewModel {
+    //        return LoginViewModel(signUpUseCase: signUpUseCase)
+    //    }
     
     // UserInfoSetup
-    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
-        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
-    }
+//    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
+//        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
+//    }
     
     // UserHome
     func makeUserHomeViewModel() -> UserHomeViewModel {

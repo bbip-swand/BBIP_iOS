@@ -100,6 +100,7 @@ final class AppStateManager: ObservableObject {
     }
 }
 
+/*
 struct RootView: View {
     @StateObject private var appStateManager = AppStateManager()
     
@@ -154,3 +155,4 @@ struct RootView: View {
         }
     }
 }
+*/
