@@ -68,7 +68,7 @@ struct StartCreateStudyView: View {
                 }
             
             MainButton(text: "시작하기") {
-                showStudyInfoSetupView = true
+//                showStudyInfoSetupView = true
             }
             .padding(.bottom, 22)
         }

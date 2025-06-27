@@ -5,11 +5,12 @@
 //  Created by 이건우 on 8/14/24.
 //
 
+import Factory
 import SwiftUI
 import SwiftUIIntrospect
 
 struct UserInfoSetupView: View {
-    @StateObject private var userInfoSetupViewModel = DIContainer.shared.makeUserInfoSetupViewModel()
+    @StateObject private var userInfoSetupViewModel = Container.shared.userInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
     private func buttonText() -> String {
