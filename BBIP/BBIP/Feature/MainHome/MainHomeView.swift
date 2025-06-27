@@ -26,6 +26,7 @@ struct MainHomeView: View {
     }
     
     var body: some View {
+        NavigationStack(path: $appState.path) {
         ZStack {
             VStack(spacing: 0) {
                 switch selectedTab {
@@ -67,8 +68,8 @@ struct MainHomeView: View {
             // case .mypage:
             //    MypageView()
                 
-            // case .startSIS:
-            //    StartCreateStudyView()
+             case .startSIS:
+                StartCreateStudyView()
                 
             case .setLocation(let prevLocation, let studyId, let session):
                 SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
@@ -86,6 +87,8 @@ struct MainHomeView: View {
                 EmptyView()
             }
         }
+        }
         .navigationBarBackButtonHidden()
+            
     }
 }

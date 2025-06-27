@@ -9,8 +9,8 @@ import SwiftUI
 import LinkNavigator
 
 struct StartCreateStudyView: View {
-    let navigator: LinkNavigatorType
-    //@State private var showStudyInfoSetupView: Bool = false
+    //let navigator: LinkNavigatorType
+    @State private var showStudyInfoSetupView: Bool = false
     
     @State private var offset: CGSize = .zero
     @State private var angle: Double = 0
@@ -68,16 +68,16 @@ struct StartCreateStudyView: View {
                 }
             
             MainButton(text: "시작하기") {
-//                showStudyInfoSetupView = true
+                showStudyInfoSetupView = true
             }
             .padding(.bottom, 22)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-//        .navigationDestination(isPresented: $showStudyInfoSetupView) {
-//            StudyInfoSetupView()
-//        }
+        .navigationDestination(isPresented: $showStudyInfoSetupView) {
+            StudyInfoSetupView()
+        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }

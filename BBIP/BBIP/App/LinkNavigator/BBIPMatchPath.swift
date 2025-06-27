@@ -22,9 +22,7 @@ enum BBIPMatchPath: String {
     
     // MARK: MainHome
     case home
-    
     case notice
-    case myPage
     
     // MARK: BNB
     case startSIS
