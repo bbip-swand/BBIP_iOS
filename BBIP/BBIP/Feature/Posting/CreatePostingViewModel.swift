@@ -26,7 +26,7 @@ final class CreatePostingViewModel: ObservableObject {
         setupValidationBindings()
     }
     
-    func uploadPosting(studyId: String, isNotice: Bool = false) {
+    func uploadPosting(studyId: String) {
         guard canUpload else { return }
         
         isUploading = true

@@ -45,7 +45,7 @@ struct CreatePostingView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.uploadPosting(studyId: studyId, isNotice: false)
+                    viewModel.uploadPosting(studyId: studyId)
                 } label: {
                     Text("업로드")
                         .font(.bbip(.body1_m16))
