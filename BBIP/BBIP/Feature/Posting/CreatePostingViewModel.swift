@@ -12,6 +12,7 @@ final class CreatePostingViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var content: String = ""
     @Published var week: Int = -1
+    @Published var isNotice: Bool = false
     
     @Published var canUpload: Bool = false
     @Published var isUploading: Bool = false

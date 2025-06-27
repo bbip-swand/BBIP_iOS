@@ -162,6 +162,20 @@ extension CreatePostingView {
     var weekPicker: some View {
         ScrollView {
             VStack(spacing: 8) {
+                // 공지글 토글
+                HStack {
+                    Toggle("공지글", isOn: $viewModel.isNotice)
+                        .font(.bbip(.body2_m14))
+                        .toggleStyle(SwitchToggleStyle(tint: .primary3))
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundStyle(.mainWhite)
+                )
+                .padding(.horizontal, 17)
+                
                 ForEach(0..<weeklyContent.count, id: \.self) { index in
                     WeeklyStudyContentCardView(week: index + 1, content: weeklyContent[index])
                         .onTapGesture {
