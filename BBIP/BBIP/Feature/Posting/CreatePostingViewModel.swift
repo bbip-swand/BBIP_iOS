@@ -60,11 +60,11 @@ final class CreatePostingViewModel: ObservableObject {
     
     // Validation 설정
     private func setupValidationBindings() {
-        Publishers.CombineLatest4($title, $content, $week, $isNotice)
-            .map { title, content, week, isNotice in
+        Publishers.CombineLatest3($title, $content, $week)
+            .map { title, content, week in
                 return !title.isEmpty && title.count <= 20 &&
-                !content.isEmpty && content.count <= 300 && (
-                week > 0 || isNotice )
+                !content.isEmpty && content.count <= 300 &&
+                week > 0
             }
             .assign(to: &$canUpload)
     }
