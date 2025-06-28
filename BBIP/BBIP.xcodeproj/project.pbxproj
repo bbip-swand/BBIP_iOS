@@ -19,6 +19,7 @@
 		9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */; };
 		9886AB382E0C675D0035D3D0 /* MyPageRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB372E0C675D0035D3D0 /* MyPageRouteBuilder.swift */; };
 		989678062DFEBF7F007BC57D /* MainHomeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678052DFEBF7F007BC57D /* MainHomeRouteBuilder.swift */; };
+		98A9B1622E0EF3A800E88CA2 /* BBIP-PROD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -190,7 +191,6 @@
 		C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22772CA412B900988748 /* JoinStudyCustomAlert.swift */; };
 		C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */; };
 		C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */; };
-		C6D298372E0D8310004F6D1B /* BBIP-PROD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C6D298362E0D8310004F6D1B /* BBIP-PROD.xcconfig */; };
 		C6D298382E0D8310004F6D1B /* BBIP-DEV.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C6D298352E0D8310004F6D1B /* BBIP-DEV.xcconfig */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
@@ -294,6 +294,7 @@
 		9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouteBuilder.swift; sourceTree = "<group>"; };
 		9886AB372E0C675D0035D3D0 /* MyPageRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRouteBuilder.swift; sourceTree = "<group>"; };
 		989678052DFEBF7F007BC57D /* MainHomeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeRouteBuilder.swift; sourceTree = "<group>"; };
+		98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-PROD.xcconfig"; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -460,7 +461,6 @@
 		C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyUseCase.swift; sourceTree = "<group>"; };
 		C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyViewModel.swift; sourceTree = "<group>"; };
 		C6D298352E0D8310004F6D1B /* BBIP-DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-DEV.xcconfig"; sourceTree = "<group>"; };
-		C6D298362E0D8310004F6D1B /* BBIP-PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-PROD.xcconfig"; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -953,7 +953,6 @@
 			children = (
 				C67AD8462DFEB750000A1E39 /* OnboardingRouteBuilder.swift */,
 				C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */,
-				989678072DFEC979007BC57D /* OnboardingBuilder.swift */,
 				C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
@@ -1187,11 +1186,9 @@
 			children = (
 				C695CB6B2C7F284A00BB3952 /* BBIP.entitlements */,
 				C61A472D2C6686CA0016986D /* Info.plist */,
-				98A7EB932DF72E6D001D32D2 /* BBIP-DEV.xcconfig */,
-				98A7EB942DF72E6D001D32D2 /* BBIP-PROD.xcconfig */,
 				C6516EE52CECE7E300FCFAF2 /* GoogleService-Info.plist */,
+				98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */,
 				C6D298352E0D8310004F6D1B /* BBIP-DEV.xcconfig */,
-				C6D298362E0D8310004F6D1B /* BBIP-PROD.xcconfig */,
 				C695BDE02C649EDE009DEC3C /* App */,
 				C695BDE12C649F06009DEC3C /* Core */,
 				C695BDE22C649F0D009DEC3C /* Component */,
@@ -1565,18 +1562,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A9B1622E0EF3A800E88CA2 /* BBIP-PROD.xcconfig in Resources */,
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
 				C6516F652CF6129000FCFAF2 /* Complete_Attendance.json in Resources */,
 				C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */,
-				98A7EB952DF72E6D001D32D2 /* BBIP-DEV.xcconfig in Resources */,
-				98A7EB962DF72E6D001D32D2 /* BBIP-PROD.xcconfig in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C6516F632CF60EDD00FCFAF2 /* Complete_CreateStudy.json in Resources */,
 				C6516F612CF60EBC00FCFAF2 /* Complete_SignIn.json in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
-				C6D298372E0D8310004F6D1B /* BBIP-PROD.xcconfig in Resources */,
 				C6D298382E0D8310004F6D1B /* BBIP-DEV.xcconfig in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
 				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
@@ -1593,7 +1588,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
-				989678082DFEC979007BC57D /* OnboardingBuilder.swift in Sources */,
 				C6516ECA2CEB4E3C00FCFAF2 /* SubmitAttendanceCodeUseCaseProtocol.swift in Sources */,
 				084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */,
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
@@ -1913,7 +1907,7 @@
 		};
 		C6B00C1E2C590A10009AC4E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6D298362E0D8310004F6D1B /* BBIP-PROD.xcconfig */;
+			baseConfigurationReference = 98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -2018,7 +2012,7 @@
 		};
 		C6B00C212C590A10009AC4E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6D298362E0D8310004F6D1B /* BBIP-PROD.xcconfig */;
+			baseConfigurationReference = 98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
