@@ -52,8 +52,24 @@ struct PostingDetailView: View {
         .ignoresSafeArea(.container, edges: .bottom)
         .scrollIndicators(.never)
         .backButtonStyle()
-        .toolbar {
-            // edit & removeable button
+        .toolbar{
+            if viewModel.postManger {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button(role: .destructive) {
+                            // 삭제 로직 추가
+                        } label: {
+                            Text("삭제")
+                                .font(.bbip(.body2_m14))
+                        }
+                    } label: {
+                        Image("more_black")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
         }
     }
 
