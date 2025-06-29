@@ -90,6 +90,13 @@ struct WeeklyStudyContentListView: View {
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
+        // 수정 완료 alert 표기
+        .fullScreenCover(isPresented: $viewModel.isCompletePresented) {
+            completeAlert
+        }
+        .transaction { transaction in
+            transaction.disablesAnimations = true
+        }
         .customAlert(
             isPresented: $viewModel.isAlertPresented,
             title: viewModel.alertType.title,
@@ -120,5 +127,35 @@ struct WeeklyStudyContentListView: View {
             )
         }
         .disabled(!viewModel.isModify)
+    }
+    
+    /// 수정 완료 alert view
+    var completeAlert: some View {
+        ZStack{
+            Color.black.opacity(0.3)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 16) {
+                Image("complete")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 53, height: 53)
+                
+                VStack(spacing: 4) {
+                    Text("수정 완료!")
+                        .font(.bbip(.title3_m20))
+                        .multilineTextAlignment(.center)
+                    
+                    Text("최신 내용으로 업데이트했어요")
+                        .font(.bbip(.body2_m14))
+                        .multilineTextAlignment(.center)
+                }
+            }
+            .padding(.horizontal, 17)
+            .padding(.vertical, 20)
+            .background(Color.white)
+            .cornerRadius(12)
+        }
+        .presentationBackground(.clear)
     }
 }

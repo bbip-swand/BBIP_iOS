@@ -14,9 +14,12 @@ class WeeklyStudyContentListViewModel: ObservableObject {
     @Published var modifiedContent: [String]    // 수정된 내용(임시 저장소)
     @Published var isModify: Bool = false       // 수정모드 진입 여부
     @Published var selectedIndex: Int? = nil    // 선택된 카드 index
+    @Published var textForEditing: String = ""  // 수정 텍스트 임시 저장소
+    // Presented
     @Published var isEditSheetPresented: Bool = false   // 수정 sheet 표시
     @Published var isAlertPresented: Bool = false   // 수정 sheet 표시
-    @Published var textForEditing: String = ""  // 수정 텍스트 임시 저장소
+    @Published var isCompletePresented: Bool = false   // 수정 완료 표시
+    
     var alertType: WeeklyStudyContentAlertType = .save
     
     /// 내용 수정 여부
@@ -67,6 +70,20 @@ class WeeklyStudyContentListViewModel: ObservableObject {
         // 저장 코드 추가
         withAnimation(.easeInOut(duration: 0.15)) {
             isModify = false
+        }
+        
+        // api 코드 추가
+        
+        
+        // 저장 완료 alert 표시
+        isCompletePresented = true
+        
+        Task {
+            // 1.5초 지연
+            try? await Task.sleep(nanoseconds: UInt64(1.5) * 1_000_000_000)
+            await MainActor.run {
+                self.isCompletePresented = false
+            }
         }
     }
     

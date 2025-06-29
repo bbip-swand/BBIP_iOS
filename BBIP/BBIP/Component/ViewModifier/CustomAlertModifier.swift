@@ -22,7 +22,7 @@ struct CustomAlertModifier: ViewModifier {
         content
             .fullScreenCover(isPresented: $isPresented) {
                 ZStack {
-                    Color.black.opacity(0.8)
+                    Color.black.opacity(0.3)
                         .edgesIgnoringSafeArea(.all)
                         .onTapGesture {
                             isPresented = false
