@@ -1,0 +1,62 @@
+//
+//  WeeklyStudyContentListViewModel.swift
+//  BBIP
+//
+//  Created by 최주원 on 6/29/25.
+//
+
+import Foundation
+
+class WeeklyStudyContentListViewModel: ObservableObject {
+    // MARK: - Properties
+    let isManager: Bool     // 관리자 여부
+    private let originalContent: [String]       // 기존 내용(비교 용도)
+    @Published var modifiedContent: [String]    // 수정된 내용(임시 저장소)
+    @Published var isModify: Bool = false       // 수정모드 진입 여부
+    @Published var selectedIndex: Int? = nil    // 선택된 카드 index
+    @Published var isSheetPresented: Bool = false   // 수정 sheet 표시
+    @Published var textForEditing: String = ""  // 수정 텍스트 임시 저장소
+    
+    /// 내용 수정 여부
+    var isContentChanged: Bool { originalContent != modifiedContent }
+    
+    /// 수정 버튼 표시 여부
+    var editButtonPresented: Bool { isManager && !isModify }
+    
+    // MARK: - Initializer
+    init(weeklyStudyContent: [String], isManager: Bool) {
+        self.originalContent = weeklyStudyContent
+        self.modifiedContent = weeklyStudyContent // 초기에는 원본과 동일하게 설정
+        self.isManager = isManager
+    }
+    
+    // MARK: - Functions
+    /// 수정 모드 전환
+    func enterModifyMode() {
+        isModify = true
+    }
+    
+    /// 수정 모드 진입
+    func selectCard(at index: Int) {
+        guard isModify else { return }
+        selectedIndex = index
+        textForEditing = modifiedContent[index]
+        isSheetPresented = true
+    }
+    /// 선택 주차 수정 완료
+    func updateSelectedContent() {
+        if let index = selectedIndex {
+            modifiedContent[index] = textForEditing
+        }
+        // Sheet를 닫고 선택 상태를 초기화
+        isSheetPresented = false
+        selectedIndex = nil
+        textForEditing = ""
+    }
+    
+    /// 수정된 내용 저장
+    func saveChanges() {
+        // 저장 코드 추가
+        isModify = false
+    }
+}

@@ -15,6 +15,7 @@
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		981679872E102B2500AE0077 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679862E102B2500AE0077 /* CustomAlertModifier.swift */; };
+		981679892E11837100AE0077 /* WeeklyStudyContentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */; };
 		98830A9D2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */; };
 		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
 		9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */; };
@@ -291,6 +292,7 @@
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		981679862E102B2500AE0077 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
+		981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListViewModel.swift; sourceTree = "<group>"; };
 		98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDataStore.swift; sourceTree = "<group>"; };
 		9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouteBuilder.swift; sourceTree = "<group>"; };
@@ -1352,6 +1354,7 @@
 				C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */,
 				C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */,
 				C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */,
+				981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */,
 			);
 			path = StudyHome;
 			sourceTree = "<group>";
@@ -1701,6 +1704,7 @@
 				C6516EF42CEDECE900FCFAF2 /* EmptyPlaceholderView.swift in Sources */,
 				C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */,
 				C67AD83A2DFE9C79000A1E39 /* BBIPMatchPath.swift in Sources */,
+				981679892E11837100AE0077 /* WeeklyStudyContentListViewModel.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
