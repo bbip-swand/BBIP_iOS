@@ -725,9 +725,9 @@
 		C67AD8352DFE96EE000A1E39 /* LinkNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				C67AD8392DFE9C79000A1E39 /* BBIPMatchPath.swift */,
 				C67AD8332DFE96CE000A1E39 /* AppDependency.swift */,
 				C67AD8362DFE9716000A1E39 /* AppRouterGroup.swift */,
+				C67AD8392DFE9C79000A1E39 /* BBIPMatchPath.swift */,
 				98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */,
 			);
 			path = LinkNavigator;

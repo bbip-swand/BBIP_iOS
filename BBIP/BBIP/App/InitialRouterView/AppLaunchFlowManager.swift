@@ -42,9 +42,9 @@ final class AppLaunchFlowManager: ObservableObject {
 extension AppLaunchFlowManager {
     private func logging(isUserProfileSet: Bool) {
         if isUserProfileSet {
-            Logger().info("AppLaunchFlowManager: 기존 유저")
+            Logger().info("\(#file) 기존 유저")
         } else {
-            Logger().info("AppLaunchFlowManager: 신규 유저")
+            Logger().info("\(#file) 신규 유저")
         }
     }
 }
