@@ -124,7 +124,6 @@ struct CustomAlertView: View {
                 .foregroundStyle(confirmColor)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .font(.bbip(.body1_m16))
-                .foregroundColor(.red)
             }
             .frame(maxHeight: 52)
         }
