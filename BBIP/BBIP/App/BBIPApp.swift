@@ -49,9 +49,8 @@ extension BBIPApp {
                     studyName: queryItems.first(where: { $0.name == "studyName" })?.value ?? "",
                     studyDescription: queryItems.first(where: { $0.name == "studyDescription" })?.value
                 )
-                print(deepLinkAlertData)
-//                appStateManager.setDeepLinkAlertData(deepLinkAlertData)
-//                appStateManager.showDeepLinkAlert = true
+                appDelegate.appStateManager.setDeepLinkAlertData(deepLinkAlertData)
+                appDelegate.appStateManager.showDeepLinkAlert = true
             }
         }
     }

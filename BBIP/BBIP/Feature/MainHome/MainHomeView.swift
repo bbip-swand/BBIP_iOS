@@ -49,6 +49,24 @@ struct MainHomeView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .edgesIgnoringSafeArea(.bottom)
             }
+            .overlay(
+                Group {
+                    if let data = appState.deepLinkAlertData {
+                        JoinStudyCustomAlert(
+                            appState: appState,
+                            inviteData: data
+                        )
+                        .opacity(appState.showDeepLinkAlert ? 1 : 0)
+                    }
+                }
+            )
+            .alert(isPresented: $appState.showJoinFailAlert) {
+                Alert(
+                    title: Text("가입 실패"),
+                    message: Text("이미 가입된 스터디입니다"),
+                    dismissButton: .default(Text("확인"))
+                )
+            }
             .overlay {
                 JoinStudyCompleteAlert()
                     .onTapGesture {
