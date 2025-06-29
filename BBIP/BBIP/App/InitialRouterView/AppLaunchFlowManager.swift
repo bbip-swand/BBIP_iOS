@@ -20,43 +20,34 @@ final class AppLaunchFlowManager: ObservableObject {
     /// 앱 실행 시 초기 진입 경로를 판단하고 이동합니다.
     func start() {
         userDataSource.checkIsNewUser { [weak self] isNewUser in
+            
+            // NOTE: isNewUser: 참여한 스터디가 없는 첫 가입한 유저
             guard let self else { return }
             
-            let isUserProfileSet = !isNewUser
-            let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
-            UserDefaultsManager.shared.setIsExistingUser(isUserProfileSet)
-            
-            let destination: BBIPMatchPath
-            
-            switch (isLoggedIn, isUserProfileSet) {
-            case (false, false):
-                destination = .onboarding
+            userDataSource.checkUserInfoExists { isExist in
+                let isUserInfoExist = isExist
+                let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
                 
-            case (false, true):
-                BBIPLogger.log("Unexpected AppFlow", level: .fault, category: .default)
-                destination = .onboarding
+                let destination: BBIPMatchPath
                 
-            case (true, false):
-                destination = .userInfoSetup
+                // 로그인 여부 값(Local), 필수 정보 세팅 여부 값(Server)
+                switch (isLoggedIn, isUserInfoExist) {
+                case (false, false):
+                    destination = .onboarding
+                    
+                case (false, true):
+                    BBIPLogger.log("Unexpected AppFlow", level: .fault, category: .default)
+                    destination = .onboarding
+                    
+                case (true, false):
+                    destination = .userInfoSetup
+                    
+                case (true, true):
+                    destination = isNewUser ? .startGuide : .home
+                }
                 
-            case (true, true):
-                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
-                destination = isExistingUser ? .home : .startGuide
+                self.navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: false)
             }
-            
-            navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: false)
-            
-            logging(isUserProfileSet: isUserProfileSet)
-        }
-    }
-}
-
-extension AppLaunchFlowManager {
-    private func logging(isUserProfileSet: Bool) {
-        if isUserProfileSet {
-            BBIPLogger.log("기존 유저로 앱 진입", level: .info, category: .default)
-        } else {
-            BBIPLogger.log("신규 유저로 앱 진입", level: .info, category: .default)
         }
     }
 }

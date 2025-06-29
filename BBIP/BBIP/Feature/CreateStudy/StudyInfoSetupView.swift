@@ -80,7 +80,10 @@ struct StudyInfoSetupView: View {
         }
         .onChange(of: createStudyViewModel.showCompleteView) { _, showCompleteView in
             if showCompleteView == true {
-                navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath], items: [:], isAnimated: true)
+                navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath],
+                               items: ["studyId" : createStudyViewModel.createdStudyId,
+                                       "studyInviteCode" : createStudyViewModel.studyInviteCode],
+                               isAnimated: true)
             }
         }
         .colorScheme(.dark)
@@ -91,12 +94,14 @@ struct StudyInfoSetupView: View {
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
-//        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-//            SISCompleteView(
-//                studyId: createStudyViewModel.createdStudyId,
-//                studyInviteCode: createStudyViewModel.studyInviteCode
-//            )
-//        }
+        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
+            // LN TODO: 삭제 예정
+            StudyInfoSetupCompleteView(
+                navigator: navigator,
+                studyId: createStudyViewModel.createdStudyId,
+                studyInviteCode: createStudyViewModel.studyInviteCode
+            )
+        }
     }
 
     // 다음 버튼 동작 처리

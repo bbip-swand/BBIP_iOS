@@ -141,7 +141,7 @@
 		C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC52C8220B2006AA652 /* SISProfileView.swift */; };
 		C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */; };
 		C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */; };
-		C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BCB2C822147006AA652 /* SISCompleteView.swift */; };
+		C6934BCC2C822147006AA652 /* StudyInfoSetupCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BCB2C822147006AA652 /* StudyInfoSetupCompleteView.swift */; };
 		C69445922C9D55DF003945CC /* CreateStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */; };
 		C69445982C9D595D003945CC /* CreateStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445972C9D595D003945CC /* CreateStudyUseCase.swift */; };
 		C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445992C9D5A3E003945CC /* StudyAPI.swift */; };
@@ -198,6 +198,7 @@
 		C6D298432E1198AF004F6D1B /* StartGuideRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298422E1198AF004F6D1B /* StartGuideRouteBuilder.swift */; };
 		C6D298452E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */; };
 		C6D298482E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298472E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift */; };
+		C6D2984A2E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298492E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -415,7 +416,7 @@
 		C6934BC52C8220B2006AA652 /* SISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISProfileView.swift; sourceTree = "<group>"; };
 		C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISDescriptionView.swift; sourceTree = "<group>"; };
 		C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISWeeklyContentView.swift; sourceTree = "<group>"; };
-		C6934BCB2C822147006AA652 /* SISCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCompleteView.swift; sourceTree = "<group>"; };
+		C6934BCB2C822147006AA652 /* StudyInfoSetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupCompleteView.swift; sourceTree = "<group>"; };
 		C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyInfoVO.swift; sourceTree = "<group>"; };
 		C69445972C9D595D003945CC /* CreateStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyUseCase.swift; sourceTree = "<group>"; };
 		C69445992C9D5A3E003945CC /* StudyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAPI.swift; sourceTree = "<group>"; };
@@ -472,6 +473,7 @@
 		C6D298422E1198AF004F6D1B /* StartGuideRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGuideRouteBuilder.swift; sourceTree = "<group>"; };
 		C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		C6D298472E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupRouteBuilder.swift; sourceTree = "<group>"; };
+		C6D298492E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupCompleteRouteBuilder.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -767,7 +769,7 @@
 				C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */,
 				C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */,
 				C6934BC02C822031006AA652 /* SISInnerView */,
-				C6934BCB2C822147006AA652 /* SISCompleteView.swift */,
+				C6D2984B2E11A164004F6D1B /* StudyInfoSetupComplete */,
 			);
 			path = CreateStudy;
 			sourceTree = "<group>";
@@ -1251,6 +1253,15 @@
 			path = StartCreateStudy;
 			sourceTree = "<group>";
 		};
+		C6D2984B2E11A164004F6D1B /* StudyInfoSetupComplete */ = {
+			isa = PBXGroup;
+			children = (
+				C6D298492E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift */,
+				C6934BCB2C822147006AA652 /* StudyInfoSetupCompleteView.swift */,
+			);
+			path = StudyInfoSetupComplete;
+			sourceTree = "<group>";
+		};
 		C6F2DA142CAACEF6002023B6 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
@@ -1698,7 +1709,7 @@
 				C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */,
 				C6516EE02CECC95500FCFAF2 /* PendingStudyVO.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* UserHomeViewModel.swift in Sources */,
-				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
+				C6934BCC2C822147006AA652 /* StudyInfoSetupCompleteView.swift in Sources */,
 				C6516ED52CEB866E00FCFAF2 /* AttendRecordView.swift in Sources */,
 				C6D298432E1198AF004F6D1B /* StartGuideRouteBuilder.swift in Sources */,
 				C6D2983E2E117E96004F6D1B /* View+Extension.swift in Sources */,
@@ -1788,6 +1799,7 @@
 				C6516EC42CEB4D9500FCFAF2 /* GetAttendanceStatusUseCaseProtocol.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
 				C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */,
+				C6D2984A2E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift in Sources */,
 				C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */,
 				C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */,
 				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,

@@ -20,6 +20,7 @@ struct AppRouterGroup {
         
         StartCreateStudyRouteBuilder(),
         StudyInfoSetupRouteBuilder(),
+        StudyInfoSetupCompleteRouteBuilder(),
         
         MainHomeRouteBuilder(),
         NoticeRouteBuilder(),

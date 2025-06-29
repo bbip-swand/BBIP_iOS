@@ -59,11 +59,9 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.loginSuccess) { _, isLoginSuccess in
             if isLoginSuccess {
-                userStateManager.updateIsExistingUser {
-                    let isExistingUser = UserDefaultsManager.shared.isExistingUser()
-                    let destination: BBIPMatchPath = isExistingUser ? .home : .startGuide
-                    navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: true)
-                }
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                let destination: BBIPMatchPath = isExistingUser ? .home : .startGuide
+                navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: true)
             }
         }
         .onAppear {

@@ -53,6 +53,7 @@ struct UserInfoSetupCompleteView: View {
             .padding(.bottom, 39)
         }
         .navigationBarBackButtonHidden()
+        .toolbar(.hidden, for: .navigationBar)
         .onAppear {
             HapticManager.shared.boong()
         }
