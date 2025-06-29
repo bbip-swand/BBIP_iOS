@@ -26,7 +26,9 @@ enum BBIPMatchPath: String {
     case notice
     
     // MARK: BNB
-    case startSIS
+    case startCreateStudy           // 스터디 생성 시작 화면
+    case studyInfoSetup             // 스터디 기본 정보 세팅 화면
+    case studyInfoSetupComplete     // 스터디 생성 완료 화면
     
     // MARK: StudyHome
     case setLocation

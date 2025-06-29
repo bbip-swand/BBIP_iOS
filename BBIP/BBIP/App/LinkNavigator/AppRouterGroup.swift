@@ -15,6 +15,7 @@ struct AppRouterGroup {
         LoginRouteBuilder(),
         UserInfoSetupRouteBuilder(),
         UserInfoSetupCompleteRouteBuilder(),
+        StartGuideRouteBuilder(),
         MainHomeRouteBuilder(),
         NoticeRouteBuilder(),
         MyPageRouteBuilder()

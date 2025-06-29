@@ -15,7 +15,6 @@
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		981679872E102B2500AE0077 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679862E102B2500AE0077 /* CustomAlertModifier.swift */; };
-		98830A9D2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */; };
 		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
 		9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */; };
 		9886AB382E0C675D0035D3D0 /* MyPageRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB372E0C675D0035D3D0 /* MyPageRouteBuilder.swift */; };
@@ -196,6 +195,8 @@
 		C6D2983C2E117E7D004F6D1B /* BBIPLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2983B2E117E7D004F6D1B /* BBIPLogger.swift */; };
 		C6D2983E2E117E96004F6D1B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2983D2E117E90004F6D1B /* View+Extension.swift */; };
 		C6D298412E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298402E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift */; };
+		C6D298432E1198AF004F6D1B /* StartGuideRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298422E1198AF004F6D1B /* StartGuideRouteBuilder.swift */; };
+		C6D298452E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -293,7 +294,6 @@
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		981679862E102B2500AE0077 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
-		98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDataStore.swift; sourceTree = "<group>"; };
 		9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouteBuilder.swift; sourceTree = "<group>"; };
 		9886AB372E0C675D0035D3D0 /* MyPageRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRouteBuilder.swift; sourceTree = "<group>"; };
@@ -468,6 +468,8 @@
 		C6D2983B2E117E7D004F6D1B /* BBIPLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLogger.swift; sourceTree = "<group>"; };
 		C6D2983D2E117E90004F6D1B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C6D298402E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupCompleteRouteBuilder.swift; sourceTree = "<group>"; };
+		C6D298422E1198AF004F6D1B /* StartGuideRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGuideRouteBuilder.swift; sourceTree = "<group>"; };
+		C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -758,8 +760,8 @@
 		C6934BAF2C8082F8006AA652 /* CreateStudy */ = {
 			isa = PBXGroup;
 			children = (
+				C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */,
 				C6934BB02C808321006AA652 /* StartCreateStudyView.swift */,
-				98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */,
 				C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */,
 				C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */,
 				C6934BC02C822031006AA652 /* SISInnerView */,
@@ -1264,6 +1266,7 @@
 		C6F2DA442CAD0CB4002023B6 /* StartGuide */ = {
 			isa = PBXGroup;
 			children = (
+				C6D298422E1198AF004F6D1B /* StartGuideRouteBuilder.swift */,
 				C6F2DA452CAD0CC7002023B6 /* StartGuideView.swift */,
 			);
 			path = StartGuide;
@@ -1685,6 +1688,7 @@
 				C6FA55EC2C91566C00E537D7 /* UserHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6516ED52CEB866E00FCFAF2 /* AttendRecordView.swift in Sources */,
+				C6D298432E1198AF004F6D1B /* StartGuideRouteBuilder.swift in Sources */,
 				C6D2983E2E117E96004F6D1B /* View+Extension.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */,
@@ -1804,7 +1808,6 @@
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,
-				98830A9D2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift in Sources */,
 				C6F98F3F2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift in Sources */,
 				C6F2DA3D2CAC2EB7002023B6 /* CheckStudyLocationView.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
@@ -1841,6 +1844,7 @@
 				C6D298412E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */,
+				C6D298452E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
