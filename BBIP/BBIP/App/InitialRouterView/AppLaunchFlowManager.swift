@@ -47,9 +47,9 @@ final class AppLaunchFlowManager: ObservableObject {
 extension AppLaunchFlowManager {
     private func logging(isUserProfileSet: Bool) {
         if isUserProfileSet {
-            Logger().info("\(#file) 기존 유저")
+            BBIPLogger.log("기존 유저로 앱 진입", level: .info, category: .default)
         } else {
-            Logger().info("\(#file) 신규 유저")
+            BBIPLogger.log("신규 유저로 앱 진입", level: .info, category: .default)
         }
     }
 }
