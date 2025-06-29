@@ -6,7 +6,6 @@
 //
 
 import LinkNavigator
-import SwiftUI
 
 struct UserInfoSetupRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.userInfoSetup.capitalizedPath }

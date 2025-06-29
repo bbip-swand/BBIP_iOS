@@ -66,7 +66,7 @@ struct MainHomeView: View {
                     MypageView(navigator: navigator)
                     
                 case .startSIS:
-                    StartCreateStudyView()
+                    StartCreateStudyView(navigator: navigator)
                     
                 case .setLocation(let prevLocation, let studyId, let session):
                     SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)

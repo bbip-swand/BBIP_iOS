@@ -6,7 +6,6 @@
 //
 
 import LinkNavigator
-import SwiftUI
 
 struct OnboardingRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.onboarding.capitalizedPath }

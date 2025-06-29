@@ -5,7 +5,6 @@
 //  Created by 이건우 on 6/30/25.
 //
 
-import SwiftUI
 import LinkNavigator
 
 struct StartGuideRouteBuilder: RouteBuilder {
