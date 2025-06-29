@@ -61,7 +61,9 @@ struct WeeklyStudyContentListView: View {
             .background(.gray1)
             .navigationTitle(viewModel.isModify ? "주차별 활동 수정" : "주차별 활동")
             .navigationBarTitleDisplayMode(.inline)
-            .backButtonStyle()
+            .backButtonStyle(
+                customAction: viewModel.isModify ? {viewModel.isPresentedCancel()} : nil
+            )
             .toolbar{
                 // 수정하기 버튼
                 if viewModel.editButtonPresented {

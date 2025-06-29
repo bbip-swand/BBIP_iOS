@@ -52,6 +52,20 @@ class WeeklyStudyContentListViewModel: ObservableObject {
             isEditSheetPresented = true
         }
     }
+    
+    // 수정 취소 alert 표시
+    func isPresentedCancel() {
+        // 다를 경우만 alert 표시
+        if isContentChanged {
+            alertType = .cancel
+            isAlertPresented = true
+        } else {
+            withAnimation(.easeInOut(duration: 0.15)) {
+                isModify = false
+            }
+        }
+    }
+    
     /// 선택 주차 수정 완료
     func updateSelectedContent() {
         if let index = selectedIndex {
