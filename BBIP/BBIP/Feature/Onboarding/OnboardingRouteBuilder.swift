@@ -12,7 +12,7 @@ struct OnboardingRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.onboarding.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
-        { navigator, items, dependency in
+        { navigator, _, _ in
             return WrappingController(matchPath: matchPath) {
                 OnboardingView(navigator: navigator)
             }

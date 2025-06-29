@@ -30,11 +30,18 @@ final class AppLaunchFlowManager: ObservableObject {
             
             switch (isLoggedIn, isUserProfileSet) {
             case (false, false):
-                destination = .userInfoSetup
-            case (false, true):
                 destination = .onboarding
-            case (true, _):
-                destination = .home
+                
+            case (false, true):
+                BBIPLogger.log("Unexpected AppFlow", level: .fault, category: .default)
+                destination = .onboarding
+                
+            case (true, false):
+                destination = .userInfoSetup
+                
+            case (true, true):
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                destination = isExistingUser ? .home : .startGuide
             }
             
             navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: false)

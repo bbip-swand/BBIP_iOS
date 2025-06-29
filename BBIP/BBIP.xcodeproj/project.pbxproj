@@ -160,7 +160,7 @@
 		C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB572C7EF80500BB3952 /* HideKeyboard.swift */; };
 		C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB592C7EFBE900BB3952 /* WarningLabel.swift */; };
 		C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5B2C7F061A00BB3952 /* UISJobView.swift */; };
-		C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5D2C7F089C00BB3952 /* UISCompleteView.swift */; };
+		C695CB5E2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5D2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift */; };
 		C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB612C7F13E600BB3952 /* LoginView.swift */; };
 		C695CB642C7F154F00BB3952 /* LegacyStartFlow.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB632C7F154F00BB3952 /* LegacyStartFlow.swift.swift */; };
 		C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB652C7F160200BB3952 /* UserDefaultManager.swift */; };
@@ -195,6 +195,7 @@
 		C6D2983A2E114767004F6D1B /* LoginRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298392E114767004F6D1B /* LoginRouteBuilder.swift */; };
 		C6D2983C2E117E7D004F6D1B /* BBIPLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2983B2E117E7D004F6D1B /* BBIPLogger.swift */; };
 		C6D2983E2E117E96004F6D1B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2983D2E117E90004F6D1B /* View+Extension.swift */; };
+		C6D298412E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298402E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -431,7 +432,7 @@
 		C695CB572C7EF80500BB3952 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C695CB592C7EFBE900BB3952 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
 		C695CB5B2C7F061A00BB3952 /* UISJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISJobView.swift; sourceTree = "<group>"; };
-		C695CB5D2C7F089C00BB3952 /* UISCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISCompleteView.swift; sourceTree = "<group>"; };
+		C695CB5D2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupCompleteView.swift; sourceTree = "<group>"; };
 		C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
 		C695CB612C7F13E600BB3952 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C695CB632C7F154F00BB3952 /* LegacyStartFlow.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyStartFlow.swift.swift; sourceTree = "<group>"; };
@@ -466,6 +467,7 @@
 		C6D298392E114767004F6D1B /* LoginRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteBuilder.swift; sourceTree = "<group>"; };
 		C6D2983B2E117E7D004F6D1B /* BBIPLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLogger.swift; sourceTree = "<group>"; };
 		C6D2983D2E117E90004F6D1B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		C6D298402E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupCompleteRouteBuilder.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -1167,7 +1169,7 @@
 				C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */,
 				C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */,
 				C6934BCD2C822269006AA652 /* UISInnerView */,
-				C695CB5D2C7F089C00BB3952 /* UISCompleteView.swift */,
+				C6D2983F2E118C74004F6D1B /* UserInfoSetupComplete */,
 			);
 			path = UserInfoSetup;
 			sourceTree = "<group>";
@@ -1225,6 +1227,15 @@
 				C6F2DA4F2CADD57A002023B6 /* JoinStudyCompleteAlert.swift */,
 			);
 			path = JoinStudy;
+			sourceTree = "<group>";
+		};
+		C6D2983F2E118C74004F6D1B /* UserInfoSetupComplete */ = {
+			isa = PBXGroup;
+			children = (
+				C6D298402E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift */,
+				C695CB5D2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift */,
+			);
+			path = UserInfoSetupComplete;
 			sourceTree = "<group>";
 		};
 		C6F2DA142CAACEF6002023B6 /* Posting */ = {
@@ -1805,7 +1816,7 @@
 				C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
-				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,
+				C695CB5E2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift in Sources */,
 				C6516EC02CEB4B0500FCFAF2 /* AttendanceRecordVO.swift in Sources */,
 				C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */,
 				C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */,
@@ -1827,6 +1838,7 @@
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
 				C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
+				C6D298412E118C89004F6D1B /* UserInfoSetupCompleteRouteBuilder.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,

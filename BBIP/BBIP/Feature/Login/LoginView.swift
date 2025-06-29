@@ -12,7 +12,7 @@ import LinkNavigator
 
 struct LoginView: View {
     let navigator: LinkNavigatorType
-    @EnvironmentObject private var appState: AppStateManager
+    
     @StateObject var viewModel: LoginViewModel = Container.shared.loginViewModel()
     private let userStateManager = UserStateManager()
     

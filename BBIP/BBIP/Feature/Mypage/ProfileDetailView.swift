@@ -77,6 +77,7 @@ private extension ProfileDetailView {
             }
             .padding(.top, 30)
         }
+        .allowsTightening(false)
     }
     
     // User Name Section
