@@ -86,7 +86,6 @@ struct StudyInfoSetupView: View {
                                isAnimated: true)
             }
         }
-        .colorScheme(.dark)
         .navigationTitle("생성하기")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
