@@ -74,7 +74,6 @@ struct PostingDetailView: View {
         }
         .customAlert(
             isPresented: $deleteAlertIsPresented,
-            title: "제목테스트",
             message: "삭제된 게시글은 복구가 불가능합니다.\n게시글을 삭제 하시겠습니까?") {
                 // 게시글 삭제 로직 추가
             }

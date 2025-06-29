@@ -22,14 +22,12 @@ struct CustomAlertModifier: ViewModifier {
         content
             .fullScreenCover(isPresented: $isPresented) {
                 ZStack {
-                    // 반투명 배경
-                    Color.black.opacity(0.5)
+                    Color.black.opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                         .onTapGesture {
                             isPresented = false
                         }
 
-                    // 위에서 정의한 알림창 UI 뷰
                     CustomAlertView(
                         isPresented: $isPresented,
                         title: title,
@@ -45,18 +43,18 @@ struct CustomAlertModifier: ViewModifier {
             .transaction { transaction in
                 transaction.disablesAnimations = true
             }
-            .animation(.easeInOut(duration: 0.1), value: isPresented)
     }
 }
 
 // MARK: - Extension
 /// 아래와 같이 사용 가능
 /// .CustomAlertModifier(
-///     isPresented: Binding<Bool>,
-///     message: String,
-///     cancelText: String,
-///     confirmText: Color,
-///     confirmAction: @escaping () -> Void
+///     isPresented: Binding<Bool>,   화면 표시 여부
+///     title: String? = nil,                       제목 (선택)
+///     message: String,                        주요 메세지 텍스트
+///     cancelText: String,                     왼쪽 버튼 텍스트(기본값: "취소")
+///     confirmText: Color,                     오른쪽 버튼 텍스트(기본값: "확인")
+///     confirmAction: @escaping () -> Void     오른쪽 버튼 기능
 /// )
 extension View {
     func customAlert(
