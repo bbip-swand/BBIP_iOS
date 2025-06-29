@@ -38,6 +38,7 @@ enum WeeklyStudyContentAlertType {
 
 /// 주차별 활동 전체보기 뷰 (스터디 홈)
 struct WeeklyStudyContentListView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: WeeklyStudyContentListViewModel
     
     init(weeklyStudyContent: [String], isManager: Bool) {
@@ -62,7 +63,7 @@ struct WeeklyStudyContentListView: View {
             .navigationTitle(viewModel.isModify ? "주차별 활동 수정" : "주차별 활동")
             .navigationBarTitleDisplayMode(.inline)
             .backButtonStyle(
-                customAction: viewModel.isModify ? {viewModel.isPresentedCancel()} : nil
+                customAction: viewModel.isModify && viewModel.isContentChanged ? {viewModel.isPresentedCancel()} : nil
             )
             .toolbar{
                 // 수정하기 버튼
@@ -111,6 +112,7 @@ struct WeeklyStudyContentListView: View {
                     case .cancel:
                         // 수정 취소하기
                         viewModel.cancelChanges()
+                        presentationMode.wrappedValue.dismiss()
                 }
             }
         .sheet(isPresented: $viewModel.isEditSheetPresented,
