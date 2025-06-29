@@ -14,8 +14,10 @@ class WeeklyStudyContentListViewModel: ObservableObject {
     @Published var modifiedContent: [String]    // 수정된 내용(임시 저장소)
     @Published var isModify: Bool = false       // 수정모드 진입 여부
     @Published var selectedIndex: Int? = nil    // 선택된 카드 index
-    @Published var isSheetPresented: Bool = false   // 수정 sheet 표시
+    @Published var isEditSheetPresented: Bool = false   // 수정 sheet 표시
+    @Published var isAlertPresented: Bool = false   // 수정 sheet 표시
     @Published var textForEditing: String = ""  // 수정 텍스트 임시 저장소
+    var alertType: WeeklyStudyContentAlertType = .save
     
     /// 내용 수정 여부
     var isContentChanged: Bool { originalContent != modifiedContent }
@@ -41,7 +43,7 @@ class WeeklyStudyContentListViewModel: ObservableObject {
         guard isModify else { return }
         selectedIndex = index
         textForEditing = modifiedContent[index]
-        isSheetPresented = true
+        isEditSheetPresented = true
     }
     /// 선택 주차 수정 완료
     func updateSelectedContent() {
@@ -49,7 +51,7 @@ class WeeklyStudyContentListViewModel: ObservableObject {
             modifiedContent[index] = textForEditing
         }
         // Sheet를 닫고 선택 상태를 초기화
-        isSheetPresented = false
+        isEditSheetPresented = false
         selectedIndex = nil
         textForEditing = ""
     }
@@ -57,6 +59,12 @@ class WeeklyStudyContentListViewModel: ObservableObject {
     /// 수정된 내용 저장
     func saveChanges() {
         // 저장 코드 추가
+        isModify = false
+    }
+    
+    /// 수정 취소
+    func cancelChanges() {
+        modifiedContent = originalContent
         isModify = false
     }
 }

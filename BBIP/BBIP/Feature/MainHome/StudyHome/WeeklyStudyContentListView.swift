@@ -7,6 +7,35 @@
 
 import SwiftUI
 
+//
+enum WeeklyStudyContentAlertType {
+    case save
+    case cancel
+    
+    // Alert Title
+    var title: String {
+        switch self {
+            case .save: return "수정된 내용을 저장할까요?"
+            case .cancel: return "저장하지 않고 나가시겠습니까?"
+        }
+    }
+    
+    // Alert Message
+    var message: String {
+        switch self {
+            case .save: return "저장 후에는 취소할 수 없어요?"
+            case .cancel: return "수정한 내용이 모두 사라집니다"
+        }
+    }
+    
+    var confirmText: String {
+        switch self {
+            case .save: return "저장하기"
+            case .cancel: return "나가기"
+        }
+    }
+}
+
 /// 주차별 활동 전체보기 뷰 (스터디 홈)
 struct WeeklyStudyContentListView: View {
     @StateObject private var viewModel: WeeklyStudyContentListViewModel
@@ -53,13 +82,28 @@ struct WeeklyStudyContentListView: View {
             if viewModel.isModify {
                 MainButton(text: "수정하기", enable: viewModel.isContentChanged) {
                     // 수정 완료 alert 표시
-                    viewModel.isSheetPresented = true
+                    viewModel.alertType = .save
+                    viewModel.isAlertPresented = true
                 }
             }
         }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
+        .customAlert(
+            isPresented: $viewModel.isAlertPresented,
+            title: viewModel.alertType.title,
+            message: viewModel.alertType.message,
+            confirmText: viewModel.alertType.confirmText) {
+                switch viewModel.alertType {
+                    case .save:
+                        // 수정 저장하기
+                        viewModel.saveChanges()
+                    case .cancel:
+                        // 수정 취소하기
+                        viewModel.cancelChanges()
+                }
+            }
     }
     
     /// 주차별 카드 버튼 view
