@@ -19,30 +19,37 @@ struct WeeklyStudyContentListView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 8) {
-                ForEach(0..<weeklyStudyContent.count, id: \.self) { index in
-                    WeeklyStudyContentCardView(week: index + 1, content: weeklyStudyContent[index])
+        ZStack(alignment: .bottom){
+            ScrollView {
+                VStack(spacing: 8) {
+                    ForEach(0..<weeklyStudyContent.count, id: \.self) { index in
+                        WeeklyStudyContentCardView(week: index + 1, content: weeklyStudyContent[index])
+                    }
+                }
+                .padding(.vertical, 22)
+            }
+            .containerRelativeFrame([.horizontal, .vertical])
+            .background(.gray1)
+            .navigationTitle("주차별 활동")
+            .navigationBarTitleDisplayMode(.inline)
+            .backButtonStyle()
+            .toolbar{
+                if isManager && !isModify{
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            isModify = true
+                        } label: {
+                            Image("common_edit_black")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                        }
+                    }
                 }
             }
-            .padding(.vertical, 22)
-        }
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray1)
-        .navigationTitle("주차별 활동")
-        .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle()
-        .toolbar{
-            if isManager && !isModify{
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isModify = true
-                    } label: {
-                        Image("common_edit_black")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                    }
+            if isModify {
+                MainButton(text: "수정하기", enable: true) {
+                    
                 }
             }
         }
