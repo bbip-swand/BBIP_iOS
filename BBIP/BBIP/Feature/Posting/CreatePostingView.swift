@@ -45,7 +45,7 @@ struct CreatePostingView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.uploadPosting(studyId: studyId, isNotice: false)
+                    viewModel.uploadPosting(studyId: studyId)
                 } label: {
                     Text("업로드")
                         .font(.bbip(.body1_m16))
@@ -83,11 +83,13 @@ extension CreatePostingView {
                 Text(viewModel.week == -1 ? "주차 선택" : "\(viewModel.week)주차")
                     .font(.bbip(.body2_m14))
                     .foregroundStyle(viewModel.week == -1 ? .gray5 : .mainBlack)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 Image(systemName: "chevron.down")
             }
             .padding(.vertical, 12)
             .padding(.horizontal, 14)
             .foregroundStyle(.gray5)
+            .frame(width: 132, height: 41)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundStyle(.mainWhite)
@@ -162,6 +164,20 @@ extension CreatePostingView {
     var weekPicker: some View {
         ScrollView {
             VStack(spacing: 8) {
+                // 공지글 토글
+                HStack {
+                    Toggle("공지글", isOn: $viewModel.isNotice)
+                        .font(.bbip(.body2_m14))
+                        .toggleStyle(SwitchToggleStyle(tint: .primary3))
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundStyle(.mainWhite)
+                )
+                .padding(.horizontal, 17)
+                
                 ForEach(0..<weeklyContent.count, id: \.self) { index in
                     WeeklyStudyContentCardView(week: index + 1, content: weeklyContent[index])
                         .onTapGesture {

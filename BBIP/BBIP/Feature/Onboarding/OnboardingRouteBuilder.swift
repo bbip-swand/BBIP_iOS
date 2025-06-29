@@ -14,7 +14,9 @@ struct OnboardingRouteBuilder: RouteBuilder {
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                OnboardingView()
+                NavigationStack{
+                    OnboardingView()
+                }
             }
             .defaultContext()
         }

@@ -23,6 +23,10 @@ struct CommentCell: View {
                 Text(vo.writer)
                     .font(.bbip(.body2_b14))
                 
+                Text(vo.timeAgo)
+                    .font(.bbip(.caption3_r12))
+                    .foregroundStyle(.gray5)
+                
                 Text(vo.content)
                     .font(.bbip(.body2_m14))
             }
@@ -30,9 +34,22 @@ struct CommentCell: View {
             
             Spacer()
             
-            Text(vo.timeAgo)
-                .font(.bbip(.caption3_r12))
-                .foregroundStyle(.gray5)
+            if vo.isManager {
+                Menu {
+                    Button(role: .destructive) {
+                        // 삭제 로직 추가
+                    } label: {
+                        Text("삭제")
+                            .font(.bbip(.body2_m14))
+                    }
+                } label: {
+                    Image("more_black")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 14, height: 14)
+                }
+            }
+            
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 26)

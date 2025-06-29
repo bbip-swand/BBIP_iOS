@@ -21,6 +21,15 @@ final class PostingDetailViewModel: ObservableObject {
     private let createCommentUseCase: CreateCommentUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
+    // 작성자 매니저 여부 반환용
+    var postManger : Bool {
+        if let postDetailData = postDetailData {
+            return postDetailData.isManager
+        } else {
+            return false
+        }
+    }
+    
     init(
         getPostDetailUseCase: GetPostDetailUseCaseProtocol,
         createCommentUseCase: CreateCommentUseCaseProtocol

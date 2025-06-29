@@ -10,6 +10,7 @@ import SwiftUI
 struct PostingDetailView: View {
     @ObservedObject var viewModel: PostingDetailViewModel = DIContainer.shared.makePostingDetailViewModel()
     @FocusState private var isFocused: Bool
+    @State var deleteAlertIsPresented: Bool = false
     
     private let postId: String
     
@@ -52,9 +53,30 @@ struct PostingDetailView: View {
         .ignoresSafeArea(.container, edges: .bottom)
         .scrollIndicators(.never)
         .backButtonStyle()
-        .toolbar {
-            // edit & removeable button
+        .toolbar{
+            if viewModel.postManger {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button(role: .destructive) {
+                            deleteAlertIsPresented = true
+                        } label: {
+                            Text("삭제")
+                                .font(.bbip(.body2_m14))
+                        }
+                    } label: {
+                        Image("more_black")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
         }
+        .customAlert(
+            isPresented: $deleteAlertIsPresented,
+            message: "삭제된 게시글은 복구가 불가능합니다.\n게시글을 삭제 하시겠습니까?") {
+                // 게시글 삭제 로직 추가
+            }
     }
 
     // writer, createdAt...

@@ -124,7 +124,7 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showAllWeeklyContentView) {
             if let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
-                WeeklyStudyContentListView(weeklyStudyContent: weeklyStudyContent)
+                WeeklyStudyContentListView(weeklyStudyContent: weeklyStudyContent, isManager: viewModel.fullStudyInfo?.isManager ?? false)
             }
         }
     }

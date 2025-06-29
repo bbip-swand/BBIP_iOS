@@ -10,9 +10,12 @@ import SwiftUI
 /// 주차별 활동 전체보기 뷰 (스터디 홈)
 struct WeeklyStudyContentListView: View {
     private let weeklyStudyContent: [String]
+    private let isManager: Bool
+    @State private var isModify: Bool = false
     
-    init(weeklyStudyContent: [String]) {
+    init(weeklyStudyContent: [String], isManager: Bool) {
         self.weeklyStudyContent = weeklyStudyContent
+        self.isManager = isManager
     }
     
     var body: some View {
@@ -29,6 +32,20 @@ struct WeeklyStudyContentListView: View {
         .navigationTitle("주차별 활동")
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
+        .toolbar{
+            if isManager && !isModify{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isModify = true
+                    } label: {
+                        Image("common_edit_black")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
+        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
