@@ -7,10 +7,13 @@
 
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
+import Factory
 
 struct StudyInfoSetupView: View {
-    @EnvironmentObject var appState: AppStateManager
-    @StateObject private var createStudyViewModel = DIContainer.shared.makeCreateStudyViewModel()
+    let navigator: LinkNavigatorType
+    
+    @StateObject private var createStudyViewModel = Container.shared.createStudyViewModel()
     @State private var selectedIndex: Int = .zero
     
     var body: some View {
@@ -67,15 +70,20 @@ struct StudyInfoSetupView: View {
                 .background(.gray9)
             }
         }
+        .onAppear {
+            setNavigationBarAppearance(forDarkView: true)
+        }
         .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
             if newVal {
                 withAnimation { selectedIndex = 1 }
             }
         }
-        .onAppear {
-            setNavigationBarAppearance(forDarkView: true)
-            appState.setDarkMode()
+        .onChange(of: createStudyViewModel.showCompleteView) { _, showCompleteView in
+            if showCompleteView == true {
+                navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath], items: [:], isAnimated: true)
+            }
         }
+        .colorScheme(.dark)
         .navigationTitle("생성하기")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
@@ -83,12 +91,12 @@ struct StudyInfoSetupView: View {
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
-        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-            SISCompleteView(
-                studyId: createStudyViewModel.createdStudyId,
-                studyInviteCode: createStudyViewModel.studyInviteCode
-            )
-        }
+//        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
+//            SISCompleteView(
+//                studyId: createStudyViewModel.createdStudyId,
+//                studyInviteCode: createStudyViewModel.studyInviteCode
+//            )
+//        }
     }
 
     // 다음 버튼 동작 처리

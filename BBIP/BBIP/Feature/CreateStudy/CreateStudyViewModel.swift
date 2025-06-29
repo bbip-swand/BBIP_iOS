@@ -8,8 +8,9 @@
 import Foundation
 import Combine
 import UIKit
+import Factory
 
-class CreateStudyViewModel: ObservableObject {
+final class CreateStudyViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var contentData: [CreateStudyContent]
     @Published var canGoNext: [Bool] = [
@@ -66,11 +67,10 @@ class CreateStudyViewModel: ObservableObject {
     var createdStudyId: String = .init()
     var studyInviteCode: String = .init()
     
-    private let createStudyInfoUseCase: CreateStudyUseCaseProtocol
+    @Injected(\.createStudyUseCase) private var createStudyUseCase
     private var cancellables = Set<AnyCancellable>()
     
-    init(createStudyInfoUseCase: CreateStudyUseCaseProtocol) {
-        self.createStudyInfoUseCase = createStudyInfoUseCase
+    init() {
         self.contentData = CreateStudyContent.generate()
         sinkElements()
     }
@@ -139,7 +139,7 @@ class CreateStudyViewModel: ObservableObject {
                     weeklyContent: weeklyContentData
                 )
                 
-                return self.createStudyInfoUseCase.execute(studyInfoVO: vo)
+                return self.createStudyUseCase.execute(studyInfoVO: vo)
             }
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in

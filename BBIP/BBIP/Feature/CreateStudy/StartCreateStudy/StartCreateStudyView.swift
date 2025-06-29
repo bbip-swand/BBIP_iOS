@@ -11,7 +11,6 @@ import LinkNavigator
 struct StartCreateStudyView: View {
     let navigator: LinkNavigatorType
     
-    @State private var showStudyInfoSetupView: Bool = false
     @State private var offset: CGSize = .zero
     @State private var angle: Double = 0
     @State private var isAnimating: Bool = false
@@ -68,16 +67,13 @@ struct StartCreateStudyView: View {
                 }
             
             MainButton(text: "시작하기") {
-                showStudyInfoSetupView = true
+                navigator.next(paths: [BBIPMatchPath.studyInfoSetup.capitalizedPath], items: [:], isAnimated: true)
             }
             .padding(.bottom, 22)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-        .navigationDestination(isPresented: $showStudyInfoSetupView) {
-            StudyInfoSetupView()
-        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
