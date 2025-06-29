@@ -63,7 +63,7 @@ struct MainHomeView: View {
             .navigationDestination(for: MainHomeViewDestination.self) { destination in
                 switch destination {
                 case .mypage:
-                    MypageView()
+                    MypageView(navigator: navigator)
                     
                 case .startSIS:
                     StartCreateStudyView()

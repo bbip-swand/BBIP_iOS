@@ -14,7 +14,7 @@ struct MyPageRouteBuilder: RouteBuilder {
         { navigator, items, dependency in
             
             return WrappingController(matchPath: matchPath) {
-                MypageView()
+                MypageView(navigator: navigator)
                     .toolbar(.visible, for: .navigationBar)
             }
             .defaultContext()
