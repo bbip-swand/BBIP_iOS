@@ -217,8 +217,3 @@ fileprivate struct MyStudyDetailButton: View {
         }
     }
 }
-
-#Preview {
-
-    
-}
