@@ -16,7 +16,7 @@ final class AppLaunchFlowManager: ObservableObject {
     init(navigator: LinkNavigatorType) {
         self.navigator = navigator
     }
-
+    
     /// 앱 실행 시 초기 진입 경로를 판단하고 이동합니다.
     func start() {
         userDataSource.checkIsNewUser { [weak self] isNewUser in
@@ -26,15 +26,20 @@ final class AppLaunchFlowManager: ObservableObject {
             let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
             UserDefaultsManager.shared.setIsExistingUser(isUserProfileSet)
             
-            if isLoggedIn == false {
-                self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
-            } else if isUserProfileSet == false {
-                self.navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
-            } else {
-                self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
+            let destination: BBIPMatchPath
+            
+            switch (isLoggedIn, isUserProfileSet) {
+            case (false, false):
+                destination = .userInfoSetup
+            case (false, true):
+                destination = .onboarding
+            case (true, _):
+                destination = .home
             }
             
-            logging(isUserProfileSet: isUserProfileSet)            
+            navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: false)
+            
+            logging(isUserProfileSet: isUserProfileSet)
         }
     }
 }
