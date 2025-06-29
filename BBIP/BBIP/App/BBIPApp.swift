@@ -22,9 +22,10 @@ struct BBIPApp: App {
             ZStack {
                 navigator
                     .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
-                    .onOpenURL { url in handleDeepLink(url) }
                     .edgesIgnoringSafeArea(.all)
-                
+                    .onOpenURL { url in
+                        handleDeepLink(url)
+                    }
                 
                 if showSplash {
                     SplashView() { showSplash = false }

@@ -67,6 +67,10 @@ extension Container {
     }
 
     // MARK: - ViewModels
+    var onboardingViewModel: Factory<OnboardingViewModel> {
+        self { OnboardingViewModel() }
+    }
+    
     var loginViewModel: Factory<LoginViewModel> {
         self { LoginViewModel() }
     }

@@ -8,8 +8,10 @@
 import Factory
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
 
 struct UserInfoSetupView: View {
+    let navigator: LinkNavigatorType
     @StateObject private var userInfoSetupViewModel = Container.shared.userInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     

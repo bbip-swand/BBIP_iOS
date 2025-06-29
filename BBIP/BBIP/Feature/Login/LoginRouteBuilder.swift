@@ -1,20 +1,20 @@
 //
-//  OnboardingRouteBuilder.swift
+//  LoginRouteBuilder.swift
 //  BBIP
 //
-//  Created by 이건우 on 6/15/25.
+//  Created by 이건우 on 6/29/25.
 //
 
-import LinkNavigator
 import SwiftUI
+import LinkNavigator
 
-struct OnboardingRouteBuilder: RouteBuilder {
-    var matchPath: String { BBIPMatchPath.onboarding.capitalizedPath }
+struct LoginRouteBuilder: RouteBuilder {
+    var matchPath: String { BBIPMatchPath.login.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                OnboardingView(navigator: navigator)
+                LoginView(navigator: navigator)
             }
             .defaultContext()
         }

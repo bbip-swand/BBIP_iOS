@@ -193,6 +193,7 @@
 		C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */; };
 		C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */; };
 		C6D298382E0D8310004F6D1B /* BBIP-DEV.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C6D298352E0D8310004F6D1B /* BBIP-DEV.xcconfig */; };
+		C6D2983A2E114767004F6D1B /* LoginRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298392E114767004F6D1B /* LoginRouteBuilder.swift */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -463,6 +464,7 @@
 		C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyUseCase.swift; sourceTree = "<group>"; };
 		C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyViewModel.swift; sourceTree = "<group>"; };
 		C6D298352E0D8310004F6D1B /* BBIP-DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-DEV.xcconfig"; sourceTree = "<group>"; };
+		C6D298392E114767004F6D1B /* LoginRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteBuilder.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 		C695BDE82C649F67009DEC3C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C6D298392E114767004F6D1B /* LoginRouteBuilder.swift */,
 				C695CB612C7F13E600BB3952 /* LoginView.swift */,
 				C695CB692C7F209000BB3952 /* LoginViewModel.swift */,
 			);
@@ -1590,6 +1593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D2983A2E114767004F6D1B /* LoginRouteBuilder.swift in Sources */,
 				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
 				C6516ECA2CEB4E3C00FCFAF2 /* SubmitAttendanceCodeUseCaseProtocol.swift in Sources */,
 				084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */,
