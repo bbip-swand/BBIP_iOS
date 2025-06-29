@@ -10,7 +10,7 @@ import SwiftUI
 class WeeklyStudyContentListViewModel: ObservableObject {
     // MARK: - Properties
     let isManager: Bool     // 관리자 여부
-    private let originalContent: [String]       // 기존 내용(비교 용도)
+    private var originalContent: [String]       // 기존 내용(비교 용도)
     @Published var modifiedContent: [String]    // 수정된 내용(임시 저장소)
     @Published var isModify: Bool = false       // 수정모드 진입 여부
     @Published var selectedIndex: Int? = nil    // 선택된 카드 index
@@ -46,11 +46,11 @@ class WeeklyStudyContentListViewModel: ObservableObject {
     /// 수정 모드 진입
     func selectCard(at index: Int) {
         guard isModify else { return }
+        textForEditing = modifiedContent[index]
         withAnimation(.easeInOut(duration: 0.15)) {
             selectedIndex = index
+            isEditSheetPresented = true
         }
-        textForEditing = modifiedContent[index]
-        isEditSheetPresented = true
     }
     /// 선택 주차 수정 완료
     func updateSelectedContent() {
@@ -77,6 +77,7 @@ class WeeklyStudyContentListViewModel: ObservableObject {
         
         // 저장 완료 alert 표시
         isCompletePresented = true
+        originalContent = modifiedContent
         
         Task {
             // 1.5초 지연
@@ -92,6 +93,14 @@ class WeeklyStudyContentListViewModel: ObservableObject {
         modifiedContent = originalContent
         withAnimation(.easeInOut(duration: 0.15)) {
             isModify = false
+        }
+    }
+    
+    /// 수정 sheet 드래그 취소 이벤트
+    func sheetDragCancel() {
+        isEditSheetPresented = false
+        withAnimation(.easeInOut(duration: 0.15)) {
+            selectedIndex = nil
         }
     }
 }

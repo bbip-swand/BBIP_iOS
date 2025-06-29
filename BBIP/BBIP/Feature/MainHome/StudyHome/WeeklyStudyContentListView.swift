@@ -111,8 +111,17 @@ struct WeeklyStudyContentListView: View {
                         viewModel.cancelChanges()
                 }
             }
+        .sheet(isPresented: $viewModel.isEditSheetPresented,
+               onDismiss: {
+            // 드래그로 수정 종료했을 경우
+            viewModel.sheetDragCancel()
+        }) {
+            editingSheet
+                .presentationDetents([.height(370)])
+        }
     }
     
+    // MARK: - cardButtonView
     /// 주차별 카드 버튼 view
     private func cardButtonView(for index: Int) -> some View {
         Button {
@@ -129,6 +138,7 @@ struct WeeklyStudyContentListView: View {
         .disabled(!viewModel.isModify)
     }
     
+    // MARK: - completeAlert
     /// 수정 완료 alert view
     var completeAlert: some View {
         ZStack{
@@ -157,5 +167,54 @@ struct WeeklyStudyContentListView: View {
             .cornerRadius(12)
         }
         .presentationBackground(.clear)
+    }
+    
+    // MARK: - editingSheet
+    // 수정하기 sheet View
+    var editingSheet: some View {
+        VStack(spacing: 0) {
+            Text("주차별 계획 작성")
+                .font(.bbip(.button1_m20))
+                .padding(.top, 20)
+            
+            Spacer().frame(height: 33)
+            
+            // 선택 주차
+            CapsuleView(title: "\(viewModel.selectedIndex! + 1)주차", type: .fill)
+            
+            Spacer().frame(height: 10)
+            
+            // 주차 계획 수정 Editor
+            ZStack(alignment: .topLeading) {
+                if viewModel.textForEditing.isEmpty {
+                    Text("주차 계획을 입력해주세요")
+                        .font(.bbip(.body2_m14))
+                        .foregroundStyle(.gray5)
+                        .padding(.top, 8)
+                        .padding(.leading, 5)
+                        .allowsHitTesting(false)
+                }
+                
+                // 실제 텍스트 에디터
+                TextEditor(text: $viewModel.textForEditing)
+                    .font(.bbip(.body2_m14))
+                    .scrollContentBackground(.hidden)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(.vertical, 4)
+            .padding(.horizontal, 9)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.gray4, lineWidth: 2)
+            )
+            .padding(.horizontal)
+            
+            Spacer().frame(height: 20)
+            
+            MainButton(text: "수정하기") {
+                viewModel.updateSelectedContent()
+            }
+            .padding(.bottom, 16)
+        }
     }
 }
