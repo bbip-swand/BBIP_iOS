@@ -1,24 +1,21 @@
 //
-//  MyPageRouteBuilder.swift
+//  LoginRouteBuilder.swift
 //  BBIP
 //
-//  Created by 최주원 on 6/26/25.
+//  Created by 이건우 on 6/29/25.
 //
 
 import LinkNavigator
 
-struct MyPageRouteBuilder: RouteBuilder {
-    var matchPath: String { BBIPMatchPath.myPage.capitalizedPath }
+struct LoginRouteBuilder: RouteBuilder {
+    var matchPath: String { BBIPMatchPath.login.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
-            
             return WrappingController(matchPath: matchPath) {
-                MypageView(navigator: navigator)
-                    .toolbar(.visible, for: .navigationBar)
+                LoginView(navigator: navigator)
             }
             .defaultContext()
         }
     }
 }
-

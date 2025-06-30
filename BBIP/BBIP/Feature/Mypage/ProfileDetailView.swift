@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct ProfileDetailView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @ObservedObject var viewModel: MyPageViewModel
     @State private var showWarningAlert: Bool = false
@@ -48,7 +50,7 @@ struct ProfileDetailView: View {
                 primaryButton: .destructive(Text("네")) {
                     viewModel.resign() {
                         UserDefaultsManager.shared.clearUserData()
-                        withAnimation { appState.switchRoot(.onboarding) }
+                        self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
                     }
                 },
                 secondaryButton: .cancel(Text("아니오"))
@@ -75,6 +77,7 @@ private extension ProfileDetailView {
             }
             .padding(.top, 30)
         }
+        .allowsTightening(false)
     }
     
     // User Name Section
