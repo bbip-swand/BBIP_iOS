@@ -180,9 +180,9 @@ class DIContainer {
     //    }
     
     // UserInfoSetup
-//    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
-//        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
-//    }
+    // func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
+    //     return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
+    // }
     
     // UserHome
     func makeUserHomeViewModel() -> UserHomeViewModel {
@@ -220,9 +220,9 @@ class DIContainer {
     }
     
     // CreateStudy
-    func makeCreateStudyViewModel() -> CreateStudyViewModel {
-        return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
-    }
+    // func makeCreateStudyViewModel() -> CreateStudyViewModel {
+    //     return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
+    // }
     
     // JoinStudy
     func makeJoinStudyViewModel() -> JoinStudyViewModel {

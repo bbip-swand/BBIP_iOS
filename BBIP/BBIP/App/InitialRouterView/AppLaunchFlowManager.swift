@@ -16,35 +16,38 @@ final class AppLaunchFlowManager: ObservableObject {
     init(navigator: LinkNavigatorType) {
         self.navigator = navigator
     }
-
+    
     /// 앱 실행 시 초기 진입 경로를 판단하고 이동합니다.
     func start() {
         userDataSource.checkIsNewUser { [weak self] isNewUser in
+            
+            // NOTE: isNewUser: 참여한 스터디가 없는 첫 가입한 유저
             guard let self else { return }
             
-            let isUserProfileSet = !isNewUser
-            let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
-            UserDefaultsManager.shared.setIsExistingUser(isUserProfileSet)
-            
-            if isLoggedIn == false {
-                self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
-            } else if isUserProfileSet == false {
-                self.navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
-            } else {
-                self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
+            userDataSource.checkUserInfoExists { isExist in
+                let isUserInfoExist = isExist
+                let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
+                
+                let destination: BBIPMatchPath
+                
+                // 로그인 여부 값(Local), 필수 정보 세팅 여부 값(Server)
+                switch (isLoggedIn, isUserInfoExist) {
+                case (false, false):
+                    destination = .onboarding
+                    
+                case (false, true):
+                    BBIPLogger.log("Unexpected AppFlow", level: .fault, category: .default)
+                    destination = .onboarding
+                    
+                case (true, false):
+                    destination = .userInfoSetup
+                    
+                case (true, true):
+                    destination = isNewUser ? .startGuide : .home
+                }
+                
+                self.navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: false)
             }
-            
-            logging(isUserProfileSet: isUserProfileSet)            
-        }
-    }
-}
-
-extension AppLaunchFlowManager {
-    private func logging(isUserProfileSet: Bool) {
-        if isUserProfileSet {
-            Logger().info("AppLaunchFlowManager: 기존 유저")
-        } else {
-            Logger().info("AppLaunchFlowManager: 신규 유저")
         }
     }
 }

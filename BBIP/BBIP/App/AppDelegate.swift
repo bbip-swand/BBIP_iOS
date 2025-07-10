@@ -42,9 +42,10 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
+    var appStateManager = AppStateManager()
     var navigator: LinkNavigator {
         LinkNavigator(
-            dependency: AppDependency(appState: AppStateManager()),
+            dependency: AppDependency(appState: appStateManager),
             builders: AppRouterGroup().routers
         )
     }

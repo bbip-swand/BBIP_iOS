@@ -22,9 +22,10 @@ struct BBIPApp: App {
             ZStack {
                 navigator
                     .launch(paths: [BBIPMatchPath.initialRoute.capitalizedPath], items: [:])
-                    .onOpenURL { url in handleDeepLink(url) }
                     .edgesIgnoringSafeArea(.all)
-                
+                    .onOpenURL { url in
+                        handleDeepLink(url)
+                    }
                 
                 if showSplash {
                     SplashView() { showSplash = false }
@@ -48,9 +49,8 @@ extension BBIPApp {
                     studyName: queryItems.first(where: { $0.name == "studyName" })?.value ?? "",
                     studyDescription: queryItems.first(where: { $0.name == "studyDescription" })?.value
                 )
-                print(deepLinkAlertData)
-//                appStateManager.setDeepLinkAlertData(deepLinkAlertData)
-//                appStateManager.showDeepLinkAlert = true
+                appDelegate.appStateManager.setDeepLinkAlertData(deepLinkAlertData)
+                appDelegate.appStateManager.showDeepLinkAlert = true
             }
         }
     }

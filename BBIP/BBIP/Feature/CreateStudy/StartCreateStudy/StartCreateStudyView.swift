@@ -9,9 +9,9 @@ import SwiftUI
 import LinkNavigator
 
 struct StartCreateStudyView: View {
-    //let navigator: LinkNavigatorType
-    @State private var showStudyInfoSetupView: Bool = false
+    let navigator: LinkNavigatorType
     
+    @State private var showStudyInfoSetupView: Bool = false
     @State private var offset: CGSize = .zero
     @State private var angle: Double = 0
     @State private var isAnimating: Bool = false
@@ -68,18 +68,23 @@ struct StartCreateStudyView: View {
                 }
             
             MainButton(text: "시작하기") {
-                showStudyInfoSetupView = true
+                if navigator.currentPaths.last == BBIPMatchPath.startCreateStudy.capitalizedPath {
+                    navigator.next(paths: [BBIPMatchPath.studyInfoSetup.capitalizedPath], items: [:], isAnimated: true)
+                } else {
+                    showStudyInfoSetupView = true
+                }
             }
             .padding(.bottom, 22)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-        .navigationDestination(isPresented: $showStudyInfoSetupView) {
-            StudyInfoSetupView()
-        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
+        }
+        .navigationDestination(isPresented: $showStudyInfoSetupView) {
+            // LN TODO: 삭제 예정
+            StudyInfoSetupView(navigator: navigator)
         }
     }
 }
