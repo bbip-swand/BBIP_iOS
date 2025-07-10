@@ -7,8 +7,10 @@
 
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
 
 struct OnboardingView: View {
+    let navigator: LinkNavigatorType
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @State private var selectedIndex: Int = 0
     
@@ -45,7 +47,8 @@ struct OnboardingView: View {
                     if selectedIndex < onboardingViewModel.onboardingContents.count - 1 {
                         selectedIndex += 1
                     } else {
-                        onboardingViewModel.showLoginView = true
+                        navigator.next(paths: [BBIPMatchPath.login.capitalizedPath], items: [:], isAnimated: true)
+                        //onboardingViewModel.showLoginView = true
                     }
                 }
             }
@@ -53,9 +56,9 @@ struct OnboardingView: View {
             .padding(.bottom, 39)
         }
         .background(Color.gray1)
-        .navigationDestination(isPresented: $onboardingViewModel.showLoginView) {
-            LoginView()
-        }
+//        .navigationDestination(isPresented: $onboardingViewModel.showLoginView) {
+//            LoginView()
+//        }
     }
 }
 
@@ -103,6 +106,6 @@ private struct TabViewPageIndicator: View {
     }
 }
 
-#Preview {
-    OnboardingView()
-}
+//#Preview {
+//    OnboardingView()
+//}

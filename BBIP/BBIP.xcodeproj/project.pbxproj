@@ -16,6 +16,7 @@
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		981679872E102B2500AE0077 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679862E102B2500AE0077 /* CustomAlertModifier.swift */; };
 		981679892E11837100AE0077 /* WeeklyStudyContentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */; };
+		98733ABD2E1F74F500B770D0 /* LoginViewRouterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98733ABC2E1F74F500B770D0 /* LoginViewRouterBuilder.swift */; };
 		98830A9D2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */; };
 		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
 		9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */; };
@@ -128,7 +129,6 @@
 		C67AD8492DFED10F000A1E39 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8482DFED10F000A1E39 /* SplashView.swift */; };
 		C67AD84C2DFED61F000A1E39 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84B2DFED61F000A1E39 /* Factory */; };
 		C67AD84E2DFED61F000A1E39 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84D2DFED61F000A1E39 /* FactoryKit */; };
-		C67AD8502DFED61F000A1E39 /* FactoryTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C67AD84F2DFED61F000A1E39 /* FactoryTesting */; };
 		C67AD8572DFED6E4000A1E39 /* DIContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67AD8562DFED6E4000A1E39 /* DIContainerFactory.swift */; };
 		C6934BAE2C7F4C2F006AA652 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */; };
 		C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB02C808321006AA652 /* StartCreateStudyView.swift */; };
@@ -293,6 +293,7 @@
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		981679862E102B2500AE0077 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
 		981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListViewModel.swift; sourceTree = "<group>"; };
+		98733ABC2E1F74F500B770D0 /* LoginViewRouterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRouterBuilder.swift; sourceTree = "<group>"; };
 		98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDataStore.swift; sourceTree = "<group>"; };
 		9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouteBuilder.swift; sourceTree = "<group>"; };
@@ -559,7 +560,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */,
-				C67AD8502DFED61F000A1E39 /* FactoryTesting in Frameworks */,
 				C62780E52C8887C800065F98 /* FirebaseMessaging in Frameworks */,
 				C67AD84E2DFED61F000A1E39 /* FactoryKit in Frameworks */,
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
@@ -948,6 +948,7 @@
 			children = (
 				C695CB612C7F13E600BB3952 /* LoginView.swift */,
 				C695CB692C7F209000BB3952 /* LoginViewModel.swift */,
+				98733ABC2E1F74F500B770D0 /* LoginViewRouterBuilder.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1515,7 +1516,6 @@
 				C67AD8312DFE94FF000A1E39 /* LinkNavigator */,
 				C67AD84B2DFED61F000A1E39 /* Factory */,
 				C67AD84D2DFED61F000A1E39 /* FactoryKit */,
-				C67AD84F2DFED61F000A1E39 /* FactoryTesting */,
 			);
 			productName = BBIP;
 			productReference = C6B00C112C590A0E009AC4E2 /* BBIP.app */;
@@ -1814,6 +1814,7 @@
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C69445A12C9D6200003945CC /* StudyInfoMapper.swift in Sources */,
+				98733ABD2E1F74F500B770D0 /* LoginViewRouterBuilder.swift in Sources */,
 				C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */,
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
@@ -2171,11 +2172,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = FactoryKit;
-		};
-		C67AD84F2DFED61F000A1E39 /* FactoryTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C67AD84A2DFED61F000A1E39 /* XCRemoteSwiftPackageReference "Factory" */;
-			productName = FactoryTesting;
 		};
 		C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;

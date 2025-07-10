@@ -8,8 +8,10 @@
 import SwiftUI
 import AuthenticationServices
 import Factory
+import LinkNavigator
 
 struct LoginView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject private var appState: AppStateManager
     @StateObject var viewModel: LoginViewModel = Container.shared.loginViewModel()
     private let userStateManager = UserStateManager()
@@ -51,6 +53,7 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
             if newValue {
+                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
                 appState.switchRoot(.infoSetup)
             }
         }
@@ -86,7 +89,7 @@ private struct AppleSigninButton : View {
             .aspectRatio(contentMode: .fit)
             .padding(.horizontal, 20)
             .overlay {
-                SignInWithAppleButton(
+                 SignInWithAppleButton(
                     onRequest: { request in
                         request.requestedScopes = []
                     },
@@ -100,6 +103,6 @@ private struct AppleSigninButton : View {
     }
 }
 
-#Preview {
-    LoginView()
-}
+//#Preview {
+//    LoginView()
+//}
