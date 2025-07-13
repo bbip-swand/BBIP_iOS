@@ -61,6 +61,7 @@ struct LoginView: View {
             if newValue {
                 userStateManager.updateIsExistingUser {
                     let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                    navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
                     appState.switchRoot(isExistingUser ? .home : .startGuide)
                 }
             }
