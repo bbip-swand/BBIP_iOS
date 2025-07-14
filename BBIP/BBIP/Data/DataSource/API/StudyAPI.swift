@@ -19,30 +19,33 @@ enum StudyAPI {
     case editStudyLocation(studyId: String, session: Int, location: String)
     case getPendingStudy
     case deleteStudy(studyId: String)
+    case editStudyInfo(studyId: String, dto: CreateStudyInfoDTO)
 }
 
 extension StudyAPI: BaseAPI {
     var path: String {
         switch self {
-        case .getThisWeekStudy:
-            return "/study"
-        case .getOngoingStudy:
-            return "/study"
-        case .getFinishedStudy:
-            return "/study"
-        case .getFullStudyInfo(let studyId):
-            return "/study/\(studyId)"
-        case .getInviteInfo:
-            return "/study/invite-info"
-        case .createStudy:
-            return "/study"
-        case .joinStudy(let studyId):
-            return "/study/join/\(studyId)"
-        case .editStudyLocation(let studyId, _, _):
-            return "/study/place/\(studyId)"
-        case .getPendingStudy:
-            return "/study/pending"
-                case .deleteStudy(let studyId):
+            case .getThisWeekStudy:
+                return "/study"
+            case .getOngoingStudy:
+                return "/study"
+            case .getFinishedStudy:
+                return "/study"
+            case .getFullStudyInfo(let studyId):
+                return "/study/\(studyId)"
+            case .getInviteInfo:
+                return "/study/invite-info"
+            case .createStudy:
+                return "/study"
+            case .joinStudy(let studyId):
+                return "/study/join/\(studyId)"
+            case .editStudyLocation(let studyId, _, _):
+                return "/study/place/\(studyId)"
+            case .getPendingStudy:
+                return "/study/pending"
+            case .deleteStudy(let studyId):
+                return "/study/\(studyId)"
+            case .editStudyInfo(let studyId, _):
                 return "/study/\(studyId)"
         }
     }
@@ -53,7 +56,7 @@ extension StudyAPI: BaseAPI {
                 return .get
             case .createStudy, .joinStudy:
                 return .post
-            case .editStudyLocation:
+            case .editStudyLocation, .editStudyInfo:
                 return .put
             case .deleteStudy:
                 return .delete
@@ -78,7 +81,7 @@ extension StudyAPI: BaseAPI {
                 let param = ["inviteCode" : inviteCode]
                 return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
                 
-            case .createStudy(let dto):
+            case .createStudy(let dto), .editStudyInfo(_, let dto):
                 return .requestJSONEncodable(dto)
                 
             case .joinStudy(let studyId):

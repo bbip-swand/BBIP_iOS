@@ -15,34 +15,58 @@ final class StudyDataSource {
     
     // MARK: - GET
     /// 금주 스터디 조회 (UserHome)
-    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
-        provider.requestPublisher(.getThisWeekStudy)
+//    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
+//        provider.requestPublisher(.getThisWeekStudy)
+//            .map(\.data)
+//            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
+//            .eraseToAnyPublisher()
+//    }
+    func getCurrentWeekStudyInfo() -> AnyPublisher<[StudyInfoDTO], any Error> {
+        provider.requestPublisher(.getOngoingStudy)
+            .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
             .eraseToAnyPublisher()
     }
     
     /// 진행 중인 스터디 정보 조회
-    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error> {
+    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoDTO], any Error> {
         provider.requestPublisher(.getOngoingStudy)
+            .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
             .eraseToAnyPublisher()
     }
     
     /// 진행 완료된 스터디 정보 조회
-    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error>{
-        provider.requestPublisher(.getFinishedStudy)
+//    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error>{
+//        provider.requestPublisher(.getFinishedStudy)
+//            .map(\.data)
+//            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
+//            .eraseToAnyPublisher()
+//    }
+    func getFinishedStudyInfo() ->  AnyPublisher<[StudyInfoDTO], any Error> {
+        provider.requestPublisher(.getOngoingStudy)
+            .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
             .eraseToAnyPublisher()
     }
     
     /// 스터디 단건 조회 (StudyHome)
     func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoDTO, Error> {
         provider.requestPublisher(.getFullStudyInfo(studyId: studyId))
+            .map(BaseResponseDTO<FullStudyInfoDTO>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: FullStudyInfoDTO.self, decoder: JSONDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error

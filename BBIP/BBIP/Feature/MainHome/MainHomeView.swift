@@ -65,8 +65,8 @@ struct MainHomeView: View {
             // case .notice:
             //    NoticeView()
                 
-            // case .mypage:
-            //    MypageView()
+             case .mypage:
+                MypageView()
                 
              case .startSIS:
                 StartCreateStudyView()
