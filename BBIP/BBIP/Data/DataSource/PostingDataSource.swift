@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class PostingDataSource {
-    private let provider = MoyaProvider<PostingAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<PostingAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
 
     func getCurrentWeekPosting() -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getCurrentWeekPosting)

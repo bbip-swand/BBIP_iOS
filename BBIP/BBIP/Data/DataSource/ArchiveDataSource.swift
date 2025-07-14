@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class ArchiveDataSource {
-    private let provider = MoyaProvider<ArchiveAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<ArchiveAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
 
     func getArchivedFile(studyId: String) -> AnyPublisher<[ArchivedFileInfoDTO], Error> {
         return provider.requestPublisher(.getArchivedFile(studyId: studyId))

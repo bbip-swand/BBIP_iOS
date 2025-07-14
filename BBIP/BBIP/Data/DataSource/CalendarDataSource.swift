@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class CalendarDataSource {
-    private let provider = MoyaProvider<CalendarAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<CalendarAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     func getMonthlySchedule(year: Int, month: Int) -> AnyPublisher<[ScheduleDTO], Error> {
         return provider.requestPublisher(.getMonthlySchedule(year: year, month: month))

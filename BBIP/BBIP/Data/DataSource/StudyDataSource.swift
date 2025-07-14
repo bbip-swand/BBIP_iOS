@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class StudyDataSource {
-    private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     // MARK: - GET
     /// 금주 스터디 조회 (UserHome)
