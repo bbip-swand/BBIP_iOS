@@ -9,6 +9,7 @@ import Foundation
 
 /// 스터디 전체 정보 VO, 스터디 홈에서 사용
 struct FullStudyInfoVO {
+    let studyId: String
     let studyName: String
     let studyImageURL: String?
     let studyField: StudyCategory
