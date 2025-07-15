@@ -83,7 +83,7 @@ extension AppDelegate: MessagingDelegate {
     }
     
     private func postFCMTokenToServer(token: String) {
-        let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
+        let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
         provider.request(.postFCMToken(token: token)) { result in
             switch result {
             case .success(let response):

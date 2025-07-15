@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class AttendanceDataSource {
-    private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     /// 현재 출결 인증 존재 여부를 확인
     func getAttendanceStatus() -> AnyPublisher<AttendanceStatusDTO, AttendanceError> {
