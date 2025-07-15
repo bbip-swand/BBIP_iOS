@@ -1,7 +1,36 @@
 import SwiftUI
 
+/// 삭제 alert 표시 정보
+enum StudyDetailAlertType {
+    case deleteConfirmation
+    case deleteCompleted
+    
+    var message: String {
+        switch self {
+            case .deleteConfirmation: return "해당 글을 삭제하시겠습니까?"
+            case .deleteCompleted: return "삭제된 글은 복구가 불가능합니다.\n글을 삭제 하시겠습니까?"
+        }
+    }
+    
+    var buttonText: String {
+        switch self {
+            case .deleteConfirmation: return "삭제"
+            case .deleteCompleted: return "확인"
+        }
+    }
+    
+    var buttonTextColor: Color {
+        switch self {
+            case .deleteConfirmation: return .primary3
+            case .deleteCompleted: return .green1
+        }
+    }
+}
+
 struct StudyDetailView: View {
     private let vo: FullStudyInfoVO
+    @State var alertType: StudyDetailAlertType = .deleteConfirmation
+    @State var deleteAlertIsPresented = false
     
     init(vo: FullStudyInfoVO) {
         self.vo = vo
@@ -17,13 +46,65 @@ struct StudyDetailView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
         .navigationTitle("스터디 정보")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline).toolbar{
+            if vo.isManager {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        // 정보 수정 메뉴
+                        Button {
+                            
+                        } label: {
+                            Text("스터디 정보 수정")
+                                .font(.bbip(.body2_m14))
+                        }
+                        
+                        // 삭제 메뉴
+                        Button {
+                            alertType = .deleteConfirmation
+                            deleteAlertIsPresented = true
+                        } label: {
+                            Text("스터디 삭제")
+                                .font(.bbip(.body2_m14))
+                        }
+                    } label: {
+                        Image("setting_icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
+        }
         .backButtonStyle()
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
+        .customAlert(
+            isPresented: $deleteAlertIsPresented,
+            message: alertType.message,
+            confirmText: alertType.buttonText,
+            confirmColor: alertType.buttonTextColor
+        ) {
+            alertButtonAction()
+        }
+    }
+    
+    func alertButtonAction() {
+        switch alertType {
+            case .deleteConfirmation:
+                alertType = .deleteCompleted
+                deleteAlertIsPresented = true
+            case .deleteCompleted:
+                // 삭제 완료 처리
+                return
+        }
     }
 }
+
+#Preview {
+    StudyDetailView(vo: FullStudyInfoVO(studyId: "1", studyName: "", studyImageURL: "", studyField: .design, totalWeeks: 2, currentWeek: 1, currentWeekContent: "", studyPeriodString: "", daysOfWeek: [1], studyTimes: [StudyTime(startTime: "10:00", endTime: "11:00")], studyDescription: "", studyContents: [""], studyMembers: [], pendingDateStr: "", inviteCode: "", session: 1, isManager: true, location: ""))
+}
+
 
 private extension StudyDetailView {
     // MARK: - Study Image Section
