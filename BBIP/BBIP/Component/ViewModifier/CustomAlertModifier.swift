@@ -118,8 +118,8 @@ struct CustomAlertView: View {
                 Divider()
                 
                 Button(confirmText) {
-                    confirmAction()
                     isPresented = false
+                    confirmAction()
                 }
                 .foregroundStyle(confirmColor)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

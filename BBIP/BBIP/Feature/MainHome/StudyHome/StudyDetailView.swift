@@ -28,9 +28,14 @@ enum StudyDetailAlertType {
 }
 
 struct StudyDetailView: View {
+    @EnvironmentObject private var appState: AppStateManager
+    @Environment(\.dismiss) var dismiss
     private let vo: FullStudyInfoVO
     @State var alertType: StudyDetailAlertType = .deleteConfirmation
     @State var deleteAlertIsPresented = false
+    
+    // simple task
+    private let dataSource = StudyDataSource()
     
     init(vo: FullStudyInfoVO) {
         self.vo = vo
@@ -96,13 +101,19 @@ struct StudyDetailView: View {
                 deleteAlertIsPresented = true
             case .deleteCompleted:
                 // 삭제 완료 처리
+                dataSource.deleteStudy(studyId: vo.studyId) { result in
+                    switch result {
+                        case .success:
+                            // 삭제 완료 시 MainHome -> .userHome 화면 이동
+                            dismiss()
+                            appState.mainHomeSelectedTab = .userHome
+                        case .failure(let error):
+                            print("스터디 삭제 실패: \(error)")
+                    }
+                }
                 return
         }
     }
-}
-
-#Preview {
-    StudyDetailView(vo: FullStudyInfoVO(studyId: "1", studyName: "", studyImageURL: "", studyField: .design, totalWeeks: 2, currentWeek: 1, currentWeekContent: "", studyPeriodString: "", daysOfWeek: [1], studyTimes: [StudyTime(startTime: "10:00", endTime: "11:00")], studyDescription: "", studyContents: [""], studyMembers: [], pendingDateStr: "", inviteCode: "", session: 1, isManager: true, location: ""))
 }
 
 

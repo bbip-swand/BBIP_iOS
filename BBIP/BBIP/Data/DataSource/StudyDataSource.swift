@@ -139,4 +139,16 @@ final class StudyDataSource {
             }
         }
     }
+    
+    func deleteStudy(studyId: String, completion: @escaping (Result<Bool, Error>) -> Void ){
+        provider.request(.deleteStudy(studyId: studyId)) { result in
+            switch result {
+            case .success(let response):
+                let isSuccess = (200...299).contains(response.statusCode)
+                completion(.success(isSuccess))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
