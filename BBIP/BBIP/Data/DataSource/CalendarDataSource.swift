@@ -16,7 +16,7 @@ final class CalendarDataSource {
     func getMonthlySchedule(year: Int, month: Int) -> AnyPublisher<[ScheduleDTO], Error> {
         return provider.requestPublisher(.getMonthlySchedule(year: year, month: month))
             .map(\.data)
-            .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithsecondDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error
@@ -27,7 +27,7 @@ final class CalendarDataSource {
     func getUpcommingSchedule() -> AnyPublisher<[ScheduleDTO], Error> {
         return provider.requestPublisher(.getUpcommingSchedule)
             .map(\.data)
-            .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithsecondDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error
@@ -45,8 +45,8 @@ final class CalendarDataSource {
             .eraseToAnyPublisher()
     }
     
-    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
-        provider.requestPublisher(.updateschedule(dto: dto))
+    func updateSchedule(scheduleId: Int, dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        provider.requestPublisher(.updateschedule(scheduleId: scheduleId, dto: dto))
             .map { _ in () }
             .mapError { error in
                 error.handleDecodingError()

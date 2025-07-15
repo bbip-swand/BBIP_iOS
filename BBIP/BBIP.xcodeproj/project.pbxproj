@@ -24,6 +24,8 @@
 		989678062DFEBF7F007BC57D /* MainHomeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989678052DFEBF7F007BC57D /* MainHomeRouteBuilder.swift */; };
 		98A9B1622E0EF3A800E88CA2 /* BBIP-PROD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */; };
 		98AD414B2E25377600E82FC3 /* LoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD414A2E25377600E82FC3 /* LoggerPlugin.swift */; };
+		98AD414D2E256C0300E82FC3 /* EditStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */; };
+		98AD41512E26A5ED00E82FC3 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -302,6 +304,8 @@
 		989678052DFEBF7F007BC57D /* MainHomeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeRouteBuilder.swift; sourceTree = "<group>"; };
 		98A9B1612E0EF3A800E88CA2 /* BBIP-PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BBIP-PROD.xcconfig"; sourceTree = "<group>"; };
 		98AD414A2E25377600E82FC3 /* LoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPlugin.swift; sourceTree = "<group>"; };
+		98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyUseCase.swift; sourceTree = "<group>"; };
+		98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -834,6 +838,7 @@
 				C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */,
 				C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */,
 				C6516EE32CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift */,
+				98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -985,6 +990,7 @@
 				C6F074362CA6D98D00A37501 /* Error+Extension.swift */,
 				C6F2DA422CAD048D002023B6 /* Text+Extension.swift */,
 				C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */,
+				98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1696,6 +1702,7 @@
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C6516EB62CEB452E00FCFAF2 /* AttendanceRepository.swift in Sources */,
+				98AD414D2E256C0300E82FC3 /* EditStudyUseCase.swift in Sources */,
 				C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */,
 				C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */,
 				C6516EBB2CEB49F500FCFAF2 /* AttendanceStatusMapper.swift in Sources */,
@@ -1780,6 +1787,7 @@
 				C6516EC82CEB4E1300FCFAF2 /* CreateAttendanceCodeUseCaseProtocol.swift in Sources */,
 				C6F0743F2CA6EB4B00A37501 /* StudyHomeViewModel.swift in Sources */,
 				C6F2DA202CAAE0C9002023B6 /* PostDetailMapper.swift in Sources */,
+				98AD41512E26A5ED00E82FC3 /* Encodable+Extension.swift in Sources */,
 				C6516ECF2CEB6E5400FCFAF2 /* CreateCodeView.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
