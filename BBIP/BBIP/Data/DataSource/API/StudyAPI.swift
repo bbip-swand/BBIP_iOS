@@ -40,7 +40,7 @@ extension StudyAPI: BaseAPI {
             case .joinStudy(let studyId):
                 return "/study/join/\(studyId)"
             case .editStudyLocation(let studyId, _, _):
-                return "/study/place/\(studyId)"
+                return "/study/\(studyId)/place"
             case .getPendingStudy:
                 return "/study/pending"
             case .deleteStudy(let studyId):
@@ -56,10 +56,12 @@ extension StudyAPI: BaseAPI {
                 return .get
             case .createStudy, .joinStudy:
                 return .post
-            case .editStudyLocation, .editStudyInfo:
+            case .editStudyInfo:
                 return .put
             case .deleteStudy:
                 return .delete
+            case .editStudyLocation :
+                return .patch
         }
     }
     
