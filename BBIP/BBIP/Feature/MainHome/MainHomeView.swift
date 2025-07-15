@@ -12,14 +12,14 @@ struct MainHomeView: View {
     let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var userHomeViewModel = DIContainer.shared.makeUserHomeViewModel()
-    @State private var selectedTab: MainHomeTab = .userHome
+    //@State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
     
     private func studyNameForHeader() -> String {
-        if case .studyHome(_, let studyName) = selectedTab {
+        if case .studyHome(_, let studyName) = appState.mainHomeSelectedTab {
             return studyName
         }
         return .init()
@@ -29,10 +29,10 @@ struct MainHomeView: View {
         NavigationStack(path: $appState.path) {
         ZStack {
             VStack(spacing: 0) {
-                switch selectedTab {
+                switch appState.mainHomeSelectedTab {
                     case .userHome:
-                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
-                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
+                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: appState.mainHomeSelectedTab)
+                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $appState.mainHomeSelectedTab)
                     case .studyHome(let studyId, _):
                         StudyHomeView(navigator: navigator, studyId: studyId)
                     case .calendar:
@@ -43,7 +43,7 @@ struct MainHomeView: View {
             
             BBIPTabView(
                 navigator: navigator,
-                selectedTab: $selectedTab,
+                selectedTab: $appState.mainHomeSelectedTab,
                 ongoingStudyData: $userHomeViewModel.ongoingStudyData
             )
             .frame(maxHeight: .infinity, alignment: .bottom)
