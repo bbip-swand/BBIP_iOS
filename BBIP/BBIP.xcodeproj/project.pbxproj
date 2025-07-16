@@ -26,6 +26,7 @@
 		98AD414B2E25377600E82FC3 /* LoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD414A2E25377600E82FC3 /* LoggerPlugin.swift */; };
 		98AD414D2E256C0300E82FC3 /* EditStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */; };
 		98AD41512E26A5ED00E82FC3 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */; };
+		98B9A7EC2E27A64D00DD8FA6 /* PostDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -306,6 +307,7 @@
 		98AD414A2E25377600E82FC3 /* LoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPlugin.swift; sourceTree = "<group>"; };
 		98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyUseCase.swift; sourceTree = "<group>"; };
 		98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDTO.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -1078,7 +1080,6 @@
 			isa = PBXGroup;
 			children = (
 				C6516EA82CEB30FF00FCFAF2 /* AttendanceAPI.swift */,
-				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
 				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
 				C62780F32C8AFBC600065F98 /* BaseAPI.swift */,
 				C62780F12C8AFB9C00065F98 /* AuthAPI.swift */,
@@ -1087,6 +1088,7 @@
 				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
 				C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */,
 				C64C28472CE3787100131B70 /* CalendarAPI.swift */,
+				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
 				98AD414A2E25377600E82FC3 /* LoggerPlugin.swift */,
 			);
 			path = API;
@@ -1289,6 +1291,7 @@
 				C6F700762C9EED44000CCC80 /* PostDTO.swift */,
 				C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */,
 				C6F2DA192CAAD56E002023B6 /* CommentDTO.swift */,
+				98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1822,6 +1825,7 @@
 				C6516EE22CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift in Sources */,
 				C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
+				98B9A7EC2E27A64D00DD8FA6 /* PostDetailDTO.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C69445A12C9D6200003945CC /* StudyInfoMapper.swift in Sources */,
