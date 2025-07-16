@@ -16,7 +16,7 @@ enum PostType {
 typealias RecentPostVO = [PostVO]
 
 struct PostVO: Equatable, Hashable {
-    let postId: String
+    let postId: Int
     let createdAt: Date
     let writer: String
     let studyName: String
@@ -29,7 +29,7 @@ struct PostVO: Equatable, Hashable {
 extension PostVO {
     static func placeholderVO() -> PostVO {
         return PostVO.init(
-            postId: "",
+            postId: 0,
             createdAt: Date(),
             writer: "",
             studyName: "placeholder",

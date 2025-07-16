@@ -61,7 +61,7 @@ struct NoticeBannerView: View {
         }
         .padding(.horizontal, 16)
         .navigationDestination(isPresented: $showPostDetail) {
-            PostingDetailView(postId: postVO?.postId ?? "")
+            PostingDetailView(postId: postVO?.postId ?? 0)
         }
         .disabled(postVO == nil)
     }

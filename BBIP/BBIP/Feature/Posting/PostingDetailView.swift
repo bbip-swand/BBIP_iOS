@@ -12,9 +12,9 @@ struct PostingDetailView: View {
     @FocusState private var isFocused: Bool
     @State var deleteAlertIsPresented: Bool = false
     
-    private let postId: String
+    private let postId: Int
     
-    init(postId: String) {
+    init(postId: Int) {
         self.postId = postId
     }
     

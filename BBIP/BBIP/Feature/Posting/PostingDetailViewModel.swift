@@ -42,7 +42,7 @@ final class PostingDetailViewModel: ObservableObject {
         isCommentButtonEnabled = !commentText.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
-    func getPostDetail(postingId: String) {
+    func getPostDetail(postingId: Int) {
         getPostDetailUseCase.execute(postingId: postingId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -58,7 +58,7 @@ final class PostingDetailViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func createComment(postingId: String, commentContent: String) {
+    func createComment(postingId: Int, commentContent: String) {
         createCommentUseCase.execute(postingId: postingId, content: commentContent)
             .receive(on: DispatchQueue.main)
             .sink { completion in

@@ -15,8 +15,9 @@ final class PostingDataSource {
 
     func getCurrentWeekPosting() -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getCurrentWeekPosting)
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error
@@ -26,8 +27,9 @@ final class PostingDataSource {
     
     func getStudyPosting(studyId: String) -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getStudyPosting(studyId: studyId))
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 print("Error: \(error.localizedDescription)")
                 return error
@@ -35,10 +37,11 @@ final class PostingDataSource {
             .eraseToAnyPublisher()
     }
     
-    func getPostingDetails(postingId: String) -> AnyPublisher<PostDTO, Error> {
+    func getPostingDetails(postingId: Int) -> AnyPublisher<PostDetailDTO, Error> {
         return provider.requestPublisher(.getPostingDetail(postingId: postingId))
+            .map(BaseResponseDTO<PostDetailDTO>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: PostDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            //.decode(type: PostDetailDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error
@@ -46,7 +49,7 @@ final class PostingDataSource {
             .eraseToAnyPublisher()
     }
     
-    func createCommnet(postingId: String, content: String) -> AnyPublisher<Bool, Error> {
+    func createCommnet(postingId: Int, content: String) -> AnyPublisher<Bool, Error> {
         return provider.requestPublisher(.createComment(postingId: postingId, content: content))
             .map { response in
                 return (200...299).contains(response.statusCode)
