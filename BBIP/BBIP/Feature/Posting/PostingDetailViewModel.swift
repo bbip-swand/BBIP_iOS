@@ -17,8 +17,11 @@ final class PostingDetailViewModel: ObservableObject {
     }
     @Published var isCommentButtonEnabled: Bool = false
     
+    // MARK: - UseCase
     private let getPostDetailUseCase: GetPostDetailUseCaseProtocol
+    private let deletePostUseCase: DeletePostUseCaseProtocol
     private let createCommentUseCase: CreateCommentUseCaseProtocol
+    private let deleteCommentUseCase: DeleteCommentUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     // 작성자 매니저 여부 반환용
@@ -32,10 +35,14 @@ final class PostingDetailViewModel: ObservableObject {
     
     init(
         getPostDetailUseCase: GetPostDetailUseCaseProtocol,
-        createCommentUseCase: CreateCommentUseCaseProtocol
+        deletePostUseCase: DeletePostUseCaseProtocol,
+        createCommentUseCase: CreateCommentUseCaseProtocol,
+        deleteCommentUseCase: DeleteCommentUseCaseProtocol
     ) {
         self.getPostDetailUseCase = getPostDetailUseCase
+        self.deletePostUseCase = deletePostUseCase
         self.createCommentUseCase = createCommentUseCase
+        self.deleteCommentUseCase = deleteCommentUseCase
     }
     
     private func validateCommentText() {
@@ -71,6 +78,51 @@ final class PostingDetailViewModel: ObservableObject {
                 guard let self = self else { return }
                 self.getPostDetail(postingId: postingId)
                 self.commentText = ""
+            }
+            .store(in: &cancellables)
+    }
+    
+    // 게시글 삭제
+    func deletePost() {
+        guard let postId = postDetailData?.postId else { return }
+        deletePostUseCase.execute(postId: postId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { isSuccess in
+                if isSuccess {
+                    // 게시글 나가기 함수 추가
+                    print("게시글 삭제 성공")
+                } else {
+                    print("게시글 삭제 실패")
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    // 댓글 삭제
+    func deleteComment(commentId: Int) {
+        guard let postId = postDetailData?.postId else { return }
+        deleteCommentUseCase.execute(commentId: commentId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [self] isSuccess in
+                if isSuccess {
+                    print("댓글 삭제 성공")
+                    // 데이터 갱신
+                    getPostDetail(postingId: postId)
+                } else {
+                    print("댓글 삭제 실패")
+                }
             }
             .store(in: &cancellables)
     }

@@ -131,7 +131,14 @@ class DIContainer {
     private lazy var getPostDetailUseCase: GetPostDetailUseCaseProtocol = GetPostDetailUseCase(
         repository: postingRepository
     )
+    
+    private lazy var deletePostUseCase: DeletePostUseCaseProtocol = DeletePostUseCase(
+        repository: postingRepository
+    )
     private lazy var createCommentUseCase: CreateCommentUseCaseProtocol = CreateCommentUseCase(
+        repository: postingRepository
+    )
+    private lazy var deleteCommentUseCase: DeleteCommentUseCaseProtocol = DeleteCommentUseCase(
         repository: postingRepository
     )
     private lazy var createPostingUseCase: CreatePostingUseCaseProtocol = CreatePostingUseCase(
@@ -249,7 +256,9 @@ class DIContainer {
     func makePostingDetailViewModel() -> PostingDetailViewModel {
         return PostingDetailViewModel(
             getPostDetailUseCase: getPostDetailUseCase,
-            createCommentUseCase: createCommentUseCase
+            deletePostUseCase: deletePostUseCase,
+            createCommentUseCase: createCommentUseCase,
+            deleteCommentUseCase: deleteCommentUseCase
         )
     }
     
