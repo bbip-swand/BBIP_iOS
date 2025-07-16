@@ -8,9 +8,10 @@
 import Foundation
 
 struct CommentDTO: Decodable {
+    let commentId: Int
     let writer: String
+    let isManager: Bool
+    let profileImageUrl: String?
     let content: String
     let createdAt: Date
-    let profileImageUrl: String?
-    let isManager: Bool
 }
