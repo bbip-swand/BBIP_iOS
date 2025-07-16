@@ -31,4 +31,19 @@ extension StudyCategory {
         }
         return allCategories[int]
     }
+    
+    /// StudyCategory를 StudyField로 변환하는 프로퍼티
+    var toStudyField: StudyField {
+        switch self {
+        case .majorSubject: return .MAJOR
+        case .selfDevelopment: return .SELF_IMPROVEMENT
+        case .language: return .LANGUAGE
+        case .certification: return .CERTIFICATION
+        case .interview: return .INTERVIEW
+        case .development: return .DEVELOPMENT
+        case .design: return .DESIGN
+        case .hobby: return .HOBBY
+        case .others: return .ETC
+        }
+    }
 }
