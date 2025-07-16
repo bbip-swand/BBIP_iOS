@@ -16,6 +16,7 @@
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		981679872E102B2500AE0077 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679862E102B2500AE0077 /* CustomAlertModifier.swift */; };
 		981679892E11837100AE0077 /* WeeklyStudyContentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */; };
+		9865104F2E27D22900A8CCDF /* ModifyStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865104E2E27D22900A8CCDF /* ModifyStudyInfoVO.swift */; };
 		98733ABD2E1F74F500B770D0 /* LoginViewRouterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98733ABC2E1F74F500B770D0 /* LoginViewRouterBuilder.swift */; };
 		98830A9D2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */; };
 		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
@@ -299,6 +300,7 @@
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		981679862E102B2500AE0077 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
 		981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListViewModel.swift; sourceTree = "<group>"; };
+		9865104E2E27D22900A8CCDF /* ModifyStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyStudyInfoVO.swift; sourceTree = "<group>"; };
 		98733ABC2E1F74F500B770D0 /* LoginViewRouterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRouterBuilder.swift; sourceTree = "<group>"; };
 		98830A9C2E0CFAFC00414CF7 /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDataStore.swift; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 				C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */,
 				C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */,
 				C6516EDF2CECC95500FCFAF2 /* PendingStudyVO.swift */,
+				9865104E2E27D22900A8CCDF /* ModifyStudyInfoVO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -1647,6 +1650,7 @@
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C6516ED72CEB8A7200FCFAF2 /* AttendanceRecordsViewModel.swift in Sources */,
 				C6516EB02CEB329B00FCFAF2 /* AttendanceStatusDTO.swift in Sources */,
+				9865104F2E27D22900A8CCDF /* ModifyStudyInfoVO.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */,
 				C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */,
