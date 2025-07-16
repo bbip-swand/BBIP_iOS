@@ -92,6 +92,10 @@ class DIContainer {
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
         repository: studyRepository
     )
+    // 스터디 수정, 주차 수정 둘다 이용
+    private lazy var editStudyUseCase: EditStudyUseCaseProtocol = EditStudyUseCase(
+        repository: studyRepository
+    )
     private lazy var getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol = GetCurrentWeekStudyInfoUseCase(
         repository: studyRepository
     )
@@ -217,6 +221,11 @@ class DIContainer {
             createAttendanceCodeUseCase: createAttendanceCodeUseCase,
             getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
         )
+    }
+    
+    // WeeklyStudyEdit
+    func makeWeeklyStudyEditViewModel(fullStudyInfoVO: FullStudyInfoVO) -> WeeklyStudyContentListViewModel {
+        return .init(fullStudyInfo: fullStudyInfoVO, editStudyUseCase: editStudyUseCase)
     }
     
     // Attendance Records
