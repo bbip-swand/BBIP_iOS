@@ -16,6 +16,7 @@ protocol StudyRepository {
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
     func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
     func getPendingStudy() -> AnyPublisher<PendingStudyVO, Error>
+    func editStudy(studyId: String, vo: ModifyStudyInfoVO) -> AnyPublisher<Bool, Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -77,7 +78,7 @@ final class StudyRepositoryImpl: StudyRepository {
     
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         let dto = createStudyInfoMapper.toDTO(vo: vo)
-        print("dto: \(dto)")
+        print("createStudy dto: \(dto)")
         return dataSource.createStudy(dto: dto)
             .eraseToAnyPublisher()
     }
@@ -90,6 +91,12 @@ final class StudyRepositoryImpl: StudyRepository {
     func getPendingStudy() -> AnyPublisher<PendingStudyVO, any Error> {
         dataSource.getPendingStudy()
             .map { return self.pendingStudyMapper.toVO(dto: $0)}
+            .eraseToAnyPublisher()
+    }
+    
+    func editStudy(studyId: String, vo: ModifyStudyInfoVO) -> AnyPublisher<Bool, Error> {
+        let dto = createStudyInfoMapper.toDTO(vo: vo)
+        return dataSource.editStudy(studyId: studyId, dto: dto)
             .eraseToAnyPublisher()
     }
 }
