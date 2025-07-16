@@ -16,7 +16,7 @@ struct PostDetailDTO: Decodable {
     let title: String
     let content: String
     let isNotice: Bool
-    //let createdAt: Date
+    let createdAt: Date
     let week: Int
     let comments: [CommentDTO]?
 }

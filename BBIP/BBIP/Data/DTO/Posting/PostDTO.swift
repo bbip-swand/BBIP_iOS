@@ -15,7 +15,7 @@ struct PostDTO: Decodable {
     //let profileImageUrl: String?
     let title: String
     let content: String
-    //let createdAt: Date
+    let createdAt: Date
     let week: Int
     let isNotice: Bool
     //let comments: [CommentDTO]?

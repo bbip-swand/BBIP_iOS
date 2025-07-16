@@ -15,7 +15,7 @@ final class PostingDataSource {
 
     func getCurrentWeekPosting() -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getCurrentWeekPosting)
-            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder())
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.yyyyMMddDecoder())
             .map(\.data)
             //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
@@ -27,7 +27,7 @@ final class PostingDataSource {
     
     func getStudyPosting(studyId: String) -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getStudyPosting(studyId: studyId))
-            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder())
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.yyyyMMddDecoder())
             .map(\.data)
             //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
@@ -39,7 +39,7 @@ final class PostingDataSource {
     
     func getPostingDetails(postingId: Int) -> AnyPublisher<PostDetailDTO, Error> {
         return provider.requestPublisher(.getPostingDetail(postingId: postingId))
-            .map(BaseResponseDTO<PostDetailDTO>.self, using: JSONDecoder())
+            .map(BaseResponseDTO<PostDetailDTO>.self, using: JSONDecoder.yyyyMMddDecoder())
             .map(\.data)
             //.decode(type: PostDetailDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
