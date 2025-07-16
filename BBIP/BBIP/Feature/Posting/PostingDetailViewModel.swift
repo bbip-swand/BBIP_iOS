@@ -16,6 +16,8 @@ final class PostingDetailViewModel: ObservableObject {
         }
     }
     @Published var isCommentButtonEnabled: Bool = false
+    // 삭제 성공 시 호출 클로저
+    var onPostDeleteSuccess: (() -> Void)?
     
     // MARK: - UseCase
     private let getPostDetailUseCase: GetPostDetailUseCaseProtocol
@@ -93,9 +95,10 @@ final class PostingDetailViewModel: ObservableObject {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { isSuccess in
+            } receiveValue: { [self] isSuccess in
                 if isSuccess {
                     // 게시글 나가기 함수 추가
+                    onPostDeleteSuccess?()
                     print("게시글 삭제 성공")
                 } else {
                     print("게시글 삭제 실패")
