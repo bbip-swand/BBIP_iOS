@@ -64,7 +64,9 @@ struct FullStudyInfoMapper {
             inviteCode: dto.studyInviteCode,
             session: dto.session,
             isManager: dto.isManager,
-            location: dto.place
+            location: dto.place,
+            studyStartDate: dto.studyStartDate,
+            studyEndDate: dto.studyEndDate
         )
     }
 }
