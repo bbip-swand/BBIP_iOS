@@ -34,11 +34,11 @@ extension StudyAPI: BaseAPI {
             case .getFullStudyInfo(let studyId):
                 return "/study/\(studyId)"
             case .getInviteInfo:
-                return "/study/invite-info"
+                return "/study/invitation"
             case .createStudy:
                 return "/study"
             case .joinStudy(let studyId):
-                return "/study/join/\(studyId)"
+                return "/study/\(studyId)/join/"
             case .editStudyLocation(let studyId, _, _):
                 return "/study/\(studyId)/place"
             case .getPendingStudy:
