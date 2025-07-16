@@ -8,6 +8,7 @@
 import Foundation
 
 struct CommentVO {
+    let commentId: Int
     let writer: String
     let content: String
     let timeAgo: String
@@ -18,6 +19,7 @@ struct CommentVO {
 extension CommentVO {
     static func placeholderMock() -> CommentVO {
         return .init(
+            commentId: 0,
             writer: "000",
             content: "content placeholder",
             timeAgo: "00시간 전",

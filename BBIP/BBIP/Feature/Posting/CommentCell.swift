@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CommentCell: View {
     private let vo: CommentVO
+    let onDelete: () -> Void
     
-    init(vo: CommentVO) {
+    init(vo: CommentVO, onDelete: @escaping () -> Void) {
         self.vo = vo
+        self.onDelete = onDelete
     }
     
     var body: some View {
@@ -37,7 +39,7 @@ struct CommentCell: View {
             if vo.isManager {
                 Menu {
                     Button(role: .destructive) {
-                        // 삭제 로직 추가
+                        onDelete()
                     } label: {
                         Text("삭제")
                             .font(.bbip(.body2_m14))

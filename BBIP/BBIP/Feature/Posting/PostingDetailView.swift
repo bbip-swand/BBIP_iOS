@@ -163,11 +163,14 @@ struct PostingDetailView: View {
         VStack(spacing: 0) {
             if let vo = viewModel.postDetailData {
                 ForEach(0..<vo.commnets.count, id: \.self) { index in
-                    CommentCell(vo: vo.commnets[index])
+                    let comment = vo.commnets[index]
+                    CommentCell(vo: comment) {
+                        viewModel.deleteComment(commentId: comment.commentId)
+                    }
                 }
             } else {
                 ForEach(0..<1, id: \.self) { index in
-                    CommentCell(vo: .placeholderMock())
+                    CommentCell(vo: .placeholderMock()) { }
                         .redacted(reason: .placeholder)
                 }
             }
