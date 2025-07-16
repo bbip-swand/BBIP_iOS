@@ -28,4 +28,10 @@ struct FullStudyInfoVO {
     let session: Int
     let isManager: Bool
     let location: String?
+    
+    // 수정 날짜 전달 용도
+    let studyStartDate: String
+    let studyEndDate: String
 }
+
+

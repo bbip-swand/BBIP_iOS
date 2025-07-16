@@ -8,6 +8,7 @@
 import Foundation
 
 struct ModifyStudyInfoVO {
+    let studyId: String
     let studyName: String
     let studyImageUrl: String
     let field: StudyField
@@ -17,21 +18,22 @@ struct ModifyStudyInfoVO {
     let daysOfWeeks: [Int]
     let studyTimes: [StudyTime]
     let studyDescription: String
-    let studyContents: [String]
+    var studyContents: [String]
 }
 
 extension ModifyStudyInfoVO{
     // 수정 관련 FullStudyInfoVO 변환 용도
-    init (_ vo: FullStudyInfoVO) {
-        self.studyName = vo.studyName
-        self.studyImageUrl = vo.studyImageURL ?? ""
-        self.field = StudyField(intValue: vo.studyField.hashValue) ?? .ETC
-        self.totalWeeks = vo.totalWeeks
-        self.studyStartDate = vo.studyStartDate
-        self.studyEndDate = vo.studyEndDate
-        self.daysOfWeeks = vo.daysOfWeek
-        self.studyTimes = vo.studyTimes
-        self.studyDescription = vo.studyDescription
-        self.studyContents = vo.studyContents
+    init (_ fullStudyInfoVO: FullStudyInfoVO) {
+        self.studyId = fullStudyInfoVO.studyId
+        self.studyName = fullStudyInfoVO.studyName
+        self.studyImageUrl = fullStudyInfoVO.studyImageURL ?? ""
+        self.field = fullStudyInfoVO.studyField.toStudyField
+        self.totalWeeks = fullStudyInfoVO.totalWeeks
+        self.studyStartDate = fullStudyInfoVO.studyStartDate
+        self.studyEndDate = fullStudyInfoVO.studyEndDate
+        self.daysOfWeeks = fullStudyInfoVO.daysOfWeek
+        self.studyTimes = fullStudyInfoVO.studyTimes
+        self.studyDescription = fullStudyInfoVO.studyDescription
+        self.studyContents = fullStudyInfoVO.studyContents
     }
 }
