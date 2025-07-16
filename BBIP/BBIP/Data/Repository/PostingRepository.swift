@@ -14,6 +14,8 @@ protocol PostingRepository {
     func getPostingDetail(postingId: Int) -> AnyPublisher<PostDetailVO, Error>
     func createComment(postingId: Int, content: String) -> AnyPublisher<Bool, Error>
     func createPosting(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error>
+    func deletePost(postId: Int) -> AnyPublisher<Bool, Error>
+    func deleteComment(commentId: Int) -> AnyPublisher<Bool, Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
@@ -62,6 +64,16 @@ final class PostingRepositoryImpl: PostingRepository {
     
     func createPosting(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error> {
         return dataSource.createPosting(dto: dto)
+            .eraseToAnyPublisher()
+    }
+    
+    func deletePost(postId: Int) -> AnyPublisher<Bool, any Error> {
+        return dataSource.deletePost(postId: postId)
+            .eraseToAnyPublisher()
+    }
+    
+    func deleteComment(commentId: Int) -> AnyPublisher<Bool, any Error> {
+        return dataSource.deleteComment(commentId: commentId)
             .eraseToAnyPublisher()
     }
 }

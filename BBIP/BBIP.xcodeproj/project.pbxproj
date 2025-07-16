@@ -27,6 +27,8 @@
 		98AD414D2E256C0300E82FC3 /* EditStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */; };
 		98AD41512E26A5ED00E82FC3 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */; };
 		98B9A7EC2E27A64D00DD8FA6 /* PostDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */; };
+		98B9A7EE2E27ABB100DD8FA6 /* DeletePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */; };
+		98B9A7F02E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -308,6 +310,8 @@
 		98AD414C2E256C0300E82FC3 /* EditStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyUseCase.swift; sourceTree = "<group>"; };
 		98AD41502E26A5ED00E82FC3 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDTO.swift; sourceTree = "<group>"; };
+		98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostUseCase.swift; sourceTree = "<group>"; };
+		98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentUseCase.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -1351,6 +1355,8 @@
 				C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */,
 				C6F2DA382CABEE98002023B6 /* CreateCommentUseCase.swift */,
 				C6516EFE2CEE0D1800FCFAF2 /* CreatePostingUseCase.swift */,
+				98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */,
+				98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1645,6 +1651,7 @@
 				C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */,
 				C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
+				98B9A7EE2E27ABB100DD8FA6 /* DeletePostUseCase.swift in Sources */,
 				C6F98F3C2CAA82DA00F0D8E8 /* DocumentPicker.swift in Sources */,
 				C6516EBE2CEB4AEC00FCFAF2 /* AttendanceRecordMapper.swift in Sources */,
 				C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */,
@@ -1856,6 +1863,7 @@
 				C6F2DA242CAAF70D002023B6 /* CommentCell.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
 				C6989E972C96E396003CE4D5 /* StudySessionVO.swift in Sources */,
+				98B9A7F02E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift in Sources */,
 				9886AB382E0C675D0035D3D0 /* MyPageRouteBuilder.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,
 			);

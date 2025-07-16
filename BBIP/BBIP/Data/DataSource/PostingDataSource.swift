@@ -66,4 +66,42 @@ final class PostingDataSource {
             .mapError { $0 }
             .eraseToAnyPublisher()
     }
+    
+    func deletePost(postId: Int) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.deletePost(postId: postId))
+            .tryMap { response in
+                print(response.statusCode)
+                if (200...299).contains(response.statusCode) {
+                    return true
+                } else if response.statusCode == 400 {
+                    return false // already study member
+                } else {
+                    throw NSError(
+                        domain: "deletePost Error",
+                        code: response.statusCode,
+                        userInfo: [NSLocalizedDescriptionKey: "[PostingDataSource] deletePost() failed with status code \(response.statusCode)"]
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func deleteComment(commentId: Int) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.deleteComment(commentId: commentId))
+            .tryMap { response in
+                print(response.statusCode)
+                if (200...299).contains(response.statusCode) {
+                    return true
+                } else if response.statusCode == 400 {
+                    return false // already study member
+                } else {
+                    throw NSError(
+                        domain: "deleteComment Error",
+                        code: response.statusCode,
+                        userInfo: [NSLocalizedDescriptionKey: "[PostingDataSource] deleteComment() failed with status code \(response.statusCode)"]
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
 }
