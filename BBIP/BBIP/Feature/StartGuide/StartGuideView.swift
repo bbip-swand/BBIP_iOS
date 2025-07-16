@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct StartGuideView: View {
+    let navigator: LinkNavigatorType
     @State private var showCreateStudyView: Bool = false
     
     var body: some View {
@@ -59,12 +61,8 @@ struct StartGuideView: View {
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
-//        .navigationDestination(isPresented: $showCreateStudyView) {
-//            StartCreateStudyView()
-//        }
+        .navigationDestination(isPresented: $showCreateStudyView) {
+            StartCreateStudyView()
+        }
     }
-}
-
-#Preview {
-    StartGuideView()
 }

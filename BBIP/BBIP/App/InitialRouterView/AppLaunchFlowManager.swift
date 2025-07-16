@@ -22,19 +22,18 @@ final class AppLaunchFlowManager: ObservableObject {
         userDataSource.checkIsNewUser { [weak self] isNewUser in
             guard let self else { return }
             
-            let isUserProfileSet = !isNewUser
+            let isStudyEmpty = !isNewUser
             let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
-            UserDefaultsManager.shared.setIsExistingUser(isUserProfileSet)
             
             if isLoggedIn == false {
                 self.navigator.replace(paths: [BBIPMatchPath.onboarding.capitalizedPath], items: [:], isAnimated: false)
-            } else if isUserProfileSet == false {
-                self.navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
+            } else if isStudyEmpty == false {
+                self.navigator.replace(paths: [BBIPMatchPath.startGuide.capitalizedPath], items: [:], isAnimated: false)
             } else {
                 self.navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
             }
             
-            logging(isUserProfileSet: isUserProfileSet)            
+            logging(isUserProfileSet: isLoggedIn)
         }
     }
 }
