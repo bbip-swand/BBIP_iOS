@@ -94,7 +94,7 @@ extension StudyAPI: BaseAPI {
                 let param = ["session" : session, "place" : location] as [String : Any]
                 return .requestParameters(parameters: param, encoding: JSONEncoding.default)
             case .deleteStudy(let studyId):
-                let param = ["studyId": studyId]
+                let param = ["studyId": Int(studyId)!]
                 return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }

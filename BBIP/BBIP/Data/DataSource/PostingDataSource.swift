@@ -15,9 +15,8 @@ final class PostingDataSource {
 
     func getCurrentWeekPosting() -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getCurrentWeekPosting)
-            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.yyyyMMddDecoder())
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.isCreatedAtDecoder())
             .map(\.data)
-            //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error
@@ -27,9 +26,8 @@ final class PostingDataSource {
     
     func getStudyPosting(studyId: String) -> AnyPublisher<[PostDTO], Error> {
         return provider.requestPublisher(.getStudyPosting(studyId: studyId))
-            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.yyyyMMddDecoder())
+            .map(BaseResponseDTO<[PostDTO]>.self, using: JSONDecoder.isCreatedAtDecoder())
             .map(\.data)
-            //.decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 print("Error: \(error.localizedDescription)")
                 return error
@@ -39,9 +37,8 @@ final class PostingDataSource {
     
     func getPostingDetails(postingId: Int) -> AnyPublisher<PostDetailDTO, Error> {
         return provider.requestPublisher(.getPostingDetail(postingId: postingId))
-            .map(BaseResponseDTO<PostDetailDTO>.self, using: JSONDecoder.yyyyMMddDecoder())
+            .map(BaseResponseDTO<PostDetailDTO>.self, using: JSONDecoder.isCreatedAtDecoder())
             .map(\.data)
-            //.decode(type: PostDetailDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 error.handleDecodingError()
                 return error

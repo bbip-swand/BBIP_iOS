@@ -11,14 +11,11 @@ struct PostDTO: Decodable {
     let postId: Int
     let studyName: String
     let writer: String
-    //let isManager: Bool?
-    //let profileImageUrl: String?
     let title: String
     let content: String
     let createdAt: Date
     let week: Int
     let isNotice: Bool
-    //let comments: [CommentDTO]?
 }
 
 /*[

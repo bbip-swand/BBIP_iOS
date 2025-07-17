@@ -22,16 +22,6 @@ struct RecentPostMapper {
                 postType: postType,
                 week: dtoItem.week
             )
-//            return PostVO(
-//                postId: dtoItem.postId,
-//                createdAt: dtoItem.createdAt, 
-//                writer: dtoItem.writer,
-//                studyName: dtoItem.studyName,
-//                title: dtoItem.title,
-//                content: dtoItem.content,
-//                postType: postType, 
-//                week: dtoItem.week
-//            )
         }
     }
 }

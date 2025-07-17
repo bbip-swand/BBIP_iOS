@@ -56,7 +56,8 @@ struct UserHomeNavBar: View {
 
     private var profileButton: some View {
         Button {
-            navigator.next(paths: [BBIPMatchPath.myPage.capitalizedPath], items: [:], isAnimated: true)
+//            navigator.next(paths: [BBIPMatchPath.myPage.capitalizedPath], items: [:], isAnimated: true)
+            appState.push(.mypage)
         } label: {
             Image("profile_icon")
                 .renderingMode(.template)
