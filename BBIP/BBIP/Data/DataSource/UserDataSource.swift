@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class UserDataSource {
-    private let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     func requestSignUp(signUpReqDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
         provider.requestPublisher(.signUp(dto: signUpReqDTO))

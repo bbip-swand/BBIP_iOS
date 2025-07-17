@@ -41,10 +41,8 @@ struct WeeklyStudyContentListView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: WeeklyStudyContentListViewModel
     
-    init(weeklyStudyContent: [String], isManager: Bool) {
-        _viewModel = StateObject(wrappedValue: WeeklyStudyContentListViewModel(
-            weeklyStudyContent: weeklyStudyContent,
-            isManager: isManager)
+    init(fullStudyInfo: FullStudyInfoVO) {
+        _viewModel =  StateObject(wrappedValue:DIContainer.shared.makeWeeklyStudyEditViewModel(fullStudyInfoVO: fullStudyInfo)
         )
     }
     

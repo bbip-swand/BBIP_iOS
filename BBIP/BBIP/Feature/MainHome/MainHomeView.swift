@@ -12,14 +12,14 @@ struct MainHomeView: View {
     let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var userHomeViewModel = DIContainer.shared.makeUserHomeViewModel()
-    @State private var selectedTab: MainHomeTab = .userHome
+    //@State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
     
     private func studyNameForHeader() -> String {
-        if case .studyHome(_, let studyName) = selectedTab {
+        if case .studyHome(_, let studyName) = appState.mainHomeSelectedTab {
             return studyName
         }
         return .init()
@@ -27,12 +27,12 @@ struct MainHomeView: View {
     
     var body: some View {
         NavigationStack(path: $appState.path) {
-            ZStack {
-                VStack(spacing: 0) {
-                    switch selectedTab {
+        ZStack {
+            VStack(spacing: 0) {
+                switch appState.mainHomeSelectedTab {
                     case .userHome:
-                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: selectedTab)
-                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
+                        UserHomeNavBar(navigator: navigator, showDot: $hasNotice, tabState: appState.mainHomeSelectedTab)
+                        UserHomeView(viewModel: userHomeViewModel, selectedTab: $appState.mainHomeSelectedTab)
                     case .studyHome(let studyId, _):
                         StudyHomeView(navigator: navigator, studyId: studyId)
                     case .calendar:
@@ -43,7 +43,7 @@ struct MainHomeView: View {
                 
                 BBIPTabView(
                     navigator: navigator,
-                    selectedTab: $selectedTab,
+                    selectedTab: $appState.mainHomeSelectedTab,
                     ongoingStudyData: $userHomeViewModel.ongoingStudyData
                 )
                 .frame(maxHeight: .infinity, alignment: .bottom)
@@ -80,26 +80,26 @@ struct MainHomeView: View {
             }
             .navigationDestination(for: MainHomeViewDestination.self) { destination in
                 switch destination {
-                case .mypage:
-                    MypageView(navigator: navigator)
-                    
-                case .startSIS:
-                    StartCreateStudyView(navigator: navigator)
-                    
-                case .setLocation(let prevLocation, let studyId, let session):
-                    SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
-                    
-                case .createCode (let studyId, let session):
-                    CreateCodeOnboardingView(studyId: studyId, session: session)
-                    
-                case .entercode(let remainingTime, let studyId, let studyName):
-                    AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
-                    
-                case .showPostingList(let studyId, let postData, let weeklyStudyContent):
-                    PostingListView(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent)
-                    
-                default:
-                    EmptyView()
+                    case .mypage:
+                        MypageView(navigator: navigator)
+                        
+                    case .startSIS:
+                        StartCreateStudyView(navigator: navigator)
+                        
+                    case .setLocation(let prevLocation, let studyId, let session):
+                        SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
+                        
+                    case .createCode (let studyId, let session):
+                        CreateCodeOnboardingView(studyId: studyId, session: session)
+                        
+                    case .entercode(let remainingTime, let studyId, let studyName):
+                        AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
+                        
+                    case .showPostingList(let studyId, let postData, let weeklyStudyContent):
+                        PostingListView(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent)
+                        
+                    default:
+                        EmptyView()
                 }
             }
         }

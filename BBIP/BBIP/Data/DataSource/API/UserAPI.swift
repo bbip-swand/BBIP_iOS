@@ -21,17 +21,17 @@ extension UserAPI: BaseAPI {
     var path: String {
         switch self {
         case .signUp:
-            return "/users/signup/apple"
+            return "/auth/signup/apple"
         case .resign:
-            return "/users/resign/apple"
+            return "/auth/resign/apple"
         case .createInfo:
-            return "/users/create/info"
+            return "/users/info"
         case .updateInfo:
-            return "/users/update/info"
+            return "/users/info"
         case .postFCMToken:
             return "/users/fcmToken"
         case .checkNewUser:
-            return "/users/check/new-user"
+            return "/users/me/new-status"
         case .getUserInfo:
             return "/users/info"
         }
@@ -39,9 +39,9 @@ extension UserAPI: BaseAPI {
     
     var method: Moya.Method {
         switch self {
-        case .signUp, .resign, .createInfo, .postFCMToken:
+        case .signUp, .resign, .createInfo :
             return .post
-        case .updateInfo:
+        case .updateInfo, .postFCMToken:
             return .put
         case .checkNewUser, .getUserInfo:
             return .get

@@ -12,7 +12,7 @@ import LinkNavigator
 
 struct LoginView: View {
     let navigator: LinkNavigatorType
-    
+    @EnvironmentObject private var appState: AppStateManager
     @StateObject var viewModel: LoginViewModel = Container.shared.loginViewModel()
     private let userStateManager = UserStateManager()
     
@@ -87,7 +87,7 @@ private struct AppleSigninButton : View {
             .aspectRatio(contentMode: .fit)
             .padding(.horizontal, 20)
             .overlay {
-                SignInWithAppleButton(
+                 SignInWithAppleButton(
                     onRequest: { request in
                         request.requestedScopes = []
                     },

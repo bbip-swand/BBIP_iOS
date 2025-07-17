@@ -8,7 +8,7 @@
 import Combine
 
 protocol UpdateScheduleUseCaseProtocol {
-    func execute(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
+    func execute(scheduleId: Int, dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
 }
 
 final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol {
@@ -18,8 +18,8 @@ final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol {
         self.repository = repository
     }
     
-    func execute(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
-        repository.updateSchedule(dto: dto)
+    func execute(scheduleId: Int, dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        repository.updateSchedule(scheduleId: scheduleId, dto: dto)
             .eraseToAnyPublisher()
     }
 }

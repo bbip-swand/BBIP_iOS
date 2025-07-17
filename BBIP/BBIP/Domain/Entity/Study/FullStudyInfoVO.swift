@@ -9,6 +9,7 @@ import Foundation
 
 /// 스터디 전체 정보 VO, 스터디 홈에서 사용
 struct FullStudyInfoVO {
+    let studyId: String
     let studyName: String
     let studyImageURL: String?
     let studyField: StudyCategory
@@ -27,4 +28,10 @@ struct FullStudyInfoVO {
     let session: Int
     let isManager: Bool
     let location: String?
+    
+    // 수정 날짜 전달 용도
+    let studyStartDate: String
+    let studyEndDate: String
 }
+
+

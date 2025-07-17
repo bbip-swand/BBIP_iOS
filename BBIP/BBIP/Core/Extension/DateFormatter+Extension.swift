@@ -33,12 +33,66 @@ extension DateFormatter {
         return formatter
     }()
     
+    /// "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXXX" 형식의 ISO8601 DateFormatter
+    static let iso8601WithMilli9seconds: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXXX"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
+    
+    /// "yyyy-MM-dd'T'HH:mm:ss.SSSXZ" 형식의 ISO8601 DateFormatter
+    static let iso8601WithMilli4seconds: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
+    
+    /// "yyyy-MM-dd'T'HH:mm:ss" 형식의 ISO8601 DateFormatter
+    static let iso8601WithSecond: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
+    
     static func customFormatter(format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter
     }
+    // 스터디 수정 사용 포맷 형식
+    /// "HH:mm" 포맷 형식
+    static let hhMM: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
+    /// "HH:mm:SS" 포맷 형식/// "yyyy-MM-dd" 형식의 DateFormatter
+    static let edityyyyMMdd: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    static let edithhMMSS: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:SS"
+        return formatter
+    }()
+    
+    static let createdAt: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        return formatter
+    }()
 }
 
 /// int to 0요일

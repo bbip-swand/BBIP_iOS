@@ -31,7 +31,7 @@ final class CreatePostingViewModel: ObservableObject {
         
         isUploading = true
         let dto = CreatePostingDTO(
-            studyId: studyId,
+            studyId: Int(studyId)!,
             title: title,
             week: week,
             content: content,

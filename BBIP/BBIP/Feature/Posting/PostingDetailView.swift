@@ -11,10 +11,11 @@ struct PostingDetailView: View {
     @ObservedObject var viewModel: PostingDetailViewModel = DIContainer.shared.makePostingDetailViewModel()
     @FocusState private var isFocused: Bool
     @State var deleteAlertIsPresented: Bool = false
+    @Environment(\.dismiss) var dismiss
     
-    private let postId: String
+    private let postId: Int
     
-    init(postId: String) {
+    init(postId: Int) {
         self.postId = postId
     }
     
@@ -45,6 +46,10 @@ struct PostingDetailView: View {
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .mainWhite)
             viewModel.getPostDetail(postingId: postId)
+            // 뷰 닫기 클로저 주입
+            viewModel.onPostDeleteSuccess = {
+                self.dismiss()
+            }
         }
         .overlay(alignment: .bottom) {
             commentTextfieldArea
@@ -75,7 +80,7 @@ struct PostingDetailView: View {
         .customAlert(
             isPresented: $deleteAlertIsPresented,
             message: "삭제된 게시글은 복구가 불가능합니다.\n게시글을 삭제 하시겠습니까?") {
-                // 게시글 삭제 로직 추가
+                viewModel.deletePost()
             }
     }
 
@@ -163,11 +168,14 @@ struct PostingDetailView: View {
         VStack(spacing: 0) {
             if let vo = viewModel.postDetailData {
                 ForEach(0..<vo.commnets.count, id: \.self) { index in
-                    CommentCell(vo: vo.commnets[index])
+                    let comment = vo.commnets[index]
+                    CommentCell(vo: comment) {
+                        viewModel.deleteComment(commentId: comment.commentId)
+                    }
                 }
             } else {
                 ForEach(0..<1, id: \.self) { index in
-                    CommentCell(vo: .placeholderMock())
+                    CommentCell(vo: .placeholderMock()) { }
                         .redacted(reason: .placeholder)
                 }
             }

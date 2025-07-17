@@ -12,7 +12,6 @@ import SwiftUIIntrospect
 
 struct OnboardingView: View {
     let navigator: LinkNavigatorType
-    
     @StateObject private var onboardingViewModel = Container.shared.onboardingViewModel()
     @State private var selectedIndex: Int = 0
     

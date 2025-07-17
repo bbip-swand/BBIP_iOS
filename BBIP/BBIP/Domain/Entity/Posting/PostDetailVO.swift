@@ -8,7 +8,7 @@
 import Foundation
 
 struct PostDetailVO {
-    let postId: String
+    let postId: Int
     let createdAt: String
     let writer: String
     let isManager: Bool

@@ -59,7 +59,6 @@ struct StartGuideView: View {
             .padding(.bottom, 22)
         }
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray1)
     }
 }
 

@@ -145,8 +145,8 @@ extension Container {
         self { UserInfoSetupViewModel() }
     }
     
-    var createStudyViewModel: Factory<CreateStudyViewModel> {
-        self { CreateStudyViewModel() }
-    }
+//    var createStudyViewModel: Factory<CreateStudyViewModel> {
+//        self { CreateStudyViewModel() }
+//    }
 }
 

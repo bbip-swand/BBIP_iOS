@@ -8,17 +8,14 @@
 import Foundation
 
 struct PostDTO: Decodable {
+    let postId: Int
     let studyName: String
     let writer: String
-    let isManager: Bool?
-    let profileImageUrl: String?
-    let postingId: String
     let title: String
     let content: String
-    let isNotice: Bool
     let createdAt: Date
     let week: Int
-    let comments: [CommentDTO]?
+    let isNotice: Bool
 }
 
 /*[

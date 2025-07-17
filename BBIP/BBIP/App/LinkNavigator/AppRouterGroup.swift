@@ -24,7 +24,6 @@ struct AppRouterGroup {
         
         MainHomeRouteBuilder(),
         NoticeRouteBuilder(),
-        
         MyPageRouteBuilder()
     ]
   }

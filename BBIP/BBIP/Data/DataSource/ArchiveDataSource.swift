@@ -11,12 +11,12 @@ import Moya
 import CombineMoya
 
 final class ArchiveDataSource {
-    private let provider = MoyaProvider<ArchiveAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<ArchiveAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
 
     func getArchivedFile(studyId: String) -> AnyPublisher<[ArchivedFileInfoDTO], Error> {
-        return provider.requestPublisher(.getArchivedFile(studyId: studyId))
+        return provider.requestPublisher(.getArchivedFile(studyCode: studyId))
+            .map(BaseResponseDTO<[ArchivedFileInfoDTO]>.self, using: JSONDecoder.iso8601WithMilliseconds4Decoder())
             .map(\.data)
-            .decode(type: [ArchivedFileInfoDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
                 print("Error: \(error.localizedDescription)")
                 return error
