@@ -8,10 +8,29 @@
 import SwiftUI
 import SwiftUIIntrospect
 
+enum StudyInfoSetupType {
+    case create
+    case edit(FullStudyInfoVO)
+    
+    var buttonTitle: String {
+        switch self {
+            case .create:
+                return "생성완료"
+            case .edit:
+                return "수정완료"
+        }
+    }
+}
+
 struct StudyInfoSetupView: View {
     @EnvironmentObject var appState: AppStateManager
-    @StateObject private var createStudyViewModel = DIContainer.shared.makeCreateStudyViewModel()
+    @Environment(\.dismiss) var dismiss
+    @StateObject private var createStudyViewModel: CreateStudyViewModel
     @State private var selectedIndex: Int = .zero
+    
+    init(type: StudyInfoSetupType = .create) {
+        _createStudyViewModel = StateObject(wrappedValue: DIContainer.shared.makeCreateStudyViewModel(type: type))
+    }
     
     var body: some View {
         ZStack() {
@@ -56,7 +75,7 @@ struct StudyInfoSetupView: View {
                 Spacer()
                    
                 MainButton(
-                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : "다음",
+                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : selectedIndex == 4 ? createStudyViewModel.setupType.buttonTitle : "다음",
                     enable: createStudyViewModel.canGoNext[selectedIndex],
                     disabledColor: .gray8
                 ) {
@@ -88,6 +107,12 @@ struct StudyInfoSetupView: View {
                 studyId: createStudyViewModel.createdStudyId,
                 studyInviteCode: createStudyViewModel.studyInviteCode
             )
+            .onDisappear {
+                if !createStudyViewModel.showCompleteView {
+                    // SISCompleteView가 닫힌 경우 -> (임시) 화면 로직 수정때 같이 수정 필요
+                    self.dismiss()
+                }
+            }
         }
     }
 
@@ -100,7 +125,12 @@ struct StudyInfoSetupView: View {
             } else if selectedIndex < createStudyViewModel.contentData.count - 1 {
                 selectedIndex += 1
             } else {
-                createStudyViewModel.createStudy()
+                switch createStudyViewModel.setupType {
+                    case .create:
+                        createStudyViewModel.createStudy()
+                    case .edit:
+                        createStudyViewModel.editStudy()
+                }
             }
         }
     }
