@@ -236,8 +236,8 @@ class DIContainer {
     }
     
     // CreateStudy
-    func makeCreateStudyViewModel() -> CreateStudyViewModel {
-        return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase, editStudyInfoUseCase: editStudyUseCase)
+    func makeCreateStudyViewModel(type: StudyInfoSetupType) -> CreateStudyViewModel {
+        return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase, editStudyInfoUseCase: editStudyUseCase, type: type)
     }
     
     // JoinStudy
