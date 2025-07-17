@@ -9,7 +9,6 @@ import SwiftUI
 import Factory
 import LinkNavigator
 import SwiftUIIntrospect
-import LinkNavigator
 
 struct OnboardingView: View {
     let navigator: LinkNavigatorType

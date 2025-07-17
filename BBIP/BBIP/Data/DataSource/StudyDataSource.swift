@@ -14,13 +14,6 @@ final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     // MARK: - GET
-    /// 금주 스터디 조회 (UserHome)
-//    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
-//        provider.requestPublisher(.getThisWeekStudy)
-//            .map(\.data)
-//            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
-//            .eraseToAnyPublisher()
-//    }
     func getCurrentWeekStudyInfo() -> AnyPublisher<[StudyInfoDTO], any Error> {
         provider.requestPublisher(.getThisWeekStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
@@ -45,12 +38,6 @@ final class StudyDataSource {
     }
     
     /// 진행 완료된 스터디 정보 조회
-//    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error>{
-//        provider.requestPublisher(.getFinishedStudy)
-//            .map(\.data)
-//            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
-//            .eraseToAnyPublisher()
-//    }
     func getFinishedStudyInfo() ->  AnyPublisher<[StudyInfoDTO], any Error> {
         provider.requestPublisher(.getOngoingStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
