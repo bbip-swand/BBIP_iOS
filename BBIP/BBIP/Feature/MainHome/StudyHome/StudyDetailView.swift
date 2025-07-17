@@ -33,6 +33,7 @@ struct StudyDetailView: View {
     private let vo: FullStudyInfoVO
     @State var alertType: StudyDetailAlertType = .deleteConfirmation
     @State var deleteAlertIsPresented = false
+    @State var showStudyEditView = false
     
     // simple task
     private let dataSource = StudyDataSource()
@@ -57,7 +58,7 @@ struct StudyDetailView: View {
                     Menu {
                         // 정보 수정 메뉴
                         Button {
-                            
+                            showStudyEditView = true
                         } label: {
                             Text("스터디 정보 수정")
                                 .font(.bbip(.body2_m14))
@@ -91,6 +92,9 @@ struct StudyDetailView: View {
             confirmColor: alertType.buttonTextColor
         ) {
             alertButtonAction()
+        }
+        .navigationDestination(isPresented: $showStudyEditView) {
+            StudyInfoSetupView(type: .edit(vo))
         }
     }
     
