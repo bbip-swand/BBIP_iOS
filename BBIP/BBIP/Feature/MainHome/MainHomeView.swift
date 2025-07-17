@@ -80,27 +80,28 @@ struct MainHomeView: View {
             }
             .navigationDestination(for: MainHomeViewDestination.self) { destination in
                 switch destination {
-                case .mypage:
-                    MypageView(navigator: navigator)
-                    
-                case .startSIS:
-                    StartCreateStudyView(navigator: navigator)
-                    
-                case .setLocation(let prevLocation, let studyId, let session):
-                    SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
-                    
-                case .createCode (let studyId, let session):
-                    CreateCodeOnboardingView(studyId: studyId, session: session)
-                    
-                case .entercode(let remainingTime, let studyId, let studyName):
-                    AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
-                    
-                case .showPostingList(let studyId, let postData, let weeklyStudyContent):
-                    PostingListView(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent)
-                    
-                default:
-                    EmptyView()
-                }            }
+                    case .mypage:
+                        MypageView(navigator: navigator)
+                        
+                    case .startSIS:
+                        StartCreateStudyView(navigator: navigator)
+                        
+                    case .setLocation(let prevLocation, let studyId, let session):
+                        SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
+                        
+                    case .createCode (let studyId, let session):
+                        CreateCodeOnboardingView(studyId: studyId, session: session)
+                        
+                    case .entercode(let remainingTime, let studyId, let studyName):
+                        AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
+                        
+                    case .showPostingList(let studyId, let postData, let weeklyStudyContent):
+                        PostingListView(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent)
+                        
+                    default:
+                        EmptyView()
+                }
+            }
         }
         .navigationBarBackButtonHidden()
     }
