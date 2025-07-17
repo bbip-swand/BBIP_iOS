@@ -79,6 +79,7 @@ fileprivate struct SetStudyNameView: View {
                     viewModel.hasStartedEditing = true
                     validateNameAndUpdateNextButton(newValue)
                 }
+                .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 10)
                 .introspect(.textField, on: .iOS(.v17, .v18)) { textField in
