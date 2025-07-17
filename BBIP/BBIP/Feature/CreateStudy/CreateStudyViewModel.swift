@@ -85,14 +85,13 @@ final class CreateStudyViewModel: ObservableObject {
         self.editStudyInfoUseCase = editStudyInfoUseCase
         self.contentData = CreateStudyContent.generate()
         self.setupType = type
-        
+        sinkElements()
         switch type {
-        case .create: return
+        case .create: break
         case .edit(let studyInfo):
             self.originalStudyInfo = ModifyStudyInfoVO(studyInfo) // 원본 데이터 저장
             self.editLoadStudyInfo(studyInfo) // 뷰 모델의 프로퍼티에 기존 데이터 대입
         }
-        sinkElements()
     }
     
     private func sinkElements() {
