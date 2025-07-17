@@ -70,6 +70,7 @@ class CreateStudyViewModel: ObservableObject {
     
     // MARK: - Handle Complete
     @Published var showCompleteView: Bool = false
+    @Published var editComplete: Bool = false
     var createdStudyId: String = .init()
     var studyInviteCode: String = .init()
     
@@ -279,8 +280,8 @@ class CreateStudyViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.isLoading = false
-                self.showCompleteView = true
-                print("\(originalStudyId) 스터디 수정 성공")
+                self.editComplete = true
+                print("StudyID: \(originalStudyId), 스터디 수정 성공")
             }
             .store(in: &cancellables)
     }
@@ -302,12 +303,6 @@ class CreateStudyViewModel: ObservableObject {
         self.periodIsSelected = true // 날짜가 있다면 기간이 선택된 것으로 간주
         self.selectedDayIndex = studyInfo.daysOfWeek
         self.selectedDayStudySession = studyInfo.studyTimes.map {
-            print("🛠️🛠️🛠️🛠️🛠️🛠️🛠️🛠️🛠️시간 수정 🛠️🛠️🛠️🛠️🛠️🛠️🛠️🛠️🛠️")
-            print("원본 startTime: \($0.startTime)")
-            print("원본 endTime: \($0.endTime)")
-            print("startTime: \(formatter2.date(from: $0.startTime))")
-            print("endTime: \(formatter2.date(from: $0.endTime))")
-            
             return StudySessionVO(startTime: formatter2.date(from: $0.startTime), endTime: formatter2.date(from: $0.endTime))
         }
         self.studyName = studyInfo.studyName

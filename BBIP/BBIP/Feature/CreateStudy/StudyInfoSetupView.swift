@@ -12,12 +12,21 @@ enum StudyInfoSetupType {
     case create
     case edit(FullStudyInfoVO)
     
-    var buttonTitle: String {
+    var navigationTitle: String {
         switch self {
             case .create:
                 return "생성완료"
             case .edit:
                 return "수정완료"
+        }
+    }
+    
+    var buttonTitle: String {
+        switch self {
+            case .create:
+                return "생성하기"
+            case .edit:
+                return "수정하기"
         }
     }
 }
@@ -91,11 +100,17 @@ struct StudyInfoSetupView: View {
                 withAnimation { selectedIndex = 1 }
             }
         }
+        .onChange(of: createStudyViewModel.editComplete) { _, completed in
+            // 수정 완료된 경우 닫기
+            if completed {
+                dismiss()
+            }
+        }
+        .navigationTitle(createStudyViewModel.setupType.navigationTitle)
         .onAppear {
             setNavigationBarAppearance(forDarkView: true)
             appState.setDarkMode()
         }
-        .navigationTitle("생성하기")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
@@ -107,12 +122,6 @@ struct StudyInfoSetupView: View {
                 studyId: createStudyViewModel.createdStudyId,
                 studyInviteCode: createStudyViewModel.studyInviteCode
             )
-            .onDisappear {
-                if !createStudyViewModel.showCompleteView {
-                    // SISCompleteView가 닫힌 경우 -> (임시) 화면 로직 수정때 같이 수정 필요
-                    self.dismiss()
-                }
-            }
         }
     }
 
