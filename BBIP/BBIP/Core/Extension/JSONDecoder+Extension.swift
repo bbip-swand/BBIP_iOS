@@ -28,4 +28,11 @@ extension JSONDecoder {
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601WithSecond)
         return decoder
     }
+    
+    
+    static func isCreatedAtDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createdAt)
+        return decoder
+    }
 }

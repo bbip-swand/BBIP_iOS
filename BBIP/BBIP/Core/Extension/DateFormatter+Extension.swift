@@ -48,6 +48,33 @@ extension DateFormatter {
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter
     }
+    // 스터디 수정 사용 포맷 형식
+    /// "HH:mm" 포맷 형식
+    static let hhMM: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
+    /// "HH:mm:SS" 포맷 형식/// "yyyy-MM-dd" 형식의 DateFormatter
+    static let edityyyyMMdd: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    static let edithhMMSS: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:SS"
+        return formatter
+    }()
+    
+    static let createdAt: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
 }
 
 /// int to 0요일
