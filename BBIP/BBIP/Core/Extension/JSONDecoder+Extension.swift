@@ -29,6 +29,14 @@ extension JSONDecoder {
         return decoder
     }
     
+    /// ISO8601 밀리초(9자리)까지 포함하는 DateDecoder
+    static func iso8601WithMilliseconds9Decoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601WithMilli9seconds)
+        return decoder
+    }
+
+    
     
     static func isCreatedAtDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
