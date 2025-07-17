@@ -46,4 +46,18 @@ extension StudyCategory {
         case .others: return .ETC
         }
     }
+    
+    var intValue: Int {
+        switch self {
+            case .majorSubject: return 0
+            case .selfDevelopment: return 1
+            case .language: return 2
+            case .certification: return 3
+            case .interview: return 4
+            case .development: return 5
+            case .design: return 6
+            case .hobby: return 7
+            case .others: return 8
+        }
+    }
 }

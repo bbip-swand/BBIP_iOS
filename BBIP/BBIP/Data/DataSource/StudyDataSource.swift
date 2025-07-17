@@ -22,7 +22,7 @@ final class StudyDataSource {
 //            .eraseToAnyPublisher()
 //    }
     func getCurrentWeekStudyInfo() -> AnyPublisher<[StudyInfoDTO], any Error> {
-        provider.requestPublisher(.getOngoingStudy)
+        provider.requestPublisher(.getThisWeekStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
             .mapError { error in
@@ -77,8 +77,12 @@ final class StudyDataSource {
     // MARK: - GET pendingstudy
     func getPendingStudy() -> AnyPublisher<PendingStudyDTO, Error>{
         provider.requestPublisher(.getPendingStudy)
+            .map(BaseResponseDTO<PendingStudyDTO>.self, using: JSONDecoder())
             .map(\.data)
-            .decode(type: PendingStudyDTO.self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
             .eraseToAnyPublisher()
     }
         
@@ -150,5 +154,23 @@ final class StudyDataSource {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func editStudy(studyId: String, dto: CreateStudyInfoDTO) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.editStudyInfo(studyId: studyId, dto: dto))
+            .tryMap { response in
+                if (200...299).contains(response.statusCode) {
+                return true
+            } else if response.statusCode == 400 {
+                return false // already study member
+            } else {
+                    throw NSError(
+                        domain: "EditStudy Error",
+                        code: response.statusCode,
+                        userInfo: [NSLocalizedDescriptionKey: "[StudyDataSource] editStudy() failed with status code \(response.statusCode)"]
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
     }
 }
