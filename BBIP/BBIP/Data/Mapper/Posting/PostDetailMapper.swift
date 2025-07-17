@@ -9,7 +9,7 @@ import Foundation
 
 struct PostDetailMapper {
     func toVO(dto: PostDetailDTO) -> PostDetailVO {
-        let dateFormatter = DateFormatter.customFormatter(format: "MM/dd HH:mm")
+        let dateFormatter = DateFormatter.createdAt
         let postType: PostType = dto.isNotice ? .notice : .normal
         
         let commentVOs = dto.comments?.map { commentDTO in
