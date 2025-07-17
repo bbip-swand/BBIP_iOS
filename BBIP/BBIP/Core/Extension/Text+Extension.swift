@@ -14,3 +14,9 @@ extension Text {
         self.init(attributedString) /// initialize a `Text`
     }
 }
+
+extension Optional where Wrapped == String {
+    func unwrapped(placeholder: String = "") -> String {
+        String(self ?? placeholder)
+    }
+}

@@ -12,13 +12,19 @@ struct AppRouterGroup {
     [
         InitialRouteBuilder(),
         OnboardingRouteBuilder(),
+        
+        LoginRouteBuilder(),
+        UserInfoSetupRouteBuilder(),
+        UserInfoSetupCompleteRouteBuilder(),
+        StartGuideRouteBuilder(),
+        
+        StartCreateStudyRouteBuilder(),
+        StudyInfoSetupRouteBuilder(),
+        StudyInfoSetupCompleteRouteBuilder(),
+        
         MainHomeRouteBuilder(),
         NoticeRouteBuilder(),
-        MyPageRouteBuilder(),
-        LoginViewRouterBuilder(),
-        UserInfoSetupRouteBuilder(),
-        StartGuideRouteBuilder()
+        MyPageRouteBuilder()
     ]
   }
 }
-

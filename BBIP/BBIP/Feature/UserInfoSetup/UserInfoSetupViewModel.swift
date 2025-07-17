@@ -114,7 +114,6 @@ final class UserInfoSetupViewModel: ObservableObject {
                 self.isLoading = false
                 if isSuccess {
                     self.showCompleteView = true
-                    UserDefaultsManager.shared.setIsLoggedIn(true)
                 } else {
                     fatalError("회원가입 문제 발생")
                 }

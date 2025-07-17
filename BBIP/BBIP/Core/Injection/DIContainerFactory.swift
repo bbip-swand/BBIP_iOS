@@ -65,8 +65,78 @@ extension Container {
             ResignUseCase(repository: self.userRepository())
         }
     }
+    
+    // MARK: Study
+    var studyDataSource: Factory<StudyDataSource> {
+        Factory(self) { StudyDataSource() }
+    }
+    var studyInfoMapper: Factory<StudyInfoMapper> {
+        Factory(self) { StudyInfoMapper() }
+    }
+    var createStudyInfoMapper: Factory<CreateStudyInfoMapper> {
+        Factory(self) { CreateStudyInfoMapper() }
+    }
+    var currentWeekStudyInfoMapper: Factory<CurrentWeekStudyInfoMapper> {
+        Factory(self) { CurrentWeekStudyInfoMapper() }
+    }
+    var fullStudyInfoMapper: Factory<FullStudyInfoMapper> {
+        Factory(self) { FullStudyInfoMapper() }
+    }
+    var pendingStudyMapper: Factory<PendingStudyMapper> {
+        Factory(self) { PendingStudyMapper() }
+    }
+    var studyRepository: Factory<StudyRepository> {
+        Factory(self) {
+            StudyRepositoryImpl(
+                dataSource: self.studyDataSource(),
+                studyInfoMapper: self.studyInfoMapper(),
+                createStudyInfoMapper: self.createStudyInfoMapper(),
+                currentWeekStudyInfoMapper: self.currentWeekStudyInfoMapper(),
+                fullStudyInfoMapper: self.fullStudyInfoMapper(),
+                pendingStudyMapper: self.pendingStudyMapper())
+        }
+    }
+    var createStudyUseCase: Factory<CreateStudyUseCaseProtocol> {
+        Factory(self) {
+            CreateStudyUseCase(repository: self.studyRepository())
+        }
+    }
+    var getCurrentWeekStudyInfoUseCase: Factory<GetCurrentWeekStudyInfoUseCaseProtocol> {
+        Factory(self) {
+            GetCurrentWeekStudyInfoUseCase(repository: self.studyRepository())
+        }
+    }
+    var getOngoingStudyInfoUseCase: Factory<GetOngoingStudyInfoUseCaseProtocol> {
+        Factory(self) {
+            GetOngoingStudyInfoUseCase(repository: self.studyRepository())
+        }
+    }
+    var getFinishedStudyInfoUseCase: Factory<GetFinishedStudyInfoUseCaseProtocol> {
+        Factory(self) {
+            GetFinishedStudyInfoUseCase(repository: self.studyRepository())
+        }
+    }
+    var joinStudyUseCase: Factory<JoinStudyUseCaseProtocol> {
+        Factory(self) {
+            JoinStudyUseCase(repository: self.studyRepository())
+        }
+    }
+    var getFullStudyInfoUseCase: Factory<GetFullStudyInfoUseCaseProtocol> {
+        Factory(self) {
+            GetFullStudyInfoUseCase(repository: self.studyRepository())
+        }
+    }
+    var getPendingStudyUseCase: Factory<GetPendingStudyUseCaseProtocol> {
+        Factory(self) {
+            GetPendingStudyUseCase(repository: self.studyRepository())
+        }
+    }
 
     // MARK: - ViewModels
+    var onboardingViewModel: Factory<OnboardingViewModel> {
+        self { OnboardingViewModel() }
+    }
+    
     var loginViewModel: Factory<LoginViewModel> {
         self { LoginViewModel() }
     }
@@ -74,5 +144,9 @@ extension Container {
     var userInfoSetupViewModel: Factory<UserInfoSetupViewModel> {
         self { UserInfoSetupViewModel() }
     }
+    
+//    var createStudyViewModel: Factory<CreateStudyViewModel> {
+//        self { CreateStudyViewModel() }
+//    }
 }
 

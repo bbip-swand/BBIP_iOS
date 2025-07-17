@@ -8,8 +8,9 @@
 import Foundation
 import Combine
 import UIKit
+import Factory
 
-class CreateStudyViewModel: ObservableObject {
+final class CreateStudyViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var contentData: [CreateStudyContent]
     @Published var canGoNext: [Bool] = [

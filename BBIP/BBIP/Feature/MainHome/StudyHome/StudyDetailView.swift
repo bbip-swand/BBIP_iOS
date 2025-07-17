@@ -1,4 +1,5 @@
 import SwiftUI
+import LinkNavigator
 
 /// 삭제 alert 표시 정보
 enum StudyDetailAlertType {
@@ -28,6 +29,7 @@ enum StudyDetailAlertType {
 }
 
 struct StudyDetailView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject private var appState: AppStateManager
     @Environment(\.dismiss) var dismiss
     private let vo: FullStudyInfoVO
@@ -38,8 +40,9 @@ struct StudyDetailView: View {
     // simple task
     private let dataSource = StudyDataSource()
     
-    init(vo: FullStudyInfoVO) {
+    init(vo: FullStudyInfoVO, navigator: LinkNavigatorType) {
         self.vo = vo
+        self.navigator = navigator
     }
     
     var body: some View {
@@ -94,7 +97,7 @@ struct StudyDetailView: View {
             alertButtonAction()
         }
         .navigationDestination(isPresented: $showStudyEditView) {
-            StudyInfoSetupView(type: .edit(vo))
+            StudyInfoSetupView(type: .edit(vo), navigator: navigator)
         }
     }
     

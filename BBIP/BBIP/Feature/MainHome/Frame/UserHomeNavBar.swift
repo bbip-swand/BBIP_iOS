@@ -35,7 +35,7 @@ struct UserHomeNavBar: View {
 
     private var noticeButton: some View {
         Button {
-            navigator.next(paths: [BBIPMatchPath.notice.capitalizedPath], items: [:], isAnimated: true)
+            // navigator.next(paths: [BBIPMatchPath.notice.capitalizedPath], items: [:], isAnimated: true)
         } label: {
             Image("notice_icon")
                 .renderingMode(.template)
@@ -56,8 +56,8 @@ struct UserHomeNavBar: View {
 
     private var profileButton: some View {
         Button {
-//            navigator.next(paths: [BBIPMatchPath.myPage.capitalizedPath], items: [:], isAnimated: true)
             appState.push(.mypage)
+            // navigator.next(paths: [BBIPMatchPath.myPage.capitalizedPath], items: [:], isAnimated: true)
         } label: {
             Image("profile_icon")
                 .renderingMode(.template)

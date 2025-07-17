@@ -108,7 +108,7 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showDetailView) {
             if let vo = viewModel.fullStudyInfo {
-                StudyDetailView(vo: vo)
+                StudyDetailView(vo: vo, navigator: navigator)
             }
         }
         .navigationDestination(isPresented: $showArchiveView) {

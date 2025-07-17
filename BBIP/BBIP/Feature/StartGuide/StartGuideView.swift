@@ -10,7 +10,6 @@ import LinkNavigator
 
 struct StartGuideView: View {
     let navigator: LinkNavigatorType
-    @State private var showCreateStudyView: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -49,7 +48,7 @@ struct StartGuideView: View {
             }
             
             Button {
-                showCreateStudyView = true
+                navigator.next(paths: [BBIPMatchPath.startCreateStudy.capitalizedPath], items: [:], isAnimated: true)
             } label: {
                 Text("생성하기")
                     .font(.bbip(.button1_m20))
@@ -60,9 +59,12 @@ struct StartGuideView: View {
             .padding(.bottom, 22)
         }
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray1)
-        .navigationDestination(isPresented: $showCreateStudyView) {
-            StartCreateStudyView()
-        }
     }
+}
+
+#Preview {
+    StartGuideView(
+        navigator: LinkNavigator(dependency: AppDependency(appState: .init()),
+                                 builders: AppRouterGroup().routers)
+    )
 }

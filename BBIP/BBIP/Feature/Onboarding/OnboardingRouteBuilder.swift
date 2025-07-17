@@ -6,19 +6,14 @@
 //
 
 import LinkNavigator
-import SwiftUI
 
 struct OnboardingRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.onboarding.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
-        { navigator, items, dependency in
-            guard let dependency = dependency as? AppDependency else { return nil }
+        { navigator, _, _ in
             return WrappingController(matchPath: matchPath) {
-                NavigationStack{
-                    OnboardingView(navigator: navigator)
-                        .environmentObject(dependency.appState)
-                }
+                OnboardingView(navigator: navigator)
             }
             .defaultContext()
         }

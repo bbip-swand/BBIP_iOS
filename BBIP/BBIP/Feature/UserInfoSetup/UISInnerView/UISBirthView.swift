@@ -95,7 +95,7 @@ struct UISBirthView: View {
     
     private func updateCombinedYear() {
         viewModel.combinedYear = viewModel.yearDigits.joined()
-        print("CombinedYear: ", viewModel.combinedYear)
+        BBIPLogger.log("CombinedYear: \(viewModel.combinedYear)", level: .debug, category: .viewModel)
     }
 }
 

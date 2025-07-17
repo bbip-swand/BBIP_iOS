@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import AuthenticationServices
 import Factory
+import AuthenticationServices
 import LinkNavigator
 
 struct LoginView: View {
@@ -51,19 +51,17 @@ struct LoginView: View {
                 .opacity(secondAnimation ? 1 : 0)
                 .animation(.easeIn(duration: 1.2), value: secondAnimation)
         }
-        .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
-            if newValue {
-                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: false)
-                appState.switchRoot(.infoSetup)
+        .toolbar(.hidden, for: .navigationBar)
+        .onChange(of: viewModel.UISDataIsEmpty) { _, isUISDataEmpty in
+            if isUISDataEmpty {
+                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: true)
             }
         }
-        .onChange(of: viewModel.loginSuccess) { _, newValue in
-            if newValue {
-                userStateManager.updateIsExistingUser {
-                    let isExistingUser = UserDefaultsManager.shared.isExistingUser()
-                    navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: false)
-                    appState.switchRoot(isExistingUser ? .home : .startGuide)
-                }
+        .onChange(of: viewModel.loginSuccess) { _, isLoginSuccess in
+            if isLoginSuccess {
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                let destination: BBIPMatchPath = isExistingUser ? .home : .startGuide
+                navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: true)
             }
         }
         .onAppear {
@@ -72,7 +70,6 @@ struct LoginView: View {
                 secondAnimation = true
             }
         }
-        .navigationBarBackButtonHidden()
         .loadingOverlay(isLoading: $viewModel.isLoading, withBackground: false)
     }
 }
@@ -103,7 +100,3 @@ private struct AppleSigninButton : View {
             }
     }
 }
-
-//#Preview {
-//    LoginView()
-//}

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
+import Factory
 
 enum StudyInfoSetupType {
     case create
@@ -35,10 +37,13 @@ struct StudyInfoSetupView: View {
     @EnvironmentObject var appState: AppStateManager
     @Environment(\.dismiss) var dismiss
     @StateObject private var createStudyViewModel: CreateStudyViewModel
+    let navigator: LinkNavigatorType
+    
     @State private var selectedIndex: Int = .zero
     
-    init(type: StudyInfoSetupType = .create) {
+    init(type: StudyInfoSetupType = .create, navigator: LinkNavigatorType) {
         _createStudyViewModel = StateObject(wrappedValue: DIContainer.shared.makeCreateStudyViewModel(type: type))
+        self.navigator = navigator
     }
     
     var body: some View {
@@ -95,6 +100,9 @@ struct StudyInfoSetupView: View {
                 .background(.gray9)
             }
         }
+        .onAppear {
+            setNavigationBarAppearance(forDarkView: true)
+        }
         .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
             if newVal {
                 withAnimation { selectedIndex = 1 }
@@ -111,6 +119,14 @@ struct StudyInfoSetupView: View {
             setNavigationBarAppearance(forDarkView: true)
             appState.setDarkMode()
         }
+        .onChange(of: createStudyViewModel.showCompleteView) { _, showCompleteView in
+            if showCompleteView == true {
+                navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath],
+                               items: ["studyId" : createStudyViewModel.createdStudyId,
+                                       "studyInviteCode" : createStudyViewModel.studyInviteCode],
+                               isAnimated: true)
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
@@ -118,7 +134,9 @@ struct StudyInfoSetupView: View {
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-            SISCompleteView(
+            // LN TODO: 삭제 예정
+            StudyInfoSetupCompleteView(
+                navigator: navigator,
                 studyId: createStudyViewModel.createdStudyId,
                 studyInviteCode: createStudyViewModel.studyInviteCode
             )

@@ -70,7 +70,7 @@ extension DateFormatter {
     
     static let createdAt: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter

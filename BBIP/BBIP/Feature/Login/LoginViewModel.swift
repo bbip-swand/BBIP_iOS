@@ -107,6 +107,8 @@ final class LoginViewModel: ObservableObject {
                 print("지금 회원가입된 유저입니다")
                 UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
                 print("Saved AccessToken is :", UserDefaultsManager.shared.getAccessToken() ?? "nil")
+                
+                UserDefaultsManager.shared.setIsLoggedIn(true)
                 self.UISDataIsEmpty = true
                 self.isLoading = false
             }
