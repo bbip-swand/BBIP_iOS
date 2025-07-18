@@ -100,9 +100,12 @@ struct StudyInfoSetupView: View {
                 .background(.gray9)
             }
         }
-        .onAppear {
-            setNavigationBarAppearance(forDarkView: true)
-        }
+        .preferredColorScheme(.dark)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(createStudyViewModel.setupType.navigationTitle)
+        .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
+        .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
             if newVal {
                 withAnimation { selectedIndex = 1 }
@@ -114,11 +117,6 @@ struct StudyInfoSetupView: View {
                 dismiss()
             }
         }
-        .navigationTitle(createStudyViewModel.setupType.navigationTitle)
-        .onAppear {
-            setNavigationBarAppearance(forDarkView: true)
-            appState.setDarkMode()
-        }
         .onChange(of: createStudyViewModel.showCompleteView) { _, showCompleteView in
             if showCompleteView == true {
                 navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath],
@@ -127,11 +125,8 @@ struct StudyInfoSetupView: View {
                                isAnimated: true)
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
-        .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
-        .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
             // LN TODO: 삭제 예정

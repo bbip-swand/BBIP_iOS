@@ -78,6 +78,7 @@ struct StudyInfoSetupCompleteView: View {
                     .padding(.top, 69)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
         .navigationBarBackButtonHidden()

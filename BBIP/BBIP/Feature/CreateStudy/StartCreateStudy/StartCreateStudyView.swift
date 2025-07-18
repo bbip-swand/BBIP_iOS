@@ -76,6 +76,7 @@ struct StartCreateStudyView: View {
             }
             .padding(.bottom, 22)
         }
+        .toolbar(.visible, for: .navigationBar)
         .containerRelativeFrame([.horizontal, .vertical])
         .backButtonStyle(isReversal: true)
         .background(.gray9)
