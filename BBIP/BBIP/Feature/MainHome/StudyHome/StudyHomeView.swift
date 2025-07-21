@@ -248,13 +248,13 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let vo = viewModel.fullStudyInfo {
-                        Text(vo.location ?? "미정")
+                    if let location = viewModel.fullStudyInfo?.location {
+                        Text(location.isEmpty ? "장소 미정" : location)
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                             .frame(maxWidth: 150, maxHeight: 20, alignment: .leading)
                     } else {
-                        Text("place")
+                        Text("장소 미정")
                             .foregroundStyle(.gray2)
                             .redacted(reason: .placeholder)
                     }
