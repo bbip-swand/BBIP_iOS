@@ -1,10 +1,48 @@
 import SwiftUI
+import LinkNavigator
+
+/// 삭제 alert 표시 정보
+enum StudyDetailAlertType {
+    case deleteConfirmation
+    case deleteCompleted
+    
+    var message: String {
+        switch self {
+            case .deleteConfirmation: return "해당 글을 삭제하시겠습니까?"
+            case .deleteCompleted: return "삭제된 글은 복구가 불가능합니다.\n글을 삭제 하시겠습니까?"
+        }
+    }
+    
+    var buttonText: String {
+        switch self {
+            case .deleteConfirmation: return "삭제"
+            case .deleteCompleted: return "확인"
+        }
+    }
+    
+    var buttonTextColor: Color {
+        switch self {
+            case .deleteConfirmation: return .primary3
+            case .deleteCompleted: return .green1
+        }
+    }
+}
 
 struct StudyDetailView: View {
+    let navigator: LinkNavigatorType
+    @EnvironmentObject private var appState: AppStateManager
+    @Environment(\.dismiss) var dismiss
     private let vo: FullStudyInfoVO
+    @State var alertType: StudyDetailAlertType = .deleteConfirmation
+    @State var deleteAlertIsPresented = false
+    @State var showStudyEditView = false
     
-    init(vo: FullStudyInfoVO) {
+    // simple task
+    private let dataSource = StudyDataSource()
+    
+    init(vo: FullStudyInfoVO, navigator: LinkNavigatorType) {
         self.vo = vo
+        self.navigator = navigator
     }
     
     var body: some View {
@@ -17,13 +55,74 @@ struct StudyDetailView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
         .navigationTitle("스터디 정보")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline).toolbar{
+            if vo.isManager {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        // 정보 수정 메뉴
+                        Button {
+                            showStudyEditView = true
+                        } label: {
+                            Text("스터디 정보 수정")
+                                .font(.bbip(.body2_m14))
+                        }
+                        
+                        // 삭제 메뉴
+                        Button {
+                            alertType = .deleteConfirmation
+                            deleteAlertIsPresented = true
+                        } label: {
+                            Text("스터디 삭제")
+                                .font(.bbip(.body2_m14))
+                        }
+                    } label: {
+                        Image("setting_icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
+        }
         .backButtonStyle()
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
+        .customAlert(
+            isPresented: $deleteAlertIsPresented,
+            message: alertType.message,
+            confirmText: alertType.buttonText,
+            confirmColor: alertType.buttonTextColor
+        ) {
+            alertButtonAction()
+        }
+        .navigationDestination(isPresented: $showStudyEditView) {
+            StudyInfoSetupView(type: .edit(vo), navigator: navigator)
+        }
+    }
+    
+    func alertButtonAction() {
+        switch alertType {
+            case .deleteConfirmation:
+                alertType = .deleteCompleted
+                deleteAlertIsPresented = true
+            case .deleteCompleted:
+                // 삭제 완료 처리
+                dataSource.deleteStudy(studyId: vo.studyId) { result in
+                    switch result {
+                        case .success:
+                            // 삭제 완료 시 MainHome -> .userHome 화면 이동
+                            dismiss()
+                            appState.mainHomeSelectedTab = .userHome
+                        case .failure(let error):
+                            print("스터디 삭제 실패: \(error)")
+                    }
+                }
+                return
+        }
     }
 }
+
 
 private extension StudyDetailView {
     // MARK: - Study Image Section

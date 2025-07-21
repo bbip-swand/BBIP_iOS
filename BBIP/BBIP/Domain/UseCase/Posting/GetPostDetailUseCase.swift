@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetPostDetailUseCaseProtocol {
-    func execute(postingId: String) -> AnyPublisher<PostDetailVO, Error>
+    func execute(postingId: Int) -> AnyPublisher<PostDetailVO, Error>
 }
 
 final class GetPostDetailUseCase: GetPostDetailUseCaseProtocol {
@@ -19,7 +19,7 @@ final class GetPostDetailUseCase: GetPostDetailUseCaseProtocol {
         self.repository = repository
     }
     
-    func execute(postingId: String) -> AnyPublisher<PostDetailVO, Error> {
+    func execute(postingId: Int) -> AnyPublisher<PostDetailVO, Error> {
         repository.getPostingDetail(postingId: postingId)
             .eraseToAnyPublisher()
     }

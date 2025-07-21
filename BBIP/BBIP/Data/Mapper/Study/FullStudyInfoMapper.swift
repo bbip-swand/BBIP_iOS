@@ -15,15 +15,28 @@ struct FullStudyInfoMapper {
                 endTime: dtoTime.endTime
             )
         }
-        let category = StudyCategory.from(int: dto.studyField) ?? .others
+        // 카테고리 변환
+        // String -> enum 타입 변환
+        let fieldEnum = StudyField(rawValue: dto.studyField) ?? .ETC
+        
+        // 해당 Int 값 지정
+        let category = StudyCategory.from(int: fieldEnum.intValue) ?? .others
+        //let category = StudyCategory.from(int: dto.studyField) ?? .others
+        
+        // 요일 변환
+        // [String] -> [Int]
+        let daysOfWeeks = dto.daysOfWeek.compactMap { let daysOfWeekEnum = DayOfWeek(rawValue: $0.rawValue)
+            return daysOfWeekEnum?.intValue
+        }
+        
         var periodString: String {
             dto.studyStartDate.replacingOccurrences(of: "-", with: ".") +
             " ~ " +
             dto.studyEndDate.replacingOccurrences(of: "-", with: ".")
         }
         
-        let studyMembers = dto.studyMembers.map { member in
-            let interests = member.interest.compactMap { StudyCategory.from(int: Int($0)!) }
+        let studyMembers = dto.studyMemberDtos.map { member in
+            let interests = member.interest.compactMap { StudyCategory.from(int: $0) }
             return StudyMemberVO(
                 memberName: member.memberName,
                 isManager: member.isManager,
@@ -31,8 +44,10 @@ struct FullStudyInfoMapper {
                 interest: interests
             )
         }
+        
         // VO로 변환
         return FullStudyInfoVO(
+            studyId: String(dto.studyId),
             studyName: dto.studyName,
             studyImageURL: dto.studyImageUrl,
             studyField: category,
@@ -40,7 +55,7 @@ struct FullStudyInfoMapper {
             currentWeek: dto.currentWeek,
             currentWeekContent: dto.studyContents[dto.currentWeek - 1],
             studyPeriodString: periodString,
-            daysOfWeek: dto.daysOfWeek,
+            daysOfWeek: daysOfWeeks,
             studyTimes: studyTimes,
             studyDescription: dto.studyDescription.isEmpty ? "-" : dto.studyDescription,
             studyContents: dto.studyContents,
@@ -49,7 +64,9 @@ struct FullStudyInfoMapper {
             inviteCode: dto.studyInviteCode,
             session: dto.session,
             isManager: dto.isManager,
-            location: dto.place.isEmpty ? nil : dto.place
+            location: dto.place,
+            studyStartDate: dto.studyStartDate,
+            studyEndDate: dto.studyEndDate
         )
     }
 }

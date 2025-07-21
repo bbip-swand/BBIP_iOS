@@ -55,6 +55,9 @@ final class AppStateManager: ObservableObject {
     @Published var path = NavigationPath()
     @Published var colorScheme: ColorScheme = .light
     
+    // 하위 뷰 Root로 전환시 탭 화면 변환 용도(임시)
+    @Published var mainHomeSelectedTab: MainHomeTab = .userHome
+    
     // DeepLink
     @Published var showDeepLinkAlert: Bool = false
     @Published var showJoinFailAlert: Bool = false
@@ -100,6 +103,7 @@ final class AppStateManager: ObservableObject {
     }
 }
 
+/*
 struct RootView: View {
     @StateObject private var appStateManager = AppStateManager()
     
@@ -154,3 +158,4 @@ struct RootView: View {
         }
     }
 }
+*/

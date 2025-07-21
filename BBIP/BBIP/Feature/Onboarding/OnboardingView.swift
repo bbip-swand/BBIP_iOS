@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Factory
+import LinkNavigator
 import SwiftUIIntrospect
 
 struct OnboardingView: View {
-    @StateObject private var onboardingViewModel = OnboardingViewModel()
+    let navigator: LinkNavigatorType
+    @StateObject private var onboardingViewModel = Container.shared.onboardingViewModel()
     @State private var selectedIndex: Int = 0
     
     var body: some View {
@@ -41,21 +44,17 @@ struct OnboardingView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             
             MainButton(text: "다음") {
-                withAnimation {
-                    if selectedIndex < onboardingViewModel.onboardingContents.count - 1 {
-                        selectedIndex += 1
-                    } else {
-                        onboardingViewModel.showLoginView = true
-                    }
+                if selectedIndex < onboardingViewModel.onboardingContents.count - 1 {
+                    withAnimation { selectedIndex += 1 }
+                } else {
+                    navigator.next(paths: [BBIPMatchPath.login.capitalizedPath], items: [:], isAnimated: true)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 39)
         }
+        .navigationBarBackButtonHidden()
         .background(Color.gray1)
-        .navigationDestination(isPresented: $onboardingViewModel.showLoginView) {
-            LoginView()
-        }
     }
 }
 
@@ -101,8 +100,4 @@ private struct TabViewPageIndicator: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.top, 48)
     }
-}
-
-#Preview {
-    OnboardingView()
 }

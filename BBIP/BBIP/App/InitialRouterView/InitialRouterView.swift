@@ -17,10 +17,9 @@ struct InitialRouterView: View {
     }
     
     var body: some View {
-        BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce) {
-            appLaunchFlowManager.start()
-        }
-        .frame(maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
+        EmptyView()
+            .task {
+                appLaunchFlowManager.start()
+            }
     }
 }

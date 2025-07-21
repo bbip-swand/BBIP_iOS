@@ -7,11 +7,44 @@
 
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
+import Factory
+
+enum StudyInfoSetupType {
+    case create
+    case edit(FullStudyInfoVO)
+    
+    var navigationTitle: String {
+        switch self {
+            case .create:
+                return "생성완료"
+            case .edit:
+                return "수정완료"
+        }
+    }
+    
+    var buttonTitle: String {
+        switch self {
+            case .create:
+                return "생성하기"
+            case .edit:
+                return "수정하기"
+        }
+    }
+}
 
 struct StudyInfoSetupView: View {
     @EnvironmentObject var appState: AppStateManager
-    @StateObject private var createStudyViewModel = DIContainer.shared.makeCreateStudyViewModel()
+    @Environment(\.dismiss) var dismiss
+    @StateObject private var createStudyViewModel: CreateStudyViewModel
+    let navigator: LinkNavigatorType
+    
     @State private var selectedIndex: Int = .zero
+    
+    init(type: StudyInfoSetupType = .create, navigator: LinkNavigatorType) {
+        _createStudyViewModel = StateObject(wrappedValue: DIContainer.shared.makeCreateStudyViewModel(type: type))
+        self.navigator = navigator
+    }
     
     var body: some View {
         ZStack() {
@@ -56,7 +89,7 @@ struct StudyInfoSetupView: View {
                 Spacer()
                    
                 MainButton(
-                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : "다음",
+                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : selectedIndex == 4 ? createStudyViewModel.setupType.buttonTitle : "다음",
                     enable: createStudyViewModel.canGoNext[selectedIndex],
                     disabledColor: .gray8
                 ) {
@@ -67,24 +100,38 @@ struct StudyInfoSetupView: View {
                 .background(.gray9)
             }
         }
+        .preferredColorScheme(.dark)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(createStudyViewModel.setupType.navigationTitle)
+        .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
+        .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
             if newVal {
                 withAnimation { selectedIndex = 1 }
             }
         }
-        .onAppear {
-            setNavigationBarAppearance(forDarkView: true)
-            appState.setDarkMode()
+        .onChange(of: createStudyViewModel.editComplete) { _, completed in
+            // 수정 완료된 경우 닫기
+            if completed {
+                dismiss()
+            }
         }
-        .navigationTitle("생성하기")
-        .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: createStudyViewModel.showCompleteView) { _, showCompleteView in
+            if showCompleteView == true {
+                navigator.next(paths: [BBIPMatchPath.studyInfoSetupComplete.capitalizedPath],
+                               items: ["studyId" : createStudyViewModel.createdStudyId,
+                                       "studyInviteCode" : createStudyViewModel.studyInviteCode],
+                               isAnimated: true)
+            }
+        }
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
-        .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
-        .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-            SISCompleteView(
+            // LN TODO: 삭제 예정
+            StudyInfoSetupCompleteView(
+                navigator: navigator,
                 studyId: createStudyViewModel.createdStudyId,
                 studyInviteCode: createStudyViewModel.studyInviteCode
             )
@@ -100,7 +147,12 @@ struct StudyInfoSetupView: View {
             } else if selectedIndex < createStudyViewModel.contentData.count - 1 {
                 selectedIndex += 1
             } else {
-                createStudyViewModel.createStudy()
+                switch createStudyViewModel.setupType {
+                    case .create:
+                        createStudyViewModel.createStudy()
+                    case .edit:
+                        createStudyViewModel.editStudy()
+                }
             }
         }
     }

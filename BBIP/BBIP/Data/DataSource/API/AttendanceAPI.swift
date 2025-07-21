@@ -19,13 +19,13 @@ extension AttendanceAPI: BaseAPI {
     var path: String {
         switch self {
         case .createCode:
-            return "/attendance/create"
+            return "/attendances"
         case .getStatus:
-            return "/attendance/status"
+            return "/attendances"
         case .enterCode:
-            return "/attendance/apply"
+            return "/attendances/verification"
         case .getAttendRecord(let studyId):
-            return "/attendance/records/\(studyId)"
+            return "/attendances/\(studyId)"
         }
     }
     
@@ -40,22 +40,24 @@ extension AttendanceAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getStatus, .getAttendRecord:
-            return .requestPlain
-            
-        case .createCode(let studyId, let session):
-            let parameters: [String: Any] = [
-                "studyId": studyId,
-                "session": session
-            ]
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-            
-        case .enterCode(let studyId, let code):
-            let parameters: [String: Any] = [
-                "studyId": studyId,
-                "code": code
-            ]
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+            case .getStatus:
+                return .requestPlain
+            case .getAttendRecord(let studyId):
+                let parameters = ["studyId": studyId]
+                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+            case .createCode(let studyId, let session):
+                let parameters: [String: Any] = [
+                    "studyId": studyId,
+                    "session": session
+                ]
+                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+                
+            case .enterCode(let studyId, let code):
+                let parameters: [String: Any] = [
+                    "studyId": studyId,
+                    "code": code
+                ]
+                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }
 }

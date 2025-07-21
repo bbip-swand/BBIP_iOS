@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Factory
 import AuthenticationServices
+import LinkNavigator
 
 struct LoginView: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject private var appState: AppStateManager
-    @StateObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    @StateObject var viewModel: LoginViewModel = Container.shared.loginViewModel()
     private let userStateManager = UserStateManager()
     
     @State private var firstAnimation: Bool = false
@@ -48,17 +51,17 @@ struct LoginView: View {
                 .opacity(secondAnimation ? 1 : 0)
                 .animation(.easeIn(duration: 1.2), value: secondAnimation)
         }
-        .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
-            if newValue {
-                appState.switchRoot(.infoSetup)
+        .toolbar(.hidden, for: .navigationBar)
+        .onChange(of: viewModel.UISDataIsEmpty) { _, isUISDataEmpty in
+            if isUISDataEmpty {
+                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: true)
             }
         }
-        .onChange(of: viewModel.loginSuccess) { _, newValue in
-            if newValue {
-                userStateManager.updateIsExistingUser {
-                    let isExistingUser = UserDefaultsManager.shared.isExistingUser()
-                    appState.switchRoot(isExistingUser ? .home : .startGuide)
-                }
+        .onChange(of: viewModel.loginSuccess) { _, isLoginSuccess in
+            if isLoginSuccess {
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                let destination: BBIPMatchPath = isExistingUser ? .home : .startGuide
+                navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: true)
             }
         }
         .onAppear {
@@ -67,7 +70,6 @@ struct LoginView: View {
                 secondAnimation = true
             }
         }
-        .navigationBarBackButtonHidden()
         .loadingOverlay(isLoading: $viewModel.isLoading, withBackground: false)
     }
 }
@@ -85,7 +87,7 @@ private struct AppleSigninButton : View {
             .aspectRatio(contentMode: .fit)
             .padding(.horizontal, 20)
             .overlay {
-                SignInWithAppleButton(
+                 SignInWithAppleButton(
                     onRequest: { request in
                         request.requestedScopes = []
                     },
@@ -97,8 +99,4 @@ private struct AppleSigninButton : View {
                 .blendMode(.overlay)
             }
     }
-}
-
-#Preview {
-    LoginView()
 }

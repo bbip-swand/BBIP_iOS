@@ -16,20 +16,25 @@ struct UserHomeView: View {
     
     var body: some View {
         ScrollView {
+            // 공지사항
             notice
                 .padding(.top, 22)
                 .padding(.bottom, 35)
             
+            // 메인 타임 링
             timeRing
                 .padding(.bottom, 36)
                 .id(viewModel.attendanceStatus?.remainingTime)
-                        
+            
+            // 게시판
             mainBulletn
                 .padding(.bottom, 32)
             
+            // 이번 주 스터디
             currentWeekStudy
                 .padding(.bottom, 32)
             
+            // 다가오는 일정
             commingSchedule
                 .redacted(reason: isRefresh ? .placeholder : [])
                 .padding(.bottom, 32)

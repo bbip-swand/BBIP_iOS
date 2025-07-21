@@ -108,11 +108,11 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showDetailView) {
             if let vo = viewModel.fullStudyInfo {
-                StudyDetailView(vo: vo)
+                StudyDetailView(vo: vo, navigator: navigator)
             }
         }
         .navigationDestination(isPresented: $showArchiveView) {
-            ArchiveView(studyId: studyId)
+            ArchiveView(studyId: viewModel.fullStudyInfo?.inviteCode ?? "")
         }
         .navigationDestination(isPresented: $showCheckLocationView) {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
@@ -123,8 +123,8 @@ struct StudyHomeView: View {
             }
         }
         .navigationDestination(isPresented: $showAllWeeklyContentView) {
-            if let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
-                WeeklyStudyContentListView(weeklyStudyContent: weeklyStudyContent)
+            if let fullStudyInfo = viewModel.fullStudyInfo {
+                WeeklyStudyContentListView(fullStudyInfo: fullStudyInfo)
             }
         }
     }

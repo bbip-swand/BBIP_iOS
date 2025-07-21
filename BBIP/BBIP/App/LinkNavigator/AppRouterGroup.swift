@@ -11,11 +11,20 @@ struct AppRouterGroup {
   var routers: [RouteBuilder] {
     [
         InitialRouteBuilder(),
-        OnboardingBuilder(),
-        MainHomeBuilder(),
-        NoticeBuilder(),
-        MyPageBuilder()
+        OnboardingRouteBuilder(),
+        
+        LoginRouteBuilder(),
+        UserInfoSetupRouteBuilder(),
+        UserInfoSetupCompleteRouteBuilder(),
+        StartGuideRouteBuilder(),
+        
+        StartCreateStudyRouteBuilder(),
+        StudyInfoSetupRouteBuilder(),
+        StudyInfoSetupCompleteRouteBuilder(),
+        
+        MainHomeRouteBuilder(),
+        NoticeRouteBuilder(),
+        MyPageRouteBuilder()
     ]
   }
 }
-

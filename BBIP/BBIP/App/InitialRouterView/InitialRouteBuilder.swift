@@ -6,7 +6,6 @@
 //
 
 import LinkNavigator
-import SwiftUI
 
 struct InitialRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.initialRoute.capitalizedPath }
@@ -17,7 +16,7 @@ struct InitialRouteBuilder: RouteBuilder {
                 let appLaunchFlowManager = AppLaunchFlowManager(navigator: navigator)
                 InitialRouterView(appLaunchFlowManager: appLaunchFlowManager)
             }
-            .emptyTitle()
+            .defaultContext()
         }
     }
 }

@@ -8,18 +8,14 @@
 import Combine
 import Foundation
 import PhotosUI
+import Factory
 
-class UserInfoSetupViewModel: ObservableObject {
+final class UserInfoSetupViewModel: ObservableObject {
+    
+    @Injected(\.createUserInfoUseCase) private var createUserInfoUseCase
+    
     @Published var isLoading: Bool = false
-    private let createUserInfoUseCase: CreateUserInfoUseCaseProtocol
-    private var cancellables = Set<AnyCancellable>()
-    
-    init(createUserInfoUseCase: CreateUserInfoUseCaseProtocol) {
-        self.createUserInfoUseCase = createUserInfoUseCase
-        self.contentData = UserInfoSetupContent.generate()
-    }
-    
-    @Published var contentData: [UserInfoSetupContent]
+    @Published var contentData: [UserInfoSetupContent] = UserInfoSetupContent.generate()
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
         false,  // 관심사 (스킵 가능)
@@ -28,7 +24,7 @@ class UserInfoSetupViewModel: ObservableObject {
         false   // 직업
     ]
     @Published var showCompleteView: Bool = false
-    
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Active Area Setting View
     // 지역 재 선택시 기존의 데이터 리셋
@@ -118,7 +114,6 @@ class UserInfoSetupViewModel: ObservableObject {
                 self.isLoading = false
                 if isSuccess {
                     self.showCompleteView = true
-                    UserDefaultsManager.shared.setIsLoggedIn(true)
                 } else {
                     fatalError("회원가입 문제 발생")
                 }

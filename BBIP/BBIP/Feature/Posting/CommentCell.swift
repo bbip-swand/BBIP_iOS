@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CommentCell: View {
     private let vo: CommentVO
+    let onDelete: () -> Void
     
-    init(vo: CommentVO) {
+    init(vo: CommentVO, onDelete: @escaping () -> Void) {
         self.vo = vo
+        self.onDelete = onDelete
     }
     
     var body: some View {
@@ -23,6 +25,10 @@ struct CommentCell: View {
                 Text(vo.writer)
                     .font(.bbip(.body2_b14))
                 
+                Text(vo.timeAgo)
+                    .font(.bbip(.caption3_r12))
+                    .foregroundStyle(.gray5)
+                
                 Text(vo.content)
                     .font(.bbip(.body2_m14))
             }
@@ -30,9 +36,22 @@ struct CommentCell: View {
             
             Spacer()
             
-            Text(vo.timeAgo)
-                .font(.bbip(.caption3_r12))
-                .foregroundStyle(.gray5)
+            if vo.isManager {
+                Menu {
+                    Button(role: .destructive) {
+                        onDelete()
+                    } label: {
+                        Text("삭제")
+                            .font(.bbip(.body2_m14))
+                    }
+                } label: {
+                    Image("more_black")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 14, height: 14)
+                }
+            }
+            
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 26)

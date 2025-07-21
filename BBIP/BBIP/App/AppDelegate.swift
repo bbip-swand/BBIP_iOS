@@ -13,7 +13,7 @@ import LinkNavigator
 import Firebase
 import FirebaseMessaging
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
@@ -42,9 +42,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
+    var appStateManager = AppStateManager()
     var navigator: LinkNavigator {
         LinkNavigator(
-            dependency: AppDependency(appState: AppStateManager()),
+            dependency: AppDependency(appState: appStateManager),
             builders: AppRouterGroup().routers
         )
     }
@@ -83,7 +84,7 @@ extension AppDelegate: MessagingDelegate {
     }
     
     private func postFCMTokenToServer(token: String) {
-        let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
+        let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
         provider.request(.postFCMToken(token: token)) { result in
             switch result {
             case .success(let response):

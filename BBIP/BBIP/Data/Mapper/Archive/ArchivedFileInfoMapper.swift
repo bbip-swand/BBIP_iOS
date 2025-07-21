@@ -17,7 +17,7 @@ struct ArchivedFileInfoMapper {
                 fileName: dtoItem.fileName,
                 fileUrl: dtoItem.fileUrl,
                 createdAt: dateFormatter.string(from: dtoItem.createdAt),
-                fileSize: dtoItem.fileSize
+                fileSize: String(dtoItem.fileSize)
             )
         }
     }

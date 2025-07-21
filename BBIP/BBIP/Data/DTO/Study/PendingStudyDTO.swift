@@ -8,12 +8,14 @@
 import Foundation
 
 struct PendingStudyDTO: Decodable {
-    let studyId: String
+    let studyId: Int
     let studyName: String
+    let totalWeeks: Int
     let studyWeek: Int
-    let startDate: String
-    let studyTime: StudyTime
+    let studyDate: String
+    let startTime: String
+    let endTime: String
+    //let studyTime: StudyTime
     let leftDays: Int
     let place: String
-    let totalWeeks: Int
 }

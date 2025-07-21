@@ -12,20 +12,20 @@ enum CalendarAPI {
     case getMonthlySchedule(year: Int, month: Int)
     case getUpcommingSchedule                       // for main view
     case createSchedule(dto: ScheduleFormDTO)
-    case updateschedule(dto: ScheduleFormDTO)
+    case updateschedule(scheduleId: Int, dto: ScheduleFormDTO)
 }
 
 extension CalendarAPI: BaseAPI {
     var path: String {
         switch self {
         case .getMonthlySchedule:
-            return "/calendar/list/"
-        case .getUpcommingSchedule:	
-            return "/calendar/schedule/upcoming"
+            return "/calendars"
+        case .getUpcommingSchedule:
+            return "/calendars/upcoming-list"
         case .createSchedule:
-            return "calendar/create"
-        case .updateschedule(let dto):
-            return "/calendar/update/\(dto.title)"
+            return "/calendars"
+        case .updateschedule:
+            return "/calendars"
         }
     }
     
@@ -49,8 +49,9 @@ extension CalendarAPI: BaseAPI {
             return .requestPlain
         case .createSchedule(let dto):
             return .requestJSONEncodable(dto)
-        case .updateschedule(let dto):
-            return .requestJSONEncodable(dto)
+        case .updateschedule(let scheduleId, let dto):
+            let queryParams = ["scheduleId": scheduleId]
+                return .requestCompositeParameters(bodyParameters: try! dto.asDictionary(), bodyEncoding: JSONEncoding.default, urlParameters: queryParams)
         }
     }
     

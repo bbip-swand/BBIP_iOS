@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class UserDataSource {
-    private let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     func requestSignUp(signUpReqDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
         provider.requestPublisher(.signUp(dto: signUpReqDTO))
@@ -123,5 +123,24 @@ final class UserDataSource {
                 return error
             }
             .eraseToAnyPublisher()
+    }
+    
+    func checkUserInfoExists(completion: @escaping (Bool) -> Void) {
+        provider.request(.getUserInfo) { result in
+            switch result {
+            case .success(let response):
+                if response.statusCode == 404 {
+                    completion(false) // 유저 정보 없음
+                } else if (200..<300).contains(response.statusCode) {
+                    completion(true) // 유저 정보 있음
+                } else {
+                    print("[UserDataSource] checkUserInfoExists() failed with status code \(response.statusCode)")
+                    completion(false)
+                }
+            case .failure(let error):
+                print("[UserDataSource] checkUserInfoExists() failed: \(error.localizedDescription)")
+                completion(false)
+            }
+        }
     }
 }

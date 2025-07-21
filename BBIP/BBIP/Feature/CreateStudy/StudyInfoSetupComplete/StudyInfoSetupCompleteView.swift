@@ -1,13 +1,16 @@
 //
-//  SISCompleteView.swift
+//  StudyInfoSetupCompleteView.swift
 //  BBIP
 //
 //  Created by 이건우 on 8/31/24.
 //
 
 import SwiftUI
+import LinkNavigator
 
-struct SISCompleteView: View {
+struct StudyInfoSetupCompleteView: View {
+    private let navigator: LinkNavigatorType
+    
     @EnvironmentObject private var appState: AppStateManager
     @State private var showDismissButton: Bool = false
     
@@ -15,9 +18,11 @@ struct SISCompleteView: View {
     private let studyInviteCode: String
     
     init(
+        navigator: LinkNavigatorType,
         studyId: String,
         studyInviteCode: String
     ) {
+        self.navigator = navigator
         self.studyId = studyId
         self.studyInviteCode = studyInviteCode
     }
@@ -28,10 +33,13 @@ struct SISCompleteView: View {
                 Spacer()
                 
                 Button {
-                    if appState.state == .startGuide {
+                    /// `StartGuide` 화면에서 진입했을 때
+                    if navigator.currentPaths.last == BBIPMatchPath.studyInfoSetupComplete.capitalizedPath {
                         UserDefaultsManager.shared.setIsExistingUser(true)
-                        appState.switchRoot(.home)
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
                     } else {
+                        /// 홈 화면에서 진입했을 때 (appState 사용)
+                        /// 추후 `MainHome` 하위 뷰도 `LinkNavigator`로 변경 예정
                         appState.popToRoot()
                     }
                 } label: {
@@ -70,6 +78,7 @@ struct SISCompleteView: View {
                     .padding(.top, 69)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
         .navigationBarBackButtonHidden()
@@ -82,8 +91,4 @@ struct SISCompleteView: View {
             }
         }
     }
-}
-
-#Preview {
-    SISCompleteView(studyId: "", studyInviteCode: "")
 }
