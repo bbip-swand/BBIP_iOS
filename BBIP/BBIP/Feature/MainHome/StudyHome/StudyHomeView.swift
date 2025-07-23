@@ -492,29 +492,19 @@ private struct StudyHomeInnerView<Content: View>: View {
 
 extension StudyHomeView {
     func calculateStartDate(from dateString: String) -> Date {
-        // ")" 문자의 인덱스를 찾아 ")"까지 포함한 부분을 사용
-        // pendingDateStr으로 부터 Date 추출을 위함임
-        if let endIndex = dateString.firstIndex(of: ")") {
-            let truncatedString = String(dateString[...endIndex])
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            dateFormatter.dateFormat = "M월 d일 (E)"
-            
-            if let parsedDate = dateFormatter.date(from: truncatedString) {
-                // 현재 연도 설정
-                let currentYear = Calendar.current.component(.year, from: Date())
-                var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)
-                dateComponents.year = currentYear // 현재 연도로 설정
-                
-                if let adjustedDate = Calendar.current.date(from: dateComponents) {
-                    return adjustedDate
-                }
-            } else {
-                print("Invalid date format")
-            }
-        }
-        return Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let parsedDate = dateFormatter.date(from: dateString) else { return Date() }
+        // 현재 연도 설정
+        let currentYear = Calendar.current.component(.year, from: Date())
+        var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)
+        dateComponents.year = currentYear // 현재 연도로 설정
+        
+        guard let adjustedDate = Calendar.current.date(from: dateComponents) else { return Date() }
+        return adjustedDate
     }
     
     func formatDate(from date: Date) -> String {
