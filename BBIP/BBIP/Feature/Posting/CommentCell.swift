@@ -20,6 +20,8 @@ struct CommentCell: View {
         HStack(alignment: .top, spacing: 12) {
             LoadableImageView(imageUrl: vo.profileImageUrl, size: 36)
                 .padding(.vertical, 2)
+                .padding(.leading, 8)
+                .padding(.top, 8)
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(vo.writer)
@@ -33,6 +35,7 @@ struct CommentCell: View {
                     .font(.bbip(.body2_m14))
             }
             .foregroundStyle(.gray8)
+            .padding(.vertical, 8)
             
             Spacer()
             
@@ -49,12 +52,13 @@ struct CommentCell: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 14, height: 14)
+                        .padding(8)
                 }
             }
             
         }
-        .padding(.vertical, 20)
-        .padding(.horizontal, 26)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 18)
         .overlay(alignment: .bottom) {
             Rectangle()
                 .frame(height: 1)
