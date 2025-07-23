@@ -39,7 +39,7 @@ final class StudyDataSource {
     
     /// 진행 완료된 스터디 정보 조회
     func getFinishedStudyInfo() ->  AnyPublisher<[StudyInfoDTO], any Error> {
-        provider.requestPublisher(.getOngoingStudy)
+        provider.requestPublisher(.getFinishedStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
             .mapError { error in
