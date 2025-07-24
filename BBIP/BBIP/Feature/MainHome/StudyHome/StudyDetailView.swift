@@ -96,6 +96,9 @@ struct StudyDetailView: View {
         }
         .navigationDestination(isPresented: $viewModel.showStudyEditView) {
             StudyInfoSetupView(type: .edit(viewModel.fullStudyInfo), navigator: navigator)
+                .onDisappear {
+                    viewModel.requestFullStudyInfo()
+                }
         }
         .onReceive(viewModel.deleteSuccessSubject) {
             // 스터디 삭제 된 경우 실행

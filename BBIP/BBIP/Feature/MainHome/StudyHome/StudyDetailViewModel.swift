@@ -46,5 +46,23 @@ final class StudyDetailViewModel: ObservableObject {
                 return
         }
     }
+    
+    // 수정 view 닫힐 때 데이터 갱신용
+    func requestFullStudyInfo() {
+        getFullStudyInfoUseCase.execute(studyId: fullStudyInfo.studyId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.fullStudyInfo = response
+            }
+            .store(in: &cancellables)
+    }
+    
 }
 
