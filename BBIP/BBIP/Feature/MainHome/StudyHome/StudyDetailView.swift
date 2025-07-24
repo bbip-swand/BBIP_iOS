@@ -1,4 +1,5 @@
 import SwiftUI
+import Factory
 import LinkNavigator
 
 /// 삭제 alert 표시 정보
@@ -32,16 +33,13 @@ struct StudyDetailView: View {
     let navigator: LinkNavigatorType
     @EnvironmentObject private var appState: AppStateManager
     @Environment(\.dismiss) var dismiss
-    private let vo: FullStudyInfoVO
-    @State var alertType: StudyDetailAlertType = .deleteConfirmation
-    @State var deleteAlertIsPresented = false
-    @State var showStudyEditView = false
+    @StateObject private var viewModel: StudyDetailViewModel
     
     // simple task
     private let dataSource = StudyDataSource()
     
     init(vo: FullStudyInfoVO, navigator: LinkNavigatorType) {
-        self.vo = vo
+        _viewModel = StateObject(wrappedValue:Container.shared.studyDetailViewModel(vo)())
         self.navigator = navigator
     }
     
@@ -56,12 +54,12 @@ struct StudyDetailView: View {
         .background(.gray1)
         .navigationTitle("스터디 정보")
         .navigationBarTitleDisplayMode(.inline).toolbar{
-            if vo.isManager {
+            if viewModel.fullStudyInfo.isManager {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         // 정보 수정 메뉴
                         Button {
-                            showStudyEditView = true
+                            viewModel.showStudyEditView = true
                         } label: {
                             Text("스터디 정보 수정")
                                 .font(.bbip(.body2_m14))
@@ -69,8 +67,8 @@ struct StudyDetailView: View {
                         
                         // 삭제 메뉴
                         Button {
-                            alertType = .deleteConfirmation
-                            deleteAlertIsPresented = true
+                            viewModel.alertType = .deleteConfirmation
+                            viewModel.deleteAlertIsPresented = true
                         } label: {
                             Text("스터디 삭제")
                                 .font(.bbip(.body2_m14))
@@ -89,26 +87,26 @@ struct StudyDetailView: View {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
         .customAlert(
-            isPresented: $deleteAlertIsPresented,
-            message: alertType.message,
-            confirmText: alertType.buttonText,
-            confirmColor: alertType.buttonTextColor
+            isPresented: $viewModel.deleteAlertIsPresented,
+            message: viewModel.alertType.message,
+            confirmText: viewModel.alertType.buttonText,
+            confirmColor: viewModel.alertType.buttonTextColor
         ) {
             alertButtonAction()
         }
-        .navigationDestination(isPresented: $showStudyEditView) {
-            StudyInfoSetupView(type: .edit(vo), navigator: navigator)
+        .navigationDestination(isPresented: $viewModel.showStudyEditView) {
+            StudyInfoSetupView(type: .edit(viewModel.fullStudyInfo), navigator: navigator)
         }
     }
     
     func alertButtonAction() {
-        switch alertType {
+        switch viewModel.alertType {
             case .deleteConfirmation:
-                alertType = .deleteCompleted
-                deleteAlertIsPresented = true
+                viewModel.alertType = .deleteCompleted
+                viewModel.deleteAlertIsPresented = true
             case .deleteCompleted:
                 // 삭제 완료 처리
-                dataSource.deleteStudy(studyId: vo.studyId) { result in
+                dataSource.deleteStudy(studyId: viewModel.fullStudyInfo.studyId) { result in
                     switch result {
                         case .success:
                             // 삭제 완료 시 MainHome -> .userHome 화면 이동
@@ -128,14 +126,14 @@ private extension StudyDetailView {
     // MARK: - Study Image Section
     var studyImageSection: some View {
         VStack(spacing: 0) {
-            LoadableImageView(imageUrl: vo.studyImageURL, size: 124)
+            LoadableImageView(imageUrl: viewModel.fullStudyInfo.studyImageURL, size: 124)
                 .overlay(
                     Circle().stroke(Color.gray5, lineWidth: 1)
                 )
                 .padding(.top, 30)
                 .padding(.bottom, 20)
             
-            Text(vo.studyName)
+            Text(viewModel.fullStudyInfo.studyName)
                 .font(.bbip(family: .Bold, size: 20))
                 .padding(.bottom, 30)
         }
@@ -150,7 +148,7 @@ private extension StudyDetailView {
                 .frame(height: 90)
                 .bbipShadow1()
                 .overlay(alignment: .topLeading) {
-                    Text(vo.studyDescription)
+                    Text(viewModel.fullStudyInfo.studyDescription)
                         .font(.bbip(.body2_m14))
                         .padding(.top, 12)
                         .padding(.horizontal, 14)
@@ -165,9 +163,9 @@ private extension StudyDetailView {
         VStack(spacing: 12) {
             SectionHeaderView(title: "세부 정보")
             VStack(spacing: 20) {
-                StudyDetailRowView(label: "분야", value: vo.studyField.rawValue)
-                StudyDetailRowView(label: "주차", value: "\(vo.totalWeeks)주차", additionalValue: vo.studyPeriodString)
-                StudyDayTimeRow(daysOfWeek: vo.daysOfWeek, studyTimes: vo.studyTimes)
+                StudyDetailRowView(label: "분야", value: viewModel.fullStudyInfo.studyField.rawValue)
+                StudyDetailRowView(label: "주차", value: "\(viewModel.fullStudyInfo.totalWeeks)주차", additionalValue: viewModel.fullStudyInfo.studyPeriodString)
+                StudyDayTimeRow(daysOfWeek: viewModel.fullStudyInfo.daysOfWeek, studyTimes: viewModel.fullStudyInfo.studyTimes)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 20)
