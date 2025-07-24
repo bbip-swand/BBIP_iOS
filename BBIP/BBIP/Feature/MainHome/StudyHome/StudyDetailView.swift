@@ -92,31 +92,15 @@ struct StudyDetailView: View {
             confirmText: viewModel.alertType.buttonText,
             confirmColor: viewModel.alertType.buttonTextColor
         ) {
-            alertButtonAction()
+            viewModel.alertButtonAction()
         }
         .navigationDestination(isPresented: $viewModel.showStudyEditView) {
             StudyInfoSetupView(type: .edit(viewModel.fullStudyInfo), navigator: navigator)
         }
-    }
-    
-    func alertButtonAction() {
-        switch viewModel.alertType {
-            case .deleteConfirmation:
-                viewModel.alertType = .deleteCompleted
-                viewModel.deleteAlertIsPresented = true
-            case .deleteCompleted:
-                // 삭제 완료 처리
-                dataSource.deleteStudy(studyId: viewModel.fullStudyInfo.studyId) { result in
-                    switch result {
-                        case .success:
-                            // 삭제 완료 시 MainHome -> .userHome 화면 이동
-                            dismiss()
-                            appState.mainHomeSelectedTab = .userHome
-                        case .failure(let error):
-                            print("스터디 삭제 실패: \(error)")
-                    }
-                }
-                return
+        .onReceive(viewModel.deleteSuccessSubject) {
+            // 스터디 삭제 된 경우 실행
+            appState.mainHomeSelectedTab = .userHome
+            dismiss()
         }
     }
 }
