@@ -288,8 +288,8 @@ final class CreateStudyViewModel: ObservableObject {
     
     /// Edit 초기 데이터 세팅
     private func editLoadStudyInfo(_ studyInfo: FullStudyInfoVO) {
-        let formatter = DateFormatter.edityyyyMMdd
-        let formatter2 = DateFormatter.edithhMMSS
+        let formatter = DateFormatter.yyyyMMdd
+        let formatter2 = DateFormatter.hhMM
         
         guard let startDate = formatter.date(from: studyInfo.studyStartDate),
               let endDate = formatter.date(from: studyInfo.studyEndDate) else {

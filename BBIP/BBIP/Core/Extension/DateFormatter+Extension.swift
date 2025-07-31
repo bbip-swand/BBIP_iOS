@@ -74,18 +74,6 @@ extension DateFormatter {
         return formatter
     }()
     
-    /// "HH:mm:SS" 포맷 형식/// "yyyy-MM-dd" 형식의 DateFormatter
-    static let edityyyyMMdd: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    static let edithhMMSS: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:SS"
-        return formatter
-    }()
-    
     static let createdAt: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
