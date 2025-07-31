@@ -227,8 +227,8 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let pendingDateStr = viewModel.fullStudyInfo?.pendingDateStr {
-                        Text(pendingDateStr)
+                    if let fullStudyInfo = viewModel.fullStudyInfo {
+                        Text(nextUpcomingStudyDate(fullStudyInfoVO: fullStudyInfo))
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                     } else {
@@ -512,5 +512,58 @@ extension StudyHomeView {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "M월 d일 (E)"
         return dateFormatter.string(from: date)
+    }
+    
+    // 스터디 임박 날짜 추출
+    func nextUpcomingStudyDate(fullStudyInfoVO: FullStudyInfoVO) -> String {
+        let calendar = Calendar.current
+        
+        // 1. studyStartDate 문자열을 Date 객체로 변환
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        guard let startDate = dateFormatter.date(from: fullStudyInfoVO.studyStartDate) else {
+            print("오류: studyStartDate 형식이 올바르지 않습니다.")
+            return fullStudyInfoVO.pendingDateStr
+        }
+        
+        // daysOfWeek(월=0...일=6) -> Calendar weekday(일=1...토=7) 체계 변환
+        let targetWeekdays = Set(fullStudyInfoVO.daysOfWeek.map { day -> Int in
+            if day == 6 { return 1 }
+            return day + 2
+        })
+        
+        if targetWeekdays.isEmpty {
+            return fullStudyInfoVO.pendingDateStr
+        }
+        
+        // '오늘', '스터디 시작일' 중 기준 날짜 확이
+        let today = calendar.startOfDay(for: Date())
+        let searchStartDate = max(today, startDate)
+        
+        // 가장 인접한 요일 확인 후 반환 (일주일 탐색)
+        for i in 0..<7 {
+            guard let checkingDate = calendar.date(byAdding: .day, value: i, to: searchStartDate) else { continue }
+            
+            let weekday = calendar.component(.weekday, from: checkingDate)
+            
+            // 스터디 요일에 해당하는 경우
+            if targetWeekdays.contains(weekday) {
+                // 6. studyTimes에서 첫 번째 시작 시간을 가져와 날짜와 결합
+                guard let firstStudyTime = fullStudyInfoVO.studyTimes.first else {
+                    return fullStudyInfoVO.pendingDateStr
+                }
+                
+                let outputDateFormatter = DateFormatter()
+                outputDateFormatter.dateFormat = "MM월 dd일 (E)"
+                outputDateFormatter.locale = Locale(identifier: "ko_KR")
+                let formattedDate = outputDateFormatter.string(from: checkingDate)
+                
+                // 시작, 종료시간 추가
+                return formattedDate + " / " + firstStudyTime.startTime + "~" + firstStudyTime.endTime
+            }
+        }
+        return fullStudyInfoVO.pendingDateStr
     }
 }
