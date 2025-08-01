@@ -15,7 +15,7 @@ final class ArchiveDataSource {
 
     func getArchivedFile(studyId: String) -> AnyPublisher<[ArchivedFileInfoDTO], Error> {
         return provider.requestPublisher(.getArchivedFile(studyCode: studyId))
-            .map(BaseResponseDTO<[ArchivedFileInfoDTO]>.self, using: JSONDecoder.iso8601WithMilliseconds4Decoder())
+            .map(BaseResponseDTO<[ArchivedFileInfoDTO]>.self, using: JSONDecoder.iso8601WithsecondDecoder())
             .map(\.data)
             .mapError { error in
                 print("Error: \(error.localizedDescription)")
