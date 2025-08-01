@@ -112,7 +112,8 @@ struct StudyHomeView: View {
             }
         }
         .navigationDestination(isPresented: $showArchiveView) {
-            ArchiveView(studyId: viewModel.fullStudyInfo?.inviteCode ?? "")
+            ArchiveView(inviteCode: viewModel.fullStudyInfo?.inviteCode ?? "",
+                        studyId: viewModel.fullStudyInfo?.studyId ?? "")
         }
         .navigationDestination(isPresented: $showCheckLocationView) {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
