@@ -31,7 +31,7 @@ final class AWSS3Manager {
                 // 이미지 업로드 후 final URL 반환
                 return self.uploadImageToBinary(imageData: imageData, urlString: urlString)
                     .map { _ in
-                        let finalURL = "https://bbip-s3-bucket.s3.amazonaws.com/images/\(uuid)"
+                        let finalURL = "https://storage.googleapis.com/bbip-bucket/images/\(uuid)"
                         return finalURL
                     }
                     .eraseToAnyPublisher()
