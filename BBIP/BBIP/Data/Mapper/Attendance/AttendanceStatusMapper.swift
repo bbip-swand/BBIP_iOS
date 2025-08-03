@@ -10,8 +10,16 @@ import Foundation
 struct AttendanceStatusMapper {
     func toVO(dto: AttendanceStatusDTO) -> AttendanceStatusVO {
         
+        // 날짜 소수점 제외부분으로 짜름
+        let trimmedStr = String(dto.startTime.prefix(19))
+        let formatter = DateFormatter.iso8601WithSecond
+        let startTime = formatter.date(from: trimmedStr) ?? Date()
+        print("기본 날짜 : \(trimmedStr)")
+        print("전달 날짜 : \(startTime)")
+
         let currentTime = Date()
-        let expirationTime = dto.startTime.addingTimeInterval(TimeInterval(dto.ttl))
+        print("현재 날짜 : \(currentTime)")
+        let expirationTime = startTime.addingTimeInterval(TimeInterval(dto.ttl))
         let remainingTime = max(0, Int(expirationTime.timeIntervalSince(currentTime)) - 9 * 60 * 60)
 
         return AttendanceStatusVO(

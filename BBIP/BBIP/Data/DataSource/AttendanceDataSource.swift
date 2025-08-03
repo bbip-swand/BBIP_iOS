@@ -26,7 +26,7 @@ final class AttendanceDataSource {
                 }
                 return response.data
             }
-            .decode(type: AttendanceStatusDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .decode(type: AttendanceStatusDTO.self, decoder: JSONDecoder())
             .mapError { error in
                 return error as? AttendanceError ?? .decodingError
             }
