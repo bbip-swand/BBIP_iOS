@@ -68,7 +68,7 @@ struct StudyInfoSetupCompleteView: View {
             BBIPLottieView(assetName: "Complete_CreateStudy", contentMode: .scaleAspectFill)
                 .frame(width: UIScreen.main.bounds.width - 50)
             
-            ShareLink(item: URL(string: "https://bbip.site/join-study/\(studyInviteCode)")!) {
+            ShareLink(item: URL(string: "http://join.bbip.kr/join-study/\(studyInviteCode)")!) {
                 Text("공유하기")
                     .font(.bbip(.button1_m20))
                     .foregroundColor(.mainWhite)
