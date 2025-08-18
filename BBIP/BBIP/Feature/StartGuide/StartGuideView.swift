@@ -65,7 +65,10 @@ struct StartGuideView: View {
                     JoinStudyCustomAlert(
                         appState: appState,
                         inviteData: data
-                    ) 
+                    ) {
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                        return
+                    }
                     .opacity(appState.showDeepLinkAlert ? 1 : 0)
                 }
             }

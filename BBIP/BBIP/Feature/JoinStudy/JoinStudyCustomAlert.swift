@@ -16,12 +16,16 @@ struct JoinStudyCustomAlert: View {
     private let inviteData: DeepLinkAlertData
     private let calcWidth: CGFloat = UIScreen.main.bounds.width - 70
     
+    private let ation: () -> Void
+    
     init(
         appState: AppStateManager,
-        inviteData: DeepLinkAlertData
+        inviteData: DeepLinkAlertData,
+        @ViewBuilder action: @escaping () -> Void = {}
     ) {
         self.appState = appState
         self.inviteData = inviteData
+        self.ation = action
     }
     
     private func handleJoinStudy() {
@@ -31,6 +35,7 @@ struct JoinStudyCustomAlert: View {
         }
         withAnimation { appState.showDeepLinkAlert = false }
         withAnimation { appState.showJoinSuccessAlert = true }
+        ation()
     }
     
     var body: some View {
