@@ -17,9 +17,9 @@ enum StudyInfoSetupType {
     var navigationTitle: String {
         switch self {
             case .create:
-                return "생성완료"
+                return "생성하기"
             case .edit:
-                return "수정완료"
+                return "수정하기"
         }
     }
     
