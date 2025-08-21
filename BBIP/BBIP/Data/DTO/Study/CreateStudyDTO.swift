@@ -21,8 +21,6 @@ struct CreateStudyInfoDTO: Encodable {
 }
 
 struct CreateStudyResponseDTO: Decodable {
-//    let studyId: String
-//    let studyInviteCode: String
-    let message: String
-    let data: Int
+    let studyId: Int
+    let inviteCode: String
 }

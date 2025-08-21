@@ -171,6 +171,7 @@ final class CreateStudyViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
+                studyInviteCode = response.inviteCode
                 self.isLoading = false
                 self.showCompleteView = true
                 print("\(createdStudyId) 스터디 생성 성공")
