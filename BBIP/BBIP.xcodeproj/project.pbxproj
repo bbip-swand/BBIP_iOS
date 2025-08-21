@@ -454,7 +454,6 @@
 		C695CB592C7EFBE900BB3952 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
 		C695CB5B2C7F061A00BB3952 /* UISJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISJobView.swift; sourceTree = "<group>"; };
 		C695CB5D2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupCompleteView.swift; sourceTree = "<group>"; };
-		C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
 		C695CB612C7F13E600BB3952 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C695CB632C7F154F00BB3952 /* LegacyStartFlow.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyStartFlow.swift.swift; sourceTree = "<group>"; };
 		C695CB652C7F160200BB3952 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -1207,7 +1206,6 @@
 			children = (
 				C6B00C132C590A0E009AC4E2 /* BBIP */,
 				C6B00C122C590A0E009AC4E2 /* Products */,
-				C6FA55ED2C91924000E537D7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1494,14 +1492,6 @@
 				084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */,
 			);
 			path = Frame;
-			sourceTree = "<group>";
-		};
-		C6FA55ED2C91924000E537D7 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C6FA55F62C95359900E537D7 /* Attendance */ = {
