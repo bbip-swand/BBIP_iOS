@@ -90,7 +90,7 @@ struct StudyInfoSetupView: View {
                    
                 MainButton(
                     text: createStudyViewModel.goEditPeriod ? "돌아가기" : selectedIndex == 4 ? createStudyViewModel.setupType.buttonTitle : "다음",
-                    enable: createStudyViewModel.canGoNext[selectedIndex],
+                    enable: createStudyViewModel.canGoNext[selectedIndex] && !createStudyViewModel.isLoading,
                     disabledColor: .gray8
                 ) {
                     handleNextButtonTap()
