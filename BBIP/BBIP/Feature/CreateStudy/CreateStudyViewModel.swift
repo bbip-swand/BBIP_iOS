@@ -209,7 +209,7 @@ final class CreateStudyViewModel: ObservableObject {
         
         // 수정 모드에서는 originalStudyInfo에서 studyId를 가져와 사용합니다.
         guard let originalStudyId = originalStudyInfo?.studyId else {
-            print("Error: Original study ID not found for editing.")
+            print("Error: Origin3al study ID not found for editing.")
             isLoading = false
             return
         }

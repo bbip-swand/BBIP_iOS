@@ -9,6 +9,7 @@ import SwiftUI
 import LinkNavigator
 
 struct UserInfoSetupCompleteView: View {
+    @EnvironmentObject var appState: AppStateManager
     let navigator: LinkNavigatorType
     
     private let userStateManager = UserStateManager()
@@ -57,5 +58,19 @@ struct UserInfoSetupCompleteView: View {
         .onAppear {
             HapticManager.shared.boong()
         }
+        .overlay(
+            Group {
+                if let data = appState.deepLinkAlertData {
+                    JoinStudyCustomAlert(
+                        appState: appState,
+                        inviteData: data
+                    ) {
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                        return
+                    }
+                    .opacity(appState.showDeepLinkAlert ? 1 : 0)
+                }
+            }
+        )
     }
 }

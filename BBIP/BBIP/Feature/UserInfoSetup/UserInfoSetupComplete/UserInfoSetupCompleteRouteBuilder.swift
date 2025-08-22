@@ -11,9 +11,11 @@ struct UserInfoSetupCompleteRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.userInfoSetupComplete.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
-        { navigator, items, _ in
+        { navigator, items, dependency in
+            guard let dependency = dependency as? AppDependency else { return nil }
             return WrappingController(matchPath: matchPath) {
                 UserInfoSetupCompleteView(navigator: navigator, userName: items["userName"].unwrapped())
+                    .environmentObject(dependency.appState)
             }
             .defaultContext()
         }
