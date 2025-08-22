@@ -118,10 +118,7 @@ final class UserHomeViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
-                    case .finished:
-                        self.isAttendanceStarted = false
-                        self.attendanceStatus = nil
-                        break
+                    case .finished: break
                     case .failure(let error):
                         self.isAttendanceStarted = false
                         self.attendanceStatus = nil
