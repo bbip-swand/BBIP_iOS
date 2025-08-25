@@ -30,6 +30,7 @@
 		98B9A7EC2E27A64D00DD8FA6 /* PostDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */; };
 		98B9A7EE2E27ABB100DD8FA6 /* DeletePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */; };
 		98B9A7F02E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */; };
+		98BC67C52E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -320,6 +321,7 @@
 		98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDTO.swift; sourceTree = "<group>"; };
 		98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostUseCase.swift; sourceTree = "<group>"; };
 		98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentUseCase.swift; sourceTree = "<group>"; };
+		98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudyAttendanceStatusUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				C6516EC52CEB4DDF00FCFAF2 /* GetAttendanceRecordsUseCaseProtocol.swift */,
 				C6516EC72CEB4E1300FCFAF2 /* CreateAttendanceCodeUseCaseProtocol.swift */,
 				C6516EC92CEB4E3C00FCFAF2 /* SubmitAttendanceCodeUseCaseProtocol.swift */,
+				98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -1867,6 +1870,7 @@
 				C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
+				98BC67C52E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift in Sources */,
 				C6516EC02CEB4B0500FCFAF2 /* AttendanceRecordVO.swift in Sources */,
 				C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */,
