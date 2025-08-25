@@ -13,34 +13,37 @@ enum AttendanceAPI {
     case getAttendRecord(studyId: String)                   // 출석 현황 조회
     case createCode(studyId: String, session: Int)       // 출석 코드 생성
     case enterCode(studyId: String, code: Int)              // 코드 입력
+    case getStudyStatus(studyId: String)
 }
 
 extension AttendanceAPI: BaseAPI {
     var path: String {
         switch self {
-        case .createCode:
-            return "/attendances"
-        case .getStatus:
-            return "/attendances"
-        case .enterCode:
-            return "/attendances/verification"
-        case .getAttendRecord(let studyId):
-            return "/attendances/\(studyId)"
+            case .createCode:
+                return "/attendances"
+            case .getStatus:
+                return "/attendances"
+            case .enterCode:
+                return "/attendances/verification"
+            case .getAttendRecord(let studyId):
+                return "/attendances/\(studyId)"
+            case .getStudyStatus(let studyId):
+                return "/attendances/attendance/\(studyId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getStatus, .getAttendRecord:
-            return .get
-        case .createCode, .enterCode:
-            return .post
+            case .getStatus, .getAttendRecord, .getStudyStatus:
+                return .get
+            case .createCode, .enterCode:
+                return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-            case .getStatus:
+            case .getStatus, .getStudyStatus:
                 return .requestPlain
             case .getAttendRecord(let studyId):
                 let parameters = ["studyId": studyId]
