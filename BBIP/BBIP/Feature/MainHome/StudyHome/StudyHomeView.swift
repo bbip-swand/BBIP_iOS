@@ -100,7 +100,7 @@ struct StudyHomeView: View {
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
-            viewModel.getAttendanceStatus()
+            viewModel.getStudyAttendanceStatus(studyId: studyId)
             print("studyId: \(studyId)")
         }
         .onChange(of: studyId) { _, newVal in

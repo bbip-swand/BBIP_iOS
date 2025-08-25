@@ -70,6 +70,10 @@ class DIContainer {
         repository: attendanceRepository
     )
     
+    private lazy var getStudyAttendanceStatusUseCase: GetStudyAttendanceStatusUseCaseProtocol = GetStudyAttendanceStatusUseCase(
+        repository: attendanceRepository
+    )
+    
     
     // MARK: - Study
     private let studyDataSource = StudyDataSource()
@@ -250,7 +254,7 @@ class DIContainer {
         return StudyHomeViewModel(
             getFullStudyInfoUseCase: getFullStudyInfoUseCase,
             getStudyPostingUseCase: getStudyPostingUseCase,
-            getAttendanceStatusUseCase: getAttendanceStatusUseCase
+            getStudyAttendanceStatusUseCase: getStudyAttendanceStatusUseCase
         )
     }
     

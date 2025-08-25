@@ -18,17 +18,17 @@ final class StudyHomeViewModel: ObservableObject {
     // UseCases
     private let getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol
     private let getStudyPostingUseCase: GetStudyPostingUseCaseProtocol
-    private let getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
+    private let getStudyAttendanceStatusUseCase: GetStudyAttendanceStatusUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol,
         getStudyPostingUseCase: GetStudyPostingUseCaseProtocol,
-        getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
+        getStudyAttendanceStatusUseCase: GetStudyAttendanceStatusUseCaseProtocol
     ) {
         self.getFullStudyInfoUseCase = getFullStudyInfoUseCase
         self.getStudyPostingUseCase = getStudyPostingUseCase
-        self.getAttendanceStatusUseCase = getAttendanceStatusUseCase
+        self.getStudyAttendanceStatusUseCase = getStudyAttendanceStatusUseCase
     }
     
     func reloadFullStudyInfo(studyId: String) {
@@ -37,6 +37,7 @@ final class StudyHomeViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.requestFullStudyInfo(studyId: studyId)
             self.getStudyPosting(studyId: studyId)
+            self.getStudyAttendanceStatus(studyId: studyId)
         }
     }
     
@@ -74,8 +75,8 @@ final class StudyHomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func getAttendanceStatus() {
-        getAttendanceStatusUseCase.execute()
+    func getStudyAttendanceStatus(studyId: String) {
+        getStudyAttendanceStatusUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
