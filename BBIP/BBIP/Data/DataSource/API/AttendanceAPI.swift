@@ -43,11 +43,8 @@ extension AttendanceAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-            case .getStatus, .getStudyStatus:
+            case .getStatus, .getStudyStatus, .getAttendRecord:
                 return .requestPlain
-            case .getAttendRecord(let studyId):
-                let parameters = ["studyId": studyId]
-                return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             case .createCode(let studyId, let session):
                 let parameters: [String: Any] = [
                     "studyId": studyId,
