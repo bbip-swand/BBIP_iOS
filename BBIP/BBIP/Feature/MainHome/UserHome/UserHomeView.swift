@@ -64,8 +64,8 @@ struct UserHomeView: View {
             print("userHome OnAppear")
             viewModel.loadHomeData()
         }
-        .onChange(of: scenePhase) {
-            if scenePhase == .active {
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            if newPhase == .active {
                 viewModel.loadHomeData()
             }
         }

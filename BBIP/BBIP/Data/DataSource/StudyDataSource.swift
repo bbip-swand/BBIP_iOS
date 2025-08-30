@@ -39,7 +39,7 @@ final class StudyDataSource {
     
     /// 진행 완료된 스터디 정보 조회
     func getFinishedStudyInfo() ->  AnyPublisher<[StudyInfoDTO], any Error> {
-        provider.requestPublisher(.getOngoingStudy)
+        provider.requestPublisher(.getFinishedStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
             .map(\.data)
             .mapError { error in
@@ -78,17 +78,8 @@ final class StudyDataSource {
     /// 스터디 생성
     func createStudy(dto: CreateStudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    throw NSError(
-                        domain: "CreateStudy Error",
-                        code: response.statusCode,
-                        userInfo: [NSLocalizedDescriptionKey: "[StudyDataSource] createStudy() failed with status code \(response.statusCode)"]
-                    )
-                }
-                return response.data
-            }
-            .decode(type: CreateStudyResponseDTO.self, decoder: JSONDecoder())
+            .map(BaseResponseDTO<CreateStudyResponseDTO>.self, using: JSONDecoder())
+            .map(\.data)
             .mapError { error in
                 return error
             }

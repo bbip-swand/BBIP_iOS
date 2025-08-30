@@ -9,6 +9,7 @@ import SwiftUI
 import LinkNavigator
 
 struct StartGuideView: View {
+    @EnvironmentObject var appState: AppStateManager
     let navigator: LinkNavigatorType
     
     var body: some View {
@@ -58,6 +59,20 @@ struct StartGuideView: View {
             }
             .padding(.bottom, 22)
         }
+        .overlay(
+            Group {
+                if let data = appState.deepLinkAlertData {
+                    JoinStudyCustomAlert(
+                        appState: appState,
+                        inviteData: data
+                    ) {
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                        return
+                    }
+                    .opacity(appState.showDeepLinkAlert ? 1 : 0)
+                }
+            }
+        )
         .containerRelativeFrame([.horizontal, .vertical])
     }
 }

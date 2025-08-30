@@ -38,7 +38,7 @@ extension StudyAPI: BaseAPI {
             case .createStudy:
                 return "/study"
             case .joinStudy(let studyId):
-                return "/study/\(studyId)/join/"
+                return "/study/\(studyId)/join"
             case .editStudyLocation(let studyId, _, _):
                 return "/study/\(studyId)/place"
             case .getPendingStudy:
@@ -87,8 +87,7 @@ extension StudyAPI: BaseAPI {
                 return .requestJSONEncodable(dto)
                 
             case .joinStudy(let studyId):
-                let param = ["studyId": studyId]
-                return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+                return .requestPlain
                 
             case .editStudyLocation(_, let session, let location):
                 let param = ["session" : session, "place" : location] as [String : Any]

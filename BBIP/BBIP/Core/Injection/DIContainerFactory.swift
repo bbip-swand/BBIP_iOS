@@ -145,6 +145,11 @@ extension Container {
         self { UserInfoSetupViewModel() }
     }
     
+    func studyDetailViewModel(_ fullStudyInfo: FullStudyInfoVO
+    ) -> Factory<StudyDetailViewModel> {
+        self { StudyDetailViewModel(fullStudyInfo: fullStudyInfo) }
+    }
+    
 //    var createStudyViewModel: Factory<CreateStudyViewModel> {
 //        self { CreateStudyViewModel() }
 //    }

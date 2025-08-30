@@ -10,6 +10,6 @@ import Foundation
 struct ArchivedFileInfoDTO: Decodable {
     let fileName: String
     let fileUrl: String
-    let fileSize: Int
+    let fileSize: String
     let createdAt: Date
 }

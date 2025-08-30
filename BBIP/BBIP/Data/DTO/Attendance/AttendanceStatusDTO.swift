@@ -10,7 +10,7 @@ struct AttendanceStatusDTO: Decodable {
     let studyName: String
     let studyId: String
     let session: Int
-    let startTime: Date
+    let startTime: String
     let ttl: Int
     let code: Int?
     let isManager: Bool

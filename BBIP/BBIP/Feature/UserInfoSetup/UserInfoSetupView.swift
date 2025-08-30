@@ -76,6 +76,7 @@ struct UserInfoSetupView: View {
                 .padding(.bottom, 22)
             }
         }
+        .toolbar(.visible, for: .navigationBar)
         .background(Color.gray1)
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)

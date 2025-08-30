@@ -14,10 +14,10 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		98118E622E3222E30012C373 /* StudyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98118E612E3222E30012C373 /* StudyDetailViewModel.swift */; };
 		981679872E102B2500AE0077 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679862E102B2500AE0077 /* CustomAlertModifier.swift */; };
 		981679892E11837100AE0077 /* WeeklyStudyContentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */; };
 		9865104F2E27D22900A8CCDF /* ModifyStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865104E2E27D22900A8CCDF /* ModifyStudyInfoVO.swift */; };
-		986510512E28156700A8CCDF /* StartGuideRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986510502E28156700A8CCDF /* StartGuideRouteBuilder.swift */; };
 		98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98830A9E2E0D572100414CF7 /* NavigationDataStore.swift */; };
 		9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB352E0C64770035D3D0 /* NoticeRouteBuilder.swift */; };
 		9886AB382E0C675D0035D3D0 /* MyPageRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9886AB372E0C675D0035D3D0 /* MyPageRouteBuilder.swift */; };
@@ -29,6 +29,7 @@
 		98B9A7EC2E27A64D00DD8FA6 /* PostDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */; };
 		98B9A7EE2E27ABB100DD8FA6 /* DeletePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */; };
 		98B9A7F02E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */; };
+		98BC67C52E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -303,6 +304,7 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeNavBar.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		98118E612E3222E30012C373 /* StudyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailViewModel.swift; sourceTree = "<group>"; };
 		981679862E102B2500AE0077 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
 		981679882E11837100AE0077 /* WeeklyStudyContentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListViewModel.swift; sourceTree = "<group>"; };
 		9865104E2E27D22900A8CCDF /* ModifyStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyStudyInfoVO.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		98B9A7EB2E27A64D00DD8FA6 /* PostDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDTO.swift; sourceTree = "<group>"; };
 		98B9A7ED2E27ABB100DD8FA6 /* DeletePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostUseCase.swift; sourceTree = "<group>"; };
 		98B9A7EF2E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentUseCase.swift; sourceTree = "<group>"; };
+		98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudyAttendanceStatusUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -452,7 +455,6 @@
 		C695CB592C7EFBE900BB3952 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
 		C695CB5B2C7F061A00BB3952 /* UISJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISJobView.swift; sourceTree = "<group>"; };
 		C695CB5D2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupCompleteView.swift; sourceTree = "<group>"; };
-		C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
 		C695CB612C7F13E600BB3952 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C695CB632C7F154F00BB3952 /* LegacyStartFlow.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyStartFlow.swift.swift; sourceTree = "<group>"; };
 		C695CB652C7F160200BB3952 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				C6516EC52CEB4DDF00FCFAF2 /* GetAttendanceRecordsUseCaseProtocol.swift */,
 				C6516EC72CEB4E1300FCFAF2 /* CreateAttendanceCodeUseCaseProtocol.swift */,
 				C6516EC92CEB4E3C00FCFAF2 /* SubmitAttendanceCodeUseCaseProtocol.swift */,
+				98BC67C42E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -1205,7 +1208,6 @@
 			children = (
 				C6B00C132C590A0E009AC4E2 /* BBIP */,
 				C6B00C122C590A0E009AC4E2 /* Products */,
-				C6FA55ED2C91924000E537D7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1412,6 +1414,7 @@
 				C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */,
 				C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */,
 				C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */,
+				98118E612E3222E30012C373 /* StudyDetailViewModel.swift */,
 				C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */,
 				C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */,
 				C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */,
@@ -1491,14 +1494,6 @@
 				084C022E2C8056F300E54D0C /* UserHomeNavBar.swift */,
 			);
 			path = Frame;
-			sourceTree = "<group>";
-		};
-		C6FA55ED2C91924000E537D7 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C6FA55F62C95359900E537D7 /* Attendance */ = {
@@ -1749,7 +1744,6 @@
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
 				C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */,
-				986510512E28156700A8CCDF /* StartGuideRouteBuilder.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
 				C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */,
@@ -1822,6 +1816,7 @@
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C6516ED32CEB6FEC00FCFAF2 /* CreateCodeViewModel.swift in Sources */,
+				98118E622E3222E30012C373 /* StudyDetailViewModel.swift in Sources */,
 				C6F074412CA717CC00A37501 /* StudyProgressBar.swift in Sources */,
 				C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */,
 				C6516EF02CEDE99700FCFAF2 /* ShowAllButton.swift in Sources */,
@@ -1873,6 +1868,7 @@
 				C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
+				98BC67C52E5C57150026E94F /* GetStudyAttendanceStatusUseCaseProtocol.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UserInfoSetupCompleteView.swift in Sources */,
 				C6516EC02CEB4B0500FCFAF2 /* AttendanceRecordVO.swift in Sources */,
 				C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */,
@@ -2055,7 +2051,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -2101,7 +2097,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;

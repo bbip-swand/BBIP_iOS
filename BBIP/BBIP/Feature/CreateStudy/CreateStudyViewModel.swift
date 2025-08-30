@@ -87,10 +87,10 @@ final class CreateStudyViewModel: ObservableObject {
         self.setupType = type
         sinkElements()
         switch type {
-        case .create: break
-        case .edit(let studyInfo):
-            self.originalStudyInfo = ModifyStudyInfoVO(studyInfo) // 원본 데이터 저장
-            self.editLoadStudyInfo(studyInfo) // 뷰 모델의 프로퍼티에 기존 데이터 대입
+            case .create: break
+            case .edit(let studyInfo):
+                self.originalStudyInfo = ModifyStudyInfoVO(studyInfo) // 원본 데이터 저장
+                self.editLoadStudyInfo(studyInfo) // 뷰 모델의 프로퍼티에 기존 데이터 대입
         }
     }
     
@@ -171,6 +171,7 @@ final class CreateStudyViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
+                studyInviteCode = response.inviteCode
                 self.isLoading = false
                 self.showCompleteView = true
                 print("\(createdStudyId) 스터디 생성 성공")
@@ -208,7 +209,7 @@ final class CreateStudyViewModel: ObservableObject {
         
         // 수정 모드에서는 originalStudyInfo에서 studyId를 가져와 사용합니다.
         guard let originalStudyId = originalStudyInfo?.studyId else {
-            print("Error: Original study ID not found for editing.")
+            print("Error: Origin3al study ID not found for editing.")
             isLoading = false
             return
         }
@@ -288,8 +289,8 @@ final class CreateStudyViewModel: ObservableObject {
     
     /// Edit 초기 데이터 세팅
     private func editLoadStudyInfo(_ studyInfo: FullStudyInfoVO) {
-        let formatter = DateFormatter.edityyyyMMdd
-        let formatter2 = DateFormatter.edithhMMSS
+        let formatter = DateFormatter.yyyyMMdd
+        let formatter2 = DateFormatter.hhMM
         
         guard let startDate = formatter.date(from: studyInfo.studyStartDate),
               let endDate = formatter.date(from: studyInfo.studyEndDate) else {

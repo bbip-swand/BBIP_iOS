@@ -100,7 +100,7 @@ struct StudyHomeView: View {
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
-            viewModel.getAttendanceStatus()
+            viewModel.getStudyAttendanceStatus(studyId: studyId)
             print("studyId: \(studyId)")
         }
         .onChange(of: studyId) { _, newVal in
@@ -112,7 +112,8 @@ struct StudyHomeView: View {
             }
         }
         .navigationDestination(isPresented: $showArchiveView) {
-            ArchiveView(studyId: viewModel.fullStudyInfo?.inviteCode ?? "")
+            ArchiveView(inviteCode: viewModel.fullStudyInfo?.inviteCode ?? "",
+                        studyId: viewModel.fullStudyInfo?.studyId ?? "")
         }
         .navigationDestination(isPresented: $showCheckLocationView) {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
@@ -227,8 +228,8 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let pendingDateStr = viewModel.fullStudyInfo?.pendingDateStr {
-                        Text(pendingDateStr)
+                    if let fullStudyInfo = viewModel.fullStudyInfo {
+                        Text(nextUpcomingStudyDate(fullStudyInfoVO: fullStudyInfo))
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                     } else {
@@ -248,13 +249,13 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let vo = viewModel.fullStudyInfo {
-                        Text(vo.location ?? "미정")
+                    if let location = viewModel.fullStudyInfo?.location {
+                        Text(location.isEmpty ? "장소 미정" : location)
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                             .frame(maxWidth: 150, maxHeight: 20, alignment: .leading)
                     } else {
-                        Text("place")
+                        Text("장소 미정")
                             .foregroundStyle(.gray2)
                             .redacted(reason: .placeholder)
                     }
@@ -492,29 +493,19 @@ private struct StudyHomeInnerView<Content: View>: View {
 
 extension StudyHomeView {
     func calculateStartDate(from dateString: String) -> Date {
-        // ")" 문자의 인덱스를 찾아 ")"까지 포함한 부분을 사용
-        // pendingDateStr으로 부터 Date 추출을 위함임
-        if let endIndex = dateString.firstIndex(of: ")") {
-            let truncatedString = String(dateString[...endIndex])
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            dateFormatter.dateFormat = "M월 d일 (E)"
-            
-            if let parsedDate = dateFormatter.date(from: truncatedString) {
-                // 현재 연도 설정
-                let currentYear = Calendar.current.component(.year, from: Date())
-                var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)
-                dateComponents.year = currentYear // 현재 연도로 설정
-                
-                if let adjustedDate = Calendar.current.date(from: dateComponents) {
-                    return adjustedDate
-                }
-            } else {
-                print("Invalid date format")
-            }
-        }
-        return Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let parsedDate = dateFormatter.date(from: dateString) else { return Date() }
+        // 현재 연도 설정
+        let currentYear = Calendar.current.component(.year, from: Date())
+        var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)
+        dateComponents.year = currentYear // 현재 연도로 설정
+        
+        guard let adjustedDate = Calendar.current.date(from: dateComponents) else { return Date() }
+        return adjustedDate
     }
     
     func formatDate(from date: Date) -> String {
@@ -522,5 +513,58 @@ extension StudyHomeView {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "M월 d일 (E)"
         return dateFormatter.string(from: date)
+    }
+    
+    // 스터디 임박 날짜 추출
+    func nextUpcomingStudyDate(fullStudyInfoVO: FullStudyInfoVO) -> String {
+        let calendar = Calendar.current
+        
+        // 1. studyStartDate 문자열을 Date 객체로 변환
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        guard let startDate = dateFormatter.date(from: fullStudyInfoVO.studyStartDate) else {
+            print("오류: studyStartDate 형식이 올바르지 않습니다.")
+            return fullStudyInfoVO.pendingDateStr
+        }
+        
+        // daysOfWeek(월=0...일=6) -> Calendar weekday(일=1...토=7) 체계 변환
+        let targetWeekdays = Set(fullStudyInfoVO.daysOfWeek.map { day -> Int in
+            if day == 6 { return 1 }
+            return day + 2
+        })
+        
+        if targetWeekdays.isEmpty {
+            return fullStudyInfoVO.pendingDateStr
+        }
+        
+        // '오늘', '스터디 시작일' 중 기준 날짜 확이
+        let today = calendar.startOfDay(for: Date())
+        let searchStartDate = max(today, startDate)
+        
+        // 가장 인접한 요일 확인 후 반환 (일주일 탐색)
+        for i in 0..<7 {
+            guard let checkingDate = calendar.date(byAdding: .day, value: i, to: searchStartDate) else { continue }
+            
+            let weekday = calendar.component(.weekday, from: checkingDate)
+            
+            // 스터디 요일에 해당하는 경우
+            if targetWeekdays.contains(weekday) {
+                // 6. studyTimes에서 첫 번째 시작 시간을 가져와 날짜와 결합
+                guard let firstStudyTime = fullStudyInfoVO.studyTimes.first else {
+                    return fullStudyInfoVO.pendingDateStr
+                }
+                
+                let outputDateFormatter = DateFormatter()
+                outputDateFormatter.dateFormat = "MM월 dd일 (E)"
+                outputDateFormatter.locale = Locale(identifier: "ko_KR")
+                let formattedDate = outputDateFormatter.string(from: checkingDate)
+                
+                // 시작, 종료시간 추가
+                return formattedDate + " / " + firstStudyTime.startTime + "~" + firstStudyTime.endTime
+            }
+        }
+        return fullStudyInfoVO.pendingDateStr
     }
 }

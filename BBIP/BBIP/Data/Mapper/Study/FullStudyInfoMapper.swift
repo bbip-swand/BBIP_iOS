@@ -40,7 +40,7 @@ struct FullStudyInfoMapper {
             return StudyMemberVO(
                 memberName: member.memberName,
                 isManager: member.isManager,
-                memberImageURL: member.memberImageUrl,
+                memberImageURL: member.memberImgUrl,
                 interest: interests
             )
         }
