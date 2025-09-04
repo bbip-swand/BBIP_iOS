@@ -12,13 +12,26 @@ import SwiftUI
 struct WeeklyStudyContentCardView: View {
     private var week: Int
     private var content: String
+    private var isModify: Bool
+    private var isSelected: Bool
+    private var onModify: (() -> String)
+    
+    private var borderColor: Color {
+        isModify ? (isSelected ? .primary3 : .gray4) : .clear
+    }
     
     init(
         week: Int,
-        content: String
+        content: String,
+        isModify: Bool = false,
+        isSelected: Bool = false,
+        onModify: @escaping () -> String = { "" }
     ) {
         self.week = week
         self.content = content
+        self.isModify = isModify
+        self.isSelected = isSelected
+        self.onModify = { "" }
     }
     
     var contentText: String {
@@ -40,7 +53,11 @@ struct WeeklyStudyContentCardView: View {
         .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundStyle(.mainWhite)
+                .foregroundStyle(isSelected ? .primary1 : .mainWhite)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(borderColor, lineWidth: 2)
         )
         .padding(.horizontal, 17)
         .bbipShadow1()

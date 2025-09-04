@@ -5,11 +5,14 @@
 //  Created by 이건우 on 8/14/24.
 //
 
+import Factory
 import SwiftUI
 import SwiftUIIntrospect
+import LinkNavigator
 
 struct UserInfoSetupView: View {
-    @StateObject private var userInfoSetupViewModel = DIContainer.shared.makeUserInfoSetupViewModel()
+    let navigator: LinkNavigatorType
+    @StateObject private var userInfoSetupViewModel = Container.shared.userInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
     private func buttonText() -> String {
@@ -63,7 +66,7 @@ struct UserInfoSetupView: View {
                     withAnimation {
                         if selectedIndex < userInfoSetupViewModel.contentData.count - 1 {
                             selectedIndex += 1
-                            print(selectedIndex)
+                            BBIPLogger.log(selectedIndex, level: .debug, category: .ui)
                         } else {
                             // 유저 정보 등록
                             userInfoSetupViewModel.createUserInfo()
@@ -73,16 +76,21 @@ struct UserInfoSetupView: View {
                 .padding(.bottom, 22)
             }
         }
+        .toolbar(.visible, for: .navigationBar)
         .background(Color.gray1)
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
         .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
         .loadingOverlay(isLoading: $userInfoSetupViewModel.isLoading)
-        .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
-            UISCompleteView(userName: userInfoSetupViewModel.userName)
-        }
         .onChange(of: selectedIndex) { _, _ in
             hideKeyboard()
+        }
+        .onChange(of: userInfoSetupViewModel.showCompleteView) { _, showCompleteView in
+            if showCompleteView == true {
+                navigator.next(paths: [BBIPMatchPath.userInfoSetupComplete.capitalizedPath],
+                               items: ["userName" : userInfoSetupViewModel.userName],
+                               isAnimated: true)
+            }
         }
     }
 }

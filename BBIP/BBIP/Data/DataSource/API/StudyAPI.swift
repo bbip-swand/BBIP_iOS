@@ -18,62 +18,85 @@ enum StudyAPI {
     case joinStudy(studyId: String)             // param
     case editStudyLocation(studyId: String, session: Int, location: String)
     case getPendingStudy
+    case deleteStudy(studyId: String)
+    case editStudyInfo(studyId: String, dto: CreateStudyInfoDTO)
 }
 
 extension StudyAPI: BaseAPI {
     var path: String {
         switch self {
-        case .getThisWeekStudy:
-            return "/study/this-week"
-        case .getOngoingStudy:
-            return "/study/ongoing"
-        case .getFinishedStudy:
-            return "/study/finished"
-        case .getFullStudyInfo(let studyId):
-            return "/study/search/\(studyId)"
-        case .getInviteInfo:
-            return "/study/invite-info"
-        case .createStudy:
-            return "/study/create"
-        case .joinStudy(let studyId):
-            return "/study/join/\(studyId)"
-        case .editStudyLocation(let studyId, _, _):
-            return "/study/place/\(studyId)"
-        case .getPendingStudy:
-            return "/study/pending"
+            case .getThisWeekStudy:
+                return "/study"
+            case .getOngoingStudy:
+                return "/study"
+            case .getFinishedStudy:
+                return "/study"
+            case .getFullStudyInfo(let studyId):
+                return "/study/\(studyId)"
+            case .getInviteInfo:
+                return "/study/invitation"
+            case .createStudy:
+                return "/study"
+            case .joinStudy(let studyId):
+                return "/study/\(studyId)/join"
+            case .editStudyLocation(let studyId, _, _):
+                return "/study/\(studyId)/place"
+            case .getPendingStudy:
+                return "/study/pending"
+            case .deleteStudy(let studyId):
+                return "/study/\(studyId)"
+            case .editStudyInfo(let studyId, _):
+                return "/study/\(studyId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy, .getFinishedStudy, .getFullStudyInfo, .getInviteInfo, .getPendingStudy:
-            return .get
-        case .createStudy, .joinStudy:
-            return .post
-        case .editStudyLocation:
-            return .put
+            case .getThisWeekStudy, .getOngoingStudy, .getFinishedStudy, .getFullStudyInfo, .getInviteInfo, .getPendingStudy:
+                return .get
+            case .createStudy, .joinStudy:
+                return .post
+            case .editStudyInfo:
+                return .put
+            case .deleteStudy:
+                return .delete
+            case .editStudyLocation :
+                return .patch
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy, .getFinishedStudy, .getFullStudyInfo, .getPendingStudy:
-            return .requestPlain
-            
-        case .getInviteInfo(let inviteCode):
-            let param = ["inviteCode" : inviteCode]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
-            
-        case .createStudy(let dto):
-            return .requestJSONEncodable(dto)
-            
-        case .joinStudy(let studyId):
-            let param = ["studyId": studyId]
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
-            
-        case .editStudyLocation(_, let session, let location):
-            let param = ["session" : session, "place" : location] as [String : Any]
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            case .getFullStudyInfo, .getPendingStudy:
+                return .requestPlain
+                
+            case .getThisWeekStudy:
+                let param = ["status" : "week"]
+                return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            case .getOngoingStudy:
+                let param = ["status" : "ongoing"]
+                return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            case .getFinishedStudy:
+                let param = ["status" : "finished"]
+                return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            case .getInviteInfo(let inviteCode):
+                let param = ["inviteCode" : inviteCode]
+                return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+                
+            case .createStudy(let dto), .editStudyInfo(_, let dto):
+                return .requestJSONEncodable(dto)
+                
+            case .joinStudy(let studyId):
+                return .requestPlain
+                
+            case .editStudyLocation(_, let session, let location):
+                let param = ["session" : session, "place" : location] as [String : Any]
+                return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            case .deleteStudy(let studyId):
+                let param = ["studyId": Int(studyId)!]
+                return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }
+
+

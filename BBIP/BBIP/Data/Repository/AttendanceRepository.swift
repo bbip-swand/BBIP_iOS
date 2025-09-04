@@ -12,6 +12,7 @@ protocol AttendanceRepository {
     func getAttendanceRecords(studyId: String) ->  AnyPublisher<[AttendanceRecordVO], AttendanceError>
     func createAttendanceCode(studyId: String, session: Int) -> AnyPublisher<Int, AttendanceError>
     func submitAttendanceCode(studyId: String, code: Int) -> AnyPublisher<Bool, AttendanceError>
+    func getStudyAttendanceStatus(studyId: String) -> AnyPublisher<AttendanceStatusVO, AttendanceError>
 }
 
 final class AttendanceRepositoryImpl: AttendanceRepository {
@@ -48,6 +49,12 @@ final class AttendanceRepositoryImpl: AttendanceRepository {
     
     func submitAttendanceCode(studyId: String, code: Int) -> AnyPublisher<Bool, AttendanceError> {
         dataSource.submitAttendanceCode(studyId: studyId, code: code)
+            .eraseToAnyPublisher()
+    }
+    
+    func getStudyAttendanceStatus(studyId: String) -> AnyPublisher<AttendanceStatusVO, AttendanceError> {
+        dataSource.getStudyAttendanceStatus(studyId: studyId)
+            .map { self.statusMapper.toVO(dto: $0) }
             .eraseToAnyPublisher()
     }
 }

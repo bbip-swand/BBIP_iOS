@@ -1,18 +1,25 @@
 //
-//  UISCompleteView.swift
+//  UserInfoSetupCompleteView.swift
 //  BBIP
 //
 //  Created by 이건우 on 8/28/24.
 //
 
 import SwiftUI
+import LinkNavigator
 
-struct UISCompleteView: View {
-    @EnvironmentObject private var appState: AppStateManager
+struct UserInfoSetupCompleteView: View {
+    @EnvironmentObject var appState: AppStateManager
+    let navigator: LinkNavigatorType
+    
     private let userStateManager = UserStateManager()
     private let userName: String
     
-    init(userName: String) {
+    init(
+        navigator: LinkNavigatorType,
+        userName: String
+    ) {
+        self.navigator = navigator
         self.userName = userName
     }
     
@@ -41,17 +48,29 @@ struct UISCompleteView: View {
             
             MainButton(text: "시작하기") {
                 let isExistingUser = UserDefaultsManager.shared.isExistingUser()
-                appState.switchRoot(isExistingUser ? .home : .startGuide)
+                let destination: BBIPMatchPath = isExistingUser ? .home : .startGuide
+                navigator.replace(paths: [destination.capitalizedPath], items: [:], isAnimated: true)
             }
             .padding(.bottom, 39)
         }
         .navigationBarBackButtonHidden()
+        .toolbar(.hidden, for: .navigationBar)
         .onAppear {
             HapticManager.shared.boong()
         }
+        .overlay(
+            Group {
+                if let data = appState.deepLinkAlertData {
+                    JoinStudyCustomAlert(
+                        appState: appState,
+                        inviteData: data
+                    ) {
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                        return
+                    }
+                    .opacity(appState.showDeepLinkAlert ? 1 : 0)
+                }
+            }
+        )
     }
-}
-
-#Preview {
-    UISCompleteView(userName: "박김밥")
 }

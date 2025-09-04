@@ -14,9 +14,11 @@ struct ArchiveView: View {
     @State private var isDocumentPickerPresented: Bool = false
     @State private var cancellables = Set<AnyCancellable>()
     
+    private let inviteCode: String
     private let studyId: String
     
-    init(studyId: String) {
+    init(inviteCode: String, studyId: String) {
+        self.inviteCode = inviteCode
         self.studyId = studyId
     }
     
@@ -61,7 +63,7 @@ struct ArchiveView: View {
         .backButtonStyle()
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
-            viewModel.getArchivedFile(studyId: studyId)
+            viewModel.getArchivedFile(studyId: inviteCode)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -93,7 +95,7 @@ struct ArchiveView: View {
                             }
                         }, receiveValue: { success in
                             if success {
-                                viewModel.getArchivedFile(studyId: studyId)
+                                viewModel.getArchivedFile(studyId: inviteCode)
                             }
                         })
                         .store(in: &cancellables)
@@ -105,5 +107,5 @@ struct ArchiveView: View {
 }
 
 #Preview {
-    ArchiveView(studyId: "")
+    ArchiveView(inviteCode: "", studyId: "")
 }

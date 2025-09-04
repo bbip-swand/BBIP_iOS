@@ -10,17 +10,17 @@ import Foundation
 struct CreateStudyInfoDTO: Encodable {
     let studyName: String
     let studyImageUrl: String
-    let studyField: Int
+    let field: String
     let totalWeeks: Int
     let studyStartDate: String
     let studyEndDate: String
-    let daysOfWeek: [Int]
+    let daysOfWeeks: [String]
     let studyTimes: [StudyTime]
     let studyDescription: String
     let studyContents: [String]
 }
 
 struct CreateStudyResponseDTO: Decodable {
-    let studyId: String
-    let studyInviteCode: String
+    let studyId: Int
+    let inviteCode: String
 }

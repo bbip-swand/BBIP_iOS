@@ -12,7 +12,7 @@ protocol CalendarRepository {
     func getMonthlySchedule(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error>
     func getUpcommingSchdule() -> AnyPublisher<[UpcommingScheduleVO], Error>
     func createSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
-    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
+    func updateSchedule(scheduleId: Int, dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
 }
 
 final class CalendarRepositoryImpl: CalendarRepository {
@@ -52,7 +52,7 @@ final class CalendarRepositoryImpl: CalendarRepository {
         dataSource.createSchedule(dto: dto)
     }
 
-    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
-        dataSource.updateSchedule(dto: dto)
+    func updateSchedule(scheduleId: Int, dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        dataSource.updateSchedule(scheduleId: scheduleId, dto: dto)
     }
 }

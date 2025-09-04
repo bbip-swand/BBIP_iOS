@@ -11,7 +11,7 @@ import Moya
 enum AWSS3API {
     case requestImagePresignedUrl(fileName: String)
     case requestFilePresignedUrl(fileName: String, fileKey: String, studyId: String)
-    case upload(fileData: Data, url: String)
+    case upload(fileData: Data, url: String, fileType: String = "")
 }
 
 extension AWSS3API: TargetType {
@@ -22,7 +22,7 @@ extension AWSS3API: TargetType {
                 return URL(string: "dummy")!
             }
             return URL(string: baseURL)!
-        case .upload(_, let url):
+        case .upload(_, let url, _):
             return URL(string: url)!
         }
     }
@@ -30,9 +30,9 @@ extension AWSS3API: TargetType {
     var path: String {
         switch self {
         case .requestImagePresignedUrl:
-            return "/aws-s3/upload-image/presigned-url"
+            return "/bucket/image"
         case .requestFilePresignedUrl:
-            return "/aws-s3/upload-file/presigned-url"
+            return "/bucket/file"
         case .upload:
             return ""
         }
@@ -60,21 +60,27 @@ extension AWSS3API: TargetType {
             ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             
-        case .upload(let fileData, _):
+        case .upload(let fileData, _, _):
             return .requestData(fileData)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .requestImagePresignedUrl, .requestFilePresignedUrl:
-            let token = UserDefaultsManager.shared.getAccessToken()!
-            return [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(token)"
-            ]
-        case .upload:
-            return .none
+            case .requestImagePresignedUrl, .requestFilePresignedUrl:
+                let token = UserDefaultsManager.shared.getAccessToken()!
+                return [
+                    "Content-Type": "application/json"
+                ]
+            case .upload(_, _, let fileType):
+                if fileType.isEmpty {
+                    return .none
+                } else {
+                    let token = UserDefaultsManager.shared.getAccessToken()!
+                    return [
+                        "Content-Type": fileType
+                    ]
+                }
         }
     }
 }

@@ -1,7 +1,9 @@
 import Foundation
 import SwiftUI
+import LinkNavigator
 
 struct UserHomeNavBar: View {
+    let navigator: LinkNavigatorType
     @EnvironmentObject var appState: AppStateManager
     @Binding var showDot: Bool
     var tabState: MainHomeTab
@@ -33,7 +35,7 @@ struct UserHomeNavBar: View {
 
     private var noticeButton: some View {
         Button {
-            appState.push(.notice)
+            // navigator.next(paths: [BBIPMatchPath.notice.capitalizedPath], items: [:], isAnimated: true)
         } label: {
             Image("notice_icon")
                 .renderingMode(.template)
@@ -55,6 +57,7 @@ struct UserHomeNavBar: View {
     private var profileButton: some View {
         Button {
             appState.push(.mypage)
+            // navigator.next(paths: [BBIPMatchPath.myPage.capitalizedPath], items: [:], isAnimated: true)
         } label: {
             Image("profile_icon")
                 .renderingMode(.template)

@@ -15,7 +15,7 @@ struct ArchivedFileInfoMapper {
         return dto.map { dtoItem in
             ArchivedFileInfoVO(
                 fileName: dtoItem.fileName,
-                fileUrl: dtoItem.fileUrl,
+                fileUrl: "https://storage.googleapis.com" + dtoItem.fileUrl,
                 createdAt: dateFormatter.string(from: dtoItem.createdAt),
                 fileSize: dtoItem.fileSize
             )

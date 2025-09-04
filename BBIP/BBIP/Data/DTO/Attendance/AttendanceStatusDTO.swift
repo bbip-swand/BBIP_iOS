@@ -4,6 +4,7 @@
 //
 //  Created by 이건우 on 11/18/24.
 //
+import Foundation
 
 struct AttendanceStatusDTO: Decodable {
     let studyName: String

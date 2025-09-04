@@ -49,6 +49,9 @@ fileprivate struct SetStudyImageView: View {
                             color: .gray4,
                             lineWidth: 2
                         )
+                } else if let imageUrl = viewModel.imageUrl, !imageUrl.isEmpty {
+                    // 기존 이미지 있는 경우 (수정 모드)
+                    LoadableImageView(imageUrl: imageUrl, size: imageSize)
                 } else {
                     Image("study_profile_default")
                         .resizable()
@@ -76,6 +79,7 @@ fileprivate struct SetStudyNameView: View {
                     viewModel.hasStartedEditing = true
                     validateNameAndUpdateNextButton(newValue)
                 }
+                .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 10)
                 .introspect(.textField, on: .iOS(.v17, .v18)) { textField in

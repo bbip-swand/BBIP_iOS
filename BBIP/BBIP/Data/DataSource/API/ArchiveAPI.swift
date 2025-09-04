@@ -9,14 +9,14 @@ import Foundation
 import Moya
 
 enum ArchiveAPI {
-    case getArchivedFile(studyId: String)
+    case getArchivedFile(studyCode: String)
 }
 
 extension ArchiveAPI: BaseAPI {
     var path: String {
         switch self {
-        case .getArchivedFile(let studyId):
-            return "/archive/\(studyId)"
+        case .getArchivedFile:
+            return "/archive"
         }
     }
     
@@ -29,8 +29,9 @@ extension ArchiveAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getArchivedFile:
-            return .requestPlain
+            case .getArchivedFile(let studyCode):
+                let param = ["studyCode" : studyCode]
+                return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         }
     }
     

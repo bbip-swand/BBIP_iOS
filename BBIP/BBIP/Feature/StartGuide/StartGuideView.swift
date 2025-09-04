@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct StartGuideView: View {
-    @State private var showCreateStudyView: Bool = false
+    @EnvironmentObject var appState: AppStateManager
+    let navigator: LinkNavigatorType
     
     var body: some View {
         VStack(spacing: 0) {
@@ -47,7 +49,7 @@ struct StartGuideView: View {
             }
             
             Button {
-                showCreateStudyView = true
+                navigator.next(paths: [BBIPMatchPath.startCreateStudy.capitalizedPath], items: [:], isAnimated: true)
             } label: {
                 Text("생성하기")
                     .font(.bbip(.button1_m20))
@@ -57,14 +59,27 @@ struct StartGuideView: View {
             }
             .padding(.bottom, 22)
         }
+        .overlay(
+            Group {
+                if let data = appState.deepLinkAlertData {
+                    JoinStudyCustomAlert(
+                        appState: appState,
+                        inviteData: data
+                    ) {
+                        navigator.replace(paths: [BBIPMatchPath.home.capitalizedPath], items: [:], isAnimated: true)
+                        return
+                    }
+                    .opacity(appState.showDeepLinkAlert ? 1 : 0)
+                }
+            }
+        )
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray1)
-        .navigationDestination(isPresented: $showCreateStudyView) {
-            StartCreateStudyView()
-        }
     }
 }
 
 #Preview {
-    StartGuideView()
+    StartGuideView(
+        navigator: LinkNavigator(dependency: AppDependency(appState: .init()),
+                                 builders: AppRouterGroup().routers)
+    )
 }

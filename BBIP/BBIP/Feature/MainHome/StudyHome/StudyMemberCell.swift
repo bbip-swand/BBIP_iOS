@@ -49,7 +49,7 @@ struct StudyMemberInviteCell: View {
     }
     
     var body: some View {
-        ShareLink(item: URL(string: "https://bbip.site/join-study/\(studyInviteCode)")!) {
+        ShareLink(item: URL(string: "http://join.bbip.kr/join-study/\(studyInviteCode)")!) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .frame(width: 90, height: 100)

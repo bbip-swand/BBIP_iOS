@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class AttendanceDataSource {
-    private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin()])
+    private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     /// 현재 출결 인증 존재 여부를 확인
     func getAttendanceStatus() -> AnyPublisher<AttendanceStatusDTO, AttendanceError> {
@@ -96,6 +96,26 @@ final class AttendanceDataSource {
                 } else {
                     return AttendanceError.unknownError(statusCode: (error as NSError).code)
                 }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    /// 특정 스터디 출석 인증 존재 여부를 확인
+    func getStudyAttendanceStatus(studyId: String) -> AnyPublisher<AttendanceStatusDTO, AttendanceError> {
+        provider.requestPublisher(.getStudyStatus(studyId: studyId))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    if response.statusCode == 404 {
+                        throw AttendanceError.attendanceNotFound
+                    } else {
+                        throw AttendanceError.unknownError(statusCode: response.statusCode)
+                    }
+                }
+                return response.data
+            }
+            .decode(type: AttendanceStatusDTO.self, decoder: JSONDecoder())
+            .mapError { error in
+                return error as? AttendanceError ?? .decodingError
             }
             .eraseToAnyPublisher()
     }

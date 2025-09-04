@@ -118,9 +118,11 @@ final class UserHomeViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
-                case .finished: break
-                case .failure(let error):
-                    print(error.errorMessage)
+                    case .finished: break
+                    case .failure(let error):
+                        self.isAttendanceStarted = false
+                        self.attendanceStatus = nil
+                        print(error.errorMessage)
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }

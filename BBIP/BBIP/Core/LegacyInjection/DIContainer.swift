@@ -70,6 +70,10 @@ class DIContainer {
         repository: attendanceRepository
     )
     
+    private lazy var getStudyAttendanceStatusUseCase: GetStudyAttendanceStatusUseCaseProtocol = GetStudyAttendanceStatusUseCase(
+        repository: attendanceRepository
+    )
+    
     
     // MARK: - Study
     private let studyDataSource = StudyDataSource()
@@ -90,6 +94,10 @@ class DIContainer {
     )
     
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
+        repository: studyRepository
+    )
+    // 스터디 수정, 주차 수정 둘다 이용
+    private lazy var editStudyUseCase: EditStudyUseCaseProtocol = EditStudyUseCase(
         repository: studyRepository
     )
     private lazy var getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol = GetCurrentWeekStudyInfoUseCase(
@@ -131,7 +139,14 @@ class DIContainer {
     private lazy var getPostDetailUseCase: GetPostDetailUseCaseProtocol = GetPostDetailUseCase(
         repository: postingRepository
     )
+    
+    private lazy var deletePostUseCase: DeletePostUseCaseProtocol = DeletePostUseCase(
+        repository: postingRepository
+    )
     private lazy var createCommentUseCase: CreateCommentUseCaseProtocol = CreateCommentUseCase(
+        repository: postingRepository
+    )
+    private lazy var deleteCommentUseCase: DeleteCommentUseCaseProtocol = DeleteCommentUseCase(
         repository: postingRepository
     )
     private lazy var createPostingUseCase: CreatePostingUseCaseProtocol = CreatePostingUseCase(
@@ -175,17 +190,14 @@ class DIContainer {
     
     // MARK: - ViewModels
     // Login
-    func makeLoginViewModel() -> LoginViewModel {
-        return LoginViewModel(
-            requestLoginUseCase: requestLoginUseCase,
-            signUpUseCase: signUpUseCase
-        )
-    }
+    //    func makeLoginViewModel() -> LoginViewModel {
+    //        return LoginViewModel(signUpUseCase: signUpUseCase)
+    //    }
     
     // UserInfoSetup
-    func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
-        return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
-    }
+    // func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
+    //     return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
+    // }
     
     // UserHome
     func makeUserHomeViewModel() -> UserHomeViewModel {
@@ -215,6 +227,11 @@ class DIContainer {
         )
     }
     
+    // WeeklyStudyEdit
+    func makeWeeklyStudyEditViewModel(fullStudyInfoVO: FullStudyInfoVO) -> WeeklyStudyContentListViewModel {
+        return .init(fullStudyInfo: fullStudyInfoVO, editStudyUseCase: editStudyUseCase)
+    }
+    
     // Attendance Records
     func makeAttendanceRecordsViewModel() -> AttendanceRecordsViewModel {
         return .init(
@@ -223,8 +240,8 @@ class DIContainer {
     }
     
     // CreateStudy
-    func makeCreateStudyViewModel() -> CreateStudyViewModel {
-        return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
+    func makeCreateStudyViewModel(type: StudyInfoSetupType) -> CreateStudyViewModel {
+        return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase, editStudyInfoUseCase: editStudyUseCase, type: type)
     }
     
     // JoinStudy
@@ -237,7 +254,7 @@ class DIContainer {
         return StudyHomeViewModel(
             getFullStudyInfoUseCase: getFullStudyInfoUseCase,
             getStudyPostingUseCase: getStudyPostingUseCase,
-            getAttendanceStatusUseCase: getAttendanceStatusUseCase
+            getStudyAttendanceStatusUseCase: getStudyAttendanceStatusUseCase
         )
     }
     
@@ -252,7 +269,9 @@ class DIContainer {
     func makePostingDetailViewModel() -> PostingDetailViewModel {
         return PostingDetailViewModel(
             getPostDetailUseCase: getPostDetailUseCase,
-            createCommentUseCase: createCommentUseCase
+            deletePostUseCase: deletePostUseCase,
+            createCommentUseCase: createCommentUseCase,
+            deleteCommentUseCase: deleteCommentUseCase
         )
     }
     

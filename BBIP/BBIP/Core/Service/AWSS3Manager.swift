@@ -12,7 +12,7 @@ import Moya
 
 final class AWSS3Manager {
     static let shared = AWSS3Manager()
-    private let provider = MoyaProvider<AWSS3API>()
+    private let provider = MoyaProvider<AWSS3API>(plugins: [TokenPlugin(), LoggerPlugin()])
     private var cancellables = Set<AnyCancellable>()
     
     private init() {}
@@ -31,7 +31,7 @@ final class AWSS3Manager {
                 // 이미지 업로드 후 final URL 반환
                 return self.uploadImageToBinary(imageData: imageData, urlString: urlString)
                     .map { _ in
-                        let finalURL = "https://bbip-s3-bucket.s3.amazonaws.com/images/\(uuid)"
+                        let finalURL = "https://storage.googleapis.com/bbip-bucket/images/\(uuid)"
                         return finalURL
                     }
                     .eraseToAnyPublisher()
@@ -42,25 +42,18 @@ final class AWSS3Manager {
     // Presigned URL 요청
     private func requestImagePresignedURL(with uuid: String) -> AnyPublisher<String, Error> {
         return provider.requestPublisher(.requestImagePresignedUrl(fileName: uuid))
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    print(response.statusCode)
-                    throw URLError(.badServerResponse)
-                }
-                
-                // 응답 데이터 확인
-                guard let urlString = String(data: response.data, encoding: .utf8), !urlString.isEmpty else {
-                    print("응답 데이터가 올바르지 않습니다:", response.data)
-                    throw URLError(.cannotParseResponse)
-                }
-                return urlString
+            .map(BaseResponseDTO<String>.self, using: JSONDecoder())
+            .map(\.data)
+            .mapError { error in
+                error.handleDecodingError()
+                return error
             }
             .eraseToAnyPublisher()
     }
     
     // presigned URL에 이미지 업로드
     private func uploadImageToBinary(imageData: Data, urlString: String) -> AnyPublisher<Void, Error> {
-        provider.requestPublisher(.upload(fileData: imageData, url: urlString))
+        provider.requestPublisher(.upload(fileData: imageData, url: urlString, fileType: "image/jpeg"))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print(response.statusCode)
@@ -95,18 +88,11 @@ final class AWSS3Manager {
     // Presigned URL 요청 for Files
     private func requestFilePresignedURL(fileName: String, fileKey: String, studyId: String) -> AnyPublisher<String, Error> {
         return provider.requestPublisher(.requestFilePresignedUrl(fileName: fileName, fileKey: fileKey, studyId: studyId))
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    print(response.statusCode)
-                    throw URLError(.badServerResponse)
-                }
-                
-                // 응답 데이터 확인
-                guard let urlString = String(data: response.data, encoding: .utf8), !urlString.isEmpty else {
-                    print("응답 데이터가 올바르지 않습니다:", response.data)
-                    throw URLError(.cannotParseResponse)
-                }
-                return urlString
+            .map(BaseResponseDTO<String>.self, using: JSONDecoder())
+            .map(\.data)
+            .mapError { error in
+                error.handleDecodingError()
+                return error
             }
             .eraseToAnyPublisher()
     }

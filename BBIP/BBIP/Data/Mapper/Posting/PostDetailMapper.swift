@@ -8,12 +8,16 @@
 import Foundation
 
 struct PostDetailMapper {
-    func toVO(dto: PostDTO) -> PostDetailVO {
-        let dateFormatter = DateFormatter.customFormatter(format: "MM/dd HH:mm")
+    func toVO(dto: PostDetailDTO) -> PostDetailVO {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy/MM/dd HH:mm"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         let postType: PostType = dto.isNotice ? .notice : .normal
         
-        let commentVOs = dto.comments?.map { commentDTO in
-            CommentVO(writer: commentDTO.writer,
+        let commentVOs = dto.comments?.compactMap { commentDTO in
+            CommentVO(commentId: commentDTO.commentId,
+                      writer: commentDTO.writer,
                       content: commentDTO.content,
                       timeAgo: timeAgo(date: commentDTO.createdAt),
                       profileImageUrl: commentDTO.profileImageUrl,
@@ -21,8 +25,8 @@ struct PostDetailMapper {
         } ?? []
         
         return PostDetailVO(
-            postId: dto.postingId,
-            createdAt: dateFormatter.string(from: dto.createdAt.adjustedToKST()),
+            postId: dto.postId,
+            createdAt: dateFormatter.string(from: dto.createdAt),
             writer: dto.writer,
             isManager: dto.isManager ?? false,
             profileImageUrl: dto.profileImageUrl,

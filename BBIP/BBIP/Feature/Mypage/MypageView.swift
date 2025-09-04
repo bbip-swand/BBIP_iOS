@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct MypageView: View {
+    let navigator: LinkNavigatorType
     @StateObject var myPageViewModel = DIContainer.shared.makeMyPageViewModel()
     @State private var showDetail: Bool = false
     @State private var showStudyStatus: Bool = false
@@ -75,17 +77,19 @@ struct MypageView: View {
                 }
                 .padding(.leading, 20)
             }
+            
             Spacer()
             
-            Button {
-                showDetail = true
-            } label: {
-                Image("info_open")
-                    .padding(.trailing,28)
-            }
+            Image("info_open")
+                .padding(.trailing,28)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            showDetail = true
         }
         .navigationDestination(isPresented: $showDetail) {
             ProfileDetailView(
+                navigator: navigator,
                 viewModel: myPageViewModel,
                 userName: myPageViewModel.profileData?.userName ?? "Unknown",
                 profileImageUrl: myPageViewModel.profileData?.profileImageUrl ?? "profile_default",
@@ -216,9 +220,4 @@ fileprivate struct MyStudyDetailButton: View {
             }
         }
     }
-}
-
-#Preview {
-
-    
 }

@@ -10,10 +10,10 @@ import Foundation
 struct PendingStudyMapper {
     func toVO(dto: PendingStudyDTO) -> PendingStudyVO {
         return PendingStudyVO(
-            studyId: dto.studyId,
+            studyId: String(dto.studyId),
             studyName: dto.studyName,
             studyWeek: dto.studyWeek,
-            studyTime: dto.studyTime.startTime + " - " + dto.studyTime.endTime,
+            studyTime: dto.startTime + " - " + dto.endTime,
             leftDays: dto.leftDays,
             place: dto.place.isEmpty ? "장소 미정" : dto.place,
             totalWeeks: dto.totalWeeks
