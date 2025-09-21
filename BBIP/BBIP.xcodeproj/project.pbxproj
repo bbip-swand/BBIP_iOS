@@ -123,6 +123,9 @@
 		C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F662CF61E5B00FCFAF2 /* Splash.json */; };
 		C65D17B52E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D17B42E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift */; };
 		C66890992E801ED5001C3C4C /* UpdateAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66890982E801ED5001C3C4C /* UpdateAlertType.swift */; };
+		C668909F2E802017001C3C4C /* CreateStudyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668909B2E802017001C3C4C /* CreateStudyContent.swift */; };
+		C66890A02E802017001C3C4C /* GridButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668909C2E802017001C3C4C /* GridButtonContent.swift */; };
+		C66890A12E802017001C3C4C /* UserInfoSetupContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668909D2E802017001C3C4C /* UserInfoSetupContent.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -142,7 +145,6 @@
 		C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB02C808321006AA652 /* StartCreateStudyView.swift */; };
 		C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */; };
 		C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */; };
-		C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */; };
 		C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */; };
 		C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */; };
 		C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */; };
@@ -164,7 +166,6 @@
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
 		C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */; };
 		C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */; };
-		C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */; };
 		C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */; };
 		C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB572C7EF80500BB3952 /* HideKeyboard.swift */; };
 		C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB592C7EFBE900BB3952 /* WarningLabel.swift */; };
@@ -182,7 +183,6 @@
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
-		C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */; };
 		C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */; };
 		C6B00C172C590A0E009AC4E2 /* InitialRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C162C590A0E009AC4E2 /* InitialRouterView.swift */; };
 		C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B00C182C590A10009AC4E2 /* Assets.xcassets */; };
@@ -414,6 +414,9 @@
 		C6516F662CF61E5B00FCFAF2 /* Splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		C65D17B42E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupRouteBuilder.swift; sourceTree = "<group>"; };
 		C66890982E801ED5001C3C4C /* UpdateAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlertType.swift; sourceTree = "<group>"; };
+		C668909B2E802017001C3C4C /* CreateStudyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyContent.swift; sourceTree = "<group>"; };
+		C668909C2E802017001C3C4C /* GridButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridButtonContent.swift; sourceTree = "<group>"; };
+		C668909D2E802017001C3C4C /* UserInfoSetupContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupContent.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -429,7 +432,6 @@
 		C6934BB02C808321006AA652 /* StartCreateStudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyView.swift; sourceTree = "<group>"; };
 		C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyViewModel.swift; sourceTree = "<group>"; };
 		C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupView.swift; sourceTree = "<group>"; };
-		C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyContent.swift; sourceTree = "<group>"; };
 		C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewProgressBar.swift; sourceTree = "<group>"; };
 		C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -451,7 +453,6 @@
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISInterestView.swift; sourceTree = "<group>"; };
 		C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridButtonView.swift; sourceTree = "<group>"; };
-		C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridButtonContent.swift; sourceTree = "<group>"; };
 		C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusBorder.swift; sourceTree = "<group>"; };
 		C695CB572C7EF80500BB3952 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C695CB592C7EFBE900BB3952 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
@@ -470,7 +471,6 @@
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
-		C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupContent.swift; sourceTree = "<group>"; };
 		C6B00C112C590A0E009AC4E2 /* BBIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPApp.swift; sourceTree = "<group>"; };
 		C6B00C162C590A0E009AC4E2 /* InitialRouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRouterView.swift; sourceTree = "<group>"; };
@@ -739,17 +739,33 @@
 			path = CreateCode;
 			sourceTree = "<group>";
 		};
+		C668909E2E802017001C3C4C /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				C668909B2E802017001C3C4C /* CreateStudyContent.swift */,
+				C668909C2E802017001C3C4C /* GridButtonContent.swift */,
+				C668909D2E802017001C3C4C /* UserInfoSetupContent.swift */,
+				C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		C66890A22E802033001C3C4C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C64C28242CE220A700131B70 /* OccupationCategory.swift */,
+				C6FA55B12C8F279700E537D7 /* StudyCategory.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				C66890A22E802033001C3C4C /* Category */,
+				C668909E2E802017001C3C4C /* Content */,
 				C66890982E801ED5001C3C4C /* UpdateAlertType.swift */,
-				C64C28242CE220A700131B70 /* OccupationCategory.swift */,
 				C668E9C92C7ABC2D00298B52 /* AreaData.swift */,
-				C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */,
-				C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */,
-				C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */,
-				C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */,
-				C6FA55B12C8F279700E537D7 /* StudyCategory.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1686,7 +1702,6 @@
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
 				C64C28582CE5ED9500131B70 /* AddScheduleView.swift in Sources */,
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
-				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C6516ED72CEB8A7200FCFAF2 /* AttendanceRecordsViewModel.swift in Sources */,
 				C6516EB02CEB329B00FCFAF2 /* AttendanceStatusDTO.swift in Sources */,
@@ -1781,6 +1796,9 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6516ECD2CEB6C5900FCFAF2 /* CreateCodeOnboardingView.swift in Sources */,
 				C6F2DA1E2CAAE033002023B6 /* CommentVO.swift in Sources */,
+				C668909F2E802017001C3C4C /* CreateStudyContent.swift in Sources */,
+				C66890A02E802017001C3C4C /* GridButtonContent.swift in Sources */,
+				C66890A12E802017001C3C4C /* UserInfoSetupContent.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* UpcommingScheduleVO.swift in Sources */,
 				C65D17B52E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
@@ -1848,7 +1866,6 @@
 				98AD41512E26A5ED00E82FC3 /* Encodable+Extension.swift in Sources */,
 				C6516ECF2CEB6E5400FCFAF2 /* CreateCodeView.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
-				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				98830A9F2E0D572100414CF7 /* NavigationDataStore.swift in Sources */,
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
@@ -1902,7 +1919,6 @@
 				C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */,
 				C6D298452E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
-				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,

@@ -5,6 +5,10 @@
 //  Created by 이건우 on 9/21/25.
 //
 
+struct AppUpdateConfig {
+    static let appstoreAppId = "6670203690"
+}
+
 enum UpdateAlertType {
     case forceUpdate
     case featureUpdate
@@ -21,7 +25,7 @@ enum UpdateAlertType {
         }
     }
     
-    var description: String {
+    var message: String {
         switch self {
         case .forceUpdate:
             return "BBIP의 새로운 기능을 이용하기 위해서는\n업데이트가 필요해요!\n최신 버전으로 업데이트 하시겠어요?"
