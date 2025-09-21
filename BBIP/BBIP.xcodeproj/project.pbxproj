@@ -122,6 +122,7 @@
 		C6516F652CF6129000FCFAF2 /* Complete_Attendance.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F642CF6129000FCFAF2 /* Complete_Attendance.json */; };
 		C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F662CF61E5B00FCFAF2 /* Splash.json */; };
 		C65D17B52E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D17B42E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift */; };
+		C66890992E801ED5001C3C4C /* UpdateAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66890982E801ED5001C3C4C /* UpdateAlertType.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -412,6 +413,7 @@
 		C6516F642CF6129000FCFAF2 /* Complete_Attendance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Complete_Attendance.json; sourceTree = "<group>"; };
 		C6516F662CF61E5B00FCFAF2 /* Splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		C65D17B42E0ADDCA000F0966 /* UserInfoSetupRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupRouteBuilder.swift; sourceTree = "<group>"; };
+		C66890982E801ED5001C3C4C /* UpdateAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlertType.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				C66890982E801ED5001C3C4C /* UpdateAlertType.swift */,
 				C64C28242CE220A700131B70 /* OccupationCategory.swift */,
 				C668E9C92C7ABC2D00298B52 /* AreaData.swift */,
 				C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */,
@@ -1671,6 +1674,7 @@
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */,
+				C66890992E801ED5001C3C4C /* UpdateAlertType.swift in Sources */,
 				9886AB362E0C64770035D3D0 /* NoticeRouteBuilder.swift in Sources */,
 				08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */,
 				C6D298482E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift in Sources */,
@@ -2051,7 +2055,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -2072,7 +2076,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = swand.BBIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2097,7 +2101,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -2118,7 +2122,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = swand.BBIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
