@@ -89,7 +89,7 @@ final class AppLaunchFlowManager: ObservableObject {
                 message: alertType.message,
                 buttons: [
                     .init(title: "다음에", style: .cancel),
-                    .init(title: "업데이트", style: .default) { self.openAppStoreAndExit() }
+                    .init(title: "업데이트", style: .default) { self.openAppStore() }
                 ],
                 flagType: .default
             )
@@ -130,7 +130,7 @@ final class AppLaunchFlowManager: ObservableObject {
     }
     
     private func checkAppStoreVersion() async -> String {
-        let appId = AppUpdateConfig.appstoreAppId
+        let appId = AppUpdateConfig.appStoreAppId
         guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appId)&country=kr") else { return "" }
         
         do {
@@ -151,11 +151,16 @@ final class AppLaunchFlowManager: ObservableObject {
     }
     
     private func openAppStoreAndExit() {
-        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(AppUpdateConfig.appstoreAppId)") else { return }
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(AppUpdateConfig.appStoreAppId)") else { return }
         UIApplication.shared.open(url, options: [:]) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 exit(0)
             }
         }
+    }
+    
+    private func openAppStore() {
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(AppUpdateConfig.appStoreAppId)") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

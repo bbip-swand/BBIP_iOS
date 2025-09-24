@@ -6,7 +6,7 @@
 //
 
 struct AppUpdateConfig {
-    static let appstoreAppId = "6670203690"
+    static let appStoreAppId = "6670203690"
 }
 
 enum UpdateAlertType {
@@ -17,7 +17,7 @@ enum UpdateAlertType {
     var title: String {
         switch self {
         case .forceUpdate:
-            return "신규 기능 업데이트 알림"
+            return "필수 업데이트 알림"
         case .featureUpdate:
             return "기능 업데이트 알림"
         case .minorUpdate:
@@ -28,11 +28,11 @@ enum UpdateAlertType {
     var message: String {
         switch self {
         case .forceUpdate:
-            return "BBIP의 새로운 기능을 이용하기 위해서는\n업데이트가 필요해요!\n최신 버전으로 업데이트 하시겠어요?"
+            return "BBIP 최신 버전 업데이트가 필요해요!\n업데이트 후 서비스를 계속 이용할 수 있어요"
         case .featureUpdate:
-            return "새로운 기능이 추가되었어요!\n지금 바로 업데이트해보세요"
+            return "새로운 기능이 추가되었어요!\n지금 바로 업데이트 해보세요"
         case .minorUpdate:
-            return "BBIP의 사용성이 개선되었어요!\n지금 바로 업데이트해보세요"
+            return "BBIP의 사용성이 개선되었어요!\n지금 바로 업데이트 해보세요"
         }
     }
 }
