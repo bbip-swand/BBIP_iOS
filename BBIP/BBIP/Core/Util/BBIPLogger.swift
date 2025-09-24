@@ -118,11 +118,11 @@ enum BBIPLogger {
         let formattedMessage = "[\(fileName):\(line)] \(function) - \(String(describing: message))"
 
         #if DEBUG
-        // 디버그 환경: 모든 로그 콘솔에 출력
+        // DEBUG 환경: 모든 로그 콘솔에 출력
         print("\(level.icon) \(formattedMessage)")
         #else
-        // 릴리즈 환경: error, fault만 시스템 로그로 출력
-        if level == .error || level == .fault {
+        // RELEASE 환경: `fault`만 시스템 로그로 출력
+        if level == .fault {
             let logger = logger(for: category)
             logger.log(level: level.osLogType, "\(formattedMessage)")
         }
