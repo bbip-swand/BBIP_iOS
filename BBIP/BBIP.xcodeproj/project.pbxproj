@@ -737,6 +737,71 @@
 			path = CreateCode;
 			sourceTree = "<group>";
 		};
+		C654BDBA2E83A161005478B2 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */,
+				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
+				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		C654BDBB2E83A184005478B2 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */,
+				C6989E982C9A99F2003CE4D5 /* DayPickerView.swift */,
+				C6989E9A2C9AB2C6003CE4D5 /* TimePickerView.swift */,
+				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		C654BDBC2E83A190005478B2 /* StateView */ = {
+			isa = PBXGroup;
+			children = (
+				C67AD8482DFED10F000A1E39 /* SplashView.swift */,
+				C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */,
+			);
+			path = StateView;
+			sourceTree = "<group>";
+		};
+		C654BDBD2E83A1B5005478B2 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */,
+				C6516EF82CEDFEBD00FCFAF2 /* WeeklyStudyContentCardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		C654BDBE2E83A1DA005478B2 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF22712CA3237400988748 /* LoadableImageView.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		C654BDBF2E83A1F9005478B2 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
+				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		C654BDC02E83A217005478B2 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
+				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		C668909E2E802017001C3C4C /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,22 +997,13 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				C67AD8482DFED10F000A1E39 /* SplashView.swift */,
-				C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */,
-				C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */,
-				C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */,
-				0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */,
-				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
-				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
-				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
-				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
-				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
-				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
-				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
-				C6989E982C9A99F2003CE4D5 /* DayPickerView.swift */,
-				C6989E9A2C9AB2C6003CE4D5 /* TimePickerView.swift */,
-				C6CF22712CA3237400988748 /* LoadableImageView.swift */,
-				C6516EF82CEDFEBD00FCFAF2 /* WeeklyStudyContentCardView.swift */,
+				C654BDBA2E83A161005478B2 /* Button */,
+				C654BDC02E83A217005478B2 /* Label */,
+				C654BDBD2E83A1B5005478B2 /* CardView */,
+				C654BDBC2E83A190005478B2 /* StateView */,
+				C654BDBE2E83A1DA005478B2 /* Image */,
+				C654BDBB2E83A184005478B2 /* Input */,
+				C654BDBF2E83A1F9005478B2 /* TabView */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
