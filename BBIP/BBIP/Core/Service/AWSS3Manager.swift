@@ -27,7 +27,8 @@ final class AWSS3Manager {
                 guard let self = self, let imageData = image.jpegData(compressionQuality: 1) else {
                     return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
                 }
-                print("Presigned URL: \(urlString)") // Presigned URL 확인
+                BBIPLogger.log(urlString, level: .info, category: .feature(featureName: "AWSS3 Presigned URL"))
+                
                 // 이미지 업로드 후 final URL 반환
                 return self.uploadImageToBinary(imageData: imageData, urlString: urlString)
                     .map { _ in
@@ -74,7 +75,7 @@ final class AWSS3Manager {
                 guard let self = self else {
                     return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
                 }
-                print("Presigned URL: \(urlString)") // Presigned URL 확인
+                BBIPLogger.log(urlString, level: .info, category: .feature(featureName: "AWSS3 Presigned URL"))
                 
                 // Upload file and return success or failure as Bool
                 return self.uploadFileToBinary(fileData: file, urlString: urlString)

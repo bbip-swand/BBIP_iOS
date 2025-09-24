@@ -32,12 +32,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         #if DEBUG
-        print("🌐 Using DEV Configuration...")
+        BBIPLogger.log("🌐 Using DEV Configuration...", level: .info, category: .default)
         #else
-        print("🌐 Using PROD Configuration...")
+        BBIPLogger.log("🌐 Using PROD Configuration...", level: .info, category: .default)
         #endif
         
-        print("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!")
+        BBIPLogger.log("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!", level: .info, category: .default)
         
         return true
     }
@@ -91,13 +91,13 @@ extension AppDelegate: MessagingDelegate {
                 do {
                     let statusCode = response.statusCode
                     if (200..<300).contains(statusCode) {
-                        print("FCM token successfully posted to the server")
+                        BBIPLogger.log("FCM token successfully posted to the server", level: .info, category: .network)
                     } else {
-                        print("Failed to post FCM token: \(statusCode)")
+                        BBIPLogger.log("Failed to post FCM token: \(statusCode)", level: .error, category: .network)
                     }
                 }
             case .failure(let error):
-                print("Error posting FCM token: \(error.localizedDescription)")
+                BBIPLogger.log("Error posting FCM token: \(error.localizedDescription)", level: .error, category: .network)
             }
         }
     }
