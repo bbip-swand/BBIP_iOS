@@ -208,6 +208,7 @@
 		C6D298452E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */; };
 		C6D298482E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298472E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift */; };
 		C6D2984A2E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D298492E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift */; };
+		C6D9A30A2E851B2200FA72EC /* GetIsTodayStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9A3092E851B2200FA72EC /* GetIsTodayStudyUseCase.swift */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -493,6 +494,7 @@
 		C6D298442E119B3B004F6D1B /* StartCreateStudyRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCreateStudyRouteBuilder.swift; sourceTree = "<group>"; };
 		C6D298472E119C58004F6D1B /* StudyInfoSetupRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupRouteBuilder.swift; sourceTree = "<group>"; };
 		C6D298492E11A15B004F6D1B /* StudyInfoSetupCompleteRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoSetupCompleteRouteBuilder.swift; sourceTree = "<group>"; };
+		C6D9A3092E851B2200FA72EC /* GetIsTodayStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIsTodayStudyUseCase.swift; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -934,6 +936,7 @@
 		C69445962C9D590C003945CC /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				C6D9A3092E851B2200FA72EC /* GetIsTodayStudyUseCase.swift */,
 				C69445972C9D595D003945CC /* CreateStudyUseCase.swift */,
 				C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */,
 				C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */,
@@ -1979,6 +1982,7 @@
 				C6F2DA242CAAF70D002023B6 /* CommentCell.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
 				C6989E972C96E396003CE4D5 /* StudySessionVO.swift in Sources */,
+				C6D9A30A2E851B2200FA72EC /* GetIsTodayStudyUseCase.swift in Sources */,
 				98B9A7F02E27ABCA00DD8FA6 /* DeleteCommentUseCase.swift in Sources */,
 				9886AB382E0C675D0035D3D0 /* MyPageRouteBuilder.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,

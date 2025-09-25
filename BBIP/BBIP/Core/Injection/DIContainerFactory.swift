@@ -131,6 +131,11 @@ extension Container {
             GetPendingStudyUseCase(repository: self.studyRepository())
         }
     }
+    var getIsTodayStudyUseCase: Factory<GetIsTodayStudyUseCaseProtocol> {
+        Factory(self) {
+            GetIsTodayStudyUseCase(repository: self.studyRepository())
+        }
+    }
 
     // MARK: - ViewModels
     var onboardingViewModel: Factory<OnboardingViewModel> {
