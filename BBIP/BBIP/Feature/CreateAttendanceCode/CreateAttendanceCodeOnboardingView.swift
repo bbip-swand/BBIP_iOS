@@ -62,11 +62,21 @@ struct CreateAttendanceCodeOnboardingView: View {
         .background(.gray9)
         .backButtonStyle(isReversal: true)
         .loadingOverlay(isLoading: $viewModel.isLoading)
-        .onChange(of: viewModel.showIsNotTodayStudyWarningAlert) { _, shouldShowWarningAlert in
-            if pendingCheck {
-                if shouldShowWarningAlert == false {
-                    showCreateCodeView = true
-                }
+        .onChange(of: viewModel.isLoading) { _, isLoading in
+            
+            /// 스터디 진행일이 오늘이 맞으면 바로 화면 전환 `showCreateCodeView = true`
+            if isLoading == false
+                && pendingCheck == true
+                && viewModel.showIsNotTodayStudyWarningAlert == false
+            {
+                showCreateCodeView = true
+                pendingCheck = false
+            }
+        }
+        .onChange(of: viewModel.showIsNotTodayStudyWarningAlert) { _, isShown in
+            
+            /// alert 노출 후 flag값 초기화
+            if isShown {
                 pendingCheck = false
             }
         }

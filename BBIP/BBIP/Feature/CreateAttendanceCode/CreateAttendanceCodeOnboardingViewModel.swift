@@ -21,21 +21,21 @@ final class CreateAttendanceCodeOnboardingViewModel: ObservableObject {
     
     func checkIsTodayStudy(studyId: String) {
         isLoading = true
-        
-        defer { isLoading = false }
-        
+
         getIsTodayStudyUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
-            .sink { completionResult in
+            .sink { [weak self] completionResult in
+                guard let self else { return }
+                self.isLoading = false
+                
                 switch completionResult {
                 case .finished:
                     break
-                    
                 case .failure(let error):
                     BBIPLogger.log(error.localizedDescription, level: .error, category: .network)
                 }
             } receiveValue: { [weak self] isTodayStudy in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.showIsNotTodayStudyWarningAlert = !isTodayStudy
             }
             .store(in: &cancellables)
