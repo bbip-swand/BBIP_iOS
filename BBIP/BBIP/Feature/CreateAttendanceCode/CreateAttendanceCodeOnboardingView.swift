@@ -76,13 +76,13 @@ struct CreateAttendanceCodeOnboardingView: View {
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
-        .alert("오늘은 진행할 스터디가 없어요", isPresented: $viewModel.showIsNotTodayStudyWarningAlert) {
+        .alert("오늘은 스터디 일정이 없어요", isPresented: $viewModel.showIsNotTodayStudyWarningAlert) {
             Button("취소", role: .cancel) { }
             Button("확인") {
                 showCreateCodeView = true
             }
         } message: {
-            Text("오늘은 스터디 진행일이 아니에요.\n그래도 출석을 시작할까요?")
+            Text("오늘은 스터디 진행일이 아니에요.\n그래도 출결을 시작하시겠어요?")
         }
     }
 }
