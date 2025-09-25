@@ -136,6 +136,51 @@ extension Container {
             GetIsTodayStudyUseCase(repository: self.studyRepository())
         }
     }
+    
+    // MARK: - Attendance
+    var attendanceDataSource: Factory<AttendanceDataSource> {
+        Factory(self) { AttendanceDataSource() }
+    }
+    var attendanceStatusMapper: Factory<AttendanceStatusMapper> {
+        Factory(self) { AttendanceStatusMapper() }
+    }
+    var attendanceRecordMapper: Factory<AttendanceRecordMapper> {
+        Factory(self) { AttendanceRecordMapper() }
+    }
+    var attendanceRepository: Factory<AttendanceRepository> {
+        Factory(self) {
+            AttendanceRepositoryImpl(
+                dataSource: self.attendanceDataSource(),
+                statusMapper: self.attendanceStatusMapper(),
+                recordMapper: self.attendanceRecordMapper()
+            )
+        }
+    }
+    var getAttendanceStatusUseCase: Factory<GetAttendanceStatusUseCaseProtocol> {
+        Factory(self) {
+            GetAttendanceStatusUseCase(repository: self.attendanceRepository())
+        }
+    }
+    var getAttendanceRecordsUseCase: Factory<GetAttendanceRecordsUseCaseProtocol> {
+        Factory(self) {
+            GetAttendanceRecordsUseCase(repository: self.attendanceRepository())
+        }
+    }
+    var createAttendanceCodeUseCase: Factory<CreateAttendanceCodeUseCaseProtocol> {
+        Factory(self) {
+            CreateAttendanceCodeUseCase(repository: self.attendanceRepository())
+        }
+    }
+    var submitAttendanceUseCase: Factory<SubmitAttendanceCodeUseCaseProtocol> {
+        Factory(self) {
+            SubmitAttendanceCodeUseCase(repository: self.attendanceRepository())
+        }
+    }
+    var getStudyAttendanceStatusUseCase: Factory<GetStudyAttendanceStatusUseCaseProtocol> {
+        Factory(self) {
+            GetStudyAttendanceStatusUseCase(repository: self.attendanceRepository())
+        }
+    }
 
     // MARK: - ViewModels
     var onboardingViewModel: Factory<OnboardingViewModel> {
@@ -150,13 +195,21 @@ extension Container {
         self { UserInfoSetupViewModel() }
     }
     
+    var createAttendanceCodeOnboardingViewModel: Factory<CreateAttendanceCodeOnboardingViewModel> {
+        self { CreateAttendanceCodeOnboardingViewModel() }
+    }
+    
+    var createAttendanceCodeViewModel: Factory<CreateAttendanceCodeViewModel> {
+        self { CreateAttendanceCodeViewModel() }
+    }
+    
     func studyDetailViewModel(_ fullStudyInfo: FullStudyInfoVO
     ) -> Factory<StudyDetailViewModel> {
         self { StudyDetailViewModel(fullStudyInfo: fullStudyInfo) }
     }
     
-//    var createStudyViewModel: Factory<CreateStudyViewModel> {
-//        self { CreateStudyViewModel() }
-//    }
+    // var createStudyViewModel: Factory<CreateStudyViewModel> {
+    //     self { CreateStudyViewModel() }
+    // }
 }
 

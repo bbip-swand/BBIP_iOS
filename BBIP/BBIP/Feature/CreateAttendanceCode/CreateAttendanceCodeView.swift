@@ -5,12 +5,13 @@
 //  Created by 이건우 on 11/18/24.
 //
 
+import Factory
 import SwiftUI
 import Combine
 
-struct CreateCodeView: View {
+struct CreateAttendanceCodeView: View {
     @EnvironmentObject var appState: AppStateManager
-    @StateObject var viewModel: CreateCodeViewModel = DIContainer.shared.makeCreateCodeViewModel()
+    @Injected(\.createAttendanceCodeViewModel) var viewModel
     @State private var timer: AnyCancellable?
     
     @State private var formattedTime: String = "10:00"

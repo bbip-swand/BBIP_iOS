@@ -1,5 +1,5 @@
 //
-//  CreateCodeOnboardingView.swift
+//  CreateAttendanceCodeOnboardingView.swift
 //  BBIP
 //
 //  Created by 이건우 on 11/18/24.
@@ -8,9 +8,15 @@
 import Foundation
 import SwiftUI
 import Combine
+import Factory
 
-struct CreateCodeOnboardingView: View {
+struct CreateAttendanceCodeOnboardingView: View {
+    
+    @InjectedObject(\.createAttendanceCodeOnboardingViewModel) private var viewModel
+    
+    @State private var pendingCheck = false
     @State private var showCreateCodeView = false
+    
     private let studyId: String
     private let session: Int
     
@@ -48,17 +54,36 @@ struct CreateCodeOnboardingView: View {
                 .padding(.bottom, 97)
             
             MainButton(text: "코드 생성하기", enable: true) {
-                showCreateCodeView = true
+                pendingCheck = true
+                viewModel.checkIsTodayStudy(studyId: studyId)
             }
             .padding(.bottom,22)
         }
-        .backButtonStyle(isReversal: true)
         .background(.gray9)
+        .backButtonStyle(isReversal: true)
+        .loadingOverlay(isLoading: $viewModel.isLoading)
+        .onChange(of: viewModel.showIsNotTodayStudyWarningAlert) { _, shouldShowWarningAlert in
+            if pendingCheck {
+                if shouldShowWarningAlert == false {
+                    showCreateCodeView = true
+                }
+                pendingCheck = false
+            }
+        }
         .navigationDestination(isPresented: $showCreateCodeView) {
-            CreateCodeView(studyId: studyId, session: session)
+            CreateAttendanceCodeView(studyId: studyId, session: session)
         }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
+        .alert("오늘은 진행할 스터디가 없어요", isPresented: $viewModel.showIsNotTodayStudyWarningAlert) {
+            Button("취소", role: .cancel) { }
+            Button("확인") {
+                showCreateCodeView = true
+            }
+        } message: {
+            Text("오늘은 스터디 진행일이 아니에요.\n그래도 출석을 시작할까요?")
+        }
     }
 }
+
