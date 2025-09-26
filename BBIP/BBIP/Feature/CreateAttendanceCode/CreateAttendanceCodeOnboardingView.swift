@@ -92,7 +92,7 @@ struct CreateAttendanceCodeOnboardingView: View {
                 showCreateCodeView = true
             }
         } message: {
-            Text("오늘은 스터디 진행일이 아니에요.\n그래도 출결을 시작하시겠어요?")
+            Text("그래도 출결을 시작하시겠어요?")
         }
     }
 }
