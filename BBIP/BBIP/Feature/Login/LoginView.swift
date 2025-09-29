@@ -82,21 +82,14 @@ private struct AppleSigninButton : View {
     }
     
     var body: some View {
-        Image("apple_login")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .padding(.horizontal, 20)
-            .overlay {
-                 SignInWithAppleButton(
-                    onRequest: { request in
-                        request.requestedScopes = []
-                    },
-                    onCompletion: { result in
-                        viewModel.handleAppleLogin(result: result)
-                    }
-                )
-                .opacity(0.1)
-                .blendMode(.overlay)
-            }
+        SignInWithAppleButton(.signIn) { request in
+            request.requestedScopes = []
+        } onCompletion: { result in
+            viewModel.handleAppleLogin(result: result)
+        }
+        .signInWithAppleButtonStyle(.black)
+        .frame(height: 54)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding(.horizontal, 20)
     }
 }
