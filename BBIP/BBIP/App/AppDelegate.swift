@@ -38,6 +38,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         #endif
         
         BBIPLogger.log("🔧 Current AppEnvironment is \(AppEnvironment.current.rawValue)!", level: .info, category: .default)
+        BBIPLogger.log(UserDefaultsManager.shared.getAccessToken() ?? "Access Token is empty", level: .debug, category: .model)
         
         return true
     }
