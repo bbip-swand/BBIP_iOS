@@ -48,8 +48,17 @@ struct StudyMemberInviteCell: View {
         self.studyInviteCode = inviteCode
     }
     
+    private var inviteBaseURL: String {
+        switch AppEnvironment.current {
+        case .dev:
+            return "https://join.dev.bbip.kr/join-study/"
+        case .prod:
+            return "http://join.bbip.kr/join-study/"
+        }
+    }
+    
     var body: some View {
-        ShareLink(item: URL(string: "http://join.bbip.kr/join-study/\(studyInviteCode)")!) {
+        ShareLink(item: URL(string: "\(inviteBaseURL)\(studyInviteCode)")!) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .frame(width: 90, height: 100)

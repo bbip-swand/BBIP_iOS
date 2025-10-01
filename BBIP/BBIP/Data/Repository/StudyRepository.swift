@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol StudyRepository {
+    func getIsTodayStudy(studyId: String) -> AnyPublisher<Bool, Error>
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
     func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
     func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error>
@@ -41,6 +42,11 @@ final class StudyRepositoryImpl: StudyRepository {
         self.currentWeekStudyInfoMapper = currentWeekStudyInfoMapper
         self.fullStudyInfoMapper = fullStudyInfoMapper
         self.pendingStudyMapper = pendingStudyMapper
+    }
+    
+    func getIsTodayStudy(studyId: String) -> AnyPublisher<Bool, Error> {
+        dataSource.getIsTodayStudy(studyId: studyId)
+            .eraseToAnyPublisher()
     }
     
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {

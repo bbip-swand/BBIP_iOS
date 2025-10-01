@@ -90,7 +90,7 @@ struct MainHomeView: View {
                         SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
                         
                     case .createCode (let studyId, let session):
-                        CreateCodeOnboardingView(studyId: studyId, session: session)
+                        CreateAttendanceCodeOnboardingView(studyId: studyId, session: session)
                         
                     case .entercode(let remainingTime, let studyId, let studyName):
                         AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)

@@ -107,15 +107,16 @@ final class UserInfoSetupViewModel: ObservableObject {
                 case .finished: break
                 case .failure(let error):
                     self.isLoading = false
-                    print("회원가입 실패: \(error.localizedDescription)")
+                    BBIPLogger.log("회원가입 실패: \(error.localizedDescription)", level: .error, category: .feature(featureName: "UserInfoSetup"))
                 }
             } receiveValue: { [weak self] isSuccess in
                 guard let self = self else { return }
                 self.isLoading = false
                 if isSuccess {
                     self.showCompleteView = true
+                    UserDefaultsManager.shared.setIsLoggedIn(true)
                 } else {
-                    fatalError("회원가입 문제 발생")
+                    BBIPLogger.log("회원가입 문제 발생: unknown error", level: .error, category: .feature(featureName: "UserInfoSetup"))
                 }
             }
             .store(in: &cancellables)

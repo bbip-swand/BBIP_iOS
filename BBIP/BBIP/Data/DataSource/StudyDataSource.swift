@@ -14,6 +14,17 @@ final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin(), LoggerPlugin()])
     
     // MARK: - GET
+    func getIsTodayStudy(studyId: String) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.getIsTodayStudy(studyId: studyId))
+            .map(BaseResponseDTO<Bool>.self, using: JSONDecoder())
+            .map(\.data)
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
+    
     func getCurrentWeekStudyInfo() -> AnyPublisher<[StudyInfoDTO], any Error> {
         provider.requestPublisher(.getThisWeekStudy)
             .map(BaseResponseDTO<[StudyInfoDTO]>.self, using: JSONDecoder())
