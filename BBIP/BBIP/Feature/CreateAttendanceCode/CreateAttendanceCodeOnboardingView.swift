@@ -1,5 +1,5 @@
 //
-//  CreateCodeOnboardingView.swift
+//  CreateAttendanceCodeOnboardingView.swift
 //  BBIP
 //
 //  Created by 이건우 on 11/18/24.
@@ -8,9 +8,15 @@
 import Foundation
 import SwiftUI
 import Combine
+import Factory
 
-struct CreateCodeOnboardingView: View {
+struct CreateAttendanceCodeOnboardingView: View {
+    
+    @InjectedObject(\.createAttendanceCodeOnboardingViewModel) private var viewModel
+    
+    @State private var pendingCheck = false
     @State private var showCreateCodeView = false
+    
     private let studyId: String
     private let session: Int
     
@@ -48,17 +54,46 @@ struct CreateCodeOnboardingView: View {
                 .padding(.bottom, 97)
             
             MainButton(text: "코드 생성하기", enable: true) {
-                showCreateCodeView = true
+                pendingCheck = true
+                viewModel.checkIsTodayStudy(studyId: studyId)
             }
             .padding(.bottom,22)
         }
-        .backButtonStyle(isReversal: true)
         .background(.gray9)
+        .backButtonStyle(isReversal: true)
+        .loadingOverlay(isLoading: $viewModel.isLoading)
+        .onChange(of: viewModel.isLoading) { _, isLoading in
+            
+            /// 스터디 진행일이 오늘이 맞으면 바로 화면 전환 `showCreateCodeView = true`
+            if isLoading == false
+                && pendingCheck == true
+                && viewModel.showIsNotTodayStudyWarningAlert == false
+            {
+                showCreateCodeView = true
+                pendingCheck = false
+            }
+        }
+        .onChange(of: viewModel.showIsNotTodayStudyWarningAlert) { _, isShown in
+            
+            /// alert 노출 후 flag값 초기화
+            if isShown {
+                pendingCheck = false
+            }
+        }
         .navigationDestination(isPresented: $showCreateCodeView) {
-            CreateCodeView(studyId: studyId, session: session)
+            CreateAttendanceCodeView(studyId: studyId, session: session)
         }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray9)
         }
+        .alert("오늘은 스터디 일정이 없어요", isPresented: $viewModel.showIsNotTodayStudyWarningAlert) {
+            Button("취소", role: .cancel) { }
+            Button("확인") {
+                showCreateCodeView = true
+            }
+        } message: {
+            Text("그래도 출결을 시작하시겠어요?")
+        }
     }
 }
+

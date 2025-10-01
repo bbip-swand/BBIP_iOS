@@ -219,13 +219,13 @@ class DIContainer {
     }
     
     // Create Code
-    func makeCreateCodeViewModel() -> CreateCodeViewModel {
-        return .init(
-            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
-            createAttendanceCodeUseCase: createAttendanceCodeUseCase,
-            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
-        )
-    }
+    // func makeCreateCodeViewModel() -> CreateCodeViewModel {
+    //     return .init(
+    //         getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+    //         createAttendanceCodeUseCase: createAttendanceCodeUseCase,
+    //         getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+    //     )
+    // }
     
     // WeeklyStudyEdit
     func makeWeeklyStudyEditViewModel(fullStudyInfoVO: FullStudyInfoVO) -> WeeklyStudyContentListViewModel {

@@ -67,7 +67,7 @@ final class LoggerPlugin: PluginType {
                let prettyPrintedString = String(data: prettyData, encoding: .utf8) {
                 log.append("Response Data:\n\(prettyPrintedString)\n")
             } else {
-                log.append("Response Data: (JSON 형식이 아님)\n")
+                log.append("Response Data: \(String(data: responseData, encoding: .utf8) ?? "Unexpected Data")\n")
             }
         }
         

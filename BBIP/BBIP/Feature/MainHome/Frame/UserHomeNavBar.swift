@@ -25,7 +25,7 @@ struct UserHomeNavBar: View {
                 }
             }
             .frame(height: 42)
-            .background(.gray1)
+            .background(.mainWhite)
         }
     }
     

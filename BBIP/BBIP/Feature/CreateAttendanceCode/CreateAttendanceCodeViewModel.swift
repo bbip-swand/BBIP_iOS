@@ -1,5 +1,5 @@
 //
-//  CreateCodeViewModel.swift
+//  CreateAttendanceCodeViewModel.swift
 //  BBIP
 //
 //  Created by 이건우 on 11/18/24.
@@ -7,26 +7,18 @@
 
 import Foundation
 import Combine
+import Factory
 
 /// 출석 코드 생성 및 현황 확인, 스터디장 & 스터디홈 용
-final class CreateCodeViewModel: ObservableObject {
+final class CreateAttendanceCodeViewModel: ObservableObject {
     
     @Published var attendanceCode: String?
     
-    private let getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
-    private let createAttendanceCodeUseCase: CreateAttendanceCodeUseCaseProtocol
-    private let getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol
-    private var cancellables = Set<AnyCancellable>()
+    @Injected(\.getAttendanceStatusUseCase) private var getAttendanceStatusUseCase
+    @Injected(\.createAttendanceCodeUseCase) private var createAttendanceCodeUseCase
+    @Injected(\.getAttendanceRecordsUseCase) private var getAttendanceRecordsUseCase
     
-    init(
-        getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol,
-        createAttendanceCodeUseCase: CreateAttendanceCodeUseCaseProtocol,
-        getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol
-    ) {
-        self.getAttendanceStatusUseCase = getAttendanceStatusUseCase
-        self.createAttendanceCodeUseCase = createAttendanceCodeUseCase
-        self.getAttendanceRecordsUseCase = getAttendanceRecordsUseCase
-    }
+    private var cancellables = Set<AnyCancellable>()
     
     func createAttendanceCode(
         studyId: String,
