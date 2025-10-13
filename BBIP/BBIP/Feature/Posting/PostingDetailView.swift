@@ -146,6 +146,13 @@ struct PostingDetailView: View {
                     Text(vo.content)
                         .font(.bbip(.body2_m14))
                         .frame(minHeight: 44, alignment: .topLeading)
+                        .contextMenu {
+                            Button {
+                                UIPasteboard.general.string = vo.content
+                            } label: {
+                                Label("복사", systemImage: "doc.on.doc")
+                            }
+                        }
                 }
                 // TODO: - Images...
             } else {

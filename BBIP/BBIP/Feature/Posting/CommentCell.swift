@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct CommentCell: View {
     private let vo: CommentVO
