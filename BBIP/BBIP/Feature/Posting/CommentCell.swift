@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CommentCell: View {
     private let vo: CommentVO
@@ -63,6 +64,13 @@ struct CommentCell: View {
             Rectangle()
                 .frame(height: 1)
                 .foregroundStyle(.gray2)
+        }
+        .contextMenu {
+            Button {
+                UIPasteboard.general.string = vo.content
+            } label: {
+                Label("복사", systemImage: "doc.on.doc")
+            }
         }
     }
 }
