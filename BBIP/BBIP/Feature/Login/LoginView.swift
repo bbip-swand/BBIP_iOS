@@ -83,7 +83,7 @@ private struct AppleSigninButton : View {
     
     var body: some View {
         SignInWithAppleButton(.signIn) { request in
-            request.requestedScopes = []
+            request.requestedScopes = [.fullName]
         } onCompletion: { result in
             viewModel.handleAppleLogin(result: result)
         }
