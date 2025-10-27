@@ -11,8 +11,17 @@ import SwiftUIIntrospect
 import LinkNavigator
 
 struct UserInfoSetupView: View {
+    
     let navigator: LinkNavigatorType
-    @StateObject private var userInfoSetupViewModel = Container.shared.userInfoSetupViewModel()
+    let appleUserName: String
+    
+    init(navigator: LinkNavigatorType, appleUserName: String) {
+        self.navigator = navigator
+        self.appleUserName = appleUserName
+        _userInfoSetupViewModel = StateObject(wrappedValue: Container.shared.userInfoSetupViewModel(appleUserName: appleUserName)())
+    }
+    
+    @StateObject private var userInfoSetupViewModel: UserInfoSetupViewModel
     @State private var selectedIndex: Int = 0
     
     private func buttonText() -> String {
@@ -118,5 +127,4 @@ fileprivate extension View {
         }
     }
 }
-
 

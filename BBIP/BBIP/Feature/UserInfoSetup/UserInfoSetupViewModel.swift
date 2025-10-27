@@ -19,7 +19,7 @@ final class UserInfoSetupViewModel: ObservableObject {
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
         false,  // 관심사 (스킵 가능)
-        false,  // 프로필 사진
+        true,  // 프로필 사진
         false,  // 생년월일
         false   // 직업
     ]
@@ -54,7 +54,7 @@ final class UserInfoSetupViewModel: ObservableObject {
     @Published var selectedInterestIndex: [Int] = []
     
     // MARK: - Profile Setting View
-    @Published var userName: String = ""
+    @Published var userName: String
     @Published var isNameValid: Bool = false
     @Published var selectedImage: UIImage? = nil
     @Published var showImagePicker: Bool = false
@@ -67,6 +67,12 @@ final class UserInfoSetupViewModel: ObservableObject {
     
     // MARK: - Job Setting View
     @Published var selectedJobIndex: [Int] = []
+    
+    // MARK: - Initializer
+    init(appleUserName: String) {
+        self.userName = appleUserName
+        print("@@", self.userName)
+    }
     
     func createUserInfo() {
         isLoading = true

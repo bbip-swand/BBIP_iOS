@@ -39,7 +39,7 @@ struct StudyDetailView: View {
     private let dataSource = StudyDataSource()
     
     init(vo: FullStudyInfoVO, navigator: LinkNavigatorType) {
-        _viewModel = StateObject(wrappedValue:Container.shared.studyDetailViewModel(vo)())
+        _viewModel = StateObject(wrappedValue: Container.shared.studyDetailViewModel(vo)())
         self.navigator = navigator
     }
     

@@ -11,9 +11,9 @@ struct UserInfoSetupRouteBuilder: RouteBuilder {
     var matchPath: String { BBIPMatchPath.userInfoSetup.capitalizedPath }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
-        { navigator, _, _ in
+        { navigator, items, _ in
             return WrappingController(matchPath: matchPath) {
-                UserInfoSetupView(navigator: navigator)
+                UserInfoSetupView(navigator: navigator, appleUserName: items["appleUserName"].unwrapped())
             }
             .defaultContext()
         }

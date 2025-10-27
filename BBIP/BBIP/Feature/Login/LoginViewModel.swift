@@ -23,6 +23,7 @@ final class LoginViewModel: ObservableObject {
     
     private var identityToken: String?
     private var authorizationCode: String?
+    var appleUserName: String = .init()
     
     /// BBIP 로직과 별개로 identity Token을 받기 위한 애플 로그인 절차
     func handleAppleLogin(result: Result<ASAuthorization, any Error>) {
@@ -33,6 +34,10 @@ final class LoginViewModel: ObservableObject {
             case let appleIDCredential as ASAuthorizationAppleIDCredential:
                 identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
                 authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+                
+                let family = appleIDCredential.fullName?.familyName ?? "홍"
+                let given = appleIDCredential.fullName?.givenName ?? "길동"
+                appleUserName = family + given
                 
                 requestLogin(identityToken: identityToken!)
             default:
@@ -119,6 +124,7 @@ final class LoginViewModel: ObservableObject {
         switch error {
         case .notRegisted:
             signInProcess()
+            
         case .unknownError:
             print("[LoginViewModel] requestLogin() Unknown Error! :", error.localizedDescription)
             self.isLoading = false

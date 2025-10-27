@@ -54,7 +54,9 @@ struct LoginView: View {
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: viewModel.UISDataIsEmpty) { _, isUISDataEmpty in
             if isUISDataEmpty {
-                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath], items: [:], isAnimated: true)
+                navigator.replace(paths: [BBIPMatchPath.userInfoSetup.capitalizedPath],
+                                  items: ["appleUserName" : viewModel.appleUserName],
+                                  isAnimated: true)
             }
         }
         .onChange(of: viewModel.loginSuccess) { _, isLoginSuccess in

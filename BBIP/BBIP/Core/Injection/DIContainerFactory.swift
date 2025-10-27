@@ -191,8 +191,8 @@ extension Container {
         self { LoginViewModel() }
     }
 
-    var userInfoSetupViewModel: Factory<UserInfoSetupViewModel> {
-        self { UserInfoSetupViewModel() }
+    func userInfoSetupViewModel(appleUserName: String) -> Factory<UserInfoSetupViewModel> {
+        self { UserInfoSetupViewModel(appleUserName: appleUserName) }
     }
     
     var createAttendanceCodeOnboardingViewModel: Factory<CreateAttendanceCodeOnboardingViewModel> {
@@ -203,8 +203,7 @@ extension Container {
         self { CreateAttendanceCodeViewModel() }
     }
     
-    func studyDetailViewModel(_ fullStudyInfo: FullStudyInfoVO
-    ) -> Factory<StudyDetailViewModel> {
+    func studyDetailViewModel(_ fullStudyInfo: FullStudyInfoVO) -> Factory<StudyDetailViewModel> {
         self { StudyDetailViewModel(fullStudyInfo: fullStudyInfo) }
     }
     
